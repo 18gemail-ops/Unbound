@@ -734,6 +734,8 @@ code {
   .split.rev .split-media { order: 0; }
   /* 单列下不再与右列比高：改回紧凑裁切，避免完整窗口过高 */
   .shot-apps { --ar: 1150 / 620; }
+  /* 单列下图示不再与文案列比高：限宽居中，避免 520×480 全宽放大过高 */
+  .split .figure { max-width: 620px; margin-left: auto; margin-right: auto; }
 }
 
 /* 内嵌图示容器 */
@@ -745,6 +747,8 @@ code {
   box-shadow: var(--shadow-1);
 }
 .figure.plain { background: var(--bg-elevated); }
+/* SVG 默认 inline，block 化消除容器底部的基线空隙（约 8px 隐式留白） */
+.figure svg { display: block; }
 
 /* ---------- 步骤 ---------- */
 .steps { counter-reset: s; display: grid; gap: 14px; }
