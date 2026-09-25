@@ -262,13 +262,55 @@
   </div>
 </section>
 
-<!-- App Routing: real screenshot (light / dark) -->
+<!-- App Routing: app → line mapping diagram -->
 <section class="section soft">
   <div class="wrap split rev">
     <div class="split-media reveal glow">
-      <div class="shot frame shot-apps">
-        <img class="for-light" src="../assets/img/screens/apps-light-en.webp" alt="App Routing page: bind apps to specific routes" loading="lazy" decoding="async">
-        <img class="for-dark" src="../assets/img/screens/apps-dark-en.webp" alt="" loading="lazy" decoding="async">
+      <div class="figure">
+        <svg viewBox="0 0 520 480" width="100%" aria-label="App routing map">
+          <defs>
+            <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 10 5 0 10z" fill="#b6bbc3"/>
+            </marker>
+          </defs>
+          <!-- Left column: apps currently using the network (icon + live speed) -->
+          <rect x="30" y="72" width="196" height="72" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <rect x="45" y="96" width="24" height="24" rx="7" fill="none" stroke="#007aff" stroke-width="1.5"/>
+          <circle cx="57" cy="108" r="6" fill="none" stroke="#007aff" stroke-width="1.5"/>
+          <text x="84" y="103" font-size="13.5" font-weight="700" fill="#101114">ChatGPT</text>
+          <text x="84" y="121" font-size="11.5" fill="#8b919b">Download 340 KB/s</text>
+
+          <rect x="30" y="204" width="196" height="72" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <rect x="45" y="228" width="24" height="24" rx="7" fill="none" stroke="#007aff" stroke-width="1.5"/>
+          <circle cx="53" cy="240" r="5.4" fill="none" stroke="#007aff" stroke-width="1.5"/>
+          <circle cx="61" cy="240" r="5.4" fill="none" stroke="#007aff" stroke-width="1.5"/>
+          <text x="84" y="235" font-size="13.5" font-weight="700" fill="#101114">WeChat</text>
+          <text x="84" y="253" font-size="11.5" fill="#8b919b">Download 1.2 MB/s</text>
+
+          <rect x="30" y="336" width="196" height="72" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <rect x="45" y="360" width="24" height="24" rx="7" fill="none" stroke="#007aff" stroke-width="1.5"/>
+          <path d="M57 366.5l-6 10.4h12z" fill="none" stroke="#007aff" stroke-width="1.5"/>
+          <text x="84" y="367" font-size="13.5" font-weight="700" fill="#101114">OBS Studio</text>
+          <text x="84" y="385" font-size="11.5" fill="#8b919b">Upload 620 KB/s</text>
+
+          <!-- Binding arrows: every app takes its own line -->
+          <path d="M226 108h76" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ar2)"/>
+          <path d="M226 240h76" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ar2)"/>
+          <path d="M226 372h76" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ar2)"/>
+
+          <!-- Right column: target lines (a single line binds directly; 2+ lines aggregate automatically) -->
+          <rect x="302" y="76" width="186" height="64" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="322" y="103" font-size="13.5" font-weight="700" fill="#101114">AI Route</text>
+          <text x="322" y="121" font-size="11.5" fill="#8b919b">Pinned to this line</text>
+
+          <rect x="302" y="208" width="186" height="64" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="322" y="235" font-size="13.5" font-weight="700" fill="#101114">Direct line</text>
+          <text x="322" y="253" font-size="11.5" fill="#8b919b">Straight out, no proxy</text>
+
+          <rect x="302" y="340" width="186" height="64" rx="12" fill="#fff" stroke="#007aff" stroke-width="1.6"/>
+          <text x="322" y="367" font-size="13.5" font-weight="700" fill="#0060df">Aggregation group</text>
+          <text x="322" y="385" font-size="11.5" fill="#4b5058">Round-robin · sticky session</text>
+        </svg>
       </div>
     </div>
     <div class="reveal">

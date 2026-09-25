@@ -90,7 +90,7 @@
 90|Unlock Test page: streaming and AI service results
 91|Diagnostics page: check-by-check verdicts and fixes
 92|Config generation flow
-93|App Routing page: bind apps to specific routes
+93|App routing map
 94|Unbound link
 95|Unbound link is a Windows desktop proxy client based on the mihomo core, with subscription management, routing rules, per-app process binding, chained proxies and network rescue — a clean interface that works out of the box.
 96|Features Overview — Unbound link

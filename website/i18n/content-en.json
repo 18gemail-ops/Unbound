@@ -93,7 +93,7 @@
   "解锁测试页面：流媒体与 AI 服务检测结果": "Unlock Test page: streaming and AI service results",
   "网络体检页面：逐项检查与修复": "Diagnostics page: check-by-check verdicts and fixes",
   "配置生成流程示意": "Config generation flow",
-  "应用分流页面：把应用绑定到指定线路": "App Routing page: bind apps to specific routes",
+  "应用分流示意图": "App routing map",
   "无界互联（Unbound link）是一款基于 mihomo 内核的 Windows 桌面代理客户端，支持订阅管理、分流规则、应用级进程绑定、链式代理与网络急救，界面清爽、开箱即用。": "Unbound link is a Windows desktop proxy client based on the mihomo core, with subscription management, routing rules, per-app process binding, chained proxies and network rescue — a clean interface that works out of the box.",
   "功能总览 — 无界互联 Unbound link": "Features Overview — Unbound link",
   "下载 Windows 版": "Download for Windows",

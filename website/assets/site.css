@@ -594,8 +594,6 @@ code {
 .shot-card figcaption b { display: block; font-size: 15px; }
 .shot-card figcaption span { font-size: 13.5px; color: var(--ink-3); }
 
-/* 分栏区块里的截图（应用分流）：完整窗口（1150×1050），高度与右侧文案列基本一致 */
-.shot-apps { --ar: 1150 / 1050; }
 /* 悬浮窗截图背后的柔光（配合 .split-media.glow 使用） */
 .split-media.glow { position: relative; }
 .split-media.glow::before {
@@ -732,8 +730,6 @@ code {
 @media (max-width: 980px) {
   .split { grid-template-columns: 1fr; gap: 34px; }
   .split.rev .split-media { order: 0; }
-  /* 单列下不再与右列比高：改回紧凑裁切，避免完整窗口过高 */
-  .shot-apps { --ar: 1150 / 620; }
   /* 单列下图示不再与文案列比高：限宽居中，避免 520×480 全宽放大过高 */
   .split .figure { max-width: 620px; margin-left: auto; margin-right: auto; }
 }
