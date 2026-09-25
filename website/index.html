@@ -41,102 +41,55 @@
   </div>
 </header>
 
-<!-- Hero -->
+<!-- Hero：居中文案 + 真实界面大图（浅 / 深双主题截图随站点明暗自动切换） -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="reveal">
-      <span class="eyebrow">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 12h7l-1 8 9-12h-7z"/></svg>
-        基于 mihomo 内核 · 完全本地运行
-      </span>
-      <h1>窗口有边，<em>连接无界</em></h1>
-      <p class="sub">订阅自动更新、分流规则、按进程绑定线路、链式代理、断网急救——都收进这一个窗口里，全程本地运行。不写配置文件也能用，想手写时也不拦你。</p>
-      <div class="hero-actions">
-        <a class="btn btn-dark btn-lg" href="./download.html">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
-          下载 Windows 版
-        </a>
-        <a class="btn btn-ghost btn-lg" href="./docs/index.html">阅读使用手册</a>
-      </div>
-      <div class="hero-note">
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Windows 10 / 11 · 64 位
-        </span>
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          内核随包分发，装完即用
-        </span>
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          数据全部留在本机
-        </span>
-      </div>
-      <div class="hero-stats">
-        <div><b>13</b><span>种界面语言</span></div>
-        <div><b>18</b><span>项解锁测试</span></div>
-        <div><b>3</b><span>层配置体系</span></div>
-        <div><b>0</b><span>数据外传</span></div>
-      </div>
+  <div class="wrap hero-intro reveal">
+    <span class="eyebrow">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 12h7l-1 8 9-12h-7z"/></svg>
+      基于 mihomo 内核 · 完全本地运行
+    </span>
+    <h1>窗口有边，<em>连接无界</em></h1>
+    <p class="sub">订阅自动更新、分流规则、按进程绑定线路、链式代理、断网急救——都收进这一个窗口里，全程本地运行。不写配置文件也能用，想手写时也不拦你。</p>
+    <div class="hero-actions">
+      <a class="btn btn-dark btn-lg" href="./download.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
+        下载 Windows 版
+      </a>
+      <a class="btn btn-ghost btn-lg" href="./docs/index.html">阅读使用手册</a>
     </div>
+    <div class="hero-note">
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Windows 10 / 11 · 64 位
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        内核随包分发，装完即用
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        数据全部留在本机
+      </span>
+    </div>
+    <div class="hero-stats">
+      <div><b>13</b><span>种界面语言</span></div>
+      <div><b>18</b><span>项解锁测试</span></div>
+      <div><b>3</b><span>层配置体系</span></div>
+      <div><b>0</b><span>数据外传</span></div>
+    </div>
+  </div>
 
-    <!-- 界面示意：纯 CSS + SVG 绘制，非截图；外层 .mock-wrap 提供光晕与浮动徽章的定位基准 -->
-    <div class="mock-wrap reveal">
-      <div class="mock" role="img" aria-label="无界互联主界面示意">
-      <div class="mock-bar"><i></i><i></i><i></i><span class="t">无界互联</span></div>
-      <div class="mock-body">
-        <div class="mock-side">
-          <div class="mi on"><b></b>仪表盘</div>
-          <div class="mi"><b></b>订阅管理</div>
-          <div class="mi"><b></b>代理节点</div>
-          <div class="mi"><b></b>应用分流</div>
-          <div class="mi"><b></b>规则列表</div>
-          <div class="mi"><b></b>实时连接</div>
-          <div class="mi"><b></b>流量统计</div>
-          <div class="mi"><b></b>运行日志</div>
-          <div class="mi"><b></b>网络体检</div>
-          <div class="mi"><b></b>解锁测试</div>
-          <div class="mi"><b></b>设置</div>
-        </div>
-        <div class="mock-main">
-          <div class="mock-cards">
-            <div class="mock-card">
-              <div class="k">下载</div>
-              <div class="v down">12.4 MB/s</div>
-            </div>
-            <div class="mock-card">
-              <div class="k">上传</div>
-              <div class="v up">1.8 MB/s</div>
-            </div>
-            <div class="mock-card">
-              <div class="k">活跃连接</div>
-              <div class="v">148</div>
-            </div>
-          </div>
-          <div class="mock-chart">
-            <div class="h"><span>实时流量</span><span style="color:var(--ink-3)">近 60 秒</span></div>
-            <svg viewBox="0 0 420 74" width="100%" height="74" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#007aff" stop-opacity=".26"/>
-                  <stop offset="100%" stop-color="#007aff" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path d="M0 58 C30 50 44 26 70 30 C96 34 108 54 134 50 C160 46 172 20 198 24 C224 28 236 48 262 44 C288 40 300 16 326 22 C352 28 366 46 392 40 L420 36 L420 74 L0 74 Z" fill="url(#g1)"/>
-              <path d="M0 58 C30 50 44 26 70 30 C96 34 108 54 134 50 C160 46 172 20 198 24 C224 28 236 48 262 44 C288 40 300 16 326 22 C352 28 366 46 392 40 L420 36" fill="none" stroke="#007aff" stroke-width="2.4" stroke-linecap="round"/>
-              <path d="M0 66 C34 62 52 56 82 58 C112 60 130 66 160 62 C190 58 208 52 238 54 C268 56 286 62 316 58 C346 54 366 50 420 52" fill="none" stroke="#ff9500" stroke-width="2" stroke-linecap="round" stroke-dasharray="0"/>
-            </svg>
-          </div>
-          <div class="mock-rule">
-            <div class="r"><span class="dot"></span><span class="n">openai.com</span><span class="g">AI 专线</span></div>
-            <div class="r"><span class="dot"></span><span class="n">github.com</span><span class="g">自动选择</span></div>
-            <div class="r"><span class="dot"></span><span class="n">baidu.com</span><span class="g">DIRECT</span></div>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="mock-pill p1"><span class="dot ok"></span>内核运行中</div>
-      <div class="mock-pill p2"><span class="dot blue"></span>节点延迟 42 ms</div>
+  <!-- 真实界面截图：浅 / 深各一张，CSS 按站点明暗自动切换；演示数据均为文档保留段假 IP -->
+  <div class="wrap hero-stage reveal">
+    <div class="shot frame hero-shot">
+      <img class="for-light" src="./assets/img/screens/dashboard-light-zh.webp" alt="仪表盘：订阅、节点、内核状态与流量总览" fetchpriority="high" decoding="async">
+      <img class="for-dark" src="./assets/img/screens/dashboard-dark-zh.webp" alt="" decoding="async">
+    </div>
+    <div class="shot hero-float" aria-hidden="true">
+      <img class="for-light" src="./assets/img/screens/float-light-zh.webp" alt="">
+      <img class="for-dark" src="./assets/img/screens/float-dark-zh.webp" alt="">
+    </div>
+    <div class="hero-badge"><span class="dot"></span>内核运行中</div>
     </div>
   </div>
 </section>
@@ -196,8 +149,63 @@
   </div>
 </section>
 
-<!-- 订阅 / 配置 -->
+<!-- 界面一览：真实截图，浅 / 深主题各一张，随站点明暗自动切换（演示数据） -->
 <section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal center">
+      <span class="eyebrow">界面一览</span>
+      <h2>十一个页面，各管一件事</h2>
+      <p class="lead">下列截图都来自客户端真实界面（演示数据）。点右上角切换明暗主题，截图会跟着一起换。</p>
+    </div>
+    <div class="shots-grid">
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="./assets/img/screens/proxies-light-zh.webp" alt="代理节点页面：分组与节点卡片" loading="lazy" decoding="async">
+          <img class="for-dark" src="./assets/img/screens/proxies-dark-zh.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>代理节点</b><span>分组、延迟、测速与链式代理都在一张卡片里</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="./assets/img/screens/profiles-light-zh.webp" alt="订阅管理页面：订阅卡片与用量进度" loading="lazy" decoding="async">
+          <img class="for-dark" src="./assets/img/screens/profiles-dark-zh.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>订阅管理</b><span>用量、到期、自动更新，一张卡片全部看清</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="./assets/img/screens/connections-light-zh.webp" alt="实时连接页面：连接列表与速率" loading="lazy" decoding="async">
+          <img class="for-dark" src="./assets/img/screens/connections-dark-zh.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>实时连接</b><span>每条连接的出口、规则与速率，实时可查</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="./assets/img/screens/stats-light-zh.webp" alt="流量统计页面：趋势图表与明细" loading="lazy" decoding="async">
+          <img class="for-dark" src="./assets/img/screens/stats-dark-zh.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>流量统计</b><span>按天记录用量，近 7 天走势一眼看明白</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="./assets/img/screens/unlock-light-zh.webp" alt="解锁测试页面：流媒体与 AI 服务检测结果" loading="lazy" decoding="async">
+          <img class="for-dark" src="./assets/img/screens/unlock-dark-zh.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>解锁测试</b><span>18 项流媒体与 AI 服务，逐一测给你看</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="./assets/img/screens/diagnose-light-zh.webp" alt="网络体检页面：逐项检查与修复" loading="lazy" decoding="async">
+          <img class="for-dark" src="./assets/img/screens/diagnose-dark-zh.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>网络体检</b><span>11 项检查逐条给出结论，问题还能一键修复</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 订阅 / 配置 -->
+<section class="section">
   <div class="wrap split">
     <div class="reveal">
       <span class="eyebrow">配置这件事</span>
@@ -254,48 +262,13 @@
   </div>
 </section>
 
-<!-- 应用分流 -->
-<section class="section">
+<!-- 应用分流：真实截图（浅 / 深双主题） -->
+<section class="section soft">
   <div class="wrap split rev">
-    <div class="split-media reveal">
-      <div class="figure plain">
-        <svg viewBox="0 0 520 300" width="100%" aria-label="应用分流示意">
-          <defs>
-            <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#007aff"/></marker>
-            <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#ff9500"/></marker>
-            <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#b6bbc3"/></marker>
-          </defs>
-
-          <rect x="24" y="28" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
-          <text x="44" y="55" font-size="13.5" font-weight="700" fill="#101114">chrome.exe</text>
-          <rect x="24" y="84" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
-          <text x="44" y="111" font-size="13.5" font-weight="700" fill="#101114">game.exe</text>
-          <rect x="24" y="140" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
-          <text x="44" y="167" font-size="13.5" font-weight="700" fill="#101114">其他应用</text>
-          <rect x="24" y="196" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
-          <text x="44" y="223" font-size="13.5" font-weight="700" fill="#101114">mihomo 内核</text>
-
-          <rect x="264" y="28" width="160" height="44" rx="12" fill="#e8f2ff" stroke="#cfe3ff"/>
-          <text x="284" y="55" font-size="13" font-weight="700" fill="#0060df">AI 专线</text>
-          <rect x="264" y="84" width="160" height="44" rx="12" fill="#fff4e5" stroke="#ffe2b8"/>
-          <text x="284" y="111" font-size="13" font-weight="700" fill="#8a5300">游戏低延迟</text>
-          <rect x="264" y="168" width="160" height="44" rx="12" fill="#eef0f3" stroke="#dfe3e8"/>
-          <text x="284" y="195" font-size="13" font-weight="700" fill="#4b5058">自动选择</text>
-
-          <path d="M184 50h80" stroke="#007aff" stroke-width="1.8" fill="none" marker-end="url(#ap)"/>
-          <path d="M184 106h80" stroke="#ff9500" stroke-width="1.8" fill="none" marker-end="url(#ao)"/>
-          <path d="M184 162h44M184 218h44M228 162v56" stroke="#b6bbc3" stroke-width="1.6" fill="none"/>
-          <circle cx="228" cy="190" r="2.4" fill="#b6bbc3"/>
-          <path d="M228 190h36" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ag)"/>
-
-          <path d="M24 262h472" stroke="rgba(16,17,20,.08)" stroke-width="1"/>
-          <circle cx="38" cy="278" r="11" fill="#101114"/>
-          <g stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M32.8 275.4h8.6M39.6 273.2l2.4 2.2-2.4 2.2"/>
-            <path d="M43.2 280.6h-8.6M36.4 278.4l-2.4 2.2 2.4 2.2"/>
-          </g>
-          <text x="58" y="282" font-size="11.5" font-weight="700" fill="#8b919b">一个应用绑定两条以上线路时，自动合并为聚合组（轮询分散 / 会话保持）</text>
-        </svg>
+    <div class="split-media reveal glow">
+      <div class="shot frame shot-apps">
+        <img class="for-light" src="./assets/img/screens/apps-light-zh.webp" alt="应用分流页面：把应用绑定到指定线路" loading="lazy" decoding="async">
+        <img class="for-dark" src="./assets/img/screens/apps-dark-zh.webp" alt="" loading="lazy" decoding="async">
       </div>
     </div>
     <div class="reveal">
@@ -314,7 +287,7 @@
 </section>
 
 <!-- 体检与急救 -->
-<section class="section soft">
+<section class="section">
   <div class="wrap">
     <div class="sec-head reveal center">
       <span class="eyebrow">出问题的时候</span>

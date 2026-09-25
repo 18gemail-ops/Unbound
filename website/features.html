@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
 <title>功能总览 — 无界互联 Unbound link</title>
-<meta name="description" content="无界互联功能总览：订阅管理、分流规则、应用级进程绑定、链式代理、实时连接观测、流量统计、桌面悬浮窗、系统托盘、TUN 模式、网络体检与断网急救箱。">
+<meta name="description" content="无界互联功能总览：订阅管理（一键导入 / 本地配置 / 节点链接）、分流规则与命中统计、应用级进程绑定、链式代理、实时连接观测、流量统计、桌面悬浮窗、系统托盘、TUN 模式、网络体检与断网急救箱。">
 <link rel="icon" href="./favicon.ico">
 <link rel="stylesheet" href="./assets/site.css">
 </head>
@@ -38,7 +38,7 @@
     <div class="sec-head reveal center" style="margin-bottom:0">
       <span class="eyebrow">功能总览</span>
       <h2>十一个页面，覆盖从部署到排障的全过程</h2>
-      <p class="lead">左侧菜单按使用场景分成三组：先在「代理与分流」配好线路，再到「观测与数据」看清运行状态，「稳定与排障」处理突发问题。</p>
+      <p class="lead">左侧菜单按使用场景分成三组：先在「代理与分流」配好线路，再到「观测与数据」看清运行状态，「稳定与排障」处理突发问题。下面板块里的截图都来自客户端真实界面（演示数据），会随站点明暗主题自动切换。</p>
     </div>
   </div>
 </section>
@@ -56,14 +56,14 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
         </span>
         <h3>订阅管理</h3>
-        <p>支持 http/https 订阅链接导入；卡片可拖动排序、重命名、生成二维码分享给手机、一键刷新用量信息；可同时启用多个订阅，也能从节点链接导入单个节点，支持按小时间隔自动更新，更新后自动重载配置并发送系统通知，还可设置更新后自动测速并切换到最快节点；流量达到阈值、临近到期或已过期时各提醒一次；更新前自动留档旧版本，随时可回滚。</p>
+        <p>支持 http/https 订阅链接导入，机场官网的「导入到 Clash / sing-box / Hiddify」按钮点一下即可唤起本软件完成导入；也可导入本地 YAML 配置文件，或粘贴节点链接导入单个节点。卡片可拖动排序、重命名、生成二维码分享给手机、一键刷新用量信息，订阅下载时还会自动识别机场官网并检测连通状态；可同时启用多个订阅，支持按小时间隔自动更新，更新后自动重载配置并发送系统通知，还可设置更新后自动测速并切换到最快节点；流量达到阈值、临近到期或已过期时各提醒一次；更新前自动留档旧版本，随时可回滚。</p>
       </div>
       <div class="card reveal">
         <span class="ic g">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="19" height="7.5" rx="2"/><rect x="2.5" y="13.5" width="19" height="7.5" rx="2"/><path d="M6.5 6.75h.01"/><path d="M6.5 17.25h.01"/></svg>
         </span>
         <h3>代理节点</h3>
-        <p>左右分栏：左边按分组与订阅来源浏览，右边节点卡片网格。支持单节点测延迟、下载测速（测完自动恢复原节点）、全部测速、按延迟/名称排序、按地区筛选、只看收藏；顶部可一键「隐藏超时」节点，卡片列数支持 1 - 4 列或自适应；开启「节点健康监控」后，卡片上还会多一条延迟趋势折线（红点表示测速失败），开启「掉线自动切换」后连续测速失败的当前节点还会被自动切走；列表与地图双视图随时切换，地图把节点按地区聚合成光点，大小看数量、颜色看延迟，点一下即按地区下钻筛选。</p>
+        <p>左右分栏：左边按分组与订阅来源浏览，右边节点卡片网格。支持单节点测延迟、下载测速（测完自动恢复原节点）、全部测速、按延迟/名称排序、按地区筛选、只看收藏；顶部可一键「隐藏超时」节点，卡片列数支持 1 - 4 列或自适应，也能按设定间隔自动为节点组测延迟；开启「节点健康监控」后，卡片上还会多一条延迟趋势折线（红点表示测速失败），开启「掉线自动切换」后连续测速失败的当前节点还会被自动切走；列表与地图双视图随时切换，地图把节点按地区聚合成光点，大小看数量、颜色看延迟，点一下即按地区下钻筛选。</p>
       </div>
       <div class="card reveal">
         <span class="ic a">
@@ -77,7 +77,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.8-1.7"/></svg>
         </span>
         <h3>链式代理</h3>
-        <p>为某个节点指定前置代理，流量先经中转再出去，适合受限节点。节点卡片上有链式标记，悬停即显示经由哪一个前置。</p>
+        <p>为某个节点指定前置代理，流量先经中转再出去，适合受限节点。可视化链路编辑器支持拖拽调整中间环节、跨分组挑选节点、把代理组放在链首，已保存的链路可回显编辑；节点卡片上有链式标记与「入口 / 中转 / 出口」角色标签，悬停即显示经由哪一个前置。</p>
       </div>
       <div class="card reveal">
         <span class="ic g">
@@ -98,7 +98,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="7" rx="1"/><rect x="12" y="7" width="3" height="11" rx="1"/><rect x="17" y="13" width="3" height="5" rx="1"/></svg>
         </span>
         <h3>规则与命中统计</h3>
-        <p>规则列表、自定义规则、规则集、命中统计四个页签，可在规则页直接增删改并排序自定义规则，保存后注入运行配置最前。命中统计每 15 秒采样一次，累计落盘，重启软件也不清零——用来判断某条规则到底有没有在工作。</p>
+        <p>规则列表、自定义规则、规则集、命中统计四个页签，可在规则页直接增删改并排序自定义规则，保存后注入运行配置最前。命中统计每 15 秒采样一次，累计落盘，重启软件也不清零——用来判断某条规则到底有没有在工作；内置分流模拟器，本地预演某个域名、IP 或应用会命中哪条规则（含策略组出口解析），内核没启动时也能排查分流问题。</p>
       </div>
     </div>
 
@@ -135,6 +135,28 @@
         </tbody>
       </table>
     </div>
+
+    <!-- 规则页：真实截图（浅 / 深双主题） -->
+    <div class="split" style="margin-top:64px">
+      <div class="reveal">
+        <span class="eyebrow">规则与命中</span>
+        <h3 style="font-size:26px">每条规则都留下痕迹，不再靠猜</h3>
+        <p class="lead">哪条规则在干活、哪条从没命中过，看一眼统计就知道；改规则之前，还能先用模拟器把分流结果预演一遍。</p>
+        <ul class="ticks">
+          <li><b>四页签结构</b>：规则列表、自定义规则、规则集与命中统计各占一页，切换即看。</li>
+          <li><b>可视化编辑</b>：自定义规则直接在页面上增删改与排序，保存后自动注入运行配置最前。</li>
+          <li><b>命中可查</b>：每 15 秒采样一次命中数据，累计落盘，重启软件也不清零。</li>
+          <li><b>分流模拟</b>：输入域名、IP 或应用名，本地预演它会命中哪条规则、最终从哪个出口出去。</li>
+        </ul>
+        <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/rules.html">看规则页怎么用 →</a></p>
+      </div>
+      <div class="split-media reveal">
+        <div class="shot frame shot-rules">
+          <img class="for-light" src="./assets/img/screens/rules-light-zh.webp" alt="规则列表页面：四个页签、快捷规则标签与命中次数" loading="lazy" decoding="async">
+          <img class="for-dark" src="./assets/img/screens/rules-dark-zh.webp" alt="" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -156,7 +178,7 @@
       </div>
       <div class="card reveal">
         <h3>流量统计</h3>
-        <p>按日记录上下行用量，可切换近 7 天 / 近 30 天 / 近 90 天 / 全部，配趋势图与日期明细表；另有「按节点流量」面板，把流量汇总到出口节点名下（直连流量记为 DIRECT），每条线路各用了多少一目了然，可一键重置统计。数据持续落盘，重启不清零。</p>
+        <p>按日记录上下行用量，可切换近 7 天 / 近 30 天 / 近 90 天 / 全部，配趋势图与日期明细表，也能按应用进程累计上下行流量，看清谁最占带宽；另有「按节点流量」面板，把流量汇总到出口节点名下（直连流量记为 DIRECT），每条线路各用了多少一目了然，可一键重置统计。数据持续落盘，重启不清零。</p>
       </div>
       <div class="card reveal">
         <h3>运行日志</h3>
@@ -169,6 +191,55 @@
       <div class="card reveal">
         <h3>系统托盘</h3>
         <p>托盘图标随代理状态三态切换（常规 / 系统代理 / TUN），三态均可替换为自己的 PNG 图标；右键弹出快捷面板，不用打开主窗口就能切系统代理、切 TUN、看速度、开主界面；点击面板中的「节点」或「分组」行，旁边会弹出独立的节点选择浮层，按分组浏览、点选即切换。</p>
+      </div>
+    </div>
+
+    <!-- 运行日志：真实截图（浅 / 深双主题） -->
+    <div class="split rev" style="margin-top:64px">
+      <div class="reveal">
+        <span class="eyebrow">运行日志</span>
+        <h3 style="font-size:26px">内核与应用日志，同屏对照</h3>
+        <p class="lead">代理出问题时，日志是第一现场。应用层的操作记录带 [无界互联] 前缀，和内核输出排在一起，谁在说话一眼分清。</p>
+        <ul class="ticks">
+          <li><b>同屏呈现</b>：内核输出与应用层日志按时间排在同一页。</li>
+          <li><b>级别筛选</b>：调试 / 信息 / 警告 / 错误四档随时切换，排障时只看该看的。</li>
+          <li><b>关键词搜索</b>：域名、进程、错误码直接搜，长日志里也能快速定位。</li>
+          <li><b>落盘留存</b>：同步写入 <code>logs\app.log</code>，按大小轮转、按天数清理。</li>
+        </ul>
+        <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/logs.html">看日志页说明 →</a></p>
+      </div>
+      <div class="split-media reveal">
+        <div class="shot frame shot-logs">
+          <img class="for-light" src="./assets/img/screens/logs-light-zh.webp" alt="运行日志页面：内核与应用日志同屏，可按级别筛选" loading="lazy" decoding="async">
+          <img class="for-dark" src="./assets/img/screens/logs-dark-zh.webp" alt="" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+
+    <!-- 托盘面板与节点浮层：两张窄截图按真实窗口比例并排 -->
+    <div class="split" style="margin-top:64px">
+      <div class="reveal">
+        <span class="eyebrow">系统托盘</span>
+        <h3 style="font-size:26px">不打开主窗口，也能完成一半操作</h3>
+        <p class="lead">右键托盘图标弹出快捷面板：系统代理、模式、节点、实时速度都在一屏之内；点「节点」或「分组」行，旁边再弹出独立的选择浮层，点选即切换。</p>
+        <ul class="ticks">
+          <li><b>一屏操作</b>：代理开关、模式、节点与分组、订阅、主题、悬浮窗开关都收在面板里。</li>
+          <li><b>节点浮层</b>：左分组、右节点并带延迟，当前节点打勾标注。</li>
+          <li><b>三态图标</b>：常规 / 系统代理 / TUN 自动换图，三态图标都能换成自己的 PNG。</li>
+        </ul>
+        <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/advanced.html">看进阶技巧 →</a></p>
+      </div>
+      <div class="split-media reveal">
+        <div class="shot-duo">
+          <div class="shot shot-tray">
+            <img class="for-light" src="./assets/img/screens/tray-light-zh.webp" alt="托盘快捷面板：代理开关、模式、节点与实时速度" loading="lazy" decoding="async">
+            <img class="for-dark" src="./assets/img/screens/tray-dark-zh.webp" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="shot shot-nodes">
+            <img class="for-light" src="./assets/img/screens/tray-nodes-light-zh.webp" alt="托盘节点选择浮层：按分组浏览、显示延迟并点选切换" loading="lazy" decoding="async">
+            <img class="for-dark" src="./assets/img/screens/tray-nodes-dark-zh.webp" alt="" loading="lazy" decoding="async">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -184,7 +255,7 @@
     <div class="cards c3">
       <div class="card reveal">
         <h3>系统代理与 TUN</h3>
-        <p>一键写入或还原 Windows Internet 设置；开启「网络环境」后，还能按当前 Wi-Fi 名称自动切换系统代理与运行模式（如到家自动开、到公司自动停）。TUN 通过虚拟网卡在网络层接管全部流量，堆栈可选 Mixed / Gvisor / System，需要管理员权限时会引导 UAC 提权重启。商店应用受系统回环限制无法访问本机代理时，可在「UWP 应用工具」里一键解除。</p>
+        <p>一键写入或还原 Windows Internet 设置；开启「网络环境」后，还能按当前 Wi-Fi 名称自动切换系统代理与运行模式（如到家自动开、到公司自动停）。TUN 通过虚拟网卡在网络层接管全部流量，堆栈可选 Mixed / Gvisor / System，需要管理员权限时会引导 UAC 提权重启；系统代理设置被其他程序改写时会自动恢复。商店应用受系统回环限制无法访问本机代理时，可在「UWP 应用工具」里一键解除。</p>
       </div>
       <div class="card reveal">
         <h3>DNS 与局域网</h3>
@@ -210,6 +281,31 @@
         <h3>主题与外观</h3>
         <p>深色 / 浅色 / 跟随系统三档，实时切换；品牌色、次要色、文本色、语义色、界面字体与自定义 CSS 均可调。界面为扁平化设计，主按钮为黑色，语义色克制使用——蓝表示进行中，绿表示正常，琥珀表示待处理，红表示异常。</p>
       </div>
+      <div class="card reveal">
+        <h3>界面与语言</h3>
+        <p>界面支持 13 种语言——English、Русский、中文、فارسی、한국어、Türkçe、Deutsch、Español、日本語、繁體中文等，切换即时生效；阿拉伯语与波斯语自动切换为从右到左布局，数字与时间随所选语言格式化，复数与量词按当地语法习惯显示。</p>
+      </div>
+    </div>
+
+    <!-- 设置页：真实截图（浅 / 深双主题） -->
+    <div class="split rev" style="margin-top:64px">
+      <div class="reveal">
+        <span class="eyebrow">设置</span>
+        <h3 style="font-size:26px">页签、分组、卡片，三级铺开</h3>
+        <p class="lead">设置页不再是望不到头的长列表：六个页签下按分组与卡片排布，想改的每一项都有明确的位置。</p>
+        <ul class="ticks">
+          <li><b>外观与主题</b>：明暗模式、界面语言、品牌色与语义色、界面字体与自定义 CSS，都集中在「外观」页签。</li>
+          <li><b>行为开关</b>：失焦暂停图表渲染、代理页列数、隐藏超时节点这些细节开关也都有。</li>
+          <li><b>维护入口</b>：备份恢复、内核与 GeoData 更新、日志清理等低频但重要的操作，都收进「维护」页签。</li>
+        </ul>
+        <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/settings.html">看设置页说明 →</a></p>
+      </div>
+      <div class="split-media reveal">
+        <div class="shot frame shot-settings">
+          <img class="for-light" src="./assets/img/screens/settings-light-zh.webp" alt="设置页面：六个页签与三级卡片结构，含主题与配色定制" loading="lazy" decoding="async">
+          <img class="for-dark" src="./assets/img/screens/settings-dark-zh.webp" alt="" loading="lazy" decoding="async">
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -232,14 +328,18 @@
       </ul>
     </div>
     <div class="split-media">
-      <div class="cards" style="grid-template-columns:1fr">
+      <div class="cards config-cards" style="grid-template-columns:1fr">
         <div class="card reveal">
           <h3>备份与恢复</h3>
           <p>把设置、订阅、Merge 配置与内核版本导出为一个 JSON 文件；换电脑或重装后在「设置 → 维护」一键导入，覆盖当前数据。另有「导出诊断信息」，把版本、设置、配置与最近日志打包为 ZIP（敏感字段打码），反馈问题更方便。</p>
         </div>
         <div class="card reveal">
-          <h3>内核一键更新</h3>
-          <p>「设置 → 维护 → 内核更新」可检查并获取新版本内核，下载完成后自动替换，无需手动处理文件。</p>
+          <h3>云备份（WebDAV）</h3>
+          <p>把设置、订阅、Merge 配置与扩展脚本备份到自己的网盘（兼容坚果云、Nextcloud、群晖等），带连接测试、状态对比与一键上传、恢复；密码经系统加密后只保存在本机。</p>
+        </div>
+        <div class="card reveal">
+          <h3>应用与内核更新</h3>
+          <p>启动时自动检查客户端新版本，发现后可在应用内直接下载并静默安装，装完自动以新版本启动；内核与 GeoIP / GeoSite 等 GeoData 数据库也可在「设置 → 维护」一键更新，直连下载失败时自动走加速镜像或本机代理。</p>
         </div>
         <div class="card reveal">
           <h3>内核看门狗</h3>

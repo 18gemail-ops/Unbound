@@ -41,102 +41,55 @@
   </div>
 </header>
 
-<!-- Hero -->
+<!-- Hero: centered copy + large real-UI shot (light / dark screenshots follow the site theme) -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="reveal">
-      <span class="eyebrow">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 12h7l-1 8 9-12h-7z"/></svg>
-        Built on the mihomo core · fully local
-      </span>
-      <h1>A window has edges. <br><em>A connection doesn't.</em></h1>
-      <p class="sub">Auto-updating subscriptions, routing rules, per-process routing, chained proxies, network rescue — all inside this one window, fully local. Works without writing config files, and never stands in the way if you prefer to.</p>
-      <div class="hero-actions">
-        <a class="btn btn-dark btn-lg" href="./download.html">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
-          Download for Windows
-        </a>
-        <a class="btn btn-ghost btn-lg" href="./docs/index.html">Read the User Guide</a>
-      </div>
-      <div class="hero-note">
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Windows 10 / 11 · 64-bit
-        </span>
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          Core bundled — works out of the box
-        </span>
-        <span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          All data stays on this machine
-        </span>
-      </div>
-      <div class="hero-stats">
-        <div><b>13</b><span>UI languages</span></div>
-        <div><b>18</b><span>Unlock tests</span></div>
-        <div><b>3</b><span>Config layers</span></div>
-        <div><b>0</b><span>Data sent out</span></div>
-      </div>
+  <div class="wrap hero-intro reveal">
+    <span class="eyebrow">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 12h7l-1 8 9-12h-7z"/></svg>
+      Built on the mihomo core · fully local
+    </span>
+    <h1>A window has edges. <br><em>A connection doesn't.</em></h1>
+    <p class="sub">Auto-updating subscriptions, routing rules, per-process routing, chained proxies, network rescue — all inside this one window, fully local. Works without writing config files, and never stands in the way if you prefer to.</p>
+    <div class="hero-actions">
+      <a class="btn btn-dark btn-lg" href="./download.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
+        Download for Windows
+      </a>
+      <a class="btn btn-ghost btn-lg" href="./docs/index.html">Read the User Guide</a>
     </div>
+    <div class="hero-note">
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Windows 10 / 11 · 64-bit
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Core bundled — works out of the box
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        All data stays on this machine
+      </span>
+    </div>
+    <div class="hero-stats">
+      <div><b>13</b><span>UI languages</span></div>
+      <div><b>18</b><span>Unlock tests</span></div>
+      <div><b>3</b><span>Config layers</span></div>
+      <div><b>0</b><span>Data sent out</span></div>
+    </div>
+  </div>
 
-    <!-- UI mockup: pure CSS + SVG, not a screenshot; the outer .mock-wrap anchors the glow and floating badges -->
-    <div class="mock-wrap reveal">
-      <div class="mock" role="img" aria-label="Unbound link main interface">
-      <div class="mock-bar"><i></i><i></i><i></i><span class="t">Unbound link</span></div>
-      <div class="mock-body">
-        <div class="mock-side">
-          <div class="mi on"><b></b>Dashboard</div>
-          <div class="mi"><b></b>Profiles</div>
-          <div class="mi"><b></b>Proxies</div>
-          <div class="mi"><b></b>App Routing</div>
-          <div class="mi"><b></b>Rules</div>
-          <div class="mi"><b></b>Connections</div>
-          <div class="mi"><b></b>Traffic</div>
-          <div class="mi"><b></b>Logs</div>
-          <div class="mi"><b></b>Diagnostics</div>
-          <div class="mi"><b></b>Unlock Test</div>
-          <div class="mi"><b></b>Settings</div>
-        </div>
-        <div class="mock-main">
-          <div class="mock-cards">
-            <div class="mock-card">
-              <div class="k">Download</div>
-              <div class="v down">12.4 MB/s</div>
-            </div>
-            <div class="mock-card">
-              <div class="k">Upload</div>
-              <div class="v up">1.8 MB/s</div>
-            </div>
-            <div class="mock-card">
-              <div class="k">Active connections</div>
-              <div class="v">148</div>
-            </div>
-          </div>
-          <div class="mock-chart">
-            <div class="h"><span>Live traffic</span><span style="color:var(--ink-3)">Last 60 seconds</span></div>
-            <svg viewBox="0 0 420 74" width="100%" height="74" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#007aff" stop-opacity=".26"/>
-                  <stop offset="100%" stop-color="#007aff" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path d="M0 58 C30 50 44 26 70 30 C96 34 108 54 134 50 C160 46 172 20 198 24 C224 28 236 48 262 44 C288 40 300 16 326 22 C352 28 366 46 392 40 L420 36 L420 74 L0 74 Z" fill="url(#g1)"/>
-              <path d="M0 58 C30 50 44 26 70 30 C96 34 108 54 134 50 C160 46 172 20 198 24 C224 28 236 48 262 44 C288 40 300 16 326 22 C352 28 366 46 392 40 L420 36" fill="none" stroke="#007aff" stroke-width="2.4" stroke-linecap="round"/>
-              <path d="M0 66 C34 62 52 56 82 58 C112 60 130 66 160 62 C190 58 208 52 238 54 C268 56 286 62 316 58 C346 54 366 50 420 52" fill="none" stroke="#ff9500" stroke-width="2" stroke-linecap="round" stroke-dasharray="0"/>
-            </svg>
-          </div>
-          <div class="mock-rule">
-            <div class="r"><span class="dot"></span><span class="n">openai.com</span><span class="g">AI Line</span></div>
-            <div class="r"><span class="dot"></span><span class="n">github.com</span><span class="g">Auto Select</span></div>
-            <div class="r"><span class="dot"></span><span class="n">baidu.com</span><span class="g">DIRECT</span></div>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="mock-pill p1"><span class="dot ok"></span>Core running</div>
-      <div class="mock-pill p2"><span class="dot blue"></span>Node latency 42 ms</div>
+  <!-- Real UI screenshots: one light, one dark; CSS switches them with the site theme; all demo data uses documentation-reserved fake IPs -->
+  <div class="wrap hero-stage reveal">
+    <div class="shot frame hero-shot">
+      <img class="for-light" src="../assets/img/screens/dashboard-light-en.webp" alt="Dashboard: subscription, node, core status and traffic overview" fetchpriority="high" decoding="async">
+      <img class="for-dark" src="../assets/img/screens/dashboard-dark-en.webp" alt="" decoding="async">
+    </div>
+    <div class="shot hero-float" aria-hidden="true">
+      <img class="for-light" src="../assets/img/screens/float-light-en.webp" alt="">
+      <img class="for-dark" src="../assets/img/screens/float-dark-en.webp" alt="">
+    </div>
+    <div class="hero-badge"><span class="dot"></span>Core running</div>
     </div>
   </div>
 </section>
@@ -196,8 +149,63 @@
   </div>
 </section>
 
-<!-- Subscription / config -->
+<!-- Interface tour: real screenshots, one light, one dark, switched with the site theme (demo data) -->
 <section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal center">
+      <span class="eyebrow">Interface tour</span>
+      <h2>Eleven pages, one job each</h2>
+      <p class="lead">Every screenshot below comes from the real client UI (demo data). Toggle the light / dark switch at the top right and the screenshots switch with it.</p>
+    </div>
+    <div class="shots-grid">
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="../assets/img/screens/proxies-light-en.webp" alt="Proxies page: groups and node cards" loading="lazy" decoding="async">
+          <img class="for-dark" src="../assets/img/screens/proxies-dark-en.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>Proxies</b><span>Groups, latency, speed tests and chained proxies — all on one card</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="../assets/img/screens/profiles-light-en.webp" alt="Profiles page: subscription cards and usage progress" loading="lazy" decoding="async">
+          <img class="for-dark" src="../assets/img/screens/profiles-dark-en.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>Profiles</b><span>Usage, expiry and auto-updates, clear at a glance</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="../assets/img/screens/connections-light-en.webp" alt="Connections page: connection list with rates" loading="lazy" decoding="async">
+          <img class="for-dark" src="../assets/img/screens/connections-dark-en.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>Connections</b><span>Exit, rule and speed for every connection, live</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="../assets/img/screens/stats-light-en.webp" alt="Traffic page: trend chart and daily breakdown" loading="lazy" decoding="async">
+          <img class="for-dark" src="../assets/img/screens/stats-dark-en.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>Traffic</b><span>Daily usage recorded, with a clear 7-day trend</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="../assets/img/screens/unlock-light-en.webp" alt="Unlock Test page: streaming and AI service results" loading="lazy" decoding="async">
+          <img class="for-dark" src="../assets/img/screens/unlock-dark-en.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>Unlock Test</b><span>18 streaming and AI services, tested one by one</span></figcaption>
+      </figure>
+      <figure class="shot-card reveal">
+        <div class="shot">
+          <img class="for-light" src="../assets/img/screens/diagnose-light-en.webp" alt="Diagnostics page: check-by-check verdicts and fixes" loading="lazy" decoding="async">
+          <img class="for-dark" src="../assets/img/screens/diagnose-dark-en.webp" alt="" loading="lazy" decoding="async">
+        </div>
+        <figcaption><b>Diagnostics</b><span>11 checks with clear verdicts — and one-click fixes</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Subscription / config -->
+<section class="section">
   <div class="wrap split">
     <div class="reveal">
       <span class="eyebrow">About configuration</span>
@@ -254,48 +262,13 @@
   </div>
 </section>
 
-<!-- App routing -->
-<section class="section">
+<!-- App Routing: real screenshot (light / dark) -->
+<section class="section soft">
   <div class="wrap split rev">
-    <div class="split-media reveal">
-      <div class="figure plain">
-        <svg viewBox="0 0 520 300" width="100%" aria-label="App Routing illustration">
-          <defs>
-            <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#007aff"/></marker>
-            <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#ff9500"/></marker>
-            <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#b6bbc3"/></marker>
-          </defs>
-
-          <rect x="24" y="28" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
-          <text x="44" y="55" font-size="13.5" font-weight="700" fill="#101114">chrome.exe</text>
-          <rect x="24" y="84" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
-          <text x="44" y="111" font-size="13.5" font-weight="700" fill="#101114">game.exe</text>
-          <rect x="24" y="140" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
-          <text x="44" y="167" font-size="13.5" font-weight="700" fill="#101114">Other apps</text>
-          <rect x="24" y="196" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
-          <text x="44" y="223" font-size="13.5" font-weight="700" fill="#101114">mihomo core</text>
-
-          <rect x="264" y="28" width="160" height="44" rx="12" fill="#e8f2ff" stroke="#cfe3ff"/>
-          <text x="284" y="55" font-size="13" font-weight="700" fill="#0060df">AI Line</text>
-          <rect x="264" y="84" width="160" height="44" rx="12" fill="#fff4e5" stroke="#ffe2b8"/>
-          <text x="284" y="111" font-size="13" font-weight="700" fill="#8a5300">Low-latency game</text>
-          <rect x="264" y="168" width="160" height="44" rx="12" fill="#eef0f3" stroke="#dfe3e8"/>
-          <text x="284" y="195" font-size="13" font-weight="700" fill="#4b5058">Auto Select</text>
-
-          <path d="M184 50h80" stroke="#007aff" stroke-width="1.8" fill="none" marker-end="url(#ap)"/>
-          <path d="M184 106h80" stroke="#ff9500" stroke-width="1.8" fill="none" marker-end="url(#ao)"/>
-          <path d="M184 162h44M184 218h44M228 162v56" stroke="#b6bbc3" stroke-width="1.6" fill="none"/>
-          <circle cx="228" cy="190" r="2.4" fill="#b6bbc3"/>
-          <path d="M228 190h36" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ag)"/>
-
-          <path d="M24 262h472" stroke="rgba(16,17,20,.08)" stroke-width="1"/>
-          <circle cx="38" cy="278" r="11" fill="#101114"/>
-          <g stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M32.8 275.4h8.6M39.6 273.2l2.4 2.2-2.4 2.2"/>
-            <path d="M43.2 280.6h-8.6M36.4 278.4l-2.4 2.2 2.4 2.2"/>
-          </g>
-          <text x="58" y="282" font-size="11.5" font-weight="700" fill="#8b919b">With 2+ lines bound to one app, an aggregation group forms automatically (round-robin / session-persistent)</text>
-        </svg>
+    <div class="split-media reveal glow">
+      <div class="shot frame shot-apps">
+        <img class="for-light" src="../assets/img/screens/apps-light-en.webp" alt="App Routing page: bind apps to specific routes" loading="lazy" decoding="async">
+        <img class="for-dark" src="../assets/img/screens/apps-dark-en.webp" alt="" loading="lazy" decoding="async">
       </div>
     </div>
     <div class="reveal">
@@ -314,7 +287,7 @@
 </section>
 
 <!-- Diagnostics and rescue -->
-<section class="section soft">
+<section class="section">
   <div class="wrap">
     <div class="sec-head reveal center">
       <span class="eyebrow">When things go wrong</span>

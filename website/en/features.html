@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
 <title>Features Overview — Unbound link</title>
-<meta name="description" content="Unbound link features: subscription management, routing rules, per-app process binding, chained proxies, live connection monitoring, traffic statistics, desktop floating window, system tray, TUN mode, Diagnostics and network rescue.">
+<meta name="description" content="Unbound link feature tour: subscription management (one-click import / local config / node links), routing rules with hit statistics, per-app process binding, chained proxies, live connections, traffic stats, desktop widget, system tray, TUN mode, Diagnostics and network rescue.">
 <link rel="icon" href="../favicon.ico">
 <link rel="stylesheet" href="../assets/site.css">
 </head>
@@ -38,7 +38,7 @@
     <div class="sec-head reveal center" style="margin-bottom:0">
       <span class="eyebrow">Features Overview</span>
       <h2>Eleven pages covering everything from setup to troubleshooting</h2>
-      <p class="lead">The left menu is grouped by usage: set up routes in "Proxy & Routing" first, see what is happening in "Monitoring & Data", and let "Stability & Troubleshooting" handle the unexpected.</p>
+      <p class="lead">The sidebar groups pages by scenario: set up your routes under "Proxy & Routing", watch live status under "Monitoring & Data", and handle sudden problems under "Stability & Troubleshooting". Every screenshot in the sections below comes from the real client UI (demo data) and follows the site's light / dark theme.</p>
     </div>
   </div>
 </section>
@@ -56,14 +56,14 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
         </span>
         <h3>Profiles</h3>
-        <p>Supports http/https subscription links; cards can be dragged to reorder, renamed, shared to your phone as a QR code, and usage info refreshed with one click. Multiple subscriptions can be enabled at once, and single nodes can be imported from node links; set an hourly auto-update interval — after an update the config reloads automatically and a system notification is sent, and you can optionally auto-test and switch to the fastest node after updates; usage alerts fire once each when the threshold is reached, expiry nears, or the subscription has expired; before every update the old content is archived automatically, so you can roll back anytime.</p>
+        <p>Import http/https subscription links: click a provider's "Import to Clash / sing-box / Hiddify" button and this app wakes up to finish the import; local YAML config files and single node links can be imported too. Cards can be dragged to reorder, renamed, shared to a phone as a QR code, and refreshed for usage in one click — subscription downloads also detect the provider's site and check its connectivity. Several subscriptions can be enabled at once, with automatic updates on an hourly interval that reload the config and raise a system notification, plus optional auto speed-test and switch to the fastest node after updating. Alerts fire once when traffic hits a threshold, when expiry nears and when it passes; the previous version is archived before each update and can be rolled back at any time.</p>
       </div>
       <div class="card reveal">
         <span class="ic g">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="19" height="7.5" rx="2"/><rect x="2.5" y="13.5" width="19" height="7.5" rx="2"/><path d="M6.5 6.75h.01"/><path d="M6.5 17.25h.01"/></svg>
         </span>
         <h3>Proxies</h3>
-        <p>Split view: browse by group and subscription source on the left, a node card grid on the right. Supports latency tests for a single node, download speed tests (the original node is restored automatically afterwards), test all, sorting by latency/name, region filters and favorites-only. One click hides timed-out nodes at the top; card columns support 1–4 or auto-fit; with Node health monitoring on, each card also carries a latency trend line (red dots mark failed tests), and with Automatic failover on a current node that keeps failing tests also gets switched away automatically. Switch freely between the list and map views — the map aggregates nodes into dots by region, sized by count and colored by latency; click a dot to drill into that region.</p>
+        <p>Split view: groups and subscription sources on the left, a grid of node cards on the right. Per-node latency tests, download speed tests (the original node is restored afterwards), test-all, sorting by latency or name, region filters and favorites-only; a top switch hides timed-out nodes, and the card grid adapts to 1–4 columns or auto width — node groups can also be delay-tested automatically on a set interval. With node health monitoring on, each card gains a latency trend line (red dots mark failed tests); with auto-switch-on-failure on, the current node is moved off automatically after repeated failures. Switch between list and map views at any time: the map clusters nodes by region into glowing dots sized by count and colored by latency — click a region to drill down and filter.</p>
       </div>
       <div class="card reveal">
         <span class="ic a">
@@ -77,7 +77,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.8-1.7"/></svg>
         </span>
         <h3>Chained proxy</h3>
-        <p>Assign a front proxy to a node so traffic first goes through the relay — ideal for restricted nodes. A chain badge on the node card shows which front proxy is used on hover.</p>
+        <p>Point a node at an upstream proxy so its traffic relays before egress — handy for restricted nodes. The visual chain editor supports dragging hops to reorder them, picking nodes across groups and placing a proxy group at the head of a chain; saved chains load back into the editor. Node cards carry chain markers with "Entry / Relay / Exit" role badges, and hovering reveals which upstream a node goes through.</p>
       </div>
       <div class="card reveal">
         <span class="ic g">
@@ -98,7 +98,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="7" rx="1"/><rect x="12" y="7" width="3" height="11" rx="1"/><rect x="17" y="13" width="3" height="5" rx="1"/></svg>
         </span>
         <h3>Rules and hit statistics</h3>
-        <p>Four tabs: Rules, Custom rules, Rule sets and Hit statistics, where you can add, edit, reorder and delete your own rules right in the page — on save they are injected at the very top of the runtime config. Hit stats are sampled every 15 seconds and accumulated to disk — surviving restarts — so you can tell whether a rule is really doing its job.</p>
+        <p>Four tabs — Rules, Custom rules, Rule sets and Hit statistics — with custom rules added, edited, reordered and saved right on the page, then injected at the top of the runtime config. Hit statistics are sampled every 15 seconds and persisted across restarts, so you can tell whether a rule is actually doing work; a built-in route simulator previews which rule a domain, IP or app will hit (including the group's exit resolution), and works even while the core is stopped.</p>
       </div>
     </div>
 
@@ -135,6 +135,28 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Rules page: real screenshot (light / dark) -->
+    <div class="split" style="margin-top:64px">
+      <div class="reveal">
+        <span class="eyebrow">Rules and hits</span>
+        <h3 style="font-size:26px">Every rule leaves a trace — no more guessing</h3>
+        <p class="lead">See at a glance which rules are doing work and which never fire; before editing, rehearse the outcome in the built-in simulator.</p>
+        <ul class="ticks">
+          <li><b>Four tabs</b>: rules, custom rules, rule sets and hit statistics, each with its own tab.</li>
+          <li><b>Visual editing</b>: add, edit, reorder and save custom rules on the page — injected at the top of the runtime config.</li>
+          <li><b>Traceable hits</b>: hit data is sampled every 15 seconds and persisted across restarts.</li>
+          <li><b>Route simulation</b>: enter a domain, IP or app and preview locally which rule it hits and which exit it takes.</li>
+        </ul>
+        <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/rules.html">See how the Rules page works →</a></p>
+      </div>
+      <div class="split-media reveal">
+        <div class="shot frame shot-rules">
+          <img class="for-light" src="../assets/img/screens/rules-light-en.webp" alt="Rules page: four tabs, quick-rule chips and hit counts" loading="lazy" decoding="async">
+          <img class="for-dark" src="../assets/img/screens/rules-dark-en.webp" alt="" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -156,7 +178,7 @@
       </div>
       <div class="card reveal">
         <h3>Traffic</h3>
-        <p>Records daily up/down usage with 7-day / 30-day / 90-day / all-time views, plus a trend chart and a daily detail table; a Node traffic panel groups traffic by the exit node each connection finally leaves through (direct traffic is recorded as DIRECT), so you can see how much each line has used, with a one-click stats reset. Data is continuously persisted and survives restarts.</p>
+        <p>Daily up/down usage with 7-day / 30-day / 90-day / all-time ranges, a trend chart and a per-day table; traffic is also accumulated per app process, so you can see who eats the bandwidth. A per-node traffic panel rolls usage up under its exit node (direct traffic counts as DIRECT), showing each line's share at a glance, with one-click reset. Data is persisted — restarts don't clear it.</p>
       </div>
       <div class="card reveal">
         <h3>Logs</h3>
@@ -169,6 +191,55 @@
       <div class="card reveal">
         <h3>System tray</h3>
         <p>The tray icon switches between three states with the proxy status (normal / system proxy / TUN), and each state can be replaced with your own PNG icon. Right-click opens a quick panel to toggle the system proxy or TUN, see speed or open the main window without launching the full app. Click the "node" or "group" row and a standalone node picker pops up beside it: browse by group, click to switch.</p>
+      </div>
+    </div>
+
+    <!-- Logs page: real screenshot (light / dark) -->
+    <div class="split rev" style="margin-top:64px">
+      <div class="reveal">
+        <span class="eyebrow">Logs</span>
+        <h3 style="font-size:26px">Core and app logs, side by side</h3>
+        <p class="lead">When the proxy misbehaves, the logs are the first place to look. App-level actions carry a [Unbound link] prefix and sit alongside core output, so you can tell at a glance who is talking.</p>
+        <ul class="ticks">
+          <li><b>One screen</b>: core output and app logs interleaved by time on a single page.</li>
+          <li><b>Level filter</b>: debug / info / warning / error, switchable at any time — see only what matters.</li>
+          <li><b>Keyword search</b>: search domains, processes or error codes to locate lines fast in long logs.</li>
+          <li><b>Saved to disk</b>: written to <code>logs\app.log</code>, rotated by size and pruned by age.</li>
+        </ul>
+        <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/logs.html">Read the Logs guide →</a></p>
+      </div>
+      <div class="split-media reveal">
+        <div class="shot frame shot-logs">
+          <img class="for-light" src="../assets/img/screens/logs-light-en.webp" alt="Logs page: core and app logs on one screen, filterable by level" loading="lazy" decoding="async">
+          <img class="for-dark" src="../assets/img/screens/logs-dark-en.webp" alt="" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tray panel and node picker: two narrow screenshots side by side at their true window ratios -->
+    <div class="split" style="margin-top:64px">
+      <div class="reveal">
+        <span class="eyebrow">System tray</span>
+        <h3 style="font-size:26px">Half the job done without opening the main window</h3>
+        <p class="lead">Right-click the tray icon for a quick panel: system proxy, mode, nodes and live speed all on one screen. Click the "Node" or "Group" row and a separate picker pops up beside it — click to switch.</p>
+        <ul class="ticks">
+          <li><b>One-screen control</b>: proxy switch, mode, nodes and groups, profiles, theme and the floating widget switch all live in the panel.</li>
+          <li><b>Node picker</b>: groups on the left, nodes with latency on the right, the current one ticked.</li>
+          <li><b>Three-state icon</b>: normal / system proxy / TUN each get their own icon — all three replaceable with your own PNG.</li>
+        </ul>
+        <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/advanced.html">See the advanced tips →</a></p>
+      </div>
+      <div class="split-media reveal">
+        <div class="shot-duo">
+          <div class="shot shot-tray">
+            <img class="for-light" src="../assets/img/screens/tray-light-en.webp" alt="Tray quick panel: proxy switch, mode, nodes and live speed" loading="lazy" decoding="async">
+            <img class="for-dark" src="../assets/img/screens/tray-dark-en.webp" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="shot shot-nodes">
+            <img class="for-light" src="../assets/img/screens/tray-nodes-light-en.webp" alt="Tray node picker: browse by group, see latency, click to switch" loading="lazy" decoding="async">
+            <img class="for-dark" src="../assets/img/screens/tray-nodes-dark-en.webp" alt="" loading="lazy" decoding="async">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -184,7 +255,7 @@
     <div class="cards c3">
       <div class="card reveal">
         <h3>System proxy and TUN</h3>
-        <p>One click writes or restores Windows Internet settings; with "Network environment" on, the system proxy and mode also switch automatically by Wi-Fi name (e.g. on at home, off at the office). TUN takes over all traffic at the network layer through a virtual adapter, with Mixed / Gvisor / System stacks to choose from. When admin rights are needed, a UAC prompt guides the elevation. If Store apps can't reach the local proxy due to the loopback restriction, the UWP App Tool lifts it with one click.</p>
+        <p>Write or restore Windows Internet settings in one click; with "Network environment" automation on, the system proxy and mode can follow the current Wi-Fi name (on at home, off at the office, say). TUN takes over all traffic at the network layer through a virtual adapter, with Mixed / Gvisor / System stacks; when admin rights are needed it guides a UAC-elevated restart. If another program rewrites the system proxy, it is restored automatically. When Store apps can't reach the local proxy because of the system's loopback restriction, the UWP App Tool lifts it in one click.</p>
       </div>
       <div class="card reveal">
         <h3>DNS and LAN</h3>
@@ -210,6 +281,31 @@
         <h3>Themes and appearance</h3>
         <p>Dark / light / follow-system modes with instant switching; brand color, secondary color, text color, semantic colors, UI font and custom CSS are all adjustable. The flat design uses black primary buttons and restrained semantic colors — blue for in-progress, green for normal, amber for pending, red for errors.</p>
       </div>
+      <div class="card reveal">
+        <h3>Interface and language</h3>
+        <p>The UI ships in 13 languages — English, Русский, 中文, فارسی, 한국어, Türkçe, Deutsch, Español, 日本語, 繁體中文 and more — switching instantly. Arabic and Persian flip to right-to-left layouts automatically, numbers and dates follow the chosen locale, and plurals and measure words match local grammar.</p>
+      </div>
+    </div>
+
+    <!-- Settings page: real screenshot (light / dark) -->
+    <div class="split rev" style="margin-top:64px">
+      <div class="reveal">
+        <span class="eyebrow">Settings</span>
+        <h3 style="font-size:26px">Tabs, groups, cards — three levels of order</h3>
+        <p class="lead">Settings is no longer an endless list: six tabs lay things out in groups and cards, so every switch has an obvious home.</p>
+        <ul class="ticks">
+          <li><b>Appearance and theme</b>: light / dark mode, UI language, accent and semantic colors, UI font and custom CSS all sit under the Appearance tab.</li>
+          <li><b>Behavior switches</b>: fine-grained toggles like pausing chart rendering when unfocused, Proxies column count and hiding timed-out nodes.</li>
+          <li><b>Maintenance entries</b>: backup and restore, core and GeoData updates, log cleanup — low-frequency but important actions live under the Maintenance tab.</li>
+        </ul>
+        <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/settings.html">Read the Settings guide →</a></p>
+      </div>
+      <div class="split-media reveal">
+        <div class="shot frame shot-settings">
+          <img class="for-light" src="../assets/img/screens/settings-light-en.webp" alt="Settings page: six tabs with three-level cards, including theme and color customization" loading="lazy" decoding="async">
+          <img class="for-dark" src="../assets/img/screens/settings-dark-en.webp" alt="" loading="lazy" decoding="async">
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -232,14 +328,18 @@
       </ul>
     </div>
     <div class="split-media">
-      <div class="cards" style="grid-template-columns:1fr">
+      <div class="cards config-cards" style="grid-template-columns:1fr">
         <div class="card reveal">
           <h3>Backup and restore</h3>
           <p>Export settings, subscriptions, Merge config and the core version into a single JSON file; after switching computers or reinstalling, import it with one click under Settings → Maintenance to restore everything. "Export diagnostics" packages versions, settings, config and recent logs into a ZIP (sensitive fields redacted) to make reporting issues easier.</p>
         </div>
         <div class="card reveal">
-          <h3>One-click core update</h3>
-          <p>Settings → Maintenance → Core update checks for and fetches new core versions, replacing the current one automatically after download — no manual file handling.</p>
+          <h3>Cloud backup (WebDAV)</h3>
+          <p>Back up settings, subscriptions, Merge config and extension scripts to your own cloud drive (compatible with Nutstore, Nextcloud, Synology and more), with connection test, status comparison, one-click upload and restore; the password is encrypted by the system and kept on this machine only.</p>
+        </div>
+        <div class="card reveal">
+          <h3>App and core updates</h3>
+          <p>New client versions are checked on startup and can be downloaded and silently installed from within the app, relaunching on the new version; the core and GeoIP / GeoSite GeoData databases also update with one click under Settings → Maintenance, falling back to an accelerated mirror or the local proxy when a direct download fails.</p>
         </div>
         <div class="card reveal">
           <h3>Core watchdog</h3>

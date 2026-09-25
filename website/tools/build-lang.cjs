@@ -10,8 +10,9 @@
      4. URL 重写：页面相对链接保持不变（两棵树同构）；
         assets / favicon 等共享资源加深一层；绝对页面路径加语言前缀；
         手册搜索索引改引用 .en 版（docs-search-index.<lang>.js）
-     5. html lang 属性改为目标语言
-     6. 手册页 h2/h3 按译文重新生成锚点 id（英文小写 slug，重名自动加序号）
+     5. 截图切换：assets/img/screens/ 下文件名由 -zh.webp 换成 -<lang>.webp
+     6. html lang 属性改为目标语言
+     7. 手册页 h2/h3 按译文重新生成锚点 id（英文小写 slug，重名自动加序号）
    最后扫描译文页残留中文，写入 i18n/_leftover-<lang>.txt 供补漏。
 
    依赖：
@@ -146,6 +147,11 @@ function rewriteUrls(html) {
   });
 }
 
+/* 界面截图：文件名带语言后缀（xxx-light-zh.webp），译文页换成目标语言版本 */
+function rewriteShots(html) {
+  return html.replace(/(assets\/img\/screens\/[\w-]+)-zh\.webp/g, '$1-' + lang + '.webp');
+}
+
 function setHtmlLang(html) {
   return html.replace(/<html([^>]*)>/, function (full, attrs) {
     const clean = attrs.replace(/\s*\blang="[^"]*"/, '');
@@ -179,6 +185,7 @@ for (const rel of PAGES) {
   html = translateAttrs(html);
   html = applyExtra(html);
   html = rewriteUrls(html);
+  html = rewriteShots(html);
   html = setHtmlLang(html);
   if (rel.indexOf('docs/') === 0) html = reslugHeadings(html);
 
