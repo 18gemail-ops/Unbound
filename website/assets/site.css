@@ -535,12 +535,12 @@ code {
   pointer-events: none;
 }
 .hero-shot { --ar: 1150 / 830; z-index: 1; }
-/* 悬浮窗真机截图：右下压边（向外轻探），按截图原生比例 232×112 展示（不裁切），缓慢浮动 */
+/* 悬浮窗真机截图：骑在窗口右下角上（沿对角线微探），按截图原生比例 232×112 展示（不裁切），缓慢浮动 */
 .hero-float {
   --ar: 232 / 112;
   position: absolute;
-  right: 8px;
-  bottom: -30px;
+  right: -20px;
+  bottom: -26px;
   z-index: 2;
   width: 232px;
   border-radius: 16px;
@@ -549,11 +549,11 @@ code {
   box-shadow: var(--shadow-3);
   animation: floaty 7s ease-in-out infinite;
 }
-/* 左上角状态徽章：半骑在窗口上边缘，不遮挡截图内容 */
+/* 左上角状态徽章：骑在窗口左上角上（沿对角线微探），与右下浮窗对角呼应，不遮挡截图内容 */
 .hero-badge {
   position: absolute;
-  left: 28px;
-  top: -19px;
+  left: -14px;
+  top: -16px;
   z-index: 2;
   display: inline-flex;
   align-items: center;
@@ -634,8 +634,8 @@ code {
 @media (max-width: 980px) {
   .hero { padding: 72px 0 76px; }
   .hero-stage { margin-top: 42px; }
-  .hero-float { right: 6px; bottom: -22px; width: 188px; }
-  .hero-badge { left: 20px; }
+  .hero-float { right: -14px; bottom: -18px; width: 188px; }
+  .hero-badge { left: -10px; top: -14px; }
   .shots-grid { grid-template-columns: 1fr; }
   .shots-grid .shot { --ar: 1150 / 620; }
 }
