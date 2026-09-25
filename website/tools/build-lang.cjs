@@ -98,8 +98,8 @@ function slugifyEn(text) {
 /* ---------- URL 重写 ---------- */
 function rewriteUrl(url) {
   if (!url || /^(https?:|mailto:|tel:|data:|javascript:|#)/.test(url)) return url;
-  // 手册搜索索引：译文页引用 .<lang> 版本
-  if (/docs-search-index\.js$/.test(url)) {
+  // 手册搜索索引：译文页引用 .<lang> 版本（允许带 ?v= 等查询后缀）
+  if (/docs-search-index\.js(\?|$)/.test(url)) {
     url = url.replace('docs-search-index.js', 'docs-search-index.' + lang + '.js');
   }
   if (url.charAt(0) === '/') {
