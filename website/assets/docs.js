@@ -13,6 +13,7 @@
         notFoundPre: "No results for “",
         notFoundPost: "”<br>Try a shorter keyword.",
         toc: "On this page",
+        menu: "Guide menu",
         prev: "Previous",
         next: "Next"
       }
@@ -22,6 +23,7 @@
         notFoundPre: "没有找到「",
         notFoundPost: "」<br>换个更短的关键词试试",
         toc: "本页目录",
+        menu: "手册目录",
         prev: "上一页",
         next: "下一页"
       };
@@ -144,7 +146,18 @@
       });
       html += "</div>";
     });
-    box.innerHTML = html;
+    // 移动端（≤1024）目录默认收起：按钮 + 可折叠的目录体（桌面端按钮由 CSS 隐藏、目录体常显）
+    box.innerHTML =
+      '<button type="button" class="ds-toggle" aria-expanded="false">' +
+      "<span>" + T.menu + "</span>" +
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>' +
+      "</button>" +
+      '<div class="ds-body">' + html + "</div>";
+    var btn = box.querySelector(".ds-toggle");
+    btn.addEventListener("click", function () {
+      var open = box.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
   }
 
   function renderPager(current) {

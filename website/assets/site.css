@@ -330,6 +330,7 @@ code {
   color: var(--ink);
   letter-spacing: -0.01em;
   margin-right: 8px;
+  white-space: nowrap;
 }
 .brand:hover { text-decoration: none; }
 .brand img { height: 27px; width: auto; }
@@ -361,6 +362,7 @@ code {
   font-size: 13.5px;
   font-weight: 700;
   color: var(--ink-2);
+  white-space: nowrap;
   transition: background 0.16s ease, color 0.16s ease;
 }
 .lang-switch:hover { background: var(--bg-soft); color: var(--ink); text-decoration: none; }
@@ -636,6 +638,11 @@ code {
   pointer-events: none;
 }
 .split-media.glow .shot { position: relative; }
+/* 柔光左右各伸出 8%：窄视口下 .wrap 紧贴屏幕边缘会撑出横向滚动，
+   故 ≤1248px 只保留上下光晕（径向渐变向内衰减，视觉几乎无差） */
+@media (max-width: 1248px) {
+  .split-media.glow::before { inset: -7% 0; }
+}
 
 /* 功能页分栏截图：按内容裁剪的三种比例 */
 .shot-rules { --ar: 1150 / 620; }
@@ -1105,6 +1112,10 @@ code {
 .docs-side a:hover { background: var(--bg-soft); color: var(--ink); text-decoration: none; }
 .docs-side a.on { background: var(--accent-contrast); color: var(--accent-contrast-ink); }
 
+/* 移动端目录折叠按钮（docs.js 注入，≤1024 显示）；
+   桌面端按钮隐藏、目录体 .ds-body 常显 */
+.ds-toggle { display: none; }
+
 .docs-main { min-width: 0; }
 .docs-main .crumb { font-size: 13px; color: var(--ink-3); font-weight: 700; margin-bottom: 10px; }
 .docs-main h1 { font-size: clamp(30px, 3vw, 38px); margin-bottom: 12px; }
@@ -1146,6 +1157,10 @@ code {
 .docs-main thead th { background: var(--bg-soft); font-size: 12.5px; color: var(--ink-2); font-weight: 700; white-space: nowrap; }
 .docs-main tbody tr:last-child td { border-bottom: none; }
 .docs-main td code { white-space: nowrap; }
+
+/* 宽表格横向滚动容器（docs.js 注入）：窄屏可横滑查看，宽屏无滚动条、视觉不变 */
+.table-wrap { overflow-x: auto; margin: 0 0 20px; border-radius: var(--r-md); -webkit-overflow-scrolling: touch; }
+.table-wrap table { margin: 0; }
 
 /* 手册正文插图：浅 / 深双主题截图随站点主题切换（.shot 机制同首页）；
    截图统一按 1150 / 620 裁切、顶部对齐，小屏略放高避免细节过小 */
@@ -1268,6 +1283,53 @@ code {
   .docs-side .grp { margin-bottom: 12px; }
   .docs-side a { padding: 9px 12px; }
   .docs-search { position: static; }
+  /* 目录默认收起：搜索框常驻，点按钮才展开目录，不让 18 项菜单挤占正文首屏 */
+  .ds-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 2px;
+    padding: 11px 12px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-md);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .ds-toggle svg { color: var(--ink-3); transition: transform 0.2s ease; }
+  .docs-side.open .ds-toggle svg { transform: rotate(180deg); }
+  .ds-body { display: none; margin-top: 12px; }
+  .docs-side.open .ds-body { display: block; }
+  /* 触控目标尺寸：顶栏 logo、页脚链接、正文列表链接抬高到可轻松点按 */
+  .brand { padding: 6px 0; }
+  .foot li { margin-bottom: 0; }
+  .foot a { display: inline-block; padding: 9px 0; }
+  .docs-main ul li > a { display: inline-block; padding: 7px 0; }
+  .docs-main ul li { margin-bottom: 6px; }
+  /* 输入框 ≥ 16px 防 iOS 聚焦时自动放大页面；「/」快捷键提示仅对实体键盘有意义 */
+  .docs-search input { font-size: 16px; }
+  .docs-search kbd { display: none; }
+}
+
+@media (max-width: 640px) {
+  /* 顶栏收紧一档，省出首屏高度；下拉菜单同步上移 */
+  .topbar-in { height: 58px; }
+  .topnav { top: 58px; }
+  /* 手册表格收紧：多数表格不横滑即可放下，个别宽表由 .table-wrap 兜底 */
+  .docs-main table { font-size: 13px; }
+  .docs-main th, .docs-main td { padding: 8px 10px; }
+  .docs-main thead th { font-size: 12px; }
+  /* 版本徽章 11.5px 在手机屏幕上偏小，抬一档到 12px */
+  .badge { font-size: 12px; }
+}
+
+@media (max-width: 380px) {
+  /* 极窄屏：顶栏只留 logo 图形，文字让位给导航与语言开关 */
+  .brand span { display: none; }
 }
 
 /* ---------- 404 ---------- */

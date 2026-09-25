@@ -83,6 +83,18 @@
     });
   }
 
+  /** 宽表格横向滚动兜底：全站任何页面内的表格都外包一层滚动容器，
+   *  窄屏出现横滑条而不是撑破版面（宽屏下无滚动条、视觉不变） */
+  function initTables() {
+    document.querySelectorAll("table").forEach(function (t) {
+      if (t.parentElement && t.parentElement.classList.contains("table-wrap")) return;
+      var holder = document.createElement("div");
+      holder.className = "table-wrap";
+      t.parentNode.insertBefore(holder, t);
+      holder.appendChild(t);
+    });
+  }
+
   /** 滚动入场：进入视口的 .reveal 元素依次淡入上移
    *  - 同一父容器内的多个元素按顺序错峰（最多累计 5 档）
    *  - 动画结束后移除 .reveal，把元素交还给普通样式（避免影响 hover 变换） */
@@ -217,6 +229,7 @@
     initActive();
     initYear();
     initCopy();
+    initTables();
     initReveal();
     initTopbar();
     initLang();
