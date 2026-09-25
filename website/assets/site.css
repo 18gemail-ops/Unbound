@@ -535,14 +535,14 @@ code {
   pointer-events: none;
 }
 .hero-shot { --ar: 1150 / 830; z-index: 1; }
-/* 悬浮窗真机截图：右下压边（相对截图边缘外探 16px），缓慢浮动 */
+/* 悬浮窗真机截图：右下压边（向外轻探），按截图原生比例 232×112 展示（不裁切），缓慢浮动 */
 .hero-float {
-  --ar: 232 / 168;
+  --ar: 232 / 112;
   position: absolute;
   right: 8px;
   bottom: -30px;
   z-index: 2;
-  width: 216px;
+  width: 232px;
   border-radius: 16px;
   border: 1px solid var(--line-strong);
   background: var(--bg-elevated);
@@ -594,8 +594,8 @@ code {
 .shot-card figcaption b { display: block; font-size: 15px; }
 .shot-card figcaption span { font-size: 13.5px; color: var(--ink-3); }
 
-/* 分栏区块里的截图（应用分流） */
-.shot-apps { --ar: 1150 / 560; }
+/* 分栏区块里的截图（应用分流）：完整窗口（1150×1050），高度与右侧文案列基本一致 */
+.shot-apps { --ar: 1150 / 1050; }
 /* 悬浮窗截图背后的柔光（配合 .split-media.glow 使用） */
 .split-media.glow { position: relative; }
 .split-media.glow::before {
@@ -644,7 +644,6 @@ code {
 @media (max-width: 640px) {
   .hero-float, .hero-badge { display: none; }
   .hero-shot { --ar: 1150 / 700; }
-  .shot-apps { --ar: 1150 / 620; }
   .hero-stats { gap: 20px 32px; }
   .hero-stats b { font-size: 28px; }
 }
@@ -733,6 +732,8 @@ code {
 @media (max-width: 980px) {
   .split { grid-template-columns: 1fr; gap: 34px; }
   .split.rev .split-media { order: 0; }
+  /* 单列下不再与右列比高：改回紧凑裁切，避免完整窗口过高 */
+  .shot-apps { --ar: 1150 / 620; }
 }
 
 /* 内嵌图示容器 */
