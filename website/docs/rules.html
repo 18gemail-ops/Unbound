@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>规则列表 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）规则列表使用说明：查看生效规则、自定义规则编辑器、订阅规则集与命中统计。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>规则列表</h1>
+    <p class="page-lead">「规则列表」页回答「什么流量走哪条线」：它列出当前正在生效的规则、订阅里引用的规则集，以及每条规则实际被命中的次数。</p>
+
+    <h2 id="四个页签">四个页签</h2>
+    <p>页面顶部有四个页签：<b>规则列表</b>、<b>自定义规则</b>、<b>规则集</b>、<b>命中统计</b>。它们看的是同一套规则的不同侧面——「有哪些规则」「我想额外加哪些规则」「规则从哪来」「规则用得怎么样」。切换页签即可查看，不必离开本页。</p>
+
+    <h2 id="规则列表">规则列表</h2>
+    <p>默认展示的第一个页签，列出当前运行时配置里的全部规则。数据来自内核真正读取的那份配置，也就是你把订阅和覆写合成后的结果。表格共四列：</p>
+    <table>
+      <thead>
+        <tr><th>列</th><th>含义</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>类型</b></td><td>规则的匹配类型，例如 DOMAIN-SUFFIX、GEOIP 等。</td></tr>
+        <tr><td><b>匹配内容</b></td><td>这条规则要匹配的域名、IP 段或地区。</td></tr>
+        <tr><td><b>策略（出口）</b></td><td>命中这条规则后，流量从哪个出口出去，通常是一个代理组、一个节点名，或 DIRECT、REJECT 一类的内置策略。</td></tr>
+        <tr><td><b>命中（命中次数）</b></td><td>这条规则累计被命中多少次。</td></tr>
+      </tbody>
+    </table>
+    <p>规则数量往往很多，上方提供了筛选与搜索：可按类型筛选，也可按关键词搜索匹配内容。结果较多时会自动分页，方便定位特定的一条。</p>
+
+    <h2 id="自定义规则">自定义规则</h2>
+    <p>「自定义规则」页签是一个可视化编辑器：不用手写配置文件，在这里增删改自己的分流规则，点「保存并应用」后按列表顺序注入运行配置的<b>规则最前</b>，优先级高于快捷规则与订阅规则。</p>
+    <p>编辑是草稿式的：所有改动先停留在页面上，出现「放弃修改」按钮与「有未保存的修改」提示，只有点「保存并应用」才会写入并热重载内核；点「放弃修改」则恢复为已保存的状态。表格展示草稿中的全部规则，共六列：<b>#</b>（顺序）、<b>类型</b>、<b>匹配内容</b>、<b>策略</b>、<b>附加参数</b>、<b>操作</b>。每行的操作区有四个按钮：<b>上移</b>、<b>下移</b>、<b>编辑</b>、<b>删除</b>；越靠上优先级越高，第一行的上移与最后一行的下移不可用。</p>
+    <p>点「新增规则」或行内的编辑按钮弹出表单，共四项：</p>
+    <table>
+      <thead>
+        <tr><th>字段</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>规则类型</b></td><td>如 DOMAIN-SUFFIX、GEOSITE、IP-CIDR 等；可直接输入，也可从常用类型建议中选择，自动转为大写。</td></tr>
+        <tr><td><b>匹配内容</b></td><td>规则要匹配的域名、IP 段或地区。选择 MATCH 类型时不需要填写。</td></tr>
+        <tr><td><b>目标策略</b></td><td>命中后的出口：DIRECT、REJECT，或内核当前的策略组与节点名（可从建议列表选择）。</td></tr>
+        <tr><td><b>no-resolve</b></td><td>仅对 IP 类规则（IP-CIDR、GEOIP 等）显示；开启后这类规则跳过域名解析，减少不必要的 DNS 查询。</td></tr>
+      </tbody>
+    </table>
+    <p>规则类型限定为大写字母、数字与连字符，匹配内容与目标策略里不能包含逗号或换行；保存时任一条规则校验不通过，会拒绝整次保存并指出是第几条。自定义规则最多 200 条。</p>
+    <div class="cal warn">
+      <div>
+        <b>MATCH 规则会「截断」后面的规则</b>
+        <p>自定义规则插入的是规则列表最前，而匹配顺序是从前往后、一旦命中就不再往下走。如果把一条 MATCH 规则排在最前，它后面的所有规则都不会再被命中。</p>
+      </div>
+    </div>
+
+    <h2 id="规则集">规则集</h2>
+    <p>规则集页签列出订阅里引用的规则集，也就是 <code>rule-provider</code>。规则集把一大批规则打包成外部文件，让主配置更精简；订阅引用它们之后，这些规则同样参与匹配。表格共五列：</p>
+    <table>
+      <thead>
+        <tr><th>列</th><th>含义</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>名称</b></td><td>规则集的标识名。</td></tr>
+        <tr><td><b>类型</b></td><td>规则集的类型。</td></tr>
+        <tr><td><b>行为</b></td><td>规则集的匹配行为。</td></tr>
+        <tr><td><b>规则数</b></td><td>该规则集包含多少条规则。</td></tr>
+        <tr><td><b>更新时间</b></td><td>该规则集最近一次更新的时间。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="命中统计">命中统计</h2>
+    <p>命中统计页签把规则按实际使用情况呈现出来，表格共四列：<b>类型</b>、<b>匹配内容</b>、<b>出口</b>、<b>命中次数</b>。它让你看出哪些规则在真正起作用。</p>
+    <p>这些数据由客户端在内核运行后<b>每 15 秒采样一次</b>连接记录并累计落盘，因此刚启动软件时可能显示「暂无统计数据（内核运行后每 15 秒采样一次）」，稍等片刻就会陆续出现。统计会持久保存，重启软件不会清零。</p>
+
+    <h2 id="分流模拟">分流模拟</h2>
+    <p>规则列表页的工具区有一个「分流模拟」按钮：输入一个域名、IP 或进程名，就能在本地预演它会命中哪一条规则，并显示该规则的处理策略。它不需要内核运行，排查「为什么这个网站走了那条线」时很实用。</p>
+    <p>模拟器支持两种输入：<b>域名 / IP</b> 按域名类与 IP 类规则匹配；<b>应用进程</b>按进程规则匹配（如 chrome.exe）。结果会标出命中的规则序号、规则原文与处理策略；如果目标是策略组，还会解析出该组当前的出口节点。</p>
+    <p>少数规则无法在本地精确判断（如依赖 GeoSite / GeoIP 数据、正则或需要先解析域名的规则），模拟器会把它们如实列出并跳过，而不是给出错误结论；如果你输错格式，也会有相应提示。所有判断都基于当前生成的运行时配置，与内核实际使用的是同一份规则。</p>
+
+    <h2 id="规则优先级">规则优先级</h2>
+    <p>规则的生效顺序是从上到下匹配，先命中先用。运行时配置里规则的排布顺序为：<b>自定义规则</b>（规则页编辑器编排）→ <b>快捷规则</b>（<a href="./connections.html">实时连接</a>页右键创建）→ 订阅规则。应用内生成的两类规则都插在订阅规则之前，其中自定义规则的优先级最高。此外，<a href="./apps.html">应用分流</a>的绑定是按进程匹配，也在配置生成阶段生效。</p>
+
+    <div class="cal warn">
+      <div>
+        <b>改了规则却没变化？</b>
+        <p>先检查当前运行模式是否为「规则」：设置 → 网络 → 运行模式。「全局」模式下所有流量都走同一个出口，规则不会生效。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

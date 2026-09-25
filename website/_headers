@@ -1,0 +1,29 @@
+# Cloudflare Pages 响应头配置
+# 语法：顶层为路径匹配，缩进的行写 Header: 值
+
+# 静态资源长期缓存（文件名不含哈希，改用 7 天并允许协商缓存）
+/assets/*
+  Cache-Control: public, max-age=604800
+  X-Content-Type-Options: nosniff
+
+# 站点图标
+/favicon.ico
+  Cache-Control: public, max-age=604800
+
+# HTML 与文档不缓存，保证发版后立刻看到新内容
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/docs/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# 英文站（/en/ 下均为页面，静态资源共享根目录）
+/en/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# 全站安全头
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()

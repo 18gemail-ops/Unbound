@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Features Overview — Unbound link</title>
+<meta name="description" content="Unbound link features: subscription management, routing rules, per-app process binding, chained proxies, live connection monitoring, traffic statistics, desktop floating window, system tray, TUN mode, Diagnostics and network rescue.">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./index.html">
+      <img src="../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="./features.html">Features</a>
+      <a href="./docs/index.html">User Guide</a>
+      <a href="./download.html">Download</a>
+      <a href="./changelog.html">Changelog</a>
+      <a href="./faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="./download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head reveal center" style="margin-bottom:0">
+      <span class="eyebrow">Features Overview</span>
+      <h2>Eleven pages covering everything from setup to troubleshooting</h2>
+      <p class="lead">The left menu is grouped by usage: set up routes in "Proxy & Routing" first, see what is happening in "Monitoring & Data", and let "Stability & Troubleshooting" handle the unexpected.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Proxy and routing -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>1. Proxy and routing</h2>
+      <p class="lead">"Which line does traffic take" splits into three layers: your subscriptions define the available lines, rules decide the default route, and App Routing decides the exceptions.</p>
+    </div>
+    <div class="cards c2">
+      <div class="card reveal">
+        <span class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+        </span>
+        <h3>Profiles</h3>
+        <p>Supports http/https subscription links; cards can be dragged to reorder, renamed, shared to your phone as a QR code, and usage info refreshed with one click. Multiple subscriptions can be enabled at once, and single nodes can be imported from node links; set an hourly auto-update interval — after an update the config reloads automatically and a system notification is sent, and you can optionally auto-test and switch to the fastest node after updates; usage alerts fire once each when the threshold is reached, expiry nears, or the subscription has expired; before every update the old content is archived automatically, so you can roll back anytime.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic g">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="19" height="7.5" rx="2"/><rect x="2.5" y="13.5" width="19" height="7.5" rx="2"/><path d="M6.5 6.75h.01"/><path d="M6.5 17.25h.01"/></svg>
+        </span>
+        <h3>Proxies</h3>
+        <p>Split view: browse by group and subscription source on the left, a node card grid on the right. Supports latency tests for a single node, download speed tests (the original node is restored automatically afterwards), test all, sorting by latency/name, region filters and favorites-only. One click hides timed-out nodes at the top; card columns support 1–4 or auto-fit; with Node health monitoring on, each card also carries a latency trend line (red dots mark failed tests), and with Automatic failover on a current node that keeps failing tests also gets switched away automatically. Switch freely between the list and map views — the map aggregates nodes into dots by region, sized by count and colored by latency; click a dot to drill into that region.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic a">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+        </span>
+        <h3>App Routing</h3>
+        <p>Bind apps to specific lines by process name or full path, picking directly from processes currently using the network. Selecting two or more lines forms a group automatically, with round-robin or session-persistent policies; the list shows each app's live speed.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic p">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.8-1.7"/></svg>
+        </span>
+        <h3>Chained proxy</h3>
+        <p>Assign a front proxy to a node so traffic first goes through the relay — ideal for restricted nodes. A chain badge on the node card shows which front proxy is used on hover.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic g">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10"/><path d="m17 4 4 4-4 4"/><path d="M17 16H7"/><path d="m7 20-4-4 4-4"/></svg>
+        </span>
+        <h3>Traffic tunnels</h3>
+        <p>Forward a local port to a remote target: the core listens locally on the given port and forwards through a chosen exit (proxy group, node or rule-based routing) to the target host — handy for mapping remote intranet services to your machine. Supports TCP / UDP / mixed protocols.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic t">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12H3"/><path d="M16 6H3"/><path d="M16 18H3"/><path d="M18 9v6"/><path d="M21 12h-6"/></svg>
+        </span>
+        <h3>Quick rules</h3>
+        <p>Right-click any connection on the Connections page and choose "direct for this domain" or "route this domain through a chosen line" — a domain rule is inserted at the very top and takes effect immediately, with no file edits or restarts.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic k">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="7" rx="1"/><rect x="12" y="7" width="3" height="11" rx="1"/><rect x="17" y="13" width="3" height="5" rx="1"/></svg>
+        </span>
+        <h3>Rules and hit statistics</h3>
+        <p>Four tabs: Rules, Custom rules, Rule sets and Hit statistics, where you can add, edit, reorder and delete your own rules right in the page — on save they are injected at the very top of the runtime config. Hit stats are sampled every 15 seconds and accumulated to disk — surviving restarts — so you can tell whether a rule is really doing its job.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:34px">
+      <h3 style="font-size:18px;margin-bottom:14px">Three ways to proxy traffic — how to choose</h3>
+      <table style="width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14.5px">
+        <thead>
+          <tr style="background:var(--bg-soft)">
+            <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">Method</th>
+            <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">Scope</th>
+            <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">Privileges</th>
+            <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>System proxy</b></td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">Apps that honor the system proxy (browsers, most desktop software)</td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">Not required</td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">Everyday use, the least hassle</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>TUN mode</b></td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">All traffic, including apps that ignore the system proxy</td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">Admin required</td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">Games, command-line tools, full network takeover</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 16px"><b>App Routing</b></td>
+            <td style="padding:11px 16px;color:var(--ink-2)">Only bound processes</td>
+            <td style="padding:11px 16px;color:var(--ink-2)">Not required</td>
+            <td style="padding:11px 16px;color:var(--ink-2)">Route only individual apps through chosen lines</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Monitoring -->
+<section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>2. Monitoring and data</h2>
+      <p class="lead">The pain with proxies is often "not knowing what's happening right now". That's why every status has somewhere to look.</p>
+    </div>
+    <div class="cards c3">
+      <div class="card reveal">
+        <h3>Dashboard</h3>
+        <p>Core status, version, memory usage and uptime; total up/down traffic and active connections; a live traffic chart. You can also switch each proxy group's current node right on the Dashboard.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Connections</h3>
+        <p>The detail view lists host, process, destination, matched rule, chain and live speed for each connection; the aggregated view groups connection counts by domain. Right-click to create a quick rule for a domain or copy the domain, destination address or process path.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Traffic</h3>
+        <p>Records daily up/down usage with 7-day / 30-day / 90-day / all-time views, plus a trend chart and a daily detail table; a Node traffic panel groups traffic by the exit node each connection finally leaves through (direct traffic is recorded as DIRECT), so you can see how much each line has used, with a one-click stats reset. Data is continuously persisted and survives restarts.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Logs</h3>
+        <p>Core logs and app logs shown on one screen; app logs carry a <code>[Unbound link]</code> prefix for easy distinction. Filter by Debug / Info / Warning / Error. Logs are also written to <code>logs\app.log</code> with automatic rotation and expiry cleanup.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Desktop floating window</h3>
+        <p>Live speed, current node latency, active connections, today's traffic and proxy status on your desktop. 3 sizes, 3 layouts, 7 color themes, adjustable opacity, mouse pass-through and automatically remembered position.</p>
+      </div>
+      <div class="card reveal">
+        <h3>System tray</h3>
+        <p>The tray icon switches between three states with the proxy status (normal / system proxy / TUN), and each state can be replaced with your own PNG icon. Right-click opens a quick panel to toggle the system proxy or TUN, see speed or open the main window without launching the full app. Click the "node" or "group" row and a standalone node picker pops up beside it: browse by group, click to switch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- System integration -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>3. System integration</h2>
+      <p class="lead">Take over what belongs to the system; keep local what belongs to the machine.</p>
+    </div>
+    <div class="cards c3">
+      <div class="card reveal">
+        <h3>System proxy and TUN</h3>
+        <p>One click writes or restores Windows Internet settings; with "Network environment" on, the system proxy and mode also switch automatically by Wi-Fi name (e.g. on at home, off at the office). TUN takes over all traffic at the network layer through a virtual adapter, with Mixed / Gvisor / System stacks to choose from. When admin rights are needed, a UAC prompt guides the elevation. If Store apps can't reach the local proxy due to the loopback restriction, the UWP App Tool lifts it with one click.</p>
+      </div>
+      <div class="card reveal">
+        <h3>DNS and LAN</h3>
+        <p>Custom DNS servers (including fallback DNS and static Hosts) can override the subscription's settings, with optional fake-ip acceleration; enabling "allow LAN" lets phones, tablets and other devices on the same subnet use the local proxy directly. The Share to phone button on the same row then shows a QR code — set the phone's Wi-Fi manual proxy as prompted.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Built-in web dashboard</h3>
+        <p>The built-in MetaCubeXD dashboard downloads and hosts itself on first open at <code>http://127.0.0.1:9090/ui/</code>; with LAN enabled, an address for other devices to access the dashboard is also shown.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Global shortcuts</h3>
+        <p>Defaults: <code>Ctrl+Shift+P</code> toggles the system proxy, <code>Ctrl+Shift+T</code> toggles TUN, <code>Ctrl+Shift+U</code> shows the main window, <code>Ctrl+Shift+O</code> toggles the floating window and <code>Ctrl+Shift+M</code> switches the proxy mode. "Update all subscriptions" and "Restart core" can be recorded separately — all shortcuts are customizable or resettable to default.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Global command palette</h3>
+        <p>Press <code>Ctrl+K</code> to bring it up on any page: jump to pages and settings categories, run actions like starting / stopping the core or switching modes, update and toggle subscriptions, check for updates and restore backups, use network rescue, and search and switch nodes — all filterable by keyword and fully keyboard-driven.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Launch at startup and single instance</h3>
+        <p>Optionally run at startup; the app is single-instance, so launching it again brings up the existing window — no two cores fighting over ports. Closing the main window minimizes to the tray instead of exiting. On a fresh install, the first launch opens a four-step guide that walks you through importing a subscription and recommended settings.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Themes and appearance</h3>
+        <p>Dark / light / follow-system modes with instant switching; brand color, secondary color, text color, semantic colors, UI font and custom CSS are all adjustable. The flat design uses black primary buttons and restrained semantic colors — blue for in-progress, green for normal, amber for pending, red for errors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Configuration -->
+<section class="section soft">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">Configuration capabilities</span>
+      <h2>For those who don't want to touch configs — and those who do</h2>
+      <p class="lead">Subscriptions stay pristine while your changes live in a separate file; the two merge only when the runtime config is generated — meaning subscription updates never overwrite your personal settings.</p>
+      <ul class="ticks">
+        <li><b>Merge override</b>: a few lines of YAML override fields in the subscription (app-level settings such as port and mode are handled by the client), deeply merged recursively.</li>
+        <li><b>Extension script</b>: built-in QuickJS — one <code>main(config)</code> function batch-renames nodes and adds or removes rules.</li>
+        <li><b>Node Cleanup</b>: filter nodes by keyword and batch-rename them by rules (with common prefixes/suffixes), rewriting references in proxy groups and rules to match — preview before enabling.</li>
+        <li><b>App-level settings injection</b>: fields such as port, control secret and mode are written by the client and never overridden by subscription content.</li>
+        <li><b>Config hot reload</b>: switching nodes, changing ports or DNS applies automatically without interrupting existing connections.</li>
+        <li><b>Atomic writes</b>: the runtime config is written to a temp file first, then renamed, so the core never reads a half-written file.</li>
+        <li><b>Config snapshots</b>: before each runtime config is generated the previous version is archived automatically (the latest 10 are kept); if the core won't start, roll back to the last working version in one click — an emergency fallback.</li>
+      </ul>
+    </div>
+    <div class="split-media">
+      <div class="cards" style="grid-template-columns:1fr">
+        <div class="card reveal">
+          <h3>Backup and restore</h3>
+          <p>Export settings, subscriptions, Merge config and the core version into a single JSON file; after switching computers or reinstalling, import it with one click under Settings → Maintenance to restore everything. "Export diagnostics" packages versions, settings, config and recent logs into a ZIP (sensitive fields redacted) to make reporting issues easier.</p>
+        </div>
+        <div class="card reveal">
+          <h3>One-click core update</h3>
+          <p>Settings → Maintenance → Core update checks for and fetches new core versions, replacing the current one automatically after download — no manual file handling.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Core watchdog</h3>
+          <p>Automatically restarts the core if it exits unexpectedly, with debounce protection: repeated crashes in a short time won't cause an infinite restart loop — they're faithfully recorded in Logs instead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Troubleshooting -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>4. Stability and troubleshooting</h2>
+      <p class="lead">The worst part of proxy trouble is not knowing where the problem is. So diagnosis and repair are split into two steps.</p>
+    </div>
+    <div class="cards c3">
+      <div class="card reveal">
+        <span class="ic a">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        </span>
+        <h3>11 network checks</h3>
+        <p>Core status, port listening, system proxy, DNS resolution, DNS takeover, direct exit, proxy exit, WebRTC leaks, current node, direct GitHub access and config loading. Each gives a conclusion, and abnormal items come with suggestions.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic k">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.4 8-9V5.6L12 2.6 4 5.6V13c0 5.6 8 9 8 9z"/><path d="M9.5 12.4l1.8 1.8 3.4-3.6"/></svg>
+        </span>
+        <h3>Network rescue kit</h3>
+        <p>For five classes of problems — leftover system proxy settings, DNS resolution failures, rewritten DNS servers, abnormal hosts files and damaged network stacks — each is detected with a matching repair button and an automatic re-check afterwards.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic g">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 7.7-1.5"/><path d="M12 14.8v2.4"/></svg>
+        </span>
+        <h3>Unlock Test</h3>
+        <p>Checks 18 services through the current exit — streaming such as Netflix and Disney+, AI services such as ChatGPT and Claude, and China-side platforms such as Bilibili — and reports one of four states with a note: Unlocked / Partial / Blocked / Failed. Switch the exit node on the page itself to pick a route and retest right away.</p>
+      </div>
+    </div>
+    <div class="cal note" style="margin-top:26px;max-width:820px">
+      <div>
+        <b>A note on privileges</b>
+        <p>In the one-click rescue, resetting the system proxy and flushing the DNS cache need no admin rights and are always available; only resetting DNS servers, restoring the hosts file and resetting the network stack require UAC elevation, clearly marked in the UI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>Ready to give it a try</h2>
+        <p>Download the installer, import your subscription, and you're up and running in three minutes.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-dark btn-lg" href="./download.html">Download now</a>
+        <a class="btn btn-ghost btn-lg" href="./docs/index.html">Read the User Guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="../assets/img/logo.png" alt="Unbound link">
+          <span>Unbound link</span>
+        </div>
+        <p>Windows desktop proxy client. Built on the mihomo core, with subscriptions, routing, monitoring and rescue all in one window.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="./features.html">Features overview</a></li>
+          <li><a href="./download.html">Download and install</a></li>
+          <li><a href="./changelog.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Docs</h4>
+        <ul>
+          <li><a href="./docs/index.html">User Guide</a></li>
+          <li><a href="./docs/install.html">Install and first run</a></li>
+          <li><a href="./docs/troubleshooting.html">Troubleshooting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="./faq.html">FAQ</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">Releases</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span>This software only provides local management for network proxying. Please comply with your local laws, regulations and the relevant terms of service.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>仪表盘 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）仪表盘使用说明：内核状态、实时流量与代理组节点切换。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>仪表盘</h1>
+    <p class="page-lead">仪表盘是打开客户端后的第一屏，用来一眼看清整体状态，并直接切换代理组与节点。</p>
+
+    <h2 id="这一页解决什么">这一页解决什么</h2>
+    <p>它的定位是「总览」：确认内核有没有在跑、当前流量是否正常、当前用的是哪个节点。日常使用里最常做的两个动作——判断是否已连上、临时换一条线路——都可以在这一页完成，不必进入「代理节点」页。</p>
+
+    <h2 id="内核状态">内核状态</h2>
+    <p>页面顶部是内核状态卡片，显示内核是否运行，以及内核版本、内存占用、运行时长等信息。这些数值由客户端从内核读取，供你判断后台进程的健康状况。左侧边栏底部还实时显示「内核内存」与「应用内存」两项占用，不进入本页也能随时查看。</p>
+    <ul>
+      <li><b>运行中</b>：内核正在工作，代理能力可用。</li>
+      <li><b>未运行</b>：内核没有跑起来，此时系统代理与节点都无法生效。</li>
+    </ul>
+
+    <h2 id="流量区">流量区</h2>
+    <p>流量区给出三项概要数据，并配一条实时流量曲线：</p>
+    <table>
+      <thead>
+        <tr><th>项目</th><th>含义</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>累计下载</b></td><td>本次内核运行以来接收的总流量。</td></tr>
+        <tr><td><b>累计上传</b></td><td>本次内核运行以来发送的总流量。</td></tr>
+        <tr><td><b>活跃连接数</b></td><td>当前正在进行的连接条数，可跳到「实时连接」查看明细。</td></tr>
+        <tr><td><b>实时流量曲线</b></td><td>上下行的即时速度走势，数据来自内核的 WebSocket 推送。</td></tr>
+      </tbody>
+    </table>
+    <div class="cal note">
+      <div>
+        <b>曲线动起来才算在传数据</b>
+        <p>打开一个网页或视频时，曲线应出现波动，累计下载数值随之增长。</p>
+      </div>
+    </div>
+
+    <h2 id="切换代理组与节点">切换代理组与节点</h2>
+    <p>仪表盘下部是代理组 / 节点切换行。每个代理组都有一行，可以直接在仪表盘为它选定当前节点：</p>
+    <ul>
+      <li>点开某个代理组的下拉框，选择要用的节点，改动立即生效。</li>
+      <li>需要测速、收藏或做更细的筛选时，再前往「代理节点」页。</li>
+    </ul>
+    <p>一个订阅里通常有多个代理组，例如「选择节点」「自动选择」之类。你在仪表盘切换的是该组当前使用的节点；如果组本身设置了自动策略，它会自行挑选，手动选择会覆盖自动结果。</p>
+
+    <h2 id="常见用途">常见用途</h2>
+    <table>
+      <thead>
+        <tr><th>想做的事</th><th>在仪表盘怎么看 / 怎么做</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>确认是否已连上</td><td>看累计下载 / 上传是否有数值并随上网增长，并确认当前节点延迟显示为数字。</td></tr>
+        <tr><td>临时换一条线路</td><td>在对应代理组的下拉框里选另一个节点即可，不需要离开本页。</td></tr>
+        <tr><td>确认内核是否正常</td><td>看内核状态卡片是否为运行中，以及运行时长是否在正常累计。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="cal warn">
+      <div>
+        <b>内核显示未运行时</b>
+        <p>先到「设置」确认「自动启动内核」已开启；若开关正常但内核仍未运行，去「网络体检」定位问题。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

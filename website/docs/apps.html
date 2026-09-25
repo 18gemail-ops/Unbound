@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>应用分流 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）应用分流：让不同的应用走不同的线路，绑定应用的进程、选择目标线路与聚合策略，并避开常见校验提示。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>应用分流</h1>
+    <p class="page-lead">让不同的应用走不同的线路：把浏览器、游戏、下载工具分别绑定到合适的线路，互不干扰。</p>
+
+    <p>页面副标题就是这句话——让不同的应用走不同的线路。顶部有「启用应用分流」总开关，默认关闭；表格上方有「添加应用绑定」按钮。总开关是这一页功能的入口，打开它之后，你在下面添加的绑定才会起作用。每一条绑定把「一个应用」和「一条或多条线路」连起来，此后该应用的流量就按这条绑定的线路走。</p>
+
+    <h2 id="绑定表格">绑定表格</h2>
+    <p>所有绑定以表格形式列出，每一行就是一条绑定规则。</p>
+    <table>
+      <thead>
+        <tr><th>列</th><th>含义</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>应用</b></td><td>显示图标与名称 / 进程名。</td></tr>
+        <tr><td><b>目标线路</b></td><td>可在行内直接切换线路。多条线路时显示聚合，说明「多连接自动分布到各线路；修改请点「编辑」」，并显示该线路最近一次延迟。</td></tr>
+        <tr><td><b>实时速率</b></td><td>该应用当前活跃连接的上行 / 下行，来自内核连接记录。</td></tr>
+        <tr><td><b>启用</b></td><td>开关，控制该条绑定是否生效。</td></tr>
+        <tr><td><b>操作</b></td><td>编辑、移除。移除需二次确认「移除该应用绑定？」。</td></tr>
+      </tbody>
+    </table>
+    <p>目标线路这一列可以直接在行内点开切换，不必每次都进弹窗；只有多条线路的聚合需要修改时，才点「编辑」重新选择。实时速率这一列来自内核的连接记录，显示该应用当前活跃连接的上行与下行；连接关闭后就会归零，所以它反映的是「此刻」而不是累计用量。需要更新线路延迟时，用工具区的「刷新线路」类按钮。</p>
+
+    <h2 id="添加应用绑定">添加应用绑定</h2>
+    <p>点「添加应用绑定」打开弹窗，需要填写三部分：应用、匹配方式、目标线路。</p>
+    <table>
+      <thead>
+        <tr><th>字段</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>应用</b></td><td>输入进程名（如 <code>chrome.exe</code>）或完整路径（如 <code>C:\Games\game.exe</code>）；有「选择程序文件」按钮可浏览选择 exe；还能从内核记录到该进程正在或刚刚发起网络连接的运行进程列表里直接挑选，列表带应用图标与窗口标题。</td></tr>
+        <tr><td><b>匹配方式</b></td><td>「按进程名（推荐）」或「按完整路径」。</td></tr>
+        <tr><td><b>目标线路</b></td><td>多选，选 2 条及以上会自动聚合提速。可选策略组、节点，以及两个固定项「直连（不走代理）」与「拒绝（阻断连接）」。</td></tr>
+        <tr><td><b>聚合策略</b></td><td>仅选 2 条以上线路时出现：「轮询分散」（多连接自动分布到各线路）或「会话保持」。</td></tr>
+      </tbody>
+    </table>
+    <p>填「应用」时有三种办法：手输进程名、手输完整路径，或者点「选择程序文件」浏览到 exe。若你不确定该填什么，可以从那张「内核记录到该进程正在/刚刚发起网络连接」的运行进程列表里直接挑，列表带应用图标与窗口标题，比对着图标找人更容易。填好后按「匹配方式」决定怎么认这个程序：「按进程名（推荐）」写得短、对被移动或重装的程序更宽容；「按完整路径」则更精确。</p>
+
+    <h2 id="目标线路与聚合">目标线路与聚合</h2>
+    <p>「目标线路」可以多选。可选的类型有策略组、节点，以及两个固定项：「直连（不走代理）」和「拒绝（阻断连接）」。选择 2 条及以上时，客户端会生成一个聚合组，多条线路同时服务该应用；若只选一条，就只走这一条。出现两条以上线路时，会再让你选「聚合策略」：「轮询分散」会把多连接自动分布到各线路，「会话保持」则让同一会话保持走同一条线。</p>
+
+    <h2 id="常见的校验提示">常见的校验提示</h2>
+    <p>保存失败时，弹窗会给出下面这些提示，按提示补齐即可：</p>
+    <table>
+      <thead>
+        <tr><th>提示</th><th>含义</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>请选择或输入应用进程</td><td>没有选应用。</td></tr>
+        <tr><td>请至少选择一条目标线路</td><td>没有选线路。</td></tr>
+        <tr><td>该应用已在绑定列表中</td><td>重复绑定。</td></tr>
+        <tr><td>聚合不支持「直连」与「拒绝」，已自动移除；如需直连请只选它一条</td><td>聚合里包含了「直连」或「拒绝」。</td></tr>
+        <tr><td>进程名或线路名含英文逗号</td><td>会给出提示，因为逗号要写入规则。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="典型用法">典型用法</h2>
+    <p>浏览器走「自动选择」，游戏走「低延迟专线」，下载工具只选一条固定线路；也可以把某个聊天软件设为「拒绝」来阻断它联网。几条常见思路：追求稳定的程序绑单条线路，追求速度的程序绑多条线路做聚合，不需要走代理的程序绑「直连」，不想让它联网的程序绑「拒绝」。</p>
+
+    <div class="cal note">
+      <div>
+        <b>分流只作用于被绑定的进程</b>
+        <p>应用分流只影响被绑定的进程，其余流量仍按<a href="./rules.html">规则列表</a>处理；绑定依赖内核运行，内核没有运行时绑定不会生效。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

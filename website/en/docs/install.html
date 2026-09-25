@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Install and First Run — Unbound link User Guide</title>
+<meta name="description" content="Unbound link install and first run: system requirements, installation steps, the five-step first-run setup, three ways to route traffic and data directory backup.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Install and first run</h1>
+    <p class="page-lead">From downloading the installer to confirming nodes are connected, this page lays out the complete order. Complete the "five steps of first run" below and the client is ready to use.</p>
+
+    <h2 id="system-requirements">System requirements</h2>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Requirement</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Operating system</b></td><td>Windows 10 / 11, 64-bit.</td></tr>
+        <tr><td><b>Privileges</b></td><td>TUN mode requires admin rights; enabling the system proxy likewise requires admin rights. If you only use the system proxy day to day, you can start with normal privileges and relaunch as administrator when you run into permission issues.</td></tr>
+        <tr><td><b>Core</b></td><td>No need to install the mihomo core yourself. The installer already bundles the mihomo core and the wintun TUN driver; the client starts and supervises them.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="installation">Installation</h2>
+    <p>Open the <a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">download page</a>, get the Windows installer (NSIS format) from Releases, double-click it and follow the prompts. The current version is 0.1.1.</p>
+    <p>On first run, if the data directory doesn't exist, the client tries migrating old configs from historical directory names so users upgrading from older versions keep their subscriptions and settings.</p>
+    <div class="cal note">
+      <div>
+        <b>Just use the default directory</b>
+        <p>Keep the default directory the installer suggests; don't change it to another location.</p>
+      </div>
+    </div>
+
+    <h2 id="first-run-guide">First-run guide</h2>
+        <p>On a fresh install, the first launch opens a four-step guide that walks you through the initial setup:</p>
+        <ol>
+          <li><b>Welcome</b> — a one-line intro to the app: subscription management, rule-based routing and traffic insights all happen locally, with no account needed.</li>
+          <li><b>Import a subscription</b> — paste your subscription link right in the guide to import it, or skip and add one later under Profiles.</li>
+          <li><b>Quick setup</b> — three recommended toggles: launch at login, system notifications and the core watchdog; change them anytime in Settings.</li>
+          <li><b>Get started</b> — a few handy tips: Ctrl+K opens the command palette, closing the window minimizes to the tray, and Diagnostics checks your network in one click.</li>
+        </ol>
+        <p>Every step has a Back button; after you click Skip or finish the guide it won't pop up again. Users upgrading from older versions are unaffected and won't see it.</p>
+    
+    <h2 id="the-five-steps-of-first-run">The five steps of first run</h2>
+    <ol>
+      <li>Go to Profiles, click "Add subscription" top-right, paste your http/https link (name can be left blank — the client detects it), and click OK.</li>
+      <li>Flip the enable switch on the new subscription card (the first subscription is enabled automatically). A blue "In use" badge appears once it's on — multiple subscriptions can be enabled at the same time.</li>
+      <li>Open Settings → Network and confirm "auto-start core" is on (on by default). The core then starts by itself whenever needed — no manual action required.</li>
+      <li>Open Settings → General → System integration and turn on the "system proxy".</li>
+      <li>Return to the Dashboard, confirm the core status is Running and the current node shows a latency number.</li>
+    </ol>
+
+    <h2 id="three-ways-to-route-traffic-through-the-proxy">Three ways to route traffic through the proxy</h2>
+    <p>The client never forces a full takeover — choose the scope you need:</p>
+    <table>
+      <thead>
+        <tr><th>Method</th><th>Best for</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>System proxy</b></td><td>The least hassle; covers browsers and most desktop programs.</td><td>Modifies Windows Internet settings; requires the core to be running.</td></tr>
+        <tr><td><b>TUN mode</b></td><td>Full traffic takeover, covering apps that ignore the system proxy (some games, command-line tools).</td><td>Requires admin rights.</td></tr>
+        <tr><td><b>App Routing</b></td><td>Only chosen apps use the proxy; everything else stays direct.</td><td>Add per-app rules on the App Routing page.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="data-directory-and-backup">Data directory and backup</h2>
+    <p>All runtime data lives in <code>%APPDATA%\com.unboundlink.desktop</code>, mainly:</p>
+    <table>
+      <thead>
+        <tr><th>File / directory</th><th>Contents</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>settings.json</code></td><td>All settings.</td></tr>
+        <tr><td><code>profiles.json</code></td><td>The subscription index.</td></tr>
+        <tr><td><code>profiles\{id}.yaml</code></td><td>The original YAML of each subscription.</td></tr>
+        <tr><td><code>merge.yaml</code></td><td>Merge overrides.</td></tr>
+        <tr><td><code>script.js</code></td><td>Extension scripts.</td></tr>
+        <tr><td><code>config.yaml</code></td><td>The generated runtime config — the file the core actually reads.</td></tr>
+        <tr><td><code>ui\</code></td><td>Static files for the built-in web dashboard.</td></tr>
+        <tr><td><code>rule_stats.json</code> / <code>traffic_history.json</code></td><td>Rule hit statistics and traffic history.</td></tr>
+        <tr><td><code>core_version.txt</code></td><td>Core version records.</td></tr>
+      </tbody>
+    </table>
+    <p>Before migrating machines or reinstalling, open Settings → Maintenance → Backup and restore to export and import a JSON backup. It contains settings, subscriptions, Merge config and the core version.</p>
+
+    <div class="cal ok">
+      <div>
+        <b>Two more things</b>
+        <p>The app is single-instance — launching it again returns to the existing window. The main window, floating window and tray panel all hide rather than exit when closed; to really quit, use Settings → About → Quit.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

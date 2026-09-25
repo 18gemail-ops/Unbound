@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Download — Unbound link</title>
+<meta name="description" content="Download the Unbound link Windows client: system requirements, installation steps, data directory and uninstall notes. The installer already bundles the mihomo core and TUN driver.">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./index.html">
+      <img src="../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="./features.html">Features</a>
+      <a href="./docs/index.html">User Guide</a>
+      <a href="./download.html">Download</a>
+      <a href="./changelog.html">Changelog</a>
+      <a href="./faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="#download">Get the installer</a>
+    </div>
+  </div>
+</header>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head reveal center" style="margin-bottom:0">
+      <span class="eyebrow">Download</span>
+      <h2>One installer, ready when it's done</h2>
+      <p class="lead">The mihomo core and TUN driver ship inside the package — no separate core downloads, file placement or environment variables needed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <div class="wrap">
+    <div class="dl-grid">
+      <div class="dl-card reveal">
+        <div class="top">
+          <img src="../assets/img/app-icon.png" alt="Unbound link">
+          <div>
+            <div class="n">Unbound link</div>
+            <div class="m">Windows 64-bit · Installer</div>
+          </div>
+        </div>
+        <p style="color:var(--ink-2);margin-bottom:0">The installer is built with NSIS — double-click and follow the wizard. Add subscriptions on first launch. The core is transparent: the client starts, supervises and stops it.</p>
+        <div class="dl-meta">
+          <div>Current version<b>v0.1.1</b></div>
+          <div>Supported system<b>Windows 10 / 11 · 64-bit</b></div>
+          <div>Package contents<b>Main app + mihomo core + TUN driver</b></div>
+          <div>Data storage<b>All kept on your machine</b></div>
+        </div>
+        <div class="dl-actions">
+          <a class="btn btn-dark btn-lg" href="https://github.com/18gemail-ops/Unboundlink/releases/latest" target="_blank" rel="noopener">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
+            Go to the latest release
+          </a>
+          <a class="btn btn-ghost btn-lg" href="./docs/install.html">Install guide</a>
+        </div>
+        <div class="cal warn" style="margin:22px 0 0">
+          <div>
+            <b>Only get installers from the official releases page</b>
+            <p>Downloads live on the GitHub Releases page. The installer requests network and file read/write permissions — verify the source is trustworthy before installing.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="dl-side reveal">
+        <h3>Before you install</h3>
+        <ul>
+          <li>64-bit Windows 10 or Windows 11.</li>
+          <li>The system proxy needs no extra privileges; TUN mode requires admin rights and will show a UAC prompt.</li>
+          <li>If another client using the same core is installed on the machine, exit one of them first to avoid control port conflicts.</li>
+          <li>Default ports: mixed proxy <code>7890</code>, control API <code>9090</code> — changeable in Settings.</li>
+        </ul>
+        <h3 style="margin-top:20px">After installing</h3>
+        <ul>
+          <li>Add a subscription under Profiles first, then flip the enable switch on its card.</li>
+          <li>Turn on the system proxy under Settings → General → System integration.</li>
+          <li>Return to the Dashboard to confirm the core is running and nodes show latency values.</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Installation steps</span>
+      <h2>Three steps to install, five to be productive</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div>
+          <h3>Download the installer</h3>
+          <p>Open the official releases page and download the Windows installer from the latest release (file names look like <code>Unboundlink_x.x.x_x64-setup.exe</code>).</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div>
+          <h3>Run the setup wizard</h3>
+          <p>Double-click the installer, choose a location and click Next through the wizard. Stick to the default directory — avoid paths with Chinese or special characters.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div>
+          <h3>First launch</h3>
+          <p>Launch it from the Start menu or desktop icon. If a previous version's data directory is found, settings and subscriptions migrate automatically — no manual file copying.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div>
+          <h3>Import a subscription and enable it</h3>
+          <p>Profiles → Add subscription → paste the http/https link → OK; back on the card flip the enable switch (multiple subscriptions can be on at once).</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div>
+          <h3>Turn on the system proxy</h3>
+          <p>Enable the system proxy under Settings → General → System integration, then check the Dashboard — download and upload figures should start moving.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:34px">
+      <a class="btn btn-dark" href="./docs/install.html">Read the full install and first-run guide</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">System requirements</span>
+      <h2>Runtime environment</h2>
+    </div>
+    <table style="width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14.5px">
+      <thead>
+        <tr style="background:var(--bg-soft)">
+          <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">Item</th>
+          <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">Requirement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>Operating system</b></td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">Windows 10 / Windows 11, 64-bit</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>Runtime</b></td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">WebView2 ships with the installer; if missing, the setup guides you through installing it</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>Core</b></td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">Bundled with the installer, no separate download needed</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>TUN mode</b></td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">Requires admin rights (UAC elevation on use)</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px"><b>Disk and network</b></td>
+          <td style="padding:11px 16px;color:var(--ink-2)">The installation is small; subscription and core updates need access to their respective addresses</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Data and uninstall</span>
+      <h2>Where your data lives, and how to take it with you</h2>
+    </div>
+    <div class="cards c2">
+      <div class="card reveal">
+        <h3>Data directory</h3>
+        <p>Configs, subscriptions and the core's working directory live under <code>%APPDATA%\com.unboundlink.desktop</code>, containing settings, the subscription index and originals, Merge overrides, extension scripts, the generated runtime config, dashboard files, rule hit statistics and traffic history.</p>
+        <p style="margin-top:8px">View and copy the data directory path under Settings → About.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Backup, migration and uninstall</h3>
+        <p>Before switching computers, use Settings → Maintenance → Backup and restore → Export backup to get a JSON file; import it in the new environment to restore settings, subscriptions, Merge config and core version records.</p>
+        <p style="margin-top:8px">Uninstalling doesn't delete the data directory; to clean up completely, delete the directory manually after uninstalling.</p>
+      </div>
+    </div>
+    <div class="cal note" style="margin-top:26px;max-width:860px">
+      <div>
+        <b>Remember to turn off the system proxy before uninstalling</b>
+        <p>First disable the system proxy under Settings → General → System integration, or reset it via Diagnostics → Network rescue → One-click rescue, so your browser doesn't keep pointing at a local proxy port that no longer exists after uninstall.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>Installed but not sure where to start?</h2>
+        <p>The "Install and first run" chapter of the guide walks through every step, including where each switch lives.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-dark btn-lg" href="./docs/install.html">Install and first run</a>
+        <a class="btn btn-ghost btn-lg" href="./faq.html">FAQ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="../assets/img/logo.png" alt="Unbound link">
+          <span>Unbound link</span>
+        </div>
+        <p>Windows desktop proxy client. Built on the mihomo core, with subscriptions, routing, monitoring and rescue all in one window.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="./features.html">Features overview</a></li>
+          <li><a href="./download.html">Download and install</a></li>
+          <li><a href="./changelog.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Docs</h4>
+        <ul>
+          <li><a href="./docs/index.html">User Guide</a></li>
+          <li><a href="./docs/install.html">Install and first run</a></li>
+          <li><a href="./docs/troubleshooting.html">Troubleshooting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="./faq.html">FAQ</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">Releases</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span>This software only provides local management for network proxying. Please comply with your local laws, regulations and the relevant terms of service.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

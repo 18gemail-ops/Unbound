@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>实时连接 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）实时连接使用说明：查看正在联网的连接，并为域名快速创建规则。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>实时连接</h1>
+    <p class="page-lead">实时连接页用来查看当前正在联网的连接，并针对域名快速创建规则——不改配置文件，也能马上让某个域名直连或走指定线路。</p>
+
+    <h2 id="这一页解决什么">这一页解决什么</h2>
+    <p>当你不确定「谁在联网」「某个网站走了哪条线」时，就来这里。它把内核此刻正在处理的连接逐条列出，你既能核对分流结果，也能就地修正：右键某条连接，为它的域名创建一条规则。</p>
+
+    <h2 id="两种视图">两种视图</h2>
+    <p>页面支持两种查看方式，切换视图即可：</p>
+    <p><b>明细视图</b>——每条连接占一行，适合精确排查单条连接。列包括：</p>
+    <table>
+      <thead>
+        <tr><th>列</th><th>含义</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>主机</b></td><td>连接的目标主机名。</td></tr>
+        <tr><td><b>进程</b></td><td>发起该连接的程序。</td></tr>
+        <tr><td><b>网络</b></td><td>连接使用的网络协议，tcp 或 udp。</td></tr>
+        <tr><td><b>目标地址</b></td><td>连接实际访问的地址。</td></tr>
+        <tr><td><b>规则</b></td><td>这条连接命中的规则。</td></tr>
+        <tr><td><b>链路</b></td><td>流量走了哪条线路或代理组。</td></tr>
+        <tr><td><b>上传 / 下载</b></td><td>该连接已发送 / 已接收的数据量。</td></tr>
+        <tr><td><b>时长</b></td><td>该连接已持续的时间。</td></tr>
+      </tbody>
+    </table>
+    <p><b>聚合视图</b>——按域名 / 目标合并同类连接，适合看清整体分布。列包括：域名 / 目标、连接数、进程、规则、链路、上传、下载。</p>
+
+    <h2 id="右键创建快捷规则">右键创建快捷规则</h2>
+    <p>在任意一条连接行上<b>右键</b>，会弹出菜单，包含以下几项：</p>
+    <ul>
+      <li><b>此域名直连</b>——让该域名的流量直接出去，不走代理。</li>
+      <li><b>此域名走指定线路</b>——子菜单列出可用代理组，选定后该域名走该组。若无可用组，子菜单显示「暂无可用代理组」。</li>
+      <li><b>复制域名</b>——把该连接的域名复制到剪贴板。</li>
+      <li><b>复制目标地址</b>——复制连接的目标地址。</li>
+      <li><b>复制进程路径</b>——复制发起连接的进程完整路径。</li>
+    </ul>
+
+    <h2 id="快捷规则怎么生效">快捷规则怎么生效</h2>
+    <p>选择「此域名直连」或「此域名走指定线路」，会创建一条<b>快捷规则</b>。它的规则类型是 DOMAIN-SUFFIX，生成运行时配置时插入到规则最前面，因此会优先于订阅里的规则，并可<b>立即对该域名生效，无需重启内核</b>。需要撤销时，再次对该域名改选其它线路即可。</p>
+
+    <div class="cal note">
+      <div>
+        <b>两个实用提示</b>
+        <p>连接的实时速率来自内核，连接关闭后不再显示。页面数据量大时，用上方的搜索 / 筛选缩小范围会更快找到目标连接。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

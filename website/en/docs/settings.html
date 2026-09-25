@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Settings — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Settings: a walkthrough of the six tabs — Appearance, System, Network, Tools, Maintenance and About — covering theme customization, ports, mode, TUN, DNS, shortcuts, app logs and backup defaults.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Settings</h1>
+    <p class="page-lead">Ports, mode, TUN, DNS, shortcuts, app logs and backups all live here, split into six tabs: Appearance / System / Network / Tools / Maintenance / About. Each tab is grouped by function, with setting cards under each group title. This page explains every switch's effect and default value.</p>
+
+    <div class="cal note">
+      <div>
+        <b>All settings save instantly</b>
+        <p>Every switch and input saves immediately; the footer also reads "All settings save instantly" — no OK / Apply buttons. Core-related changes (ports, TUN, DNS) hot-reload or restart the core automatically.</p>
+      </div>
+    </div>
+
+    <h2 id="appearance">Appearance</h2>
+    <p>The Appearance tab has one group, "Appearance and theme": the appearance card manages theme, language and UI behavior; the theme customization card manages colors, fonts and custom CSS.</p>
+
+    <h3 id="appearance-2">Appearance</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Options</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Theme</b></td><td>Dark / light / follow system</td><td>The UI updates instantly on switching; no restart.</td></tr>
+        <tr><td><b>Language</b></td><td>Simplified Chinese</td><td>The UI language — 13 built in, plus follow-system; applies immediately.</td></tr>
+        <tr><td><b>Pause rendering when unfocused</b></td><td>On</td><td>Pauses traffic chart refresh when the window loses focus to cut CPU and memory use; recording continues and refresh resumes on focus.</td></tr>
+        <tr><td><b>Proxies page columns</b></td><td>Auto</td><td>Cards per row on the Proxies page, 1–4; "Auto" fits the window width.</td></tr>
+        <tr><td><b>Hide timed-out nodes</b></td><td>Off</td><td>When on, timed-out nodes are hidden on the Proxies page; the same setting as "Hide timed-out" at the top of that page.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="theme-customization">Theme customization</h3>
+    <p>Beyond the three themes, open "Theme customization" to fine-tune the UI: eight color categories, a custom UI font and custom CSS, all applied instantly. "Restore defaults" clears every customization (with confirmation).</p>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Brand / info / warning / error / success colors</b></td><td>Default palette</td><td>The main colors for buttons, selected states, notices and latency; leave blank for defaults.</td></tr>
+        <tr><td><b>Secondary color</b></td><td>Default palette</td><td>Color for secondary emphasis and hover backgrounds; leave blank for the default.</td></tr>
+        <tr><td><b>Primary / secondary text color</b></td><td>Default palette</td><td>Text colors for body and headings, and for captions and de-emphasized info; leave blank for defaults.</td></tr>
+        <tr><td><b>UI font</b></td><td>Default font stack</td><td>Custom UI font family in CSS font-family syntax; blank uses the default stack.</td></tr>
+        <tr><td><b>Custom CSS</b></td><td>Empty</td><td>An extra global stylesheet for fine-tuning details; clear it to recover from mistakes.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="system">System</h2>
+    <p>Two groups, "Proxy and startup" (system proxy, startup) and "Tray and watchdog" (tray and floating window, background watchdog), with global shortcuts at the end.</p>
+
+    <h3 id="system-proxy">System proxy</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>System proxy</b></td><td>Off</td><td>Writes Windows Internet settings so programs that honor the system proxy use it automatically. Requires the core to be running.</td></tr>
+        <tr><td><b>Proxy bypass list</b></td><td>Empty</td><td>Semicolon / comma-separated wildcard entries (e.g. <code>*.local;192.168.*</code>) whose addresses bypass the proxy; blank keeps the system's existing config. Shown only when the system proxy is on.</td></tr>
+        <tr><td><b>Terminal proxy command</b></td><td>—</td><td>Pick PowerShell / Cmd / Bash, click "Copy command" and run it in a terminal so CLI tools (git / npm / curl, etc.) use the proxy temporarily.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="startup">Startup</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Launch at startup</b></td><td>Off</td><td>Runs Unbound link automatically after boot.</td></tr>
+        <tr><td><b>Silent start</b></td><td>Off</td><td>On auto-start, skip the main window and go straight to the tray.</td></tr>
+        <tr><td><b>Start page</b></td><td>Dashboard</td><td>The page shown after launch: Dashboard / Proxies / Connections / Traffic / Logs / Unlock Test / Settings.</td></tr>
+        <tr><td><b>Startup script</b></td><td>Not selected</td><td>A script run automatically at app launch: exe / bat / cmd / ps1; skipped and logged if missing.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="tray-and-floating-window">Tray and floating window</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Tray click action</b></td><td>Show main window</td><td>What a left-click on the tray icon does (right-click always opens the quick panel): show main window / toggle system proxy / toggle TUN mode.</td></tr>
+        <tr><td><b>Tray icons (three states)</b></td><td>Built-in icons</td><td>The tray icon changes with status: normal / system proxy on / TUN on. Each state can use your own PNG icon instead of the built-in one; clear it anytime to restore the default.</td></tr>
+        <tr><td><b>Minimize to tray on close</b></td><td>On</td><td>The close button hides the window instead of quitting; the app keeps running in the background.</td></tr>
+        <tr><td><b>Traffic floating window</b></td><td>Off</td><td>Shows a draggable live-speed window on the desktop.</td></tr>
+        <tr><td><b>Floating window mouse pass-through</b></td><td>Off</td><td>When on, the floating window doesn't intercept the mouse; clicks pass through to windows below.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="background-watchdog">Background watchdog</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>System notifications</b></td><td>On</td><td>Shows system notifications for events like core crashes and subscription auto-updates.</td></tr>
+        <tr><td><b>Core watchdog</b></td><td>On</td><td>Restarts the core automatically after unexpected exits. Debounced — repeated crashes in a short time won't restart forever.</td></tr>
+        <tr><td><b>Check for updates on launch</b></td><td>On</td><td>Checks for new client versions after launch and sends a notification when one is found.</td></tr>
+        <tr><td><b>Clear connections on node switch</b></td><td>On</td><td>Closes old connections after switching nodes so the new node takes over existing sessions immediately.</td></tr>
+        <tr><td><b>System proxy guard</b></td><td>On</td><td>Automatically restores system proxy settings if another program tampers with them, logging the event.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="global-shortcuts">Global shortcuts</h3>
+    <p>Click a shortcut to record a new combination; "Restore defaults" is provided. Shortcuts register at the system level — if another app already uses one, binding fails; just pick another.</p>
+    <table>
+      <thead>
+        <tr><th>Action</th><th>Default shortcut</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Toggle system proxy</td><td><code>Ctrl+Shift+P</code></td></tr>
+        <tr><td>Toggle TUN mode</td><td><code>Ctrl+Shift+T</code></td></tr>
+        <tr><td>Show main window</td><td><code>Ctrl+Shift+U</code></td></tr>
+        <tr><td>Toggle traffic floating window</td><td><code>Ctrl+Shift+O</code></td></tr>
+        <tr><td>Cycle proxy mode (Rule → Global → Direct)</td><td><code>Ctrl+Shift+M</code></td></tr>
+        <tr><td>Update all subscriptions</td><td>Unbound; record your own</td></tr>
+        <tr><td>Restart core</td><td>Unbound; record your own</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="network">Network</h2>
+    <p>Three groups: "Core and control" (ports and mode, kernel behavior, web dashboard), "Connection method" (TUN mode, DNS), and "Automation" (speed test and health, network environment).</p>
+
+    <h3 id="ports-and-mode">Ports and mode</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Mixed proxy port</b></td><td><code>7890</code></td><td>The HTTP / SOCKS mixed listening port; the core restarts automatically after a change.</td></tr>
+        <tr><td><b>External Controller port</b></td><td><code>9090</code></td><td>The control API port; the core restarts automatically after a change.</td></tr>
+        <tr><td><b>Mode</b></td><td>Rule</td><td>Rule / Global / Direct. "Rule" routes traffic by rules; "Global" sends all traffic through one exit; "Direct" bypasses the proxy entirely.</td></tr>
+        <tr><td><b>Log level</b></td><td>Info</td><td>Debug / Info / Warning / Error / Silent; controls how detailed the core's log output is.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="kernel-behavior">Kernel behavior</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Auto-start core</b></td><td>On</td><td>Starts the core automatically when the app launches.</td></tr>
+        <tr><td><b>Allow LAN connections</b></td><td>Off</td><td>When on, other devices on the same LAN can use the proxy via <code>local-IP:mixed-port</code>; the address is shown in the UI.</td></tr>
+        <tr><td><b>Share to phone</b></td><td>—</td><td>Appears on the same row once Allow LAN is on. Clicking it shows a QR code (with the local proxy address); when the phone and PC are on the same LAN, set the phone's Wi-Fi "Manual proxy" to that address as prompted.</td></tr>
+        <tr><td><b>IPv6</b></td><td>Off</td><td>Lets the core use IPv6 for outbound traffic; keep it off when your network doesn't support IPv6 for better compatibility.</td></tr>
+        <tr><td><b>Unified latency</b></td><td>On</td><td>Multiple nodes on the same host report one consistent latency value, making test results more stable and intuitive.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="web-dashboard">Web dashboard</h3>
+    <p>A built-in MetaCubeXD dashboard, downloaded automatically on first open (about 2.5MB). The local address is <code>http://127.0.0.1:9090/ui/</code>; click "Open dashboard" to enter.</p>
+    <p>With "Allow LAN connections" on, a LAN dashboard address such as <code>http://192.168.x.x:9090/ui/</code> also appears here, ready to copy to other devices on the same network with one click.</p>
+    <p>The <b>control secret</b> protects the External Controller: randomly generated on first run and regenerable with one click; after a change the core restarts automatically, and dashboards or third-party clients using the old secret must switch to the new one.</p>
+
+    <h3 id="tun-mode">TUN mode</h3>
+    <p>A privilege badge sits next to the title: green "Elevated" with admin rights, otherwise orange "Not elevated", along with a "Restart as administrator" button.</p>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Enable TUN</b></td><td>Off</td><td>Takes over all traffic through a virtual adapter, covering programs that ignore the system proxy (some games, command-line tools). Requires admin rights.</td></tr>
+        <tr><td><b>TUN stack</b></td><td>Mixed</td><td>Options are Mixed / Gvisor / System. Use Mixed when unsure.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="dns">DNS</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Custom DNS</b></td><td>Off</td><td>When on, overrides the DNS config from your subscription.</td></tr>
+        <tr><td><b>DNS server list</b></td><td><code>223.5.5.5</code>、<code>119.29.29.29</code></td><td>One address per line.</td></tr>
+        <tr><td><b>fake-ip acceleration</b></td><td>On</td><td>Recommended with TUN mode; when off, redir-host mode is used.</td></tr>
+        <tr><td><b>Fallback DNS</b></td><td>Empty</td><td>Servers to fall back on when the main DNS is unreliable, in the same format as the main DNS; left blank, nothing is sent.</td></tr>
+        <tr><td><b>Static Hosts</b></td><td>Empty</td><td>One "domain IP" mapping per line; supports <code>#</code> comments and is delivered to the core with the config.</td></tr>
+      </tbody>
+    </table>
+    <p>DNS-related changes reload the core.</p>
+
+    <h3 id="speed-test-and-health">Speed test and health</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Scheduled latency test</b></td><td>Off</td><td>Automatically tests the current group at the set interval to keep latency data fresh.</td></tr>
+        <tr><td><b>Test interval</b></td><td><code>5</code> minutes</td><td>Interval for automatic latency tests, from 1 to 1440 minutes.</td></tr>
+        <tr><td><b>Node health monitoring</b></td><td>On</td><td>Keeps a rolling latency history per node and draws trends on the Proxies page; sends a system notification when the current node keeps failing tests.</td></tr>
+        <tr><td><b>Automatic failover</b></td><td>Off</td><td>When the current node fails <code>2</code> latency tests in a row, it switches automatically to the fallback node; relies on Node health monitoring above. Applies only to "manual select" proxy groups — auto-test groups recover on their own inside the core.</td></tr>
+        <tr><td><b>Fallback node</b></td><td>Auto-select</td><td>Preferred target for failover; the dropdown lists the nodes in the main proxy group. When left empty, the available node with the lowest latency in the group is chosen automatically. Shown once Automatic failover is enabled.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="network-environment">Network environment</h3>
+    <p>Switches the system proxy and mode automatically according to the connected Wi-Fi name — handy for "on at home, off at the office". The app checks the Wi-Fi name every 10 seconds; when it changes, the first enabled rule that matches is applied from top to bottom. Actions identical to the current state are skipped, so manual adjustments are not overridden. This feature does not change the TUN state.</p>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Network environment automation</b></td><td>Off</td><td>Master switch; when on, the matching rule below is applied whenever the Wi-Fi name changes.</td></tr>
+        <tr><td><b>Current Wi-Fi</b></td><td>—</td><td>Shows the name of the connected network ("Not connected to Wi-Fi" when there is none); the button to the right refreshes it manually.</td></tr>
+        <tr><td><b>Rule list</b></td><td>Empty</td><td>One rule per row: the switch on the left enables it, followed by the Wi-Fi name, the system-proxy action and the mode action. Names support <code>*</code> (any characters) and <code>?</code> (a single character) wildcards, case-insensitive, e.g. <code>Home-*</code>. An action set to "No change" keeps the current state; other choices (system proxy: On / Off; mode: Rule / Global / Direct) are applied on a match.</td></tr>
+        <tr><td><b>Add rule</b></td><td>—</td><td>The button at the top right adds a rule that is enabled by default with all actions set to "No change"; fill in the name and actions to take effect.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="tools">Tools</h2>
+    <p>Four utilities around rules and connections: lifting the loopback restriction for Store apps, updating the rules database, setting up port-forwarding tunnels, and tidying the node list with keyword filters and replacement rules.</p>
+
+    <h3 id="uwp-app-tool">UWP app tool</h3>
+    <p>Apps installed from the Microsoft Store can't reach the local proxy address (<code>127.0.0.1</code>) by default, which shows up as no network inside the app. Click "Manage apps" to open the list and flip the switch for the apps you need — on lifts the loopback restriction, off restores it. Changing loopback exemptions requires admin rights; if it fails, relaunch the app as administrator and retry.</p>
+
+    <h3 id="geodata-databases">GeoData databases</h3>
+    <p>GEOIP / GEOSITE routing depends on four database files (<code>geoip.dat</code>, <code>geosite.dat</code>, <code>geoip.metadb</code>, <code>GeoLite2-ASN.mmdb</code>); the core loads them from the data directory at startup, and missing or outdated files break the corresponding rules. This section shows each file's size and update time; click "Update databases" to fetch them from the official release page in one go — on direct-connection failure an accelerated mirror is tried automatically, and if that still fails the download goes through the local proxy. Updating all files at once is a large download, so give it a moment.</p>
+
+    <h3 id="traffic-tunnels">Traffic tunnels</h3>
+    <p>Forwards a local port to a remote target: the core listens on the given local port and relays through a chosen exit (proxy group or node) to the target host — handy for mapping remote intranet services (databases, remote desktop) to your machine. Each tunnel picks a protocol (TCP / UDP / mixed), a local listen address and port, and a target address and port; with the exit left blank, traffic routes by rules. Tunnels are runtime config; the core restarts automatically after any change.</p>
+
+    <h3 id="node-cleanup">Node Cleanup</h3>
+    <p>Applies a unified cleanup to the node list when the runtime config is generated — handy when a subscription brings too many noisy nodes. The three parts combine freely: <b>Filter keywords</b> removes any node whose name hits a keyword (case-insensitive); <b>Rename rules</b> replace text in node names in order (case-sensitive; an empty replacement deletes that piece of text); <b>Common prefix / suffix</b> adds a uniform prefix and suffix to every node name after all replacements.</p>
+    <p>The cleanup also rewrites node references in proxy groups, rules and tunnels, so renamed nodes never break their references. Click "Preview" to see the result before deciding whether to enable it: how many nodes in total, how many filtered, how many renamed — preview works even while the switch is off.</p>
+
+    <h2 id="maintenance">Maintenance</h2>
+    <p>Two groups: "Updates and tests" (subscription, core update, node latency test) and "Data and logs" (config snapshots, backup and restore, app logs).</p>
+
+    <h3 id="subscription">Subscription</h3>
+    <p><b>Auto-update interval</b>, in hours, <b>0 means off</b>, off by default. Once enabled, every subscription in the list updates on schedule in the background; when done, the config reloads automatically and a system notification is sent.</p>
+    <p><b>Auto-optimize after update</b>, off by default. Once enabled, every time subscriptions finish updating and the config reloads, the client automatically tests the main proxy group and sets the lowest-latency available node as the current node (applies only to "manual select" proxy groups — auto-test groups make their own pick inside the core); the result is sent as a system notification.</p>
+    <p><b>Profile usage alerts</b> is on by default and relies on the traffic and expiry info provided by the subscription source. There are three tiers: <b>Usage alert threshold</b> (alert when used traffic reaches this percentage, default <code>80</code>%, adjustable from 1 to 100), <b>Expiration alert</b> (alert when remaining days are at or below this value, default <code>3</code> days, <code>0</code> turns this tier off) and the "expired" alert. Each tier fires only once; after a renewal or plan reset it arms again and alerts again when the condition is met.</p>
+
+    <h3 id="core-update">Core update</h3>
+    <p>Shows the current core version; click "Check for updates" to see if a new one exists. When there is, update with one click — the client downloads from GitHub Releases and replaces the core.</p>
+
+    <h3 id="node-latency-test">Node latency test</h3>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Test URL</b></td><td><code>http://www.gstatic.com/generate_204</code></td><td>A lightweight 204 URL is recommended.</td></tr>
+        <tr><td><b>Test timeout</b></td><td><code>5000</code> ms</td><td>A node that doesn't respond within this time counts as timed out.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="config-snapshots">Config snapshots</h3>
+    <p>Before each runtime config is generated, the previous <code>config.yaml</code> is archived automatically (the latest 10 are kept). Click View snapshots to see the list; if the core won't start or the config misbehaves, roll back to the last working version in one click. Restoring writes back and hot-reloads the core immediately, archiving the current file first.</p>
+    <p>Snapshots are an emergency fallback: after restoring, the config is regenerated from your current settings the next time you change something or restart the core.</p>
+
+    <h3 id="backup-and-restore">Backup and restore</h3>
+    <table>
+      <thead>
+        <tr><th>Action</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Export backup</b></td><td>Exports settings, subscriptions, Merge config and the core version into a single JSON file.</td></tr>
+        <tr><td><b>Import backup</b></td><td>Restores all data from a backup file, overwriting current settings and subscriptions. A confirmation "Import backup?" appears first.</td></tr>
+        <tr><td><b>Export diagnostics</b></td><td>Packs app and core versions, current settings, runtime config and recent logs into a ZIP file, with sensitive fields such as secrets masked automatically — handy to attach to a bug report.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="app-logs">App logs</h3>
+    <p>The client's own logs are written to <code>logs\app.log</code> in the data directory and rotate by size into archives (<code>app.1.log</code>, <code>app.2.log</code>…); click "Open log folder" to view them. They record the app's own actions (core start/stop, system proxy changes, config and updates), complementing the core's real-time logs on the Logs page — ideal for after-the-fact troubleshooting.</p>
+    <table>
+      <thead>
+        <tr><th>Setting</th><th>Default</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Log level</b></td><td>Warning</td><td>Error / Warning / Info / Debug; controls how detailed the log files are, effective immediately.</td></tr>
+        <tr><td><b>Max file size</b></td><td><code>128</code> KB</td><td>Range: 16 KB - 10 MB; files rotate automatically at the limit.</td></tr>
+        <tr><td><b>File count</b></td><td><code>8</code></td><td>Range: 2 - 50; the total number of log files kept, with the oldest deleted beyond that.</td></tr>
+        <tr><td><b>Retention days</b></td><td><code>7</code></td><td>Range: 1 - 365; archives older than this are cleaned up automatically.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="about">About</h2>
+    <p>The app logo and name sit at the top, with app version, core version and data directory listed below. The data directory is <code>%APPDATA%\com.unboundlink.desktop</code>, copyable with one click — back it up before migrating machines or reinstalling; click "Open folder" to view it in Explorer.</p>
+    <p>There is an Exit app button — confirming 'Exit Unbound link?' truly ends the program. Check for updates lets you download the installer in the app and complete the upgrade automatically (it installs silently and restarts with the new version); you can cancel and download manually at any time. Help & support opens the website and the online guide. The Developer tools entry opens a built-in debugging panel — not needed for daily use. The bottom of the page reminds you that all settings are saved instantly.</p>
+
+    <div class="cal ok">
+      <div>
+        <b>Summary</b>
+        <p>The three most-used spots: System → the system proxy card; Network → Mode under "Ports and mode"; Maintenance → Data and logs → Export backup. All of them save instantly with no extra confirmation.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

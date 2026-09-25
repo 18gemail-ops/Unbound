@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Advanced Tips — Unbound link User Guide</title>
+<meta name="description" content="Unbound link advanced tips: Merge override syntax, extension script examples, quick rules, chained proxies, the global command palette, plus the floating window and shortcuts.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Advanced tips</h1>
+    <p class="page-lead">This page collects six handy techniques: fine-tune subscriptions with Merge and scripts, create quick rules for domains, route restricted nodes through a relay, jump around with the command palette, and get the floating window and shortcuts set up your way.</p>
+
+    <h2 id="how-to-use-merge-override">How to use Merge override</h2>
+    <p>On the Profiles page, open "Global override config" and write a YAML snippet in the editor. When the runtime config is generated, the snippet is <b>deeply merged recursively</b> with the subscription to override its fields — write only what you want to change; no need to copy the whole config, and subscription updates remain unaffected.</p>
+    <div class="cal warn">
+      <div>
+        <b>Don't put port, control secret, mode or log level here</b>
+        <p>These are app-level settings written by the client when generating the config, overriding same-named entries in Merge. Change them under Settings → Network → Ports and mode.</p>
+      </div>
+    </div>
+    <p>The snippet below does three things at once: enables unified delay, appends a <code>dns</code> block, and adds a node to the proxy group named "Manual switch".</p>
+    <pre><code>unified-delay: true
+
+dns:
+  enable: true
+  nameserver:
+    - 223.5.5.5
+
+proxy-groups:
+  - name: Manual switch
+    type: select
+    proxies:
+      - HK Node 01</code></pre>
+
+    <h2 id="extension-script-examples">Extension script examples</h2>
+    <p>"Global extension script" on the same page accepts QuickJS scripts in the editor; the script must implement <code>main(config)</code> and <b>return config</b>. It runs on the built-in QuickJS engine to batch-rename nodes and add or remove rules. The two snippets below can be pasted as-is.</p>
+    <p>Example 1: strip ads from node names.</p>
+    <pre><code>function main(config){
+  config.proxies.forEach(p => {
+    p.name = p.name.replace(/official|subscribe/gi, "")
+  })
+  return config
+}</code></pre>
+    <p>Example 2: add a uniform prefix to all node names.</p>
+    <pre><code>function main(config){
+  config.proxies.forEach(p => {
+    p.name = "[U] " + p.name
+  })
+  return config
+}</code></pre>
+
+    <h2 id="quick-rules">Quick rules</h2>
+    <p>On the Connections page, right-click a connection and choose "direct for this domain" or "route this domain through a chosen line". The client generates a DOMAIN-SUFFIX rule, inserted at the top of the rule list — higher priority than subscription rules, effective immediately.</p>
+
+    <h2 id="chained-proxy">Chained proxy</h2>
+    <p>On the Proxies page click "Chained proxy rules" in the toolbar to open the chain editor: saved chains on the left; on the right, build a chain by picking hops from all candidates, with drag-to-reorder, insert-between-hops, region filters and pinned favorites — each candidate shows recent latency, and a proxy group can only be the first hop. Chains can be any length and apply immediately via hot reload after saving. To quickly give a single node a front proxy, just click the chain button on its card. Chained latency is roughly the sum of all hops — usually slower, but potentially more stable.</p>
+
+    <h2 id="floating-window-and-shortcuts">Floating window and shortcuts</h2>
+    <p>The traffic floating window is customizable in content and appearance:</p>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Options</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Size</b></td><td>compact / standard / large.</td></tr>
+        <tr><td><b>Layout</b></td><td>card / capsule / gauge.</td></tr>
+        <tr><td><b>Color theme</b></td><td>auto (follows the main app) / graphite / aurora / sunset / emerald / midnight / ivory — 7 in total.</td></tr>
+        <tr><td><b>Display items</b></td><td>Current node latency, active connections, mini traffic chart, today's traffic, system proxy status and mode — each toggleable.</td></tr>
+        <tr><td><b>Opacity</b></td><td>Default 88.</td></tr>
+      </tbody>
+    </table>
+    <p>Default global shortcuts are listed in <a href="./settings.html">Settings</a>: toggle the system proxy <code>Ctrl+Shift+P</code>, toggle TUN mode <code>Ctrl+Shift+T</code>, show the main window <code>Ctrl+Shift+U</code>, toggle the traffic floating window <code>Ctrl+Shift+O</code> and cycle the proxy mode <code>Ctrl+Shift+M</code>; "Update all subscriptions" and "Restart core" are unbound by default and can be recorded in Settings. Right-clicking the tray icon also opens a quick panel for toggling the system proxy or TUN, opening the main window and more; clicking the "node" or "group" row pops up a standalone node picker beside the panel — all proxy groups on the left, that group's nodes and latencies on the right, click to switch without digging through the small panel.</p>
+
+    <h2 id="global-command-palette">Global command palette</h2>
+    <p>Press <code>Ctrl+K</code> (or click the search button in the sidebar) to bring up the command palette on any page; type keywords to filter the entries, or leave it empty to list every available action by group:</p>
+    <table>
+      <thead>
+        <tr><th>Group</th><th>What it does</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Pages</b></td><td>Jump to any page in the app.</td></tr>
+        <tr><td><b>Settings</b></td><td>Jump straight to any of the six settings tabs: Appearance / System / Network / Tools / Maintenance / About.</td></tr>
+        <tr><td><b>Actions</b></td><td>Start / stop / restart the core, toggle the system proxy, TUN mode, LAN connections and the floating window, switch light/dark themes and rule / global / direct modes, quit the app, and more.</td></tr>
+        <tr><td><b>Subscription</b></td><td>Update all subscriptions; update, enable or disable a specific subscription; open the provider's website in one click when one is set.</td></tr>
+        <tr><td><b>Maintenance</b></td><td>Check for core updates (upgrade in one click when one is found), check for app updates, update the GeoData database, export and import backups, back up to the cloud or restore from it (shown once WebDAV is configured), and reset rule-hit, app or node traffic statistics.</td></tr>
+        <tr><td><b>Network rescue</b></td><td>One-click rescue, flush the DNS cache, reset the system proxy and DNS servers, restore the hosts file, reset the network stack; risky actions ask for confirmation first.</td></tr>
+        <tr><td><b>Tools</b></td><td>Open the web dashboard, the data directory and the log directory, export diagnostics, and open the official site or the User Guide.</td></tr>
+        <tr><td><b>Nodes</b></td><td>Search existing nodes — results show recent latency, press Enter to switch (appears only after you type a keyword, keeping the list short for large subscriptions).</td></tr>
+      </tbody>
+    </table>
+    <p>Keyboard: <code>↑</code> <code>↓</code> to select, <code>Enter</code> to run, <code>Esc</code> to close. Everyday moves like switching nodes or modes, checking for updates or restoring backups no longer need the mouse.</p>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

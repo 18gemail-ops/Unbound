@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Diagnostics — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Diagnostics guide: 11 automatic checks and the network rescue kit.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Diagnostics</h1>
+    <p class="page-lead">Diagnostics checks the core, ports, system proxy, DNS, exits and leaks in one pass, with a conclusion and suggestion for each item, plus the network rescue kit.</p>
+
+    <h2 id="what-this-page-solves">What this page solves</h2>
+    <p>When pages won't load or the proxy seems ineffective, no need to guess. Entering the page <b>starts the checks automatically</b>; when done, the header summarizes results — e.g., "11 passed", "N notices", "N issues" — so you see the scale of the problem first. The "Re-run checks" button sits top-right and shows "Checking…" while running. Diagnostics only inspects; it never changes system settings — whether and what to repair is up to you.</p>
+
+    <h2 id="the-11-automatic-checks">The 11 automatic checks</h2>
+    <p>There are 11 checks; each gives a conclusion, and abnormal ones show "Suggestion: …" telling you the next step.</p>
+    <table>
+      <thead>
+        <tr><th>Check</th><th>What it inspects</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Core status</b></td><td>Whether the core is running, its version, and whether it's elevated.</td></tr>
+        <tr><td><b>Port listening</b></td><td>Whether the mixed and control ports are taken by other programs.</td></tr>
+        <tr><td><b>System proxy</b></td><td>Whether the system proxy is on and points at the local mixed port.</td></tr>
+        <tr><td><b>DNS resolution</b></td><td>Resolution time and the DNS addresses in use.</td></tr>
+        <tr><td><b>DNS takeover</b></td><td>Whether TUN mode takes over system DNS resolution.</td></tr>
+        <tr><td><b>Direct exit</b></td><td>The exit IP probed when connecting directly.</td></tr>
+        <tr><td><b>Proxy exit</b></td><td>The exit IP probed through the proxy; if it matches the direct exit, it warns that the exit IP equals the direct one.</td></tr>
+        <tr><td><b>WebRTC leaks</b></td><td>Checks for public candidate IPs and warns when the real IP could leak.</td></tr>
+        <tr><td><b>Current node</b></td><td>The current node's latency; when unreachable it suggests picking a working node on the Proxies page.</td></tr>
+        <tr><td><b>Direct GitHub access</b></td><td>Direct reachability, timing and HTTP status code.</td></tr>
+        <tr><td><b>Config loading</b></td><td>The number of groups and nodes.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="network-rescue-kit">Network rescue kit</h2>
+    <p>The "Network rescue kit" section sits below, described as: "When the proxy exits unexpectedly, DNS breaks or pages won't load: detect first to locate the problem, then repair as prompted." It offers two buttons: "One-click rescue" and "Start check / Re-check".</p>
+    <p><b>One-click rescue</b> does two things at once: reset the system proxy and flush the DNS cache. Neither <b>needs admin rights</b> and both take effect immediately — good for the vast majority of temporary network failures. <b>Start check / Re-check</b> runs the dedicated outage checks on their own. Detect first to locate the problem, then decide whether to use one-click rescue.</p>
+
+    <h2 id="outage-specific-checks">Outage-specific checks</h2>
+    <p>The dedicated checks cover five classes of problems, each with a matching repair button:</p>
+    <table>
+      <thead>
+        <tr><th>Problem</th><th>Symptom</th><th>Repair button</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Leftover system proxy</b></td><td>The proxy still points at <code>127.0.0.1:7890</code> while the core isn't running.</td><td>Reset system proxy</td></tr>
+        <tr><td><b>DNS resolution failure</b></td><td>Domains can't be resolved.</td><td>Flush DNS cache (<code>ipconfig /flushdns</code>, no admin needed)</td></tr>
+        <tr><td><b>Abnormal DNS servers</b></td><td>The adapter is set to invalid addresses like 0.0.0.0.</td><td>Reset DNS servers / set to automatic (admin required)</td></tr>
+        <tr><td><b>Abnormal hosts file</b></td><td>Custom entries exist, or the file is missing.</td><td>Restore hosts file (backs up the current content first, then resets to default; admin required)</td></tr>
+        <tr><td><b>Direct network unreachable</b></td><td>No internet even without the proxy.</td><td>Reset network stack (resets winsock and TCP/IP; admin required; takes effect after a reboot)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="privileges-and-confirmation">Privileges and confirmation</h2>
+    <p>Repairs needing admin rights trigger a UAC elevation prompt and only run once approved. Dangerous operations ask for confirmation first, with a red "Run" button — read the prompt before clicking. After a repair, the page re-runs the checks automatically to refresh the conclusions.</p>
+
+    <div class="cal ok">
+      <div>
+        <b>Suggested troubleshooting order</b>
+        <p>Start with the first four checks — core / ports / system proxy / DNS resolution. Once those pass, move on to the exit and leak checks — the scope narrows step by step.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

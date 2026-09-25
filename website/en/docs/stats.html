@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Traffic — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Traffic guide: daily up and down traffic through the core, plus cumulative usage by app and by node.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Traffic</h1>
+    <p class="page-lead">The Traffic page records this machine's daily up and down traffic through the core, so you can review usage trends over time.</p>
+
+    <h2 id="what-this-page-solves">What this page solves</h2>
+    <p>It answers "how much traffic did I use these days". All data comes from the local core — no server collects it; what you see is this computer's actual usage.</p>
+
+    <h2 id="choosing-a-time-range">Choosing a time range</h2>
+    <p>The top of the page switches between four time ranges:</p>
+    <ul>
+      <li><b>Last 7 days</b> — usage over the past week.</li>
+      <li><b>Last 30 days</b> — usage over the past month.</li>
+      <li><b>Last 90 days</b> — usage over the past three months.</li>
+      <li><b>All</b> — every record in history.</li>
+    </ul>
+    <p>After switching, the chart and table below update in sync. Shorter ranges show clearer trends; longer ranges are better for overall scale. "Last 7 days" is enough for daily checks — reach for "Last 30 days" or "Last 90 days" to see long-term usage. Switching only affects the display; no historical data is deleted.</p>
+
+    <h2 id="what-to-look-at-and-how">What to look at and how</h2>
+    <p>The page presents data two ways at once — a trend chart and a detail table: the chart shows the curve's ups and downs so you can spot high-traffic days at a glance; the table gives each day's exact numbers. The table has four columns:</p>
+    <table>
+      <thead>
+        <tr><th>Column</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Date</b></td><td>The day this row covers.</td></tr>
+        <tr><td><b>Download</b></td><td>Total traffic received that day.</td></tr>
+        <tr><td><b>Upload</b></td><td>Total traffic sent that day.</td></tr>
+        <tr><td><b>Total</b></td><td>Combined up and down traffic for the day.</td></tr>
+      </tbody>
+    </table>
+    <p>If the current range has no records yet, the page shows "No records in this range". Widen the range, or come back after using the app for a while.</p>
+
+    <h2 id="traffic-by-app">Traffic by app</h2>
+    <p>At the bottom of the page there is an <b>App traffic</b> panel that groups traffic by originating process, showing which app used the most bandwidth over the period. The table has five columns — app, download, upload, total and last active — sorted by total, highest first.</p>
+    <p>Data is sampled from connection records every 15 seconds while the core runs; only connections with an identifiable process are counted. The list may be empty right after start-up and fills in shortly. Totals persist across restarts. To start over, click Reset at the panel's top-right to clear all per-app totals; daily records are not affected.</p>
+
+    <h2 id="traffic-by-node">Traffic by node</h2>
+    <p>Below the <b>App traffic</b> panel there is a <b>Node traffic</b> panel that groups traffic by the exit node each connection finally leaves through, with direct traffic listed separately as a <b>DIRECT</b> row — handy for comparing how much went through the proxy and how much went direct. The table has five columns — node, download, upload, total and last active — sorted by total, highest first.</p>
+    <p>Data is likewise sampled every 15 seconds while the core runs and accumulated; totals persist across restarts. To start over, click Reset at the panel's top-right to clear all per-node totals; daily records and App traffic are not affected.</p>
+
+    <h2 id="where-the-data-is-stored">Where the data is stored</h2>
+    <p>Data is recorded continuously while the client runs and stored in the data directory: daily records in <code>traffic_history.json</code>, per-app traffic in <code>app_traffic.json</code> and per-node traffic in <code>node_traffic.json</code>. Therefore <b>history is kept after a restart</b> and is not lost when you exit. All these files are maintained automatically by the client — no manual editing needed.</p>
+
+    <div class="cal note">
+      <div>
+        <b>Only traffic through the core is counted</b>
+        <p>Only traffic that goes through the core is counted. Direct connections that bypass the core aren't included, so the totals may be lower than the adapter's actual usage.</p>
+      </div>
+    </div>
+
+    <div class="cal warn">
+      <div>
+        <b>About clearing records</b>
+        <p>Daily records have no dedicated clear button — you can overwrite them indirectly by importing a backup under Settings → Maintenance → Backup & restore. Per-app and per-node totals can be cleared with Reset at each panel's top-right.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

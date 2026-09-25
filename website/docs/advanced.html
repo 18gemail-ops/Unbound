@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>进阶技巧 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）进阶技巧：Merge 覆写写法、扩展脚本示例、快捷规则、链式代理、全局命令面板，以及悬浮窗与快捷键。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>进阶技巧</h1>
+    <p class="page-lead">这一页给出六个常用技巧：用 Merge 与脚本微调订阅、为域名建快捷规则、让受限节点经中转连接、用命令面板快速跳转，以及把悬浮窗和快捷键调顺手。</p>
+
+    <h2 id="Merge-覆写怎么用">Merge 覆写怎么用</h2>
+    <p>在「订阅管理」页点开「全局扩展覆写配置」，在弹出的编辑框里写 YAML 片段。生成运行时配置时，这段内容会与订阅内容<b>递归深度合并</b>，用来覆盖订阅里的字段；只写你要改的片段即可，不需要抄整份配置，订阅自身更新也不受影响。</p>
+    <div class="cal warn">
+      <div>
+        <b>端口、控制密钥、运行模式与日志级别不要写在这里</b>
+        <p>这几项属于应用级设置，由客户端在生成配置时统一写入，会覆盖 Merge 里的同名内容。要改它们请到「设置 → 网络 → 端口与模式」。</p>
+      </div>
+    </div>
+    <p>下面这段同时做了三件事：打开统一延迟，追加一段 <code>dns</code> 配置，并为名为「手动切换」的代理组补充一个节点。</p>
+    <pre><code>unified-delay: true
+
+dns:
+  enable: true
+  nameserver:
+    - 223.5.5.5
+
+proxy-groups:
+  - name: 手动切换
+    type: select
+    proxies:
+      - 香港节点 01</code></pre>
+
+    <h2 id="扩展脚本示例">扩展脚本示例</h2>
+    <p>同页的「全局扩展脚本」支持在编辑框里写 QuickJS 脚本，脚本必须实现 <code>main(config)</code> 并 <b>返回 config</b>。客户端用内置 QuickJS 引擎执行，可以批量改写节点名、增删规则。下面两段可直接粘贴使用。</p>
+    <p>示例一：去掉节点名里的广告词。</p>
+    <pre><code>function main(config){
+  config.proxies.forEach(p => {
+    p.name = p.name.replace(/官网|订阅/g, "")
+  })
+  return config
+}</code></pre>
+    <p>示例二：给所有节点名加统一前缀。</p>
+    <pre><code>function main(config){
+  config.proxies.forEach(p => {
+    p.name = "[U] " + p.name
+  })
+  return config
+}</code></pre>
+
+    <h2 id="快捷规则">快捷规则</h2>
+    <p>在「实时连接」页右键某条连接，选择「此域名直连」或「此域名走指定线路」。客户端会据此生成一条 DOMAIN-SUFFIX 规则，并插入到规则列表最前，优先级高于订阅规则，立即生效。</p>
+
+    <h2 id="链式代理">链式代理</h2>
+    <p>在「代理节点」页点工具区的「链式代理规则」，打开链路编辑器：左侧列出已保存的链路，右侧从全量候选里点选环节搭链，支持拖拽排序、环节间插入、按地区筛选与收藏置顶，候选右侧显示节点近期延迟，代理组只能作为第一环。链路可任意长，保存后立即热重载生效。如果只想给单个节点快速指定前置，也可以直接在节点卡片上点链式按钮设置。链式之后延迟约为各段之和，通常会更慢一些，但可能更稳。</p>
+
+    <h2 id="悬浮窗与快捷键">悬浮窗与快捷键</h2>
+    <p>流量悬浮窗可以按显示内容与外观自定义：</p>
+    <table>
+      <thead>
+        <tr><th>项目</th><th>可选项</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>尺寸</b></td><td>compact / standard / large 三档。</td></tr>
+        <tr><td><b>版式</b></td><td>卡片 card / 胶囊 capsule / 仪表 gauge。</td></tr>
+        <tr><td><b>配色</b></td><td>auto（跟随主程序）/ graphite / aurora / sunset / emerald / midnight / ivory，共 7 套。</td></tr>
+        <tr><td><b>显示项</b></td><td>当前节点延迟、活跃连接数、迷你流量曲线、今日流量、系统代理状态与模式，可分别开关。</td></tr>
+        <tr><td><b>不透明度</b></td><td>默认 88。</td></tr>
+      </tbody>
+    </table>
+    <p>全局快捷键的默认值见<a href="./settings.html">设置</a>：切换系统代理 <code>Ctrl+Shift+P</code>、切换 TUN 模式 <code>Ctrl+Shift+T</code>、显示主窗口 <code>Ctrl+Shift+U</code>、开关流量悬浮窗 <code>Ctrl+Shift+O</code>、切换代理模式 <code>Ctrl+Shift+M</code>；「更新全部订阅」与「重启内核」默认未绑定，可在设置里自行录制。托盘图标右键还能弹出快捷面板，用来切换系统代理、TUN、打开主窗口等；点击面板中的「节点」或「分组」行，会在面板旁边弹出独立的节点选择浮层——左栏列出全部代理分组，右栏列出该分组的节点与延迟，点选即切换，无需在狭小的面板内翻找。</p>
+
+    <h2 id="全局命令面板">全局命令面板</h2>
+    <p>按 <code>Ctrl+K</code>（或点侧边栏的搜索按钮）可以在任意页面呼出命令面板；输入关键词过滤条目，不输入时按分组列出全部可用操作：</p>
+    <table>
+      <thead>
+        <tr><th>分组</th><th>能做什么</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>页面</b></td><td>跳转到任意功能页。</td></tr>
+        <tr><td><b>设置</b></td><td>直达设置的六个页签：外观 / 系统 / 网络 / 工具 / 维护 / 关于。</td></tr>
+        <tr><td><b>动作</b></td><td>启停 / 重启内核、开关系统代理、TUN 模式、局域网连接与悬浮窗，切换深浅主题与规则 / 全局 / 直连模式，退出应用等。</td></tr>
+        <tr><td><b>订阅</b></td><td>更新全部订阅；逐条更新、启用 / 停用指定订阅；有官网地址的订阅可一键打开机场官网。</td></tr>
+        <tr><td><b>维护</b></td><td>检查内核更新（有新版可直接一键升级）、检查应用更新、更新 GeoData 数据库、导出与导入备份、备份到云端 / 从云端恢复（已配置 WebDAV 时显示）、重置规则命中与应用 / 节点流量统计。</td></tr>
+        <tr><td><b>断网急救</b></td><td>一键急救、刷新 DNS 缓存、重置系统代理与 DNS 服务器、恢复 hosts 文件、重置网络协议栈；危险动作会先弹出确认。</td></tr>
+        <tr><td><b>工具</b></td><td>打开 Web 控制面板、数据目录与日志目录、导出诊断信息、打开官网与使用手册。</td></tr>
+        <tr><td><b>节点</b></td><td>搜索已有节点，结果显示近期延迟，回车即切换（输入关键词后才出现，避免大订阅下列表过长）。</td></tr>
+      </tbody>
+    </table>
+    <p>键盘操作：<code>↑</code> <code>↓</code> 选择、<code>Enter</code> 执行、<code>Esc</code> 关闭。切节点、切模式、检查更新、备份恢复这类操作都可以完全不动鼠标完成。</p>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

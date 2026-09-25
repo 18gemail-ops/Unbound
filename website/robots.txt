@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# 手册与官网内容均可收录
+# 部署到自定义域名后，可在此补充 Sitemap 绝对地址：
+# Sitemap: https://your-domain.example/sitemap.xml

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>App Routing — Unbound link User Guide</title>
+<meta name="description" content="Unbound link App Routing: route different apps through different lines — bind process names, choose target lines and aggregation policies, and avoid common validation issues.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>App Routing</h1>
+    <p class="page-lead">Route different apps through different lines: bind your browser, games and download tools to suitable lines, each independent of the others.</p>
+
+    <p>The page subtitle says it: route different apps through different lines. The "Enable App Routing" master switch sits at the top, off by default, with an "Add app binding" button above the table. The master switch gates this whole page — bindings you add below only take effect once it's on. Each binding connects one app to one or more lines, after which that app's traffic follows the bound lines.</p>
+
+    <h2 id="the-binding-table">The binding table</h2>
+    <p>All bindings are listed in a table, one binding rule per row.</p>
+    <table>
+      <thead>
+        <tr><th>Column</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>App</b></td><td>Shows the icon and name / process name.</td></tr>
+        <tr><td><b>Target lines</b></td><td>Switch lines directly in the row. With multiple lines it shows an aggregation note — "multiple connections are distributed across the lines; click Edit to change" — plus the latest latency for that line.</td></tr>
+        <tr><td><b>Live speed</b></td><td>Up/down speed of the app's current active connections, from the core's connection records.</td></tr>
+        <tr><td><b>Enabled</b></td><td>Toggles whether this binding is active.</td></tr>
+        <tr><td><b>Actions</b></td><td>Edit and remove. Removal asks for confirmation: "Remove this app binding?".</td></tr>
+      </tbody>
+    </table>
+    <p>The Target lines column switches right in the row — no need to open the dialog every time; only aggregated multi-line targets require Edit to re-select. Live speed comes from the core's connection records and shows the app's currently active up/down traffic; it drops to zero when connections close, so it reflects this moment, not cumulative usage. To refresh line latency, use the "refresh lines" style button in the toolbar.</p>
+
+    <h2 id="adding-an-app-binding">Adding an app binding</h2>
+    <p>Click "Add app binding" to open the dialog; fill in three parts: app, match method and target lines.</p>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>App</b></td><td>Enter a process name (e.g. <code>chrome.exe</code>) or full path (e.g. <code>C:\Games\game.exe</code>); a "Choose program file" button lets you browse for the exe; you can also pick directly from the list of running processes the core has seen making network connections, complete with app icons and window titles.</td></tr>
+        <tr><td><b>Match method</b></td><td>"By process name (recommended)" or "By full path".</td></tr>
+        <tr><td><b>Target lines</b></td><td>Multi-select; choosing 2 or more aggregates them automatically for more speed. Options include policy groups, nodes and two fixed entries: "Direct (no proxy)" and "Reject (block connection)".</td></tr>
+        <tr><td><b>Aggregation policy</b></td><td>Appears only with 2+ lines: "round-robin" (connections spread across lines automatically) or "session-persistent".</td></tr>
+      </tbody>
+    </table>
+    <p>There are three ways to fill in the app: type a process name, type a full path, or click "Choose program file" to browse for the exe. If unsure, pick straight from the running-process list (processes the core has seen currently or recently making connections) — icons and window titles make it easier to find the right one. Then the match method decides how the app is recognized: "By process name (recommended)" is shorter and more tolerant of moved or reinstalled programs; "By full path" is more precise.</p>
+
+    <h2 id="target-lines-and-aggregation">Target lines and aggregation</h2>
+    <p>Target lines is a multi-select. Choices include policy groups, nodes and two fixed entries: "Direct (no proxy)" and "Reject (block connection)". With 2+ lines the client creates an aggregation group so several lines serve the app at once; with one line, traffic takes just that line. Two or more lines also prompt for an aggregation policy: round-robin spreads connections across lines, while session-persistent keeps a session on one line.</p>
+
+    <h2 id="common-validation-messages">Common validation messages</h2>
+    <p>If saving fails, the dialog shows one of these messages — fix accordingly:</p>
+    <table>
+      <thead>
+        <tr><th>Message</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Select or enter an app process</td><td>No app selected.</td></tr>
+        <tr><td>Select at least one target line</td><td>No line selected.</td></tr>
+        <tr><td>This app is already in the binding list</td><td>Duplicate binding.</td></tr>
+        <tr><td>Aggregation doesn't support Direct or Reject; they were removed automatically — to use Direct, select it alone</td><td>The aggregation included Direct or Reject.</td></tr>
+        <tr><td>Process name or line name contains a comma</td><td>A warning is shown because commas are written into rules.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="typical-setups">Typical setups</h2>
+    <p>Browser through "Auto Select", games through a "low-latency line", download tools pinned to a single fixed line; or set a chat app to "Reject" to block its connectivity. A few rules of thumb: apps that prize stability get a single line; apps that prize speed get multiple lines aggregated; apps that shouldn't use the proxy get "Direct"; apps that shouldn't be online at all get "Reject".</p>
+
+    <div class="cal note">
+      <div>
+        <b>Routing only affects bound processes</b>
+        <p>App Routing affects only bound processes; all other traffic still follows the <a href="./rules.html">rule list</a>. Bindings depend on the core running — they don't take effect while the core is stopped.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

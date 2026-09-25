@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>常见问题 — 无界互联 Unbound link</title>
+<meta name="description" content="无界互联 Unbound link 常见问题：内核与订阅、是否需要管理员权限、系统代理与 TUN 的区别、数据与隐私、备份迁移、卸载注意事项等。">
+<link rel="icon" href="./favicon.ico">
+<link rel="stylesheet" href="./assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./index.html">
+      <img src="./assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="./features.html">功能</a>
+      <a href="./docs/index.html">使用手册</a>
+      <a href="./download.html">下载</a>
+      <a href="./changelog.html">更新日志</a>
+      <a href="./faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="./download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head reveal center" style="margin-bottom:0">
+      <span class="eyebrow">常见问题</span>
+      <h2>先看这里，多半能找到答案</h2>
+      <p class="lead">装不上、连不上、不知道某个开关在哪——这些都在手册里写清楚了，这里挑出最常被问到的。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width:900px">
+    <h2 style="font-size:20px;margin:0 0 14px">关于软件本身</h2>
+    <div class="faq reveal" style="margin-bottom:32px">
+      <details open>
+        <summary>无界互联和 Clash 系列客户端是什么关系？</summary>
+        <div class="a">
+          <p>无界互联是一个 Windows 桌面客户端，网络能力全部来自 <b>mihomo 内核</b>（Clash Meta 系列的延续），自身不实现任何代理协议。它负责的是订阅管理、运行时配置生成、内核启停与守护，以及通过内核接口做观测与操控。</p>
+        </div>
+      </details>
+      <details>
+        <summary>需要自己下载和放置内核吗？</summary>
+        <div class="a">
+          <p>不需要。内核（mihomo）与 TUN 驱动随安装包一起分发，由客户端负责启动和停止。你也不需要手动编辑配置文件——运行时配置由客户端根据订阅与你的设置生成。</p>
+          <p>内核本身也可以在「设置 → 维护 → 内核更新」里检查并更新到新版本。</p>
+        </div>
+      </details>
+      <details>
+        <summary>支持 macOS 或 Linux 吗？</summary>
+        <div class="a">
+          <p>目前仅支持 Windows 10 / 11 64 位。部分功能（系统代理写入、TUN 虚拟网卡、托盘与 UAC 提权）依赖 Windows 系统能力。</p>
+        </div>
+      </details>
+      <details>
+        <summary>从哪里获取订阅？</summary>
+        <div class="a">
+          <p>订阅由你自己的服务商提供，客户端不附带也不代购任何订阅。拿到形如 <code>https://…</code> 的订阅链接后，在「订阅管理 → 添加订阅」里粘贴即可。</p>
+        </div>
+      </details>
+      <details>
+        <summary>可以同时导入多个订阅吗？</summary>
+        <div class="a">
+          <p>可以导入并保留多个订阅，卡片可拖动排序。每个订阅的启用开关独立控制，可以同时启用多个：第一个启用的订阅提供端口 / DNS / 模式等基础配置，其余订阅的节点、策略组与规则并入，生效顺序按列表从上到下；启用状态变化后会重新生成运行时配置。</p>
+        </div>
+      </details>
+    </div>
+
+    <h2 style="font-size:20px;margin:0 0 14px">关于代理生效</h2>
+    <div class="faq reveal" style="margin-bottom:32px">
+      <details>
+        <summary>开了系统代理，为什么有些软件还是不走代理？</summary>
+        <div class="a">
+          <p>这是系统代理的固有局限：只有读取 Windows Internet 设置的程序（浏览器、多数桌面软件）才会使用它。游戏、部分命令行工具和应用内自建网络栈的程序不会读取这个设置。</p>
+          <p>两种解决办法：开启 <b>TUN 模式</b>（虚拟网卡在网络层接管全部流量，需要管理员权限），或用 <b>应用分流</b> 把该进程绑定到指定线路。</p>
+        </div>
+      </details>
+      <details>
+        <summary>Microsoft Store 安装的应用连不上网怎么办？</summary>
+        <div class="a">
+          <p>Windows 默认禁止应用商店安装的应用访问本机地址（<code>127.0.0.1</code>），因此它们无法直接使用本机代理，表现为应用内网络不通、一直转圈。</p>
+          <p>到「设置 → 工具 → UWP 应用工具 → 管理应用」，为它打开开关解除回环限制即可；这个操作需要管理员权限，若失败请以管理员身份重启应用后重试。</p>
+        </div>
+      </details>
+      <details>
+        <summary>系统代理、TUN 模式、应用分流，到底该用哪个？</summary>
+        <div class="a">
+          <ul>
+            <li><b>系统代理</b>：覆盖浏览器等大多数软件，不需要额外权限，日常首选。</li>
+            <li><b>TUN 模式</b>：覆盖全部流量，包括不认系统代理的程序；需要管理员权限。</li>
+            <li><b>应用分流</b>：只影响被绑定的进程，用来给个别应用指定专门线路。</li>
+          </ul>
+          <p>三者可以同时开启，互不冲突。</p>
+        </div>
+      </details>
+      <details>
+        <summary>运行模式里的「规则」「全局」「直连」有什么区别？</summary>
+        <div class="a">
+          <p><b>规则</b>按订阅与你自己添加的规则决定每条流量走哪条线，是日常使用的模式；<b>全局</b>忽略规则，所有流量都走当前选中的出口；<b>直连</b>则全部不走代理。</p>
+          <p>在「设置 → 网络 → 运行模式」切换。需要注意：切换到「全局」或「直连」后，规则列表里的规则不会生效。</p>
+        </div>
+      </details>
+      <details>
+        <summary>快捷规则和订阅里的规则冲突时，谁生效？</summary>
+        <div class="a">
+          <p>快捷规则优先。你在「实时连接」页右键创建的域名规则会被插入到规则列表的最前面，因此先于订阅里的规则被匹配，且立即生效、无需重启内核。</p>
+        </div>
+      </details>
+      <details>
+        <summary>节点显示全部超时怎么办？</summary>
+        <div class="a">
+          <p>按顺序排查：① 在「代理节点」页点「全部测速」确认最新延迟；② 在「订阅管理」页点订阅卡片上的「流量」刷新用量信息，确认订阅未过期；③ 点「更新」重新拉取订阅；④ 到「网络体检」查看「直连出口 / 代理出口」与「当前节点」的结论。</p>
+          <p>更多场景见 <a href="./docs/troubleshooting.html">故障排查</a>。</p>
+        </div>
+      </details>
+      <details>
+        <summary>切换节点会让已有连接断开吗？</summary>
+        <div class="a">
+          <p>切换节点、修改 DNS 或端口这类改动会通过热重载应用到内核，不会重启内核进程本身。已经在传输的连接可能因出口变化而重新建立，这是代理的正常行为。</p>
+        </div>
+      </details>
+    </div>
+
+    <h2 style="font-size:20px;margin:0 0 14px">关于权限与数据</h2>
+    <div class="faq reveal" style="margin-bottom:32px">
+      <details>
+        <summary>为什么有些操作要求管理员权限？</summary>
+        <div class="a">
+          <p>需要改动系统级设置的操作会要求管理员权限：开启 TUN 模式、重置 DNS 服务器、恢复 hosts 文件、重置网络协议栈。客户端会在界面上明确标注，并在执行时通过 UAC 提权，不会静默提权。</p>
+          <p>而「一键急救」里的重置系统代理与刷新 DNS 缓存不需要管理员权限，随时可以点。</p>
+        </div>
+      </details>
+      <details>
+        <summary>软件会收集或上传我的数据吗？</summary>
+        <div class="a">
+          <p>不需要账号，也不做数据上报。设置、订阅、统计与日志全部保存在本机的数据目录 <code>%APPDATA%\com.unboundlink.desktop</code>。</p>
+          <p>程序产生的对外网络请求只有三类：拉取你的订阅链接、检查与获取内核更新、以及网络体检与测速时的探测请求（例如访问 204 检测地址与你的节点）。</p>
+        </div>
+      </details>
+      <details>
+        <summary>换电脑或重装系统，怎么把配置带走？</summary>
+        <div class="a">
+          <p>「设置 → 维护 → 备份与恢复 → 导出备份」，会把设置、订阅、Merge 配置与内核版本导出为一个 JSON 文件。在新环境安装后点「导入备份」即可恢复（会覆盖当前设置与订阅）。</p>
+        </div>
+      </details>
+      <details>
+        <summary>想反馈问题，怎么提供信息最有用？</summary>
+        <div class="a">
+          <p>「设置 → 维护 → 备份与恢复 → 导出诊断信息」会生成一个 ZIP 包，内含应用与内核版本、当前设置、运行配置与最近的日志，密钥等敏感字段已自动打码，可直接附在问题反馈里。</p>
+        </div>
+      </details>
+      <details>
+        <summary>卸载后浏览器打不开网页了？</summary>
+        <div class="a">
+          <p>说明卸载时系统代理仍处于开启状态，浏览器还在指向本机的代理端口。处理方式：重新安装并在「网络体检 → 断网急救箱」里点「一键急救」（重置系统代理 + 刷新 DNS 缓存），或在 Windows「Internet 选项 → 连接 → 局域网设置」里取消代理服务器。</p>
+          <p>以后卸载前，先在「设置 → 系统 → 系统代理」关闭「系统代理」即可。</p>
+        </div>
+      </details>
+      <details>
+        <summary>卸载会删除我的设置和订阅吗？</summary>
+        <div class="a">
+          <p>不会。卸载程序只移除程序文件，数据目录会保留。如果需要彻底清理，手动删除 <code>%APPDATA%\com.unboundlink.desktop</code> 即可。</p>
+        </div>
+      </details>
+    </div>
+
+    <h2 style="font-size:20px;margin:0 0 14px">关于使用细节</h2>
+    <div class="faq reveal">
+      <details>
+        <summary>默认占用哪些端口？被占用怎么办？</summary>
+        <div class="a">
+          <p>默认混合代理端口为 <code>7890</code>，控制接口端口为 <code>9090</code>。「网络体检」的「端口监听」项会告诉你端口是被正常监听还是被其他程序占用。改端口在「设置 → 网络 → 端口与模式」，修改后内核会自动重启。</p>
+        </div>
+      </details>
+      <details>
+        <summary>「下载测速」为什么只测 10 秒，还临时换了节点？</summary>
+        <div class="a">
+          <p>节点卡片上的仪表图标是下载测速，需要真实下载一段时间才能反映带宽，因此固定约 10 秒。测速会把当前出口临时切到该节点，测完自动恢复原来选中的节点。测速结果约 10 分钟后自动清除，避免用旧数据误导判断。</p>
+        </div>
+      </details>
+      <details>
+        <summary>日志里为什么有两套来源？</summary>
+        <div class="a">
+          <p>内核自身产生的日志（连接、规则匹配等）来自内核的实时通道；客户端自身的操作日志（订阅更新、配置重载、内核启停等）带 <code>[无界互联]</code> 前缀。两者在「运行日志」页按时间排列在一起，按级别筛选时统一生效。</p>
+        </div>
+      </details>
+      <details>
+        <summary>关闭窗口后程序去哪了？</summary>
+        <div class="a">
+          <p>默认「关闭时最小化到托盘」是开启的，点关闭按钮只是隐藏窗口，代理仍在运行。从托盘图标右键菜单可以重新打开主界面或彻底退出。这个行为可以在「设置 → 系统 → 托盘与守护」里关闭。</p>
+        </div>
+      </details>
+      <details>
+        <summary>悬浮窗怎么调样式，会不会挡住鼠标操作？</summary>
+        <div class="a">
+          <p>悬浮窗支持 3 档尺寸、3 种版式（卡片 / 胶囊 / 仪表）和 7 套配色，可以分别开关延迟、连接数、流量曲线、今日流量与代理状态的显示，还能调整不透明度。担心挡操作就在「设置 → 系统 → 托盘与守护」打开「悬浮窗鼠标穿透」。</p>
+        </div>
+      </details>
+      <details>
+        <summary>有快捷键吗？</summary>
+        <div class="a">
+          <p>默认五个全局快捷键：<code>Ctrl+Shift+P</code> 切换系统代理、<code>Ctrl+Shift+T</code> 切换 TUN 模式、<code>Ctrl+Shift+U</code> 显示主窗口、<code>Ctrl+Shift+O</code> 开关流量悬浮窗、<code>Ctrl+Shift+M</code> 切换代理模式（规则 → 全局 → 直连）；另有「更新全部订阅」「重启内核」两个动作默认未绑定，可自行录制。位置在「设置 → 系统 → 全局快捷键」，可自行录制修改或一键恢复默认。</p>
+        </div>
+      </details>
+      <details>
+        <summary>还有问题没解决？</summary>
+        <div class="a">
+          <p>先看手册的 <a href="./docs/troubleshooting.html">故障排查</a> 与 <a href="./docs/diagnose.html">网络体检</a> 两节；仍未解决可以在仓库的 Issues 里反馈，附上「运行日志」页的报错行与「网络体检」的结论会更快定位。</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>没找到想问的问题？</h2>
+        <p>完整手册按界面逐页讲解，包含每个开关的位置与默认值。</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-dark btn-lg" href="./docs/index.html">打开使用手册</a>
+        <a class="btn btn-ghost btn-lg" href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="./assets/img/logo.png" alt="无界互联">
+          <span>无界互联</span>
+        </div>
+        <p>Windows 桌面代理客户端。基于 mihomo 内核，订阅、分流、观测与急救都放在一个窗口里。</p>
+      </div>
+      <div>
+        <h4>产品</h4>
+        <ul>
+          <li><a href="./features.html">功能总览</a></li>
+          <li><a href="./download.html">下载安装</a></li>
+          <li><a href="./changelog.html">更新日志</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>文档</h4>
+        <ul>
+          <li><a href="./docs/index.html">使用手册</a></li>
+          <li><a href="./docs/install.html">安装与首次运行</a></li>
+          <li><a href="./docs/troubleshooting.html">故障排查</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>支持</h4>
+        <ul>
+          <li><a href="./faq.html">常见问题</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">版本发布页</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span>本软件仅提供网络代理的本地管理能力，请遵守当地法律法规与相关服务条款。</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./assets/site.js"></script>
+</body>
+</html>

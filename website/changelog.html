@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>更新日志 — 无界互联 Unbound link</title>
+<meta name="description" content="无界互联 Unbound link 更新日志：版本变更、新增功能与修复记录。">
+<link rel="icon" href="./favicon.ico">
+<link rel="stylesheet" href="./assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./index.html">
+      <img src="./assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="./features.html">功能</a>
+      <a href="./docs/index.html">使用手册</a>
+      <a href="./download.html">下载</a>
+      <a href="./changelog.html">更新日志</a>
+      <a href="./faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="./download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head reveal center" style="margin-bottom:0">
+      <span class="eyebrow">更新日志</span>
+      <h2>每个版本改了什么</h2>
+      <p class="lead">只记录用户能感知的变化：新增了什么、改进了什么、修好了什么。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width:840px">
+    <div class="log">
+      <div class="log-item reveal now">
+        <h3>v0.1.1 <span class="badge">最新版本</span></h3>
+        <div class="date">当前版本</div>
+        <p style="color:var(--ink-2)">相比首个公开版本，这一版把界面扩展到 13 种语言，新增解锁测试与云备份、首次启动引导、配置快照与订阅历史版本、节点健康监控与世界地图，链式代理、分流规则、托盘面板与设置页一并升级。以下是当前完整的功能清单。</p>
+        <h4 style="font-size:15px;margin:16px 0 8px">代理与分流</h4>
+        <ul>
+          <li>订阅管理：http/https 订阅导入、拖动排序、编辑订阅信息、二维码分享、用量信息刷新，更新前自动留档并可回退任意历史版本（附带节点与规则数量变化提示），支持按小时自动更新。</li>
+          <li>订阅用量提醒：流量达到阈值（默认 80%）、临近到期（默认剩余 3 天）或已过期时各发送一次系统通知；续费或套餐重置后提醒自动复位，可再次提醒。</li>
+          <li>机场官网：下载订阅时自动识别机场官网地址，卡片上一键用浏览器打开；识别不到时可在「编辑」弹窗手动填写，手动填写后不会被自动覆盖；地球图标旁的圆点显示官网连通性（绿=可达、红=不可达），点击圆点可重新检测。</li>
+          <li>多订阅同时启用：可同时启用多个订阅，第一个启用的提供端口 / DNS / 模式等基础配置，其余订阅的节点、策略组与规则并入，生效顺序按列表从上到下。</li>
+          <li>本地配置导入：选择本地 YAML 文件作为订阅加入列表，带「本地」标签、不参与远程更新。</li>
+          <li>手动节点：从节点链接导入单个节点（ss / vmess / vless / trojan / hysteria2 / tuic / socks5 / http），生成配置时并入同名代理组。</li>
+          <li>代理节点：分组与订阅来源浏览、单节点测延迟、下载测速、全部测速、按延迟或名称排序、地区筛选与只看收藏；顶部可一键隐藏超时节点，卡片列数支持 1 - 4 列或自适应；列表与地图双视图切换，地图把节点按地区聚合成光点，大小看数量、颜色看延迟，点击光点即可按地区下钻筛选。</li>
+          <li>自动延迟检测：按设定间隔（1-1440 分钟）自动为节点组测延迟，保持延迟数据新鲜。</li>
+          <li>节点健康监控：滚动记录各节点延迟历史，在节点卡片上绘制延迟趋势折线（红点表示测速失败）；当前正在使用的节点连续掉线时发送系统提醒。</li>
+          <li>掉线自动切换：当前节点连续测速失败时自动切换到备用节点——可指定固定目标，留空时自动选择组内延迟最低的可用节点；没有可用节点时发送通知建议手动切换。</li>
+          <li>更新后自动选优：订阅更新并重载配置后，自动对主策略组测速并切换到延迟最低的节点，省去每次更新后手动挑节点。</li>
+          <li>应用分流：按进程名或完整路径绑定线路，可从运行中的进程里挑选；多线路自动聚合，支持轮询分散与会话保持。</li>
+          <li>链式代理：可视化链路编辑器，支持拖拽调整中间环节、跨分组挑选节点、代理组做链首，已保存链路可回显编辑；节点卡片带链式标记与「入口 / 中转 / 出口」角色标签。</li>
+          <li>流量隧道：把本机端口转发到远端目标（TCP / UDP / 混合），出口可选代理组或节点，也可按规则分流。</li>
+          <li>快捷规则：在实时连接页右键为域名一键创建直连或指定线路规则。</li>
+        </ul>
+        <h4 style="font-size:15px;margin:16px 0 8px">配置能力</h4>
+        <ul>
+          <li>Merge 覆写：YAML 片段与订阅配置递归深度合并。</li>
+          <li>扩展脚本：内置 QuickJS 引擎，用 <code>main(config)</code> 批量改写配置。</li>
+          <li>节点整理：按关键词过滤节点、按规则批量重命名（含统一前后缀），并同步改写代理组与规则中的引用；支持先预览变更再启用。</li>
+          <li>运行时配置自动生成与原子写入，配置变更热重载。</li>
+          <li>配置快照：每次生成运行配置前自动留档旧版本（保留最近 10 份），内核起不来或配置异常时可一键回滚到上一可用版本。</li>
+          <li>内核一键检查与更新（来自官方发布页）。</li>
+          <li>GeoData 数据库一键更新（geoip.dat / geosite.dat / geoip.metadb / GeoLite2-ASN.mmdb），直连失败自动走加速镜像或本机代理。</li>
+          <li>设置、订阅、Merge 配置与内核版本的导出与导入备份。</li>
+          <li>云备份（WebDAV）：把设置、订阅、Merge 配置与扩展脚本备份到自己的网盘（兼容坚果云、Nextcloud、群晖等）；带连接测试、状态对比与一键上传、恢复，密码经系统加密后仅保存在本机。</li>
+          <li>设置页按「页签 - 分组 - 卡片」三级重组，配置项查找更直接。</li>
+        </ul>
+        <h4 style="font-size:15px;margin:16px 0 8px">观测与操作</h4>
+        <ul>
+          <li>仪表盘：内核状态、版本、内存、运行时长、累计上下行、活跃连接与实时流量曲线，可直接切换代理组节点。</li>
+          <li>侧边栏底部实时显示内核与应用内存占用，侧边栏支持一键折叠收放。</li>
+          <li>实时连接：明细与聚合两种视图，右键复制域名、目标地址、进程路径。</li>
+          <li>流量统计：按日记录，近 7/30/90 天与全部范围切换；按应用进程累计上行 / 下行流量，一眼看出谁最占带宽；再按出口节点汇总（直连流量单独记为 DIRECT），看清每条线路各消耗了多少。</li>
+          <li>运行日志：内核日志与应用层日志同屏，按级别筛选。</li>
+          <li>规则列表：规则、自定义规则、规则集与命中统计四个页签；「自定义规则」页签提供可视化编辑器，增删改与排序后一键注入运行配置最前；命中统计每 15 秒采样并持久保存；内置分流模拟器，本地预演某个域名、IP 或应用会命中哪条规则（含策略组出口解析），内核未启动时也能排查分流问题。</li>
+          <li>全局命令面板（Ctrl+K）：一个入口搜索页面、动作与节点，键盘即可完成跳转、执行与切换。</li>
+          <li>桌面流量悬浮窗：3 档尺寸、3 种版式、7 套配色，可鼠标穿透、记住位置。</li>
+          <li>系统托盘图标随状态变色，右键弹出快捷面板（按使用频率重排、动作带图标列）；点击面板中的「节点」或「分组」行会在旁边弹出独立的节点选择浮层（左分组、右节点，带延迟），点选即切换。</li>
+          <li>全局右键菜单：替换 WebView 自带的浏览器菜单；输入框与选中文本提供剪切、复制、粘贴，其余位置不再弹出无关菜单，Shift + 右键保留原生菜单。</li>
+        </ul>
+        <h4 style="font-size:15px;margin:16px 0 8px">系统集成与排障</h4>
+        <ul>
+          <li>系统代理一键开关；TUN 模式支持 Mixed / Gvisor / System 堆栈，带管理员权限引导。</li>
+          <li>自定义 DNS（含备用 DNS 与静态 Hosts）与 fake-ip 加速；允许局域网连接，并显示可供其他设备访问的面板地址，「分享到手机」按钮弹出二维码，按提示在手机 Wi-Fi 里填好手动代理即可。</li>
+          <li>网络环境自动化：按当前 Wi-Fi 名称自动切换系统代理与运行模式，适合「到家自动开、到公司自动停」；名称支持通配符，匹配自上而下取第一条启用规则。</li>
+          <li>内置 MetaCubeXD Web 控制面板，首次打开自动下载托管。</li>
+          <li>七组全局快捷键，其中五组默认绑定（含 <code>Ctrl+Shift+M</code> 切换代理模式），「更新全部订阅」「重启内核」可自行录制；开机自启；单实例运行；关闭窗口默认最小化到托盘。</li>
+          <li>首次启动引导：全新安装后首次启动弹出四步引导，带你完成订阅导入与推荐设置。</li>
+          <li>内核看门狗：异常退出自动拉起，并带防抖动限制。</li>
+          <li>系统代理守卫：代理设置被其他程序改写时自动恢复；切换节点后可自动清理旧连接。</li>
+          <li>应用日志落盘：写入 <code>logs\app.log</code>，按大小轮转、按天数清理，等级与保留策略可调。</li>
+          <li>应用内一键升级：启动时自动检查客户端新版本，也可在关于页手动检查，发现新版本可直接在应用内下载并静默安装（装完自动以新版本启动）；可指定启动脚本随内核一起执行；内核控制密钥可在界面上一键重新生成。</li>
+          <li>UWP 应用工具：为应用商店安装的应用一键解除回环限制，让它们能访问本机代理。</li>
+          <li>托盘图标三态自定义（常规 / 系统代理 / TUN），失焦时暂停流量图表渲染省电，主题新增次要色与文本色自定义。</li>
+          <li>导出诊断信息：版本、设置、运行配置与最近日志打包为 ZIP（敏感字段打码），随问题反馈一起提交更方便。</li>
+          <li>网络体检 11 项与断网急救箱（一键急救、系统代理重置、DNS 缓存刷新、DNS 服务器重置、hosts 恢复、网络协议栈重置）。</li>
+          <li>解锁测试：一键检测当前节点对 Netflix、Disney+、YouTube Premium、Prime Video、Spotify、TikTok、Hulu、HBO Max、ChatGPT、Claude、Gemini、Copilot、X (Twitter) 等海外服务，与 Bilibili、爱奇艺、腾讯视频、网易云音乐等国内服务的解锁与地区情况，共 18 项。</li>
+          <li>浅色 / 深色 / 跟随系统三档主题，支持自定义品牌色、次要色、文本色与语义色、界面字体、自定义 CSS。</li>
+        </ul>
+        <h4 style="font-size:15px;margin:16px 0 8px">界面与语言</h4>
+        <ul>
+          <li>界面支持 13 种语言：English、Русский、中文、فارسی、Tatar、Bahasa Indonesia、العربية、한국어、Türkçe、Deutsch、Español、日本語、繁體中文，切换后即时生效。</li>
+          <li>阿拉伯语与波斯语自动切换为从右到左布局；俄语、阿拉伯语等按当地语法习惯显示复数与量词，数字与时间随所选语言格式化。</li>
+          <li>关于页：新增软件介绍、品牌信息与官网入口。</li>
+        </ul>
+      </div>
+      <div class="log-item reveal">
+        <h3>v0.1.0 <span class="badge">首个公开版本</span></h3>
+        <div class="date">2026 年 9 月 24 日</div>
+        <p style="color:var(--ink-2)">第一个可用版本，先让最核心的几件事跑起来。</p>
+        <ul>
+          <li>右键快捷规则：在实时连接页右键为域名一键创建直连或指定线路规则。</li>
+          <li>应用自动更新：启动时自动检查客户端新版本，发现新版本时发送通知，可一键前往下载。</li>
+          <li>网络修复：断网急救箱一键重置系统代理、刷新 DNS 缓存。</li>
+          <li>桌面流量悬浮窗：实时网速、延迟与连接数悬浮在桌面上。</li>
+          <li>应用分流：按进程把应用绑定到指定线路。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cal note" style="margin-top:36px">
+      <div>
+        <b>关于本页的更新</b>
+        <p>后续版本发布时会在此页顶部追加记录。想第一时间拿到新版本，可以关注官方发布页，或在客户端「设置 → 维护 → 内核更新」处检查内核更新。</p>
+      </div>
+    </div>
+
+    <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn-dark" href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">查看全部版本发布</a>
+      <a class="btn btn-ghost" href="./download.html">下载最新版</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="./assets/img/logo.png" alt="无界互联">
+          <span>无界互联</span>
+        </div>
+        <p>Windows 桌面代理客户端。基于 mihomo 内核，订阅、分流、观测与急救都放在一个窗口里。</p>
+      </div>
+      <div>
+        <h4>产品</h4>
+        <ul>
+          <li><a href="./features.html">功能总览</a></li>
+          <li><a href="./download.html">下载安装</a></li>
+          <li><a href="./changelog.html">更新日志</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>文档</h4>
+        <ul>
+          <li><a href="./docs/index.html">使用手册</a></li>
+          <li><a href="./docs/install.html">安装与首次运行</a></li>
+          <li><a href="./docs/troubleshooting.html">故障排查</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>支持</h4>
+        <ul>
+          <li><a href="./faq.html">常见问题</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">版本发布页</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span>本软件仅提供网络代理的本地管理能力，请遵守当地法律法规与相关服务条款。</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./assets/site.js"></script>
+</body>
+</html>

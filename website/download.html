@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>下载 — 无界互联 Unbound link</title>
+<meta name="description" content="下载无界互联 Unbound link Windows 客户端：系统要求、安装步骤、数据目录与卸载说明。安装包已内含 mihomo 内核与 TUN 驱动。">
+<link rel="icon" href="./favicon.ico">
+<link rel="stylesheet" href="./assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./index.html">
+      <img src="./assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="./features.html">功能</a>
+      <a href="./docs/index.html">使用手册</a>
+      <a href="./download.html">下载</a>
+      <a href="./changelog.html">更新日志</a>
+      <a href="./faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="#download">获取安装包</a>
+    </div>
+  </div>
+</header>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head reveal center" style="margin-bottom:0">
+      <span class="eyebrow">下载</span>
+      <h2>一个安装包，装完就能用</h2>
+      <p class="lead">mihomo 内核与 TUN 驱动随包分发，不需要你另外下载内核、放置文件或配置环境变量。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <div class="wrap">
+    <div class="dl-grid">
+      <div class="dl-card reveal">
+        <div class="top">
+          <img src="./assets/img/app-icon.png" alt="无界互联">
+          <div>
+            <div class="n">无界互联 Unbound link</div>
+            <div class="m">Windows 64 位 · 安装版</div>
+          </div>
+        </div>
+        <p style="color:var(--ink-2);margin-bottom:0">安装程序为 NSIS 打包，双击后按向导完成安装；首次启动即可添加订阅。内核对用户透明，由客户端负责启动、守护与停止。</p>
+        <div class="dl-meta">
+          <div>当前版本<b>v0.1.1</b></div>
+          <div>支持系统<b>Windows 10 / 11·64 位</b></div>
+          <div>安装包内容<b>主程序 + mihomo 内核 + TUN 驱动</b></div>
+          <div>数据存储<b>全部保存在本机</b></div>
+        </div>
+        <div class="dl-actions">
+          <a class="btn btn-dark btn-lg" href="https://github.com/18gemail-ops/Unboundlink/releases/latest" target="_blank" rel="noopener">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
+            前往下载最新版
+          </a>
+          <a class="btn btn-ghost btn-lg" href="./docs/install.html">安装教程</a>
+        </div>
+        <div class="cal warn" style="margin:22px 0 0">
+          <div>
+            <b>请只从官方发布页获取安装包</b>
+            <p>下载地址为 GitHub Releases 页面。安装包会请求网络与文件读写权限，安装前请确认来源可信。</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="dl-side reveal">
+        <h3>安装前请确认</h3>
+        <ul>
+          <li>系统为 64 位 Windows 10 或 Windows 11。</li>
+          <li>使用系统代理无需额外权限；使用 TUN 模式需要管理员权限，届时会弹出 UAC 确认。</li>
+          <li>如果电脑上已装其他使用相同内核的客户端，请先退出其中之一，避免控制端口冲突。</li>
+          <li>默认占用端口：混合代理 <code>7890</code>、控制接口 <code>9090</code>，可在设置中修改。</li>
+        </ul>
+        <h3 style="margin-top:20px">安装后建议</h3>
+        <ul>
+          <li>先到「订阅管理」添加订阅，再打开卡片上的启用开关。</li>
+          <li>在「设置 → 常规 → 系统集成」打开系统代理。</li>
+          <li>回「仪表盘」确认内核运行中、节点有延迟数值。</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">安装步骤</span>
+      <h2>三步装好，五步用起来</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div>
+          <h3>下载安装包</h3>
+          <p>打开官方发布页，在最新版本中下载 Windows 安装包（文件名形如 <code>Unboundlink_x.x.x_x64-setup.exe</code>）。</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div>
+          <h3>运行安装向导</h3>
+          <p>双击安装包，选择安装位置后一路下一步即可。建议使用默认安装目录，避免放在含中文或特殊字符的路径下。</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div>
+          <h3>首次启动</h3>
+          <p>从开始菜单或桌面图标启动。若检测到历史版本的数据目录，客户端会自动迁移旧设置与订阅，无需手动搬运文件。</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div>
+          <h3>导入订阅并启用</h3>
+          <p>「订阅管理」→「添加订阅」→ 粘贴 http/https 订阅链接 → 确定；回到卡片打开启用开关（可同时启用多个订阅）。</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div>
+          <h3>打开系统代理</h3>
+          <p>「设置 → 常规 → 系统集成」打开「系统代理」，然后到「仪表盘」确认下载、上传数值开始变化。</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:34px">
+      <a class="btn btn-dark" href="./docs/install.html">查看完整的安装与首次运行说明</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">系统要求</span>
+      <h2>运行环境</h2>
+    </div>
+    <table style="width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14.5px">
+      <thead>
+        <tr style="background:var(--bg-soft)">
+          <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">项目</th>
+          <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">要求</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>操作系统</b></td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">Windows 10 / Windows 11，64 位</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>运行库</b></td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">安装包自带的 WebView2 运行环境，如系统缺失会由安装程序引导安装</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>内核</b></td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">随安装包分发，无需另行下载</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>TUN 模式</b></td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">需要管理员权限（使用时会通过 UAC 提权）</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px"><b>磁盘与网络</b></td>
+          <td style="padding:11px 16px;color:var(--ink-2)">安装占用空间很小；订阅更新与内核更新需要能够访问对应地址</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">数据与卸载</span>
+      <h2>你的数据放在哪，怎么带走</h2>
+    </div>
+    <div class="cards c2">
+      <div class="card reveal">
+        <h3>数据目录</h3>
+        <p>配置、订阅与内核工作目录位于 <code>%APPDATA%\com.unboundlink.desktop</code>，包含设置、订阅索引与订阅原文、Merge 覆写、扩展脚本、生成的运行时配置、内置面板文件、规则命中统计与流量历史。</p>
+        <p style="margin-top:8px">在「设置 → 关于」里可以直接查看并复制数据目录路径。</p>
+      </div>
+      <div class="card reveal">
+        <h3>备份、迁移与卸载</h3>
+        <p>换电脑前用「设置 → 维护 → 备份与恢复 → 导出备份」导出一个 JSON 文件，新环境导入即可恢复设置、订阅、Merge 配置与内核版本记录。</p>
+        <p style="margin-top:8px">卸载程序不会自动删除数据目录；如需彻底清理，卸载后手动删除上述目录即可。</p>
+      </div>
+    </div>
+    <div class="cal note" style="margin-top:26px;max-width:860px">
+      <div>
+        <b>卸载前记得关闭系统代理</b>
+        <p>先在「设置 → 常规 → 系统集成」关闭「系统代理」，或使用「网络体检 → 断网急救箱 → 一键急救」重置系统代理，避免卸载后浏览器仍然指向已经不存在本机代理端口。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>装完不知道从哪开始？</h2>
+        <p>手册里的「安装与首次运行」把每一步都写清楚了，包括每个开关在哪。</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-dark btn-lg" href="./docs/install.html">安装与首次运行</a>
+        <a class="btn btn-ghost btn-lg" href="./faq.html">常见问题</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="./assets/img/logo.png" alt="无界互联">
+          <span>无界互联</span>
+        </div>
+        <p>Windows 桌面代理客户端。基于 mihomo 内核，订阅、分流、观测与急救都放在一个窗口里。</p>
+      </div>
+      <div>
+        <h4>产品</h4>
+        <ul>
+          <li><a href="./features.html">功能总览</a></li>
+          <li><a href="./download.html">下载安装</a></li>
+          <li><a href="./changelog.html">更新日志</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>文档</h4>
+        <ul>
+          <li><a href="./docs/index.html">使用手册</a></li>
+          <li><a href="./docs/install.html">安装与首次运行</a></li>
+          <li><a href="./docs/troubleshooting.html">故障排查</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>支持</h4>
+        <ul>
+          <li><a href="./faq.html">常见问题</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">版本发布页</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span>本软件仅提供网络代理的本地管理能力，请遵守当地法律法规与相关服务条款。</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./assets/site.js"></script>
+</body>
+</html>

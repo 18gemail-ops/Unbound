@@ -1,0 +1,1736 @@
+1|Unbound link — Windows Desktop Proxy Client
+2|Unbound link
+3|Features
+4|User Guide
+5|Download
+6|Changelog
+7|FAQ
+8|A window has edges. <br><em>A connection doesn't.</em>
+9|Auto-updating subscriptions, routing rules, per-process routing, chained proxies, network rescue — all inside this one window, fully local. Works without writing config files, and never stands in the way if you prefer to.
+10|Read the User Guide
+11|<b>13</b><span>UI languages</span>
+12|<b>18</b><span>Unlock tests</span>
+13|<b>3</b><span>Config layers</span>
+14|<b>0</b><span>Data sent out</span>
+15|<i></i><i></i><i></i><span class="t">Unbound link</span>
+16|<b></b>Dashboard
+17|<b></b>Profiles
+18|<b></b>Proxies
+19|<b></b>App Routing
+20|<b></b>Rules
+21|<b></b>Connections
+22|<b></b>Traffic
+23|<b></b>Logs
+24|<b></b>Diagnostics
+25|<b></b>Unlock Test
+26|<b></b>Settings
+27|Download
+28|Upload
+29|Active connections
+30|<span>Live traffic</span><span style="color:var(--ink-3)">Last 60 seconds</span>
+31|<span class="dot"></span><span class="n">openai.com</span><span class="g">AI Line</span>
+32|<span class="dot"></span><span class="n">github.com</span><span class="g">Auto Select</span>
+33|<span class="dot ok"></span>Core running
+34|<span class="dot blue"></span>Node latency 42 ms
+35|Core capabilities
+36|Everyday features, made easy to understand
+37|Not a pile of features — every step has a clear entry point, a clear status and a plain-language explanation.
+38|Subscription management and auto-update
+39|Import a subscription with a single link and see usage and expiry right on the card. Set auto-update every 1–24 hours; when an update finishes, the config reloads automatically and a system notification is sent.
+40|Per-process routing
+41|Send your browser through one line and your games through another. Bind by process name or full path; picking two or more lines forms a load-balance group automatically, with round-robin or session-persistent policies.
+42|Chained proxy
+43|Assign a front proxy to a restricted node so traffic goes through the relay first. Set it with the chain button on the node card; latency is simply the sum of both hops.
+44|Merge override + extension script
+45|When you don't want to touch the original subscription, deep-override any config field with a Merge snippet. For bulk edits, the built-in QuickJS engine runs one extension script — rename nodes, add rules, all from a dialog.
+46|Desktop floating window
+47|Live speed, current node latency and active connections stay on your desktop. 3 sizes, 3 layouts, 7 color themes — with mouse pass-through and drag anywhere.
+48|Network rescue kit
+49|When the proxy exits unexpectedly and your browser can't open pages, Diagnostics pinpoints the problem first, then one click resets the system proxy and flushes the DNS cache, with an automatic re-check.
+50|About configuration
+51|Subscriptions, overrides, scripts — three layers, each minding its own business
+52|Subscriptions stay pristine and follow upstream updates while your personal changes live in separate files — no overwriting. Swap subscriptions or providers without reconfiguring everything.
+53|<b>Profiles</b>: http/https subscription links, drag to reorder, rename, generate a QR code to share with your phone, and view live usage.
+54|<b>Merge override</b>: a few lines override fields in the subscription (except app-level settings such as port and mode), deeply merged recursively when the runtime config is generated.
+55|<b>Extension script</b>: built-in QuickJS engine — one <code>main(config)</code> function batch-renames nodes and adds or removes rules.
+56|<b>Runtime config</b>: app-level fields such as port, secret and mode are injected by the client and never overridden by subscriptions; config changes hot-reload automatically — no manual core restart.
+57|<a class="btn btn-ghost" href="./docs/profiles.html">How to use Profiles →</a>
+58|App Routing
+59|Let every app take its own route
+60|No need to switch everything to global for one game. Bind lines by process name or full path; all other traffic keeps following the rules.
+61|<b>Easy to pick</b>: choose straight from processes currently using the network, with app icons — no need to remember exe names.
+62|<b>Flexible binding</b>: one line goes directly to that group; two or more lines form a load-balance group so multiple lines serve the same app together.
+63|<b>Load-balance policies</b>: round-robin spreads connections across lines; session-persistent keeps a session on one line.
+64|<b>Visible results</b>: the binding list shows the app's live up/down speed — one glance tells whether it's working.
+65|<a class="btn btn-ghost" href="./docs/apps.html">How to set up App Routing →</a>
+66|When things go wrong
+67|First it tells you what's wrong, then it helps you fix it
+68|Diagnostics runs 11 checks in order: core status, port listening, system proxy, DNS resolution, DNS takeover, direct exit, proxy exit, WebRTC leaks, current node, direct GitHub access and config loading. Each check gives a conclusion and a suggested next step.
+69|One-click rescue
+70|Reset the system proxy and flush the DNS cache — neither needs admin rights and both take effect instantly, enough to fix the most common failure: "browser can't open pages after the proxy exits".
+71|Targeted repairs
+72|Leftover system proxy settings, DNS servers set to 0.0.0.0, abnormal hosts files, damaged network stacks — each has its own repair button; operations needing admin rights are clearly marked and go through UAC elevation.
+73|Read the Diagnostics guide
+74|Up and running 3 minutes after download
+75|The installer already bundles the mihomo core and TUN driver — import your subscription and you're ready to go.
+76|Download now
+77|Install guide
+78|Unbound link
+79|Windows desktop proxy client. Built on the mihomo core, with subscriptions, routing, monitoring and rescue all in one window.
+80|Product
+81|<a href="./features.html">Features overview</a>
+82|<a href="./download.html">Download and install</a>
+83|<a href="./changelog.html">Changelog</a>
+84|Docs
+85|<a href="./docs/index.html">User Guide</a>
+86|<a href="./docs/install.html">Install and first run</a>
+87|<a href="./docs/troubleshooting.html">Troubleshooting</a>
+88|Support
+89|<a href="./faq.html">FAQ</a>
+90|<a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">Releases</a>
+91|<a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+92|This software only provides local management for network proxying. Please comply with your local laws, regulations and the relevant terms of service.
+93|Unbound link
+94|Open navigation
+95|Unbound link main interface
+96|Config generation flow
+97|App Routing illustration
+98|Unbound link
+99|Unbound link is a Windows desktop proxy client based on the mihomo core, with subscription management, routing rules, per-app process binding, chained proxies and network rescue — a clean interface that works out of the box.
+100|Features Overview — Unbound link
+101|Unbound link
+102|Features
+103|User Guide
+104|Download
+105|Changelog
+106|FAQ
+107|Download for Windows
+108|Features Overview
+109|Eleven pages covering everything from setup to troubleshooting
+110|The left menu is grouped by usage: set up routes in "Proxy & Routing" first, see what is happening in "Monitoring & Data", and let "Stability & Troubleshooting" handle the unexpected.
+111|1. Proxy and routing
+112|"Which line does traffic take" splits into three layers: your subscriptions define the available lines, rules decide the default route, and App Routing decides the exceptions.
+113|Profiles
+114|Supports http/https subscription links; cards can be dragged to reorder, renamed, shared to your phone as a QR code, and usage info refreshed with one click. Multiple subscriptions can be enabled at once, and single nodes can be imported from node links; set an hourly auto-update interval — after an update the config reloads automatically and a system notification is sent, and you can optionally auto-test and switch to the fastest node after updates; usage alerts fire once each when the threshold is reached, expiry nears, or the subscription has expired; before every update the old content is archived automatically, so you can roll back anytime.
+115|Proxies
+116|Split view: browse by group and subscription source on the left, a node card grid on the right. Supports latency tests for a single node, download speed tests (the original node is restored automatically afterwards), test all, sorting by latency/name, region filters and favorites-only. One click hides timed-out nodes at the top; card columns support 1–4 or auto-fit; with Node health monitoring on, each card also carries a latency trend line (red dots mark failed tests), and with Automatic failover on a current node that keeps failing tests also gets switched away automatically. Switch freely between the list and map views — the map aggregates nodes into dots by region, sized by count and colored by latency; click a dot to drill into that region.
+117|App Routing
+118|Bind apps to specific lines by process name or full path, picking directly from processes currently using the network. Selecting two or more lines forms a group automatically, with round-robin or session-persistent policies; the list shows each app's live speed.
+119|Chained proxy
+120|Assign a front proxy to a node so traffic first goes through the relay — ideal for restricted nodes. A chain badge on the node card shows which front proxy is used on hover.
+121|Traffic tunnels
+122|Forward a local port to a remote target: the core listens locally on the given port and forwards through a chosen exit (proxy group, node or rule-based routing) to the target host — handy for mapping remote intranet services to your machine. Supports TCP / UDP / mixed protocols.
+123|Quick rules
+124|Right-click any connection on the Connections page and choose "direct for this domain" or "route this domain through a chosen line" — a domain rule is inserted at the very top and takes effect immediately, with no file edits or restarts.
+125|Rules and hit statistics
+126|Four tabs: Rules, Custom rules, Rule sets and Hit statistics, where you can add, edit, reorder and delete your own rules right in the page — on save they are injected at the very top of the runtime config. Hit stats are sampled every 15 seconds and accumulated to disk — surviving restarts — so you can tell whether a rule is really doing its job.
+127|Three ways to proxy traffic — how to choose
+128|Method
+129|Scope
+130|Privileges
+131|Best for
+132|<b>System proxy</b>
+133|Apps that honor the system proxy (browsers, most desktop software)
+134|Not required
+135|Everyday use, the least hassle
+136|<b>TUN mode</b>
+137|All traffic, including apps that ignore the system proxy
+138|Admin required
+139|Games, command-line tools, full network takeover
+140|<b>App Routing</b>
+141|Only bound processes
+142|Not required
+143|Route only individual apps through chosen lines
+144|2. Monitoring and data
+145|The pain with proxies is often "not knowing what's happening right now". That's why every status has somewhere to look.
+146|Dashboard
+147|Core status, version, memory usage and uptime; total up/down traffic and active connections; a live traffic chart. You can also switch each proxy group's current node right on the Dashboard.
+148|Connections
+149|The detail view lists host, process, destination, matched rule, chain and live speed for each connection; the aggregated view groups connection counts by domain. Right-click to create a quick rule for a domain or copy the domain, destination address or process path.
+150|Traffic
+151|Records daily up/down usage with 7-day / 30-day / 90-day / all-time views, plus a trend chart and a daily detail table; a Node traffic panel groups traffic by the exit node each connection finally leaves through (direct traffic is recorded as DIRECT), so you can see how much each line has used, with a one-click stats reset. Data is continuously persisted and survives restarts.
+152|Logs
+153|Core logs and app logs shown on one screen; app logs carry a <code>[Unbound link]</code> prefix for easy distinction. Filter by Debug / Info / Warning / Error. Logs are also written to <code>logs\app.log</code> with automatic rotation and expiry cleanup.
+154|Desktop floating window
+155|Live speed, current node latency, active connections, today's traffic and proxy status on your desktop. 3 sizes, 3 layouts, 7 color themes, adjustable opacity, mouse pass-through and automatically remembered position.
+156|System tray
+157|The tray icon switches between three states with the proxy status (normal / system proxy / TUN), and each state can be replaced with your own PNG icon. Right-click opens a quick panel to toggle the system proxy or TUN, see speed or open the main window without launching the full app. Click the "node" or "group" row and a standalone node picker pops up beside it: browse by group, click to switch.
+158|3. System integration
+159|Take over what belongs to the system; keep local what belongs to the machine.
+160|System proxy and TUN
+161|One click writes or restores Windows Internet settings; with "Network environment" on, the system proxy and mode also switch automatically by Wi-Fi name (e.g. on at home, off at the office). TUN takes over all traffic at the network layer through a virtual adapter, with Mixed / Gvisor / System stacks to choose from. When admin rights are needed, a UAC prompt guides the elevation. If Store apps can't reach the local proxy due to the loopback restriction, the UWP App Tool lifts it with one click.
+162|DNS and LAN
+163|Custom DNS servers (including fallback DNS and static Hosts) can override the subscription's settings, with optional fake-ip acceleration; enabling "allow LAN" lets phones, tablets and other devices on the same subnet use the local proxy directly. The Share to phone button on the same row then shows a QR code — set the phone's Wi-Fi manual proxy as prompted.
+164|Built-in web dashboard
+165|The built-in MetaCubeXD dashboard downloads and hosts itself on first open at <code>http://127.0.0.1:9090/ui/</code>; with LAN enabled, an address for other devices to access the dashboard is also shown.
+166|Global shortcuts
+167|Defaults: <code>Ctrl+Shift+P</code> toggles the system proxy, <code>Ctrl+Shift+T</code> toggles TUN, <code>Ctrl+Shift+U</code> shows the main window, <code>Ctrl+Shift+O</code> toggles the floating window and <code>Ctrl+Shift+M</code> switches the proxy mode. "Update all subscriptions" and "Restart core" can be recorded separately — all shortcuts are customizable or resettable to default.
+168|Global command palette
+170|Launch at startup and single instance
+171|Optionally run at startup; the app is single-instance, so launching it again brings up the existing window — no two cores fighting over ports. Closing the main window minimizes to the tray instead of exiting. On a fresh install, the first launch opens a four-step guide that walks you through importing a subscription and recommended settings.
+172|Themes and appearance
+173|Dark / light / follow-system modes with instant switching; brand color, secondary color, text color, semantic colors, UI font and custom CSS are all adjustable. The flat design uses black primary buttons and restrained semantic colors — blue for in-progress, green for normal, amber for pending, red for errors.
+174|Configuration capabilities
+175|For those who don't want to touch configs — and those who do
+176|Subscriptions stay pristine while your changes live in a separate file; the two merge only when the runtime config is generated — meaning subscription updates never overwrite your personal settings.
+177|<b>Merge override</b>: a few lines of YAML override fields in the subscription (app-level settings such as port and mode are handled by the client), deeply merged recursively.
+178|<b>Extension script</b>: built-in QuickJS — one <code>main(config)</code> function batch-renames nodes and adds or removes rules.
+179|<b>Node Cleanup</b>: filter nodes by keyword and batch-rename them by rules (with common prefixes/suffixes), rewriting references in proxy groups and rules to match — preview before enabling.
+180|<b>App-level settings injection</b>: fields such as port, control secret and mode are written by the client and never overridden by subscription content.
+181|<b>Config hot reload</b>: switching nodes, changing ports or DNS applies automatically without interrupting existing connections.
+182|<b>Atomic writes</b>: the runtime config is written to a temp file first, then renamed, so the core never reads a half-written file.
+183|<b>Config snapshots</b>: before each runtime config is generated the previous version is archived automatically (the latest 10 are kept); if the core won't start, roll back to the last working version in one click — an emergency fallback.
+184|Backup and restore
+185|Export settings, subscriptions, Merge config and the core version into a single JSON file; after switching computers or reinstalling, import it with one click under Settings → Maintenance to restore everything. "Export diagnostics" packages versions, settings, config and recent logs into a ZIP (sensitive fields redacted) to make reporting issues easier.
+186|One-click core update
+187|Settings → Maintenance → Core update checks for and fetches new core versions, replacing the current one automatically after download — no manual file handling.
+188|Core watchdog
+189|Automatically restarts the core if it exits unexpectedly, with debounce protection: repeated crashes in a short time won't cause an infinite restart loop — they're faithfully recorded in Logs instead.
+190|4. Stability and troubleshooting
+191|The worst part of proxy trouble is not knowing where the problem is. So diagnosis and repair are split into two steps.
+192|11 network checks
+193|Core status, port listening, system proxy, DNS resolution, DNS takeover, direct exit, proxy exit, WebRTC leaks, current node, direct GitHub access and config loading. Each gives a conclusion, and abnormal items come with suggestions.
+194|Network rescue kit
+195|For five classes of problems — leftover system proxy settings, DNS resolution failures, rewritten DNS servers, abnormal hosts files and damaged network stacks — each is detected with a matching repair button and an automatic re-check afterwards.
+196|Unlock Test
+197|Checks 18 services through the current exit — streaming such as Netflix and Disney+, AI services such as ChatGPT and Claude, and China-side platforms such as Bilibili — and reports one of four states with a note: Unlocked / Partial / Blocked / Failed. Switch the exit node on the page itself to pick a route and retest right away.
+198|A note on privileges
+199|In the one-click rescue, resetting the system proxy and flushing the DNS cache need no admin rights and are always available; only resetting DNS servers, restoring the hosts file and resetting the network stack require UAC elevation, clearly marked in the UI.
+200|Ready to give it a try
+201|Download the installer, import your subscription, and you're up and running in three minutes.
+202|Download now
+203|Read the User Guide
+204|Unbound link
+205|Windows desktop proxy client. Built on the mihomo core, with subscriptions, routing, monitoring and rescue all in one window.
+206|Product
+207|<a href="./features.html">Features overview</a>
+208|<a href="./download.html">Download and install</a>
+209|<a href="./changelog.html">Changelog</a>
+210|Docs
+211|<a href="./docs/index.html">User Guide</a>
+212|<a href="./docs/install.html">Install and first run</a>
+213|<a href="./docs/troubleshooting.html">Troubleshooting</a>
+214|Support
+215|<a href="./faq.html">FAQ</a>
+216|<a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">Releases</a>
+217|<a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+218|This software only provides local management for network proxying. Please comply with your local laws, regulations and the relevant terms of service.
+219|Unbound link
+220|Open navigation
+221|Unbound link
+222|Unbound link features: subscription management, routing rules, per-app process binding, chained proxies, live connection monitoring, traffic statistics, desktop floating window, system tray, TUN mode, Diagnostics and network rescue.
+223|Download — Unbound link
+224|Unbound link
+225|Features
+226|User Guide
+227|Download
+228|Changelog
+229|FAQ
+230|Get the installer
+231|Download
+232|One installer, ready when it's done
+233|The mihomo core and TUN driver ship inside the package — no separate core downloads, file placement or environment variables needed.
+234|Unbound link
+235|Windows 64-bit · Installer
+236|The installer is built with NSIS — double-click and follow the wizard. Add subscriptions on first launch. The core is transparent: the client starts, supervises and stops it.
+237|Current version<b>v0.1.1</b>
+238|Supported system<b>Windows 10 / 11 · 64-bit</b>
+239|Package contents<b>Main app + mihomo core + TUN driver</b>
+240|Data storage<b>All kept on your machine</b>
+241|Install guide
+242|Only get installers from the official releases page
+243|Downloads live on the GitHub Releases page. The installer requests network and file read/write permissions — verify the source is trustworthy before installing.
+244|Before you install
+245|64-bit Windows 10 or Windows 11.
+246|The system proxy needs no extra privileges; TUN mode requires admin rights and will show a UAC prompt.
+247|If another client using the same core is installed on the machine, exit one of them first to avoid control port conflicts.
+248|Default ports: mixed proxy <code>7890</code>, control API <code>9090</code> — changeable in Settings.
+249|After installing
+250|Add a subscription under Profiles first, then flip the enable switch on its card.
+251|Turn on the system proxy under Settings → General → System integration.
+252|Return to the Dashboard to confirm the core is running and nodes show latency values.
+253|Installation steps
+254|Three steps to install, five to be productive
+255|Download the installer
+256|Open the official releases page and download the Windows installer from the latest release (file names look like <code>Unboundlink_x.x.x_x64-setup.exe</code>).
+257|Run the setup wizard
+258|Double-click the installer, choose a location and click Next through the wizard. Stick to the default directory — avoid paths with Chinese or special characters.
+259|First launch
+260|Launch it from the Start menu or desktop icon. If a previous version's data directory is found, settings and subscriptions migrate automatically — no manual file copying.
+261|Import a subscription and enable it
+262|Profiles → Add subscription → paste the http/https link → OK; back on the card flip the enable switch (multiple subscriptions can be on at once).
+263|Turn on the system proxy
+264|Enable the system proxy under Settings → General → System integration, then check the Dashboard — download and upload figures should start moving.
+265|Read the full install and first-run guide
+266|System requirements
+267|Runtime environment
+268|Item
+269|Requirement
+270|<b>Operating system</b>
+271|Windows 10 / Windows 11, 64-bit
+272|<b>Runtime</b>
+273|WebView2 ships with the installer; if missing, the setup guides you through installing it
+274|<b>Core</b>
+275|Bundled with the installer, no separate download needed
+276|<b>TUN mode</b>
+277|Requires admin rights (UAC elevation on use)
+278|<b>Disk and network</b>
+279|The installation is small; subscription and core updates need access to their respective addresses
+280|Data and uninstall
+281|Where your data lives, and how to take it with you
+282|Data directory
+283|Configs, subscriptions and the core's working directory live under <code>%APPDATA%\com.unboundlink.desktop</code>, containing settings, the subscription index and originals, Merge overrides, extension scripts, the generated runtime config, dashboard files, rule hit statistics and traffic history.
+284|View and copy the data directory path under Settings → About.
+285|Backup, migration and uninstall
+286|Before switching computers, use Settings → Maintenance → Backup and restore → Export backup to get a JSON file; import it in the new environment to restore settings, subscriptions, Merge config and core version records.
+287|Uninstalling doesn't delete the data directory; to clean up completely, delete the directory manually after uninstalling.
+288|Remember to turn off the system proxy before uninstalling
+289|First disable the system proxy under Settings → General → System integration, or reset it via Diagnostics → Network rescue → One-click rescue, so your browser doesn't keep pointing at a local proxy port that no longer exists after uninstall.
+290|Installed but not sure where to start?
+291|The "Install and first run" chapter of the guide walks through every step, including where each switch lives.
+292|Install and first run
+293|FAQ
+294|Unbound link
+295|Windows desktop proxy client. Built on the mihomo core, with subscriptions, routing, monitoring and rescue all in one window.
+296|Product
+297|<a href="./features.html">Features overview</a>
+298|<a href="./download.html">Download and install</a>
+299|<a href="./changelog.html">Changelog</a>
+300|Docs
+301|<a href="./docs/index.html">User Guide</a>
+302|<a href="./docs/install.html">Install and first run</a>
+303|<a href="./docs/troubleshooting.html">Troubleshooting</a>
+304|Support
+305|<a href="./faq.html">FAQ</a>
+306|<a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">Releases</a>
+307|<a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+308|This software only provides local management for network proxying. Please comply with your local laws, regulations and the relevant terms of service.
+309|Unbound link
+310|Open navigation
+311|Unbound link
+312|Unbound link
+313|Download the Unbound link Windows client: system requirements, installation steps, data directory and uninstall notes. The installer already bundles the mihomo core and TUN driver.
+314|FAQ — Unbound link
+315|Unbound link
+316|Features
+317|User Guide
+318|Download
+319|Changelog
+320|FAQ
+321|Download for Windows
+322|FAQ
+323|Start here — chances are you'll find your answer
+324|Installation failures, connection issues, "where is that switch" — the guide covers them all; this page gathers the most frequently asked questions.
+325|About the software itself
+326|How does Unbound link relate to Clash-based clients?
+327|Unbound link is a Windows desktop client whose networking power comes entirely from the <b>mihomo core</b> (the successor of the Clash Meta line) — it implements no proxy protocols itself. Its job is subscription management, runtime config generation, core lifecycle and supervision, and observing and controlling the core through its API.
+328|Do I need to download and place the core myself?
+329|No. The core (mihomo) and TUN driver ship with the installer, and the client starts and stops them. You don't edit config files by hand either — the runtime config is generated by the client from your subscription and settings.
+330|The core itself can be checked and updated under Settings → Maintenance → Core update.
+331|Is macOS or Linux supported?
+332|Currently only 64-bit Windows 10 / 11. Some features (system proxy writes, the TUN virtual adapter, the tray and UAC elevation) rely on Windows capabilities.
+333|Where do I get a subscription?
+334|Subscriptions come from your own provider — the client bundles none and resells none. Once you have a link like <code>https://…</code>, paste it into Profiles → Add subscription.
+335|Can I import multiple subscriptions?
+336|You can import and keep multiple subscriptions, and drag cards to reorder them. Each subscription has its own enable switch — several can be on at once: the first enabled subscription supplies the base config (port / DNS / mode), while the others merge in their nodes, proxy groups and rules; the effective order follows the list from top to bottom. Changing what's enabled regenerates the runtime config.
+337|Making the proxy work
+338|The system proxy is on — why do some apps still bypass it?
+339|That's the inherent limitation of system proxies: only programs that read Windows Internet settings (browsers, most desktop software) use it. Games, some command-line tools and apps with their own network stack ignore this setting.
+340|Two fixes: enable <b>TUN mode</b> (the virtual adapter takes over all traffic at the network layer; admin rights required), or bind the process to a chosen line with <b>App Routing</b>.
+341|Apps from the Microsoft Store can't reach the network — what should I do?
+342|Windows blocks Store apps from accessing local addresses (<code>127.0.0.1</code>) by default, so they can't use the local proxy directly — the app shows no connectivity, spinning forever.
+343|Go to Settings → Tools → UWP App Tool → Manage apps and flip the switch to lift the loopback restriction; this needs admin rights — if it fails, restart the app as administrator and try again.
+344|System proxy, TUN mode or App Routing — which should I use?
+345|<b>System proxy</b>: covers browsers and most software, needs no extra privileges — the everyday first choice.
+346|<b>TUN mode</b>: covers all traffic, including apps that ignore the system proxy; requires admin rights.
+347|<b>App Routing</b>: affects only bound processes — for singling out individual apps onto dedicated lines.
+348|All three can be enabled at the same time without conflict.
+349|What's the difference between Rule, Global and Direct modes?
+350|<b>Rule</b> decides each connection's path from the subscription and your own rules — the everyday mode; <b>Global</b> ignores rules and sends everything through the selected exit; <b>Direct</b> bypasses the proxy entirely.
+351|Switch under Settings → Network → Mode. Note: in Global or Direct mode, rules in the rule list no longer take effect.
+352|Quick rules vs. subscription rules — which wins?
+353|Quick rules. Domain rules you create by right-clicking on the Connections page are inserted at the very top of the rule list, so they match before subscription rules and take effect immediately — no core restart needed.
+354|All nodes show as timed out — what now?
+355|Check in order: ① On the Proxies page click "Test all" for the latest latencies; ② On the Profiles page click "Traffic" on the card to refresh usage info and confirm the subscription hasn't expired; ③ Click "Update" to re-fetch the subscription; ④ Check the "direct exit / proxy exit" and "current node" conclusions in Diagnostics.
+356|For more scenarios see <a href="./docs/troubleshooting.html">Troubleshooting</a>.
+357|Does switching nodes drop existing connections?
+358|Switching nodes or changing DNS/ports applies to the core via hot reload — the core process itself is not restarted. Connections already in flight may be re-established because the exit changed; that's normal proxy behavior.
+359|Privileges and data
+360|Why do some operations require admin rights?
+361|Operations that modify system-level settings require admin rights: enabling TUN mode, resetting DNS servers, restoring the hosts file and resetting the network stack. The client marks them clearly in the UI and elevates via UAC when executed — never silently.
+362|Resetting the system proxy and flushing the DNS cache in one-click rescue need no admin rights and are always available.
+363|Does the software collect or upload my data?
+364|No account required, no telemetry. Settings, subscriptions, statistics and logs all live in the local data directory <code>%APPDATA%\com.unboundlink.desktop</code>.
+365|The app makes only three kinds of outbound requests: fetching your subscription links, checking for and downloading core updates, and probe requests during Diagnostics and speed tests (e.g., 204 check endpoints and your own nodes).
+366|Switching computers or reinstalling — how do I keep my setup?
+367|Settings → Maintenance → Backup and restore → Export backup produces a JSON file with your settings, subscriptions, Merge config and core version. Install in the new environment and click "Import backup" to restore (this overwrites current settings and subscriptions).
+368|I want to report a problem — what information helps most?
+369|Settings → Maintenance → Backup and restore → Export diagnostics produces a ZIP with app and core versions, current settings, runtime config and recent logs — secrets and other sensitive fields are redacted automatically, so you can attach it directly to your report.
+370|After uninstalling, my browser can't open pages?
+371|That means the system proxy was still on at uninstall time and the browser is still pointing at the local proxy port. Fix: reinstall and click "One-click rescue" in Diagnostics → Network rescue (reset system proxy + flush DNS cache), or clear the proxy server in Windows Internet Options → Connections → LAN settings.
+372|In the future, turn off the system proxy under Settings → System → System proxy before uninstalling.
+373|Will uninstalling delete my settings and subscriptions?
+374|No. The uninstaller only removes program files; the data directory stays. To clean up completely, delete <code>%APPDATA%\com.unboundlink.desktop</code> manually.
+375|Usage details
+376|Which ports are used by default? What if they're taken?
+377|The default mixed proxy port is <code>7890</code> and the control API port is <code>9090</code>. The "port listening" check in Diagnostics tells you whether the ports are properly listened on or taken by another program. Change them under Settings → Network → Ports and mode; the core restarts automatically after changes.
+378|Why does the download speed test run only about 10 seconds — and switch nodes temporarily?
+379|The gauge icon on a node card runs a download speed test; reflecting real bandwidth takes actual downloading, hence roughly 10 seconds. The test temporarily switches the exit to that node and restores the previously selected node when done. Results are cleared automatically after about 10 minutes so stale data doesn't mislead.
+380|Why do the logs have two sources?
+381|Logs from the core itself (connections, rule matching, etc.) come over the core's live channel; the client's own operation logs (subscription updates, config reloads, core start/stop, etc.) carry a <code>[Unbound link]</code> prefix. Both appear together in time order on the Logs page, and level filters apply to both.
+382|Where does the app go when I close the window?
+383|By default "minimize to tray on close" is on — the close button only hides the window and the proxy keeps running. Right-click the tray icon to reopen the main window or exit completely. This behavior can be changed under Settings → System → Tray and watchdog.
+384|How do I customize the floating window — and will it block mouse clicks?
+385|The floating window offers 3 sizes, 3 layouts (card / capsule / gauge) and 7 color themes; latency, connection count, traffic chart, today's traffic and proxy status can each be toggled, and opacity adjusted. If clicks bother you, enable "mouse pass-through" under Settings → System → Tray and watchdog.
+386|Are there keyboard shortcuts?
+387|Five global shortcuts by default: <code>Ctrl+Shift+P</code> toggles the system proxy, <code>Ctrl+Shift+T</code> toggles TUN mode, <code>Ctrl+Shift+U</code> shows the main window, <code>Ctrl+Shift+O</code> toggles the traffic floating window and <code>Ctrl+Shift+M</code> cycles the proxy mode (Rule → Global → Direct). "Update all subscriptions" and "Restart core" are unbound by default and can be recorded. Find them under Settings → System → Global shortcuts; record your own or reset to defaults.
+388|Still stuck?
+389|Check the <a href="./docs/troubleshooting.html">Troubleshooting</a> and <a href="./docs/diagnose.html">Diagnostics</a> chapters of the guide first; if that doesn't help, open an issue in the repository — including error lines from the Logs page and the Diagnostics conclusions speeds up the investigation.
+390|Didn't find your question?
+391|The full guide walks through every screen, including each switch's location and default value.
+392|Open the User Guide
+393|Report an issue
+394|Unbound link
+395|Windows desktop proxy client. Built on the mihomo core, with subscriptions, routing, monitoring and rescue all in one window.
+396|Product
+397|<a href="./features.html">Features overview</a>
+398|<a href="./download.html">Download and install</a>
+399|<a href="./changelog.html">Changelog</a>
+400|Docs
+401|<a href="./docs/index.html">User Guide</a>
+402|<a href="./docs/install.html">Install and first run</a>
+403|<a href="./docs/troubleshooting.html">Troubleshooting</a>
+404|Support
+405|<a href="./faq.html">FAQ</a>
+406|<a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">Releases</a>
+407|<a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+408|This software only provides local management for network proxying. Please comply with your local laws, regulations and the relevant terms of service.
+409|Unbound link
+410|Open navigation
+411|Unbound link
+412|Unbound link FAQ: the core and subscriptions, admin rights, system proxy vs. TUN, data and privacy, backup and migration, uninstall notes and more.
+413|Changelog — Unbound link
+414|Unbound link
+415|Features
+416|User Guide
+417|Download
+418|Changelog
+419|FAQ
+420|Download for Windows
+421|Changelog
+422|What changed in each release
+423|Only user-visible changes are recorded: what's new, what's improved, what's fixed.
+424|v0.1.1 <span class="badge">Latest release</span>
+425|Latest version
+426|Compared with the first public release, this version expands the UI to 13 languages, adds Unlock Test and cloud backup, first-run onboarding, config snapshots and subscription version history, node health monitoring and the world map, and upgrades chained proxies, routing rules, the tray panel and Settings. Below is the full feature list for the current version.
+427|Proxy and routing
+428|Profiles: http/https subscription import, drag to reorder, edit subscription info, QR-code sharing, usage refresh, automatic archiving before updates with rollback to any version (with node and rule count change badges), and hourly auto-update.
+429|Profile usage alerts: sends a system notification when used traffic reaches the threshold (default 80%), remaining days run low (default 3 days left) or the subscription has expired, each tier firing once; after renewal or a plan reset the alerts reset and can fire again.
+430|Provider website: auto-detected when a subscription is downloaded and opened in your browser with one click from the card; if it isn't detected, enter it manually in the Edit dialog — manual entries are never overwritten. The dot beside the globe icon shows website reachability (green = reachable, red = unreachable); click it to re-check.
+431|Multiple subscriptions at once: enable several subscriptions together — the first enabled one provides base settings (port / DNS / mode), while others merge in their nodes, proxy groups and rules; the effective order follows the list from top to bottom.
+432|Local config import: pick a local YAML file as a subscription in the list, tagged "Local" and excluded from remote updates.
+433|Manual Nodes: import single nodes from node links (ss / vmess / vless / trojan / hysteria2 / tuic / socks5 / http); they merge into a proxy group of the same name when the config is generated.
+434|Proxies: browse by group and subscription source, single-node latency test, download speed test, test all, sort by latency or name, region filter and favorites-only; one click hides timed-out nodes, card columns support 1–4 or auto-fit; switch between list and map views at any time, where the map aggregates nodes into region dots, sized by count and colored by latency — click a dot to drill into that region.
+435|Auto latency testing: automatically tests node groups at a set interval (1–1440 minutes) to keep latency data fresh.
+436|Node health monitoring: keeps a rolling latency history per node and draws a latency trend line on node cards (red dots mark failed tests); sends a system notification when the node in use keeps failing tests.
+437|Automatic failover: switches to the fallback node automatically when the current node keeps failing latency tests — pick a fixed target, or leave it empty to auto-select the lowest-latency available node in the group; sends a notification suggesting a manual switch when no usable node is found.
+438|Auto-optimize after update: after subscriptions finish updating and the config reloads, the main proxy group is tested automatically and the lowest-latency node becomes the current node — no more picking a node by hand after every update.
+439|App Routing: bind lines by process name or full path, pick from running processes; multiple lines aggregate automatically with round-robin or session-persistent policies.
+440|Chained proxy: a visual chain editor with drag-to-reorder hops, cross-group node picking and proxy groups as the chain's first hop; saved chains reload for editing, and node cards carry a chain badge with "Entry / Relay / Exit" role tags.
+441|Traffic tunnel: forward a local port to a remote target (TCP / UDP / mixed), with a proxy group, node or rule-based routing as the exit.
+442|Quick rules: right-click on the Connections page to create direct or line-specific rules for a domain in one click.
+443|Configuration capabilities
+444|Merge override: YAML snippets are deeply merged recursively with the subscription config.
+445|Extension script: built-in QuickJS engine — use <code>main(config)</code> to edit the config in bulk.
+446|Node Cleanup: filter nodes by keyword and batch-rename them by rules (with common prefixes/suffixes), rewriting references in proxy groups and rules to match — preview the changes before enabling.
+447|Runtime config auto-generated with atomic writes; config changes hot-reload.
+448|Config snapshots: the previous runtime config is archived automatically before each generation (the latest 10 are kept); roll back to the last working version in one click when the core won't start or the config misbehaves.
+449|One-click core check and update (from the official releases page).
+450|One-click GeoData database updates (geoip.dat / geosite.dat / geoip.metadb / GeoLite2-ASN.mmdb); direct downloads fall back to mirrors or the local proxy.
+451|Export and import backups of settings, subscriptions, Merge config and core version.
+452|Cloud Backup (WebDAV): back up settings, subscriptions, Merge overrides and extension scripts to your own cloud drive (compatible with Jianguo Cloud, Nextcloud, Synology and more); with connection test, status comparison and one-click upload or restore. The password is encrypted by the system and stored only on this machine.
+453|The Settings page is reorganized into three tiers — tab, group, card — making options quicker to find.
+454|Monitoring and operation
+455|Dashboard: core status, version, memory, uptime, total up/down traffic, active connections and a live traffic chart, with direct proxy group node switching.
+456|The sidebar footer shows live core and app memory usage, and the sidebar can be collapsed with one click.
+457|Connections: detail and aggregated views; right-click to copy the domain, destination address or process path.
+458|Traffic stats: daily records with 7/30/90-day and all-time ranges, plus per-app upload / download totals so you can see who uses the most bandwidth at a glance; traffic is also grouped by exit node (direct traffic listed separately as DIRECT) so you can see how much each line used.
+459|Logs: core and app logs on one screen, filtered by level.
+460|Rules: four tabs — Rules, Custom rules, Rule sets and Hit statistics; the Custom rules tab is a visual editor where you add, edit and reorder rules and inject them at the very top of the runtime config on save; hit stats are sampled every 15 seconds and persisted. A built-in route simulator replays locally which rule a domain, IP or app would match (including group exit resolution) — useful even when the core is not running.
+461|Global command palette (Ctrl+K): one entry point to search pages, actions and nodes — jump, run and switch without leaving the keyboard.
+462|Desktop traffic floating window: 3 sizes, 3 layouts, 7 color themes, mouse pass-through and remembered position.
+463|The tray icon changes color with status and right-click opens a quick panel (actions reordered by usage frequency, each with an icon); clicking the "node" or "group" row pops up a standalone node picker (groups on the left, nodes with latency on the right) — click to switch.
+464|Global context menu: replaces the WebView's built-in browser menu; input fields and selected text offer Cut, Copy and Paste, while other areas no longer pop up irrelevant menus — Shift + right-click keeps the native menu.
+465|System integration and troubleshooting
+466|One-click system proxy; TUN mode supports Mixed / Gvisor / System stacks with admin-rights guidance.
+467|Custom DNS (with fallback DNS and static Hosts) and fake-ip acceleration; allow LAN connections and see a dashboard address for other devices — the Share to phone button pops a QR code; set the phone's Wi-Fi manual proxy as prompted.
+468|Network environment automation: switches the system proxy and mode automatically by the current Wi-Fi name — handy for "on at home, off at the office"; names support wildcards, and the first enabled rule from the top is applied.
+469|Built-in MetaCubeXD web dashboard, downloaded and hosted automatically on first open.
+470|Seven global shortcuts, five bound by default (including <code>Ctrl+Shift+M</code> to cycle the proxy mode); "Update all subscriptions" and "Restart core" can be recorded; launch at startup; single-instance; close-to-tray by default.
+471|First-run onboarding: on a fresh install, the first launch opens a four-step guide that walks you through importing a subscription and recommended settings.
+472|Core watchdog: auto-restart on unexpected exit, with debounce protection.
+473|System proxy guard: restores proxy settings automatically if another program rewrites them; optionally clears old connections after switching nodes.
+474|App logs persisted to <code>logs\app.log</code>, rotated by size and cleaned up by age, with adjustable level and retention policies.
+475|In-app one-click upgrade: the client checks for new versions on start-up, and you can also check manually on the About page; a new version can be downloaded and installed silently inside the app (it restarts with the new version automatically). You can set a start-up script to run alongside the core, and regenerate the core control secret with one click.
+476|UWP App Tool: lifts the loopback restriction for Store apps with one click so they can reach the local proxy.
+477|Customizable tray icons for all three states (normal / system proxy / TUN); traffic chart rendering pauses when unfocused to save power; new secondary color and text color theme options.
+478|Export diagnostics: versions, settings, runtime config and recent logs packed into a ZIP (sensitive fields redacted) for easy issue reporting.
+479|11 network checks and the network rescue kit (one-click rescue, system proxy reset, DNS cache flush, DNS server reset, hosts restore, network stack reset).
+480|Unlock Test: one-click check of the current node's unlock and region status for 18 services — Netflix, Disney+, YouTube Premium, Prime Video, Spotify, TikTok, Hulu, HBO Max, ChatGPT, Claude, Gemini, Copilot, X (Twitter) and more overseas, plus Bilibili, iQIYI, Tencent Video and NetEase Cloud Music at home.
+481|Light / dark / follow-system themes with customizable brand, secondary, text and semantic colors, UI font and custom CSS.
+482|Interface and language
+483|The UI supports 13 languages: English, Русский, 中文, فارسی, Tatar, Bahasa Indonesia, العربية, 한국어, Türkçe, Deutsch, Español, 日本語 and 繁體中文 — switching takes effect immediately.
+484|Arabic and Persian automatically switch to a right-to-left layout; Russian, Arabic and others follow local grammar for plurals and counters, and numbers and dates are formatted per the chosen language.
+485|About page: a new software introduction, brand information and links to the official site.
+486|v0.1.0 <span class="badge">First public release</span>
+487|September 24, 2026
+488|The first usable release — getting the essentials running first.
+489|Quick rules via right-click: create a direct or line-specific rule for a domain on the Connections page in one click.
+490|App auto-update: checks for a new client version at startup and, when there is one, notifies you with a one-click link to the download.
+491|Network rescue: one-click reset of the system proxy and a DNS cache flush from the network rescue kit.
+492|Desktop traffic floating window: live speed, latency and connection count floating on your desktop.
+493|App Routing: bind apps to chosen lines by process.
+494|About updates to this page
+495|New releases will be appended to the top of this page. To get new versions as soon as they're out, watch the official releases page, or check for core updates in the client under Settings → Maintenance → Core update.
+496|View all releases
+497|Download the latest
+498|Unbound link
+499|Windows desktop proxy client. Built on the mihomo core, with subscriptions, routing, monitoring and rescue all in one window.
+500|Product
+501|<a href="./features.html">Features overview</a>
+502|<a href="./download.html">Download and install</a>
+503|<a href="./changelog.html">Changelog</a>
+504|Docs
+505|<a href="./docs/index.html">User Guide</a>
+506|<a href="./docs/install.html">Install and first run</a>
+507|<a href="./docs/troubleshooting.html">Troubleshooting</a>
+508|Support
+509|<a href="./faq.html">FAQ</a>
+510|<a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">Releases</a>
+511|<a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+512|This software only provides local management for network proxying. Please comply with your local laws, regulations and the relevant terms of service.
+513|Unbound link
+514|Open navigation
+515|Unbound link
+516|Unbound link changelog: version changes, new features and fixes.
+517|Page not found — Unbound link
+518|Unbound link
+519|Features
+520|User Guide
+521|Download
+522|Changelog
+523|FAQ
+524|Download for Windows
+525|This page doesn't exist
+526|The link may have changed or been mistyped. These shortcuts might help.
+527|Back to home
+528|User Guide
+529|Download
+530|<a href="/faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+531|Unbound link
+532|Open navigation
+533|Advanced Tips — Unbound link User Guide
+534|Unbound link
+535|Features
+536|User Guide
+537|Download
+538|Changelog
+539|FAQ
+540|Download for Windows
+541|User Guide
+542|Advanced tips
+543|This page collects six handy techniques: fine-tune subscriptions with Merge and scripts, create quick rules for domains, route restricted nodes through a relay, jump around with the command palette, and get the floating window and shortcuts set up your way.
+544|How to use Merge override
+545|On the Profiles page, open "Global override config" and write a YAML snippet in the editor. When the runtime config is generated, the snippet is <b>deeply merged recursively</b> with the subscription to override its fields — write only what you want to change; no need to copy the whole config, and subscription updates remain unaffected.
+546|Don't put port, control secret, mode or log level here
+547|These are app-level settings written by the client when generating the config, overriding same-named entries in Merge. Change them under Settings → Network → Ports and mode.
+548|The snippet below does three things at once: enables unified delay, appends a <code>dns</code> block, and adds a node to the proxy group named "Manual switch".
+549|Extension script examples
+550|"Global extension script" on the same page accepts QuickJS scripts in the editor; the script must implement <code>main(config)</code> and <b>return config</b>. It runs on the built-in QuickJS engine to batch-rename nodes and add or remove rules. The two snippets below can be pasted as-is.
+551|Example 1: strip ads from node names.
+552|Example 2: add a uniform prefix to all node names.
+553|Quick rules
+554|On the Connections page, right-click a connection and choose "direct for this domain" or "route this domain through a chosen line". The client generates a DOMAIN-SUFFIX rule, inserted at the top of the rule list — higher priority than subscription rules, effective immediately.
+555|Chained proxy
+556|On the Proxies page click "Chained proxy rules" in the toolbar to open the chain editor: saved chains on the left; on the right, build a chain by picking hops from all candidates, with drag-to-reorder, insert-between-hops, region filters and pinned favorites — each candidate shows recent latency, and a proxy group can only be the first hop. Chains can be any length and apply immediately via hot reload after saving. To quickly give a single node a front proxy, just click the chain button on its card. Chained latency is roughly the sum of all hops — usually slower, but potentially more stable.
+557|Floating window and shortcuts
+558|The traffic floating window is customizable in content and appearance:
+559|Item
+560|Options
+561|<b>Size</b>
+562|compact / standard / large.
+563|<b>Layout</b>
+564|card / capsule / gauge.
+565|<b>Color theme</b>
+566|auto (follows the main app) / graphite / aurora / sunset / emerald / midnight / ivory — 7 in total.
+567|<b>Display items</b>
+568|Current node latency, active connections, mini traffic chart, today's traffic, system proxy status and mode — each toggleable.
+569|<b>Opacity</b>
+570|Default 88.
+571|Default global shortcuts are listed in <a href="./settings.html">Settings</a>: toggle the system proxy <code>Ctrl+Shift+P</code>, toggle TUN mode <code>Ctrl+Shift+T</code>, show the main window <code>Ctrl+Shift+U</code>, toggle the traffic floating window <code>Ctrl+Shift+O</code> and cycle the proxy mode <code>Ctrl+Shift+M</code>; "Update all subscriptions" and "Restart core" are unbound by default and can be recorded in Settings. Right-clicking the tray icon also opens a quick panel for toggling the system proxy or TUN, opening the main window and more; clicking the "node" or "group" row pops up a standalone node picker beside the panel — all proxy groups on the left, that group's nodes and latencies on the right, click to switch without digging through the small panel.
+572|Global command palette
+575|What it does
+576|<b>Pages</b>
+577|Jump to any page in the app.
+580|<b>Actions</b>
+582|<b>Subscription</b>
+584|<b>Maintenance</b>
+588|<b>Tools</b>
+590|<b>Nodes</b>
+593|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+594|Unbound link
+595|Open navigation
+596|Unbound link advanced tips: Merge override syntax, extension script examples, quick rules, chained proxies, the global command palette, plus the floating window and shortcuts.
+597|App Routing — Unbound link User Guide
+598|Unbound link
+599|Features
+600|User Guide
+601|Download
+602|Changelog
+603|FAQ
+604|Download for Windows
+605|User Guide
+606|App Routing
+607|Route different apps through different lines: bind your browser, games and download tools to suitable lines, each independent of the others.
+608|The page subtitle says it: route different apps through different lines. The "Enable App Routing" master switch sits at the top, off by default, with an "Add app binding" button above the table. The master switch gates this whole page — bindings you add below only take effect once it's on. Each binding connects one app to one or more lines, after which that app's traffic follows the bound lines.
+609|The binding table
+610|All bindings are listed in a table, one binding rule per row.
+611|Column
+612|Meaning
+613|<b>App</b>
+614|Shows the icon and name / process name.
+615|<b>Target lines</b>
+616|Switch lines directly in the row. With multiple lines it shows an aggregation note — "multiple connections are distributed across the lines; click Edit to change" — plus the latest latency for that line.
+617|<b>Live speed</b>
+618|Up/down speed of the app's current active connections, from the core's connection records.
+619|<b>Enabled</b>
+620|Toggles whether this binding is active.
+621|<b>Actions</b>
+622|Edit and remove. Removal asks for confirmation: "Remove this app binding?".
+623|The Target lines column switches right in the row — no need to open the dialog every time; only aggregated multi-line targets require Edit to re-select. Live speed comes from the core's connection records and shows the app's currently active up/down traffic; it drops to zero when connections close, so it reflects this moment, not cumulative usage. To refresh line latency, use the "refresh lines" style button in the toolbar.
+624|Adding an app binding
+625|Click "Add app binding" to open the dialog; fill in three parts: app, match method and target lines.
+626|Field
+627|Notes
+628|<b>App</b>
+629|Enter a process name (e.g. <code>chrome.exe</code>) or full path (e.g. <code>C:\Games\game.exe</code>); a "Choose program file" button lets you browse for the exe; you can also pick directly from the list of running processes the core has seen making network connections, complete with app icons and window titles.
+630|<b>Match method</b>
+631|"By process name (recommended)" or "By full path".
+632|<b>Target lines</b>
+633|Multi-select; choosing 2 or more aggregates them automatically for more speed. Options include policy groups, nodes and two fixed entries: "Direct (no proxy)" and "Reject (block connection)".
+634|<b>Aggregation policy</b>
+635|Appears only with 2+ lines: "round-robin" (connections spread across lines automatically) or "session-persistent".
+636|There are three ways to fill in the app: type a process name, type a full path, or click "Choose program file" to browse for the exe. If unsure, pick straight from the running-process list (processes the core has seen currently or recently making connections) — icons and window titles make it easier to find the right one. Then the match method decides how the app is recognized: "By process name (recommended)" is shorter and more tolerant of moved or reinstalled programs; "By full path" is more precise.
+637|Target lines and aggregation
+638|Target lines is a multi-select. Choices include policy groups, nodes and two fixed entries: "Direct (no proxy)" and "Reject (block connection)". With 2+ lines the client creates an aggregation group so several lines serve the app at once; with one line, traffic takes just that line. Two or more lines also prompt for an aggregation policy: round-robin spreads connections across lines, while session-persistent keeps a session on one line.
+639|Common validation messages
+640|If saving fails, the dialog shows one of these messages — fix accordingly:
+641|Message
+642|Meaning
+643|Select or enter an app process
+644|No app selected.
+645|Select at least one target line
+646|No line selected.
+647|This app is already in the binding list
+648|Duplicate binding.
+649|Aggregation doesn't support Direct or Reject; they were removed automatically — to use Direct, select it alone
+650|The aggregation included Direct or Reject.
+651|Process name or line name contains a comma
+652|A warning is shown because commas are written into rules.
+653|Typical setups
+654|Browser through "Auto Select", games through a "low-latency line", download tools pinned to a single fixed line; or set a chat app to "Reject" to block its connectivity. A few rules of thumb: apps that prize stability get a single line; apps that prize speed get multiple lines aggregated; apps that shouldn't use the proxy get "Direct"; apps that shouldn't be online at all get "Reject".
+655|Routing only affects bound processes
+656|App Routing affects only bound processes; all other traffic still follows the <a href="./rules.html">rule list</a>. Bindings depend on the core running — they don't take effect while the core is stopped.
+657|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+658|Unbound link
+659|Open navigation
+660|Unbound link App Routing: route different apps through different lines — bind process names, choose target lines and aggregation policies, and avoid common validation issues.
+661|Connections — Unbound link User Guide
+662|Unbound link
+663|Features
+664|User Guide
+665|Download
+666|Changelog
+667|FAQ
+668|Download for Windows
+669|User Guide
+670|Connections
+671|The Connections page shows what's online right now and lets you create rules for domains on the fly — make a domain direct or route it through a chosen line immediately, without touching config files.
+672|What this page solves
+673|When you're unsure who's online or which line a site took, come here. It lists every connection the core is handling right now, so you can verify routing results and fix them in place: right-click a connection to create a rule for its domain.
+674|Two views
+675|Switch between two ways of viewing the page:
+676|<b>Detail view</b> — one row per connection, ideal for inspecting a single connection. Columns:
+677|Column
+678|Meaning
+679|<b>Host</b>
+680|The connection's destination hostname.
+681|<b>Process</b>
+682|The program that opened the connection.
+683|<b>Network</b>
+684|The network protocol in use — tcp or udp.
+685|<b>Destination</b>
+686|The address actually visited.
+687|<b>Rule</b>
+688|The rule this connection matched.
+689|<b>Chain</b>
+690|Which line or proxy group the traffic took.
+691|<b>Up / Down</b>
+692|Data sent / received by this connection.
+693|<b>Duration</b>
+694|How long the connection has lasted.
+695|<b>Aggregated view</b> — merges similar connections by domain / destination to reveal the overall picture. Columns: domain / destination, connections, process, rule, chain, up, down.
+696|Create quick rules with right-click
+697|<b>Right-click</b> any connection row to open a menu with:
+698|<b>Direct for this domain</b> — traffic to this domain goes out directly, bypassing the proxy.
+699|<b>Route this domain through a chosen line</b> — a submenu lists available proxy groups; pick one and the domain routes through it. With no groups available the submenu shows "No proxy groups available".
+700|<b>Copy domain</b> — copies the connection's domain to the clipboard.
+701|<b>Copy destination</b> — copies the connection's destination address.
+702|<b>Copy process path</b> — copies the full path of the process that opened the connection.
+703|How quick rules take effect
+704|Choosing "Direct for this domain" or "Route this domain through a chosen line" creates a <b>quick rule</b> of type DOMAIN-SUFFIX. It's inserted at the very top of the rules when the runtime config is generated, so it outranks subscription rules and <b>takes effect for that domain immediately — no core restart needed</b>. To undo, right-click the domain again and pick a different line.
+705|Two practical tips
+706|Live speeds come from the core and disappear once a connection closes. With lots of data, use the search / filter above to narrow things down and find your target faster.
+707|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+708|Unbound link
+709|Open navigation
+710|Unbound link Connections guide: see what's online right now and create rules for domains on the fly.
+711|Dashboard — Unbound link User Guide
+712|Unbound link
+713|Features
+714|User Guide
+715|Download
+716|Changelog
+717|FAQ
+718|Download for Windows
+719|User Guide
+720|Dashboard
+721|The Dashboard is the first screen you see after opening the client — check the overall status at a glance and switch proxy groups and nodes right there.
+722|What this page solves
+723|Its role is the overview: is the core running, is traffic flowing normally, which node is active. The two most common everyday actions — check that you're connected and temporarily switch lines — both happen here, without visiting the Proxies page.
+724|Core status
+725|The core status card at the top shows whether the core is running, plus its version, memory usage and uptime — read by the client from the core so you can judge the background process's health. The sidebar footer also shows live "Core memory" and "App memory" usage, visible from anywhere.
+726|<b>Running</b>: the core is working; proxying is available.
+727|<b>Not running</b>: the core is down; the system proxy and nodes can't work.
+728|Traffic section
+729|The traffic section gives three summary figures and a live traffic chart:
+730|Item
+731|Meaning
+732|<b>Total download</b>
+733|Total traffic received since the core started this time.
+734|<b>Total upload</b>
+735|Total traffic sent since the core started this time.
+736|<b>Active connections</b>
+737|The number of connections in progress; jump to Connections for details.
+738|<b>Live traffic chart</b>
+739|Instant up/down speed trends, pushed from the core over WebSocket.
+740|Moving curves mean data is flowing
+741|Open a webpage or video and the curve should ripple while total download grows.
+742|Switching proxy groups and nodes
+743|The lower part of the Dashboard holds the proxy group / node switch rows. Each proxy group gets a row where you can pick its current node right here:
+744|Open a group's dropdown, pick a node, and the change takes effect immediately.
+745|For speed tests, favorites or finer filters, head to the Proxies page.
+746|A subscription usually has several proxy groups, like "Select" or "Auto Select". What you switch here is the group's current node; if the group uses an automatic policy it picks for itself, and a manual choice overrides the automatic result.
+747|Common uses
+748|Task
+749|How to read / do it here
+750|Check that you're connected
+751|See whether total download / upload has values that grow while you browse, and confirm the current node shows a latency number.
+752|Temporarily switch lines
+753|Pick another node in the group's dropdown — no need to leave the page.
+754|Confirm the core is healthy
+755|Check the status card says Running and that uptime accumulates normally.
+756|When the core shows as not running
+757|First check Settings to confirm "auto-start core" is on; if it is but the core still isn't running, head to Diagnostics to find the problem.
+758|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+759|Unbound link
+760|Open navigation
+761|Unbound link Dashboard guide: core status, live traffic and proxy group / node switching.
+762|Diagnostics — Unbound link User Guide
+763|Unbound link
+764|Features
+765|User Guide
+766|Download
+767|Changelog
+768|FAQ
+769|Download for Windows
+770|User Guide
+771|Diagnostics
+772|Diagnostics checks the core, ports, system proxy, DNS, exits and leaks in one pass, with a conclusion and suggestion for each item, plus the network rescue kit.
+773|What this page solves
+774|When pages won't load or the proxy seems ineffective, no need to guess. Entering the page <b>starts the checks automatically</b>; when done, the header summarizes results — e.g., "11 passed", "N notices", "N issues" — so you see the scale of the problem first. The "Re-run checks" button sits top-right and shows "Checking…" while running. Diagnostics only inspects; it never changes system settings — whether and what to repair is up to you.
+775|The 11 automatic checks
+776|There are 11 checks; each gives a conclusion, and abnormal ones show "Suggestion: …" telling you the next step.
+777|Check
+778|What it inspects
+779|<b>Core status</b>
+780|Whether the core is running, its version, and whether it's elevated.
+781|<b>Port listening</b>
+782|Whether the mixed and control ports are taken by other programs.
+783|<b>System proxy</b>
+784|Whether the system proxy is on and points at the local mixed port.
+785|<b>DNS resolution</b>
+786|Resolution time and the DNS addresses in use.
+787|<b>DNS takeover</b>
+788|Whether TUN mode takes over system DNS resolution.
+789|<b>Direct exit</b>
+790|The exit IP probed when connecting directly.
+791|<b>Proxy exit</b>
+792|The exit IP probed through the proxy; if it matches the direct exit, it warns that the exit IP equals the direct one.
+793|<b>WebRTC leaks</b>
+794|Checks for public candidate IPs and warns when the real IP could leak.
+795|<b>Current node</b>
+796|The current node's latency; when unreachable it suggests picking a working node on the Proxies page.
+797|<b>Direct GitHub access</b>
+798|Direct reachability, timing and HTTP status code.
+799|<b>Config loading</b>
+800|The number of groups and nodes.
+801|Network rescue kit
+802|The "Network rescue kit" section sits below, described as: "When the proxy exits unexpectedly, DNS breaks or pages won't load: detect first to locate the problem, then repair as prompted." It offers two buttons: "One-click rescue" and "Start check / Re-check".
+803|<b>One-click rescue</b> does two things at once: reset the system proxy and flush the DNS cache. Neither <b>needs admin rights</b> and both take effect immediately — good for the vast majority of temporary network failures. <b>Start check / Re-check</b> runs the dedicated outage checks on their own. Detect first to locate the problem, then decide whether to use one-click rescue.
+804|Outage-specific checks
+805|The dedicated checks cover five classes of problems, each with a matching repair button:
+806|Problem
+807|Symptom
+808|Repair button
+809|<b>Leftover system proxy</b>
+810|The proxy still points at <code>127.0.0.1:7890</code> while the core isn't running.
+811|Reset system proxy
+812|<b>DNS resolution failure</b>
+813|Domains can't be resolved.
+814|Flush DNS cache (<code>ipconfig /flushdns</code>, no admin needed)
+815|<b>Abnormal DNS servers</b>
+816|The adapter is set to invalid addresses like 0.0.0.0.
+817|Reset DNS servers / set to automatic (admin required)
+818|<b>Abnormal hosts file</b>
+819|Custom entries exist, or the file is missing.
+820|Restore hosts file (backs up the current content first, then resets to default; admin required)
+821|<b>Direct network unreachable</b>
+822|No internet even without the proxy.
+823|Reset network stack (resets winsock and TCP/IP; admin required; takes effect after a reboot)
+824|Privileges and confirmation
+825|Repairs needing admin rights trigger a UAC elevation prompt and only run once approved. Dangerous operations ask for confirmation first, with a red "Run" button — read the prompt before clicking. After a repair, the page re-runs the checks automatically to refresh the conclusions.
+826|Suggested troubleshooting order
+827|Start with the first four checks — core / ports / system proxy / DNS resolution. Once those pass, move on to the exit and leak checks — the scope narrows step by step.
+828|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+829|Unbound link
+830|Open navigation
+831|Unbound link Diagnostics guide: 11 automatic checks and the network rescue kit.
+832|Guide Overview — Unbound link User Guide
+833|Unbound link
+834|Features
+835|User Guide
+836|Download
+837|Changelog
+838|FAQ
+839|Download for Windows
+840|User Guide
+841|User Guide overview
+842|This guide walks through the client's 11 feature pages one by one: what each page does, how to fill in parameters, and how to recover if something breaks. First-time users should start with "Install and first run".
+843|Five-minute path to get started
+844|Install → import a subscription → flip its enable switch → turn on the system proxy → confirm on the Dashboard that the node is connected. Just five steps.
+845|A few terms first
+846|Later chapters use these words constantly — take a minute to get familiar:
+847|Term
+848|Meaning
+849|<b>Core</b>
+850|The program doing the real work (mihomo). It's installed with the app; the client starts, supervises and stops it — you never install or configure it separately.
+851|<b>Subscription</b>
+852|An http/https link that opens to a YAML config containing nodes, policy groups and rules. The client downloads it as the raw material for generating the runtime config.
+853|<b>Node / proxy group</b>
+854|A node is a single line; a proxy group is a set of nodes that can auto-select by latency, switch manually or fail over.
+855|<b>Rule</b>
+856|The basis for deciding which line traffic takes. If nothing matches down to the last rule, the subscription's fallback policy applies (usually MATCH).
+857|<b>System proxy</b>
+858|Modifies Windows Internet settings so programs that honor the system proxy (browsers, most desktop software) use it automatically. Requires the core to be running.
+859|<b>TUN mode</b>
+860|Creates a virtual adapter to take over all traffic at the network layer, covering apps that ignore the system proxy (some games, command-line tools). Requires admin rights.
+861|<b>Runtime config</b>
+862|The <code>config.yaml</code> the client assembles from "subscription + your overrides + app-level settings" — the file the core actually reads. You never edit it directly.
+863|Guide contents
+864|Getting started
+865|<a href="./install.html">Install and first run</a> — system requirements, installation steps, the data directory, and what to configure the first time.
+866|Feature guides (matching the left menu)
+867|<a href="./dashboard.html">Dashboard</a> — overview status; switch proxy groups and nodes.
+868|<a href="./profiles.html">Profiles</a> — add, update and reorder subscriptions, enable several at once, import node links; Merge overrides and extension scripts.
+869|<a href="./proxies.html">Proxies</a> — switch nodes, test latency, favorites, region filters, chained proxies, one-click hiding of timed-out nodes.
+870|<a href="./apps.html">App Routing</a> — route specific apps through specific lines.
+871|<a href="./rules.html">Rules</a> — view active rules, rule sets and hit statistics.
+872|<a href="./connections.html">Connections</a> — see what's online and create quick rules for domains.
+873|<a href="./stats.html">Traffic</a> — daily up/down usage.
+874|<a href="./logs.html">Logs</a> — logs for troubleshooting, filtered by level, persisted to files.
+875|<a href="./diagnose.html">Diagnostics</a> — 11 checks and the network rescue kit.
+876|<a href="./unlock.html">Unlock Test</a> — check 18 services to judge whether the current route can stream and use AI.
+877|<a href="./settings.html">Settings</a> — ports, mode, TUN, DNS, UWP tool, GeoData updates, traffic tunnel, node cleanup, shortcuts, theme customization, app logs, backup and diagnostics export.
+878|Advanced and help
+879|<a href="./advanced.html">Advanced tips</a> — Merge syntax, extension script examples, quick rules, command palette, floating window and shortcuts.
+880|<a href="./troubleshooting.html">Troubleshooting</a> — symptoms, causes and fix order for common failures.
+881|Where every setting lives
+882|Can't find a switch? Check this table first — almost every switch lives in one of Settings' six tabs:
+883|Tab
+884|What it covers
+885|<b>Appearance</b>
+886|Theme, language, pause rendering when unfocused, Proxies page columns, hide timed-out nodes, theme customization (colors / fonts / custom CSS).
+887|<b>System</b>
+888|System proxy (with bypass list and terminal proxy commands), launch at startup, silent start, start page, startup script, tray click action, three-state tray icons, minimize to tray on close, traffic floating window, floating window mouse pass-through, system notifications, core watchdog, check for updates on launch, clear connections on node switch, system proxy guard, global shortcuts.
+889|<b>Network</b>
+890|Ports and mode (mixed proxy port, control port, mode, log level), kernel behavior (auto-start core, allow LAN, IPv6, unified delay), web dashboard (with control secret), TUN mode, custom DNS (with fallback DNS and static Hosts), speed test and health (scheduled latency tests, node health monitoring, auto-switch on failure), network environment (automatic system-proxy and mode switching by Wi-Fi name).
+891|<b>Tools</b>
+892|UWP App Tool, GeoData databases, traffic tunnel, node cleanup.
+893|<b>Maintenance</b>
+894|Subscription auto-update interval, core updates, node test URL and timeout, app logs, backup and restore (including export diagnostics).
+895|<b>About</b>
+896|App logo and name, app version, core version, data directory (openable in one click), help and support (website and online user guide), developer tools, quit the app.
+897|Settings apply instantly
+898|Every setting saves immediately — no "OK / Apply" buttons. Core-related changes (ports, TUN, DNS) hot-reload or restart the core automatically, and switches in the UI reflect the actual state.
+899|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+900|Unbound link
+901|Open navigation
+902|Unbound link User Guide overview: a five-minute getting-started path, interface tour and key terms.
+903|Install and First Run — Unbound link User Guide
+904|Unbound link
+905|Features
+906|User Guide
+907|Download
+908|Changelog
+909|FAQ
+910|Download for Windows
+911|User Guide
+912|Install and first run
+913|From downloading the installer to confirming nodes are connected, this page lays out the complete order. Complete the "five steps of first run" below and the client is ready to use.
+914|System requirements
+915|Item
+916|Requirement
+917|<b>Operating system</b>
+918|Windows 10 / 11, 64-bit.
+919|<b>Privileges</b>
+920|TUN mode requires admin rights; enabling the system proxy likewise requires admin rights. If you only use the system proxy day to day, you can start with normal privileges and relaunch as administrator when you run into permission issues.
+921|<b>Core</b>
+922|No need to install the mihomo core yourself. The installer already bundles the mihomo core and the wintun TUN driver; the client starts and supervises them.
+923|Installation
+924|Open the <a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">download page</a>, get the Windows installer (NSIS format) from Releases, double-click it and follow the prompts. The current version is 0.1.1.
+925|On first run, if the data directory doesn't exist, the client tries migrating old configs from historical directory names so users upgrading from older versions keep their subscriptions and settings.
+926|Just use the default directory
+927|Keep the default directory the installer suggests; don't change it to another location.
+928|First-run guide
+929|On a fresh install, the first launch opens a four-step guide that walks you through the initial setup:
+930|<b>Welcome</b> — a one-line intro to the app: subscription management, rule-based routing and traffic insights all happen locally, with no account needed.
+931|<b>Import a subscription</b> — paste your subscription link right in the guide to import it, or skip and add one later under Profiles.
+932|<b>Quick setup</b> — three recommended toggles: launch at login, system notifications and the core watchdog; change them anytime in Settings.
+933|<b>Get started</b> — a few handy tips: Ctrl+K opens the command palette, closing the window minimizes to the tray, and Diagnostics checks your network in one click.
+934|Every step has a Back button; after you click Skip or finish the guide it won't pop up again. Users upgrading from older versions are unaffected and won't see it.
+935|The five steps of first run
+936|Go to Profiles, click "Add subscription" top-right, paste your http/https link (name can be left blank — the client detects it), and click OK.
+937|Flip the enable switch on the new subscription card (the first subscription is enabled automatically). A blue "In use" badge appears once it's on — multiple subscriptions can be enabled at the same time.
+938|Open Settings → Network and confirm "auto-start core" is on (on by default). The core then starts by itself whenever needed — no manual action required.
+939|Open Settings → General → System integration and turn on the "system proxy".
+940|Return to the Dashboard, confirm the core status is Running and the current node shows a latency number.
+941|Three ways to route traffic through the proxy
+942|The client never forces a full takeover — choose the scope you need:
+943|Method
+944|Best for
+945|Notes
+946|<b>System proxy</b>
+947|The least hassle; covers browsers and most desktop programs.
+948|Modifies Windows Internet settings; requires the core to be running.
+949|<b>TUN mode</b>
+950|Full traffic takeover, covering apps that ignore the system proxy (some games, command-line tools).
+951|Requires admin rights.
+952|<b>App Routing</b>
+953|Only chosen apps use the proxy; everything else stays direct.
+954|Add per-app rules on the App Routing page.
+955|Data directory and backup
+956|All runtime data lives in <code>%APPDATA%\com.unboundlink.desktop</code>, mainly:
+957|File / directory
+958|Contents
+959|All settings.
+960|The subscription index.
+961|The original YAML of each subscription.
+962|Merge overrides.
+963|Extension scripts.
+964|The generated runtime config — the file the core actually reads.
+965|Static files for the built-in web dashboard.
+966|Rule hit statistics and traffic history.
+967|Core version records.
+968|Before migrating machines or reinstalling, open Settings → Maintenance → Backup and restore to export and import a JSON backup. It contains settings, subscriptions, Merge config and the core version.
+969|Two more things
+970|The app is single-instance — launching it again returns to the existing window. The main window, floating window and tray panel all hide rather than exit when closed; to really quit, use Settings → About → Quit.
+971|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+972|Unbound link
+973|Open navigation
+974|Unbound link install and first run: system requirements, installation steps, the five-step first-run setup, three ways to route traffic and data directory backup.
+975|Logs — Unbound link User Guide
+976|Unbound link
+977|Features
+978|User Guide
+979|Download
+980|Changelog
+981|FAQ
+982|Download for Windows
+983|User Guide
+984|Logs
+985|Logs record all output from the client and the core — the most direct evidence when troubleshooting.
+986|What this page solves
+987|Failed subscription updates, config reload errors, a core that won't start — they all leave records here. When trouble hits, don't rush to change settings; come here first to see who reported the error and at which step.
+988|Two log sources
+989|The view mixes two kinds of logs, both pushed in real time by the core and the client, arranged in time order:
+990|Source
+991|Contents
+992|Identified by
+993|<b>Core logs</b>
+994|Output from the mihomo core itself — connections, DNS, rule matching and so on.
+995|Pushed from the core over WebSocket.
+996|<b>App logs</b>
+997|The client's own actions — subscription updates, config reloads, core start/stop.
+998|Lines start with a <code>[Unbound link]</code> prefix.
+999|The prefix tells you who's speaking
+1000|Lines with a <code>[Unbound link]</code> prefix are printed by the client; those without come from the core.
+1001|Filter by level
+1002|Level filters sit at the top: Debug / Info / Warning / Error, matching the core log levels debug / info / warning / error. To focus, tick only the levels you care about — everything else is filtered out.
+1003|Level
+1004|Notes
+1005|<b>Debug</b>
+1006|The most detailed output; use it when troubleshooting.
+1007|<b>Info</b>
+1008|Routine operation records.
+1009|<b>Warning</b>
+1010|Notices that don't break anything but deserve attention.
+1011|<b>Error</b>
+1012|Lines that truly failed — handle these first.
+1013|Adjusting the log level
+1014|Filtering only changes what's shown, not what's recorded. For more detailed logs, adjust Settings → Network → Log level; options are Debug / Info / Warning / Error / Silent.
+1015|The right way to troubleshoot
+1016|Switch the level to Debug first, then reproduce the problem, so the full sequence around the failure gets recorded; once found, set it back to Info to keep logs from bloating.
+1017|Suggested troubleshooting order
+1018|With lots of logs, reading in this order is most efficient:
+1019|First find error lines with the <code>[Unbound link]</code> prefix — they point straight at the client step that failed.
+1020|Then the core's error lines — the concrete failures at the address, rule or connection level.
+1021|Finally warning lines — to check for overlooked risks.
+1022|For symptom-by-symptom fixes see <a href="./troubleshooting.html">Troubleshooting</a>; if you suspect a network-layer problem, use <a href="./diagnose.html">Diagnostics</a> alongside it.
+1023|Logs persisted to files
+1024|Besides the on-screen view, logs are written in real time to <code>logs\app.log</code> in the data directory for complete records. Files rotate by size: when full, they're archived as <code>app.1.log</code>, <code>app.2.log</code> and so on; archives older than the retention window are cleaned up automatically.
+1025|Which levels are recorded, file size, file count and retention days are all set under Settings → Maintenance → App logs; "Open log folder" takes you straight there. Note this is separate from Settings → Network → Log level (which controls core logs).
+1026|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+1027|Unbound link
+1028|Open navigation
+1029|Unbound link Logs guide: the two log sources, level filtering, log level settings and troubleshooting order.
+1030|Profiles — Unbound link User Guide
+1031|Unbound link
+1032|Features
+1033|User Guide
+1034|Download
+1035|Changelog
+1036|FAQ
+1037|Download for Windows
+1038|User Guide
+1039|Profiles
+1040|Manage your subscription sources here: add links, import local configs, enable one or more subscriptions, import single node links, update node lists, and fine-tune what you get from subscriptions with Merge and Script.
+1041|Page overview
+1042|Below the title it shows "N subscriptions · M enabled" plus the auto-update status, e.g. "Auto-update every 12 hours" or "Auto-update off". Four buttons sit top-right: "Update all", "Refresh", "Import local config" and "Add subscription". Update all refreshes every subscription in turn; Refresh just re-reads local state; Import local config adds a local YAML file to the list as a subscription.
+1043|Adding a subscription
+1044|Click "Add subscription" to open the dialog — just two fields:
+1045|Field
+1046|Notes
+1047|<b>Subscription URL</b>
+1048|Required; must be an http/https link. Submitting empty shows "Please enter a subscription URL".
+1049|<b>Name</b>
+1050|Optional; the client detects it automatically when left blank.
+1051|What each card can do
+1052|Each subscription is a card; press and hold to drag-reorder. Cards show the name, a blue "In use" badge on every enabled subscription (several can appear at once), the URL (truncated when long), a relative "Updated …" time, and subscription info (traffic usage, expiry, etc., when the provider supplies it). The right side holds the enable switch followed by the action buttons:
+1053|Button
+1054|Action
+1055|<b>Enable switch</b>
+1056|Flip it on to enable this subscription; several can be enabled at once — every enabled subscription carries the blue "In use" badge.
+1057|<b>Update</b>
+1058|Re-downloads this subscription's content.
+1059|<b>Traffic</b>
+1060|Refreshes subscription info to check usage and expiry.
+1061|<b>QR code</b>
+1062|Generates a QR code to import on your phone.
+1063|<b>History</b>
+1064|Lists the archived versions of this subscription so you can roll back to any of them (not available for local configs).
+1065|<b>Website</b>
+1066|Appears when the provider's website is detected; click to open it in your default browser. The dot beside the icon shows reachability (green = reachable, red = unreachable) — hover to see check details.
+1067|<b>Edit</b>
+1068|Edits the subscription name and the provider's website (if none was detected, fill it in here; leave empty to restore auto-detection).
+1069|<b>Move up / down</b>
+1070|Reorders the subscription in the list.
+1071|<b>Delete</b>
+1072|Red button; asks "Delete this subscription? This cannot be undone."
+1073|Multiple subscriptions at once
+1074|Several subscriptions can be enabled at once: just flip the enable switch at the top-right of a card, and every enabled subscription carries the blue "In use" badge. The first enabled subscription supplies the base config — port, DNS, run mode — while the others merge their nodes, proxy groups and rules into the same runtime config; the effective order follows the list from top to bottom, so drag cards to reorder.
+1075|Version history
+1076|Before every remote update, the old content is archived automatically, keeping up to 5 versions. Click the clock icon on a subscription card to open the version history dialog, which shows each snapshot's time and node count; click Restore to roll back to that version.
+1077|If the subscription is enabled, rolling back hot-reloads the running config immediately; the current content is archived first, so you can always undo the rollback. Local configs don't take part in remote updates, so they have no version history. After an update the card shows change badges for node and rule counts (green for growth, red for shrink), and a warning pops up if the node count drops by more than half.
+1078|Importing a local config
+1079|Click "Import local config" and pick a local YAML file; the client copies it into the data directory and adds it to the list as a subscription, tagged <b>"Local"</b> and labeled "local config file (excluded from remote updates)". Handy for configs you maintain yourself or got from elsewhere — no need to upload to a server first.
+1080|Local subscriptions take part in neither remote updates nor auto-update; "Update all" skips them. The file lives in the data directory — re-import it when moving to a new version. Success shows "Local config imported".
+1081|Manual Nodes
+1082|The "Manual Nodes" card at the bottom of the page holds single nodes outside any subscription: click "Import links", paste the node links into the dialog (one per line), click "Parse" to preview, then "Import N" to finish. Common protocols are supported — ss / vmess / vless / trojan / hysteria2 / tuic / socks5 / http; failed lines are reported individually and duplicate names are skipped automatically.
+1083|Manual nodes live in the data directory and merge into a proxy group of the same name when the runtime config is generated (default group name: "Manual Nodes"). Remove imported nodes one by one on the card; changes save immediately and hot-reload the config.
+1084|Global override config (Merge)
+1085|At the bottom sits the "Global override config" card with a <b>Merge</b> tag. Open it and write a YAML snippet — when the runtime config is generated it's <b>deeply merged recursively</b> with the subscription to override its fields (app-level settings such as port, control secret and mode are written by the client — writing them here has no effect; change them under Settings → Network). Saving shows "Merge config saved and applied".
+1086|Global extension script (Script)
+1087|Next to it, the "Global extension script" card with a <b>Script</b> tag. Open it and write JavaScript implementing <code>function main(config){ … return config }</code>. The client runs it on the built-in <b>QuickJS</b> engine to batch-rename nodes, add or remove rules and more. Saving shows "Extension script saved and applied". A sample script using regex to strip ads from node names comes built in.
+1088|Auto-update
+1089|The auto-update interval is set under Settings → Maintenance → Subscription, in hours, <b>0 means off</b> (off by default). Once enabled, every subscription in the list updates on schedule in the background; when done, the config reloads automatically and a system notification is sent.
+1090|Two subscription-linked switches live in the same place: "Auto-optimize after update" is off by default — once enabled, every time a subscription update finishes and the config reloads, it tests the main proxy group and switches the current node to the lowest-latency one; "Profile usage alerts" is on by default and sends a system notification when used traffic reaches the threshold, remaining days run low or the subscription has expired, each tier firing only once. Both rely on the traffic and expiry info provided by the subscription source.
+1091|If updates fail, check the network first
+1092|Failed updates usually mean a dead URL or a broken connection. Check the network in Diagnostics, then come back and retry "Update".
+1093|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+1094|Unbound link
+1095|Open navigation
+1096|Unbound link Profiles: add and update subscriptions, enable several at once, drag to reorder, roll back with version history, import node links, Merge overrides and extension scripts, auto-update and troubleshooting.
+1097|Proxies — Unbound link User Guide
+1098|Unbound link
+1099|Features
+1100|User Guide
+1101|Download
+1102|Changelog
+1103|FAQ
+1104|Download for Windows
+1105|User Guide
+1106|Proxies
+1107|This page browses the nodes and groups your subscriptions bring, switches lines, tests latency, favorites nodes and configures chained proxies for restricted nodes.
+1108|Page layout
+1109|A column on the left lists entries: groups, node sources (providers / subscriptions) and other groups. Click an entry to show its nodes on the right. Each entry has a <b>⟳</b> icon that "updates the node list from the source right now", re-fetching the nodes under that entry. Group entries carry notes like: other groups pick routes by their own policy, e.g. auto-selecting the lowest-latency node. Their routes come from the subscription — no need to specify them one by one.
+1110|Search and sorting
+1111|The toolbar at the top-right narrows the range and changes display order. The search box covers groups, nodes and providers, and accepts region abbreviations like <code>hk</code>. The sort dropdown offers default order, sort by latency and sort by name. The difference: search filters — only matches remain; sorting just reorders without removing anything.
+1112|Tools
+1113|Action
+1114|<b>Search box</b>
+1115|Searches groups, nodes and providers; accepts region abbreviations like <code>hk</code>.
+1116|<b>Sort dropdown</b>
+1117|Default order / by latency / by name.
+1118|<b>Hide timed-out</b>
+1119|Nodes that timed out in tests are hidden for a cleaner list; the switch remembers its state and is the same setting as "hide timed-out nodes" in Settings.
+1120|<b>Refresh</b>
+1121|Re-reads the nodes under the current entry.
+1122|<b>Test all</b>
+1123|Tests latency for every node under the current entry.
+1124|Filter bar
+1125|Below the toolbar sits the filter bar with region pills (including "All") and "Favorites only". Region pills show nodes from one region; Favorites only shows starred nodes. Drag the bar sideways to pan through it — no need to squeeze many regions onto one screen.
+1126|Map view
+1127|A "List / Map" toggle sits at the top-right of the node list. Switch to map view and a world map appears on the right, with nodes aggregated into dots by country and region: the region a dot lands in is where your nodes are, so the global spread reads at a glance.
+1128|Dot size reflects how many nodes a region has — bigger means more. Color reflects the best latency within the region: green is fast, orange is moderate, red is slow, and grey means no node there has been latency-tested yet. The region of the node currently in use is ringed with a highlight to locate the active line at a glance. Hover a dot to see the region name, node count and best latency.
+1129|Click any dot to filter nodes by that region: the view switches back to the list, the matching region pill in the filter bar becomes selected, and only that region's nodes remain on the right — "see the map, drill into the list" in one step. Click "All" in the filter bar to restore everything. The list and the map share the same nodes and filters, so switching back and forth loses nothing.
+1130|Map data is built into the app; rendering needs no network and no online map service.
+1131|Node cards
+1132|Each node card shows the node name and latency (color-coded so speed reads at a glance). Clickable elements on the card:
+1133|Element
+1134|Action
+1135|<b>Star</b>
+1136|Favorites the node; favorites always float to the top.
+1137|<b>Lightning button</b>
+1138|Tests this node's latency.
+1139|<b>Gauge button</b>
+1140|Download speed test, about 10 seconds.
+1141|<b>Chain badge</b>
+1142|Nodes in a chain show role tags after their names: <b>Entry</b> (first hop) / <b>Relay</b> / <b>Exit</b> (final landing); hover to see the order.
+1143|<b>Latency trend</b>
+1144|With Node health monitoring on, each card carries a recent latency line (red dots mark failed tests), so you can tell at a glance whether a node is stable.
+1145|The two kinds of speed tests
+1146|The lightning button runs a latency test — the same figure shown on the card, good for quickly comparing who's closer. The gauge button runs a download speed test, taking about 10 seconds; during the test the exit switches to that node temporarily and restores the previous node afterwards, so there's nothing to switch back manually. To triage a large batch of nodes, "Test all" in the toolbar is easier.
+1147|About test results
+1148|Test results stay valid for about 10 minutes, then clear automatically so stale data doesn't mislead. A node with no latency number usually just has expired results — test again. To keep timed-out nodes out of the list, turn on "Hide timed-out" at the top of the page.
+1149|With Node health monitoring enabled (Settings → Network), every test result is recorded on a rolling basis and drawn as a latency trend line on the node card: the line reflects recent latency levels and red dots mark failed tests; if the node in use keeps failing tests, the app sends a system notification and, with Automatic failover on, also switches the line to the fallback node (or the lowest-latency available node in the group) and reports the result. Right after you enable monitoring there's little data, so the line fills in as you test more or as scheduled tests run.
+1150|Chained proxy
+1151|Some nodes are restricted or unstable when reached directly; give them a front relay so traffic goes through the relay first and exits here — one such relationship is a "chain". Click "Chained proxy rules" in the toolbar to open the chain editor (a drawer on the right): saved chains on the left, a visual builder on the right, with a complete chain shown as "This device → Hop 1 → Hop 2 → Internet".
+1152|To build a chain: click "New chain" and click hops in the candidate list below to add them in order. The list supports search and region filters, pins favorites on top, shows each node's latest latency on the right (from the core's test records; untested nodes show none), and pools all direct nodes — no need to switch left-side groups when picking across them. Click a hop again to remove it; drag hop blocks to reorder; click the <b>+</b> between hops to set the insertion point, and the next hop you click goes there.
+1153|Element
+1154|Notes
+1155|<b>Proxy group</b>
+1156|Can only be the chain's first hop (entry), e.g. "HK Auto → landing node"; regular nodes can go anywhere.
+1157|<b>Drag</b>
+1158|Press and drag a hop block to reposition it in the chain.
+1159|<b>× button</b>
+1160|Removes the hop; the <b>+</b> between hops sets where the next hop is inserted.
+1161|<b>Invalid marker</b>
+1162|Hops no longer present in the enabled subscriptions are flagged in red; "Remove invalid chains" cleans them up in one click, applied on save.
+1163|Clicking "Save and apply" writes the whole chain and hot-reloads the runtime config at once — effective immediately. To use it, select the chain's last node and the full path is used; selecting a middle hop passes only through the hops before it. The first hop alone isn't a chain (it's a relay referenced by later hops). Chained latency is roughly the sum of all hops — usually slower, but potentially more stable.
+1164|To quickly give one node a front proxy, still click the chain button on its card and pick a front node or group in the dialog; such quick rules also appear in the chain editor as chains and remain editable.
+1165|Switching nodes applies instantly
+1166|Switching nodes on the Dashboard or this page hot-reloads the config — no core restart, no stop-and-start needed.
+1167|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+1168|Unbound link
+1169|Open navigation
+1170|Unbound link Proxies: group browsing, search and region filters, map view, latency tests, favorites, latency trends, download speed tests and chained proxy configuration.
+1171|Rules — Unbound link User Guide
+1172|Unbound link
+1173|Features
+1174|User Guide
+1175|Download
+1176|Changelog
+1177|FAQ
+1178|Download for Windows
+1179|User Guide
+1180|Rules
+1181|The Rules page answers "which line does which traffic take": it lists the rules in effect, the rule sets your subscription references, and how often each rule is actually hit.
+1182|Four tabs
+1183|Four tabs at the top: <b>Rules</b>, <b>Custom rules</b>, <b>Rule sets</b> and <b>Hit statistics</b> — different facets of the same rule set: "what rules exist", "which extra rules I want", "where they come from" and "how well they're used". Switch tabs to view each without leaving the page.
+1184|Rules
+1185|The default first tab lists every rule in the current runtime config. Data comes from the exact config the core reads — your subscription and overrides combined. Four columns:
+1186|Column
+1187|Meaning
+1188|<b>Type</b>
+1189|The match type, e.g. DOMAIN-SUFFIX, GEOIP and so on.
+1190|<b>Match</b>
+1191|The domain, IP range or region this rule matches.
+1192|<b>Policy (exit)</b>
+1193|Where matched traffic exits — usually a proxy group, a node name, or a built-in policy like DIRECT or REJECT.
+1194|<b>Hits</b>
+1195|How many times this rule has been hit in total.
+1196|Rule counts are often large, so filtering and search sit above: filter by type or search the match content by keyword. Long results paginate automatically to help you find a specific rule.
+1197|Custom rules
+1198|The Custom rules tab is a visual editor: add, edit and reorder your own routing rules without hand-writing config files. On Save & apply they are injected at the <b>very top</b> of the runtime rules in list order, outranking quick rules and subscription rules.
+1199|Editing is draft-style: changes stay on the page, a Discard changes button and an unsaved-changes note appear, and nothing is written until you click Save & apply, which hot-reloads the core; Discard changes restores the saved state. The table shows all rules in the draft with six columns: <b>#</b>, <b>Type</b>, <b>Match</b>, <b>Policy</b>, <b>Extra</b> and <b>Actions</b>. Each row has four buttons: <b>Move up</b>, <b>Move down</b>, <b>Edit</b> and <b>Delete</b>; higher rows have higher priority, and Move up on the first row and Move down on the last are disabled.
+1200|Click Add rule or a row's Edit button to open a form with four fields:
+1201|Field
+1202|Notes
+1203|<b>Rule type</b>
+1204|e.g. DOMAIN-SUFFIX, GEOSITE, IP-CIDR; type freely or pick from the common suggestions — values are upper-cased automatically.
+1205|<b>Match</b>
+1206|The domain, IP range or region to match. Not needed for the MATCH type.
+1207|<b>Target</b>
+1208|The exit on a hit: DIRECT, REJECT, or a proxy group / node name from the running core (pick from the suggestions).
+1209|Shown only for IP-type rules (IP-CIDR, GEOIP and the like); when on, these rules skip DNS resolution to avoid needless lookups.
+1210|Rule types are limited to upper-case letters, digits and hyphens, and Match / Target must not contain commas or line breaks; if any rule fails validation the whole save is rejected with the offending row number. Up to 200 custom rules.
+1211|A MATCH rule truncates everything after it
+1212|Custom rules go to the very top of the rule list, and matching runs top to bottom — the first hit wins. Put a MATCH rule first and nothing below it will ever match.
+1213|Rule sets
+1214|The Rule sets tab lists the rule sets your subscription references — <code>rule-provider</code> entries. Rule sets bundle large batches of rules into external files to keep the main config lean; once referenced, their rules match alongside the rest. Five columns:
+1215|Column
+1216|Meaning
+1217|<b>Name</b>
+1218|The rule set's identifying name.
+1219|<b>Type</b>
+1220|The rule set's type.
+1221|<b>Behavior</b>
+1222|The rule set's match behavior.
+1223|<b>Rules</b>
+1224|How many rules the set contains.
+1225|<b>Updated</b>
+1226|When the rule set was last updated.
+1227|Hit statistics
+1228|The Hit statistics tab presents rules by actual usage in four columns: <b>Type</b>, <b>Match</b>, <b>Exit</b> and <b>Hits</b>, so you can see which rules really pull their weight.
+1229|The client samples connection records <b>every 15 seconds</b> while the core runs and accumulates them to disk, so right after launch it may show "No statistics yet (sampled every 15 seconds while the core runs)" — data trickles in shortly after. Statistics are persisted and survive restarts.
+1230|Route simulator
+1231|The toolbar on the Rules page has a Route simulator button: type a domain, IP or process name and it replays locally which rule would match and what its policy is. No running core is required — very handy for working out why a site went the way it did.
+1232|Two input modes are supported: <b>Domain / IP</b> matches domain- and IP-based rules; <b>App process</b> matches process rules (e.g. chrome.exe). Results show the matched rule number, its text and policy; if the policy is a proxy group, the group's current exit node is resolved too.
+1233|A few rules cannot be decided locally (those relying on GeoSite / GeoIP data, regex, or pending domain resolution); the simulator lists them as skipped instead of giving a wrong answer, and malformed input gets its own hint. Every decision is based on the current runtime config — the same rules the core actually uses.
+1234|Rule priority
+1235|Rules match top to bottom; the first hit wins. In the runtime config the order is: <b>custom rules</b> (arranged in the Rules page editor) → <b>quick rules</b> (right-click on the <a href="./connections.html">Connections</a> page) → subscription rules. Both in-app sources sit above subscription rules, with custom rules highest. <a href="./apps.html">App routing</a> bindings match by process and also apply at config generation time.
+1236|Changed rules but nothing changed?
+1237|First check the mode is "Rule": Settings → Network → Mode. In Global mode all traffic takes one exit and rules have no effect.
+1238|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+1239|Unbound link
+1240|Open navigation
+1241|Unbound link Rules guide: view active rules, the custom rule editor, subscription rule sets and hit statistics.
+1242|Settings — Unbound link User Guide
+1243|Unbound link
+1244|Features
+1245|User Guide
+1246|Download
+1247|Changelog
+1248|FAQ
+1249|Download for Windows
+1250|User Guide
+1251|Settings
+1252|Ports, mode, TUN, DNS, shortcuts, app logs and backups all live here, split into six tabs: Appearance / System / Network / Tools / Maintenance / About. Each tab is grouped by function, with setting cards under each group title. This page explains every switch's effect and default value.
+1253|All settings save instantly
+1254|Every switch and input saves immediately; the footer also reads "All settings save instantly" — no OK / Apply buttons. Core-related changes (ports, TUN, DNS) hot-reload or restart the core automatically.
+1255|Appearance
+1256|The Appearance tab has one group, "Appearance and theme": the appearance card manages theme, language and UI behavior; the theme customization card manages colors, fonts and custom CSS.
+1257|Appearance
+1258|Setting
+1259|Options
+1260|Notes
+1261|<b>Theme</b>
+1262|Dark / light / follow system
+1263|The UI updates instantly on switching; no restart.
+1264|<b>Language</b>
+1265|Simplified Chinese
+1266|The UI language — 13 built in, plus follow-system; applies immediately.
+1267|<b>Pause rendering when unfocused</b>
+1268|On
+1269|Pauses traffic chart refresh when the window loses focus to cut CPU and memory use; recording continues and refresh resumes on focus.
+1270|<b>Proxies page columns</b>
+1271|Auto
+1272|Cards per row on the Proxies page, 1–4; "Auto" fits the window width.
+1273|<b>Hide timed-out nodes</b>
+1274|Off
+1275|When on, timed-out nodes are hidden on the Proxies page; the same setting as "Hide timed-out" at the top of that page.
+1276|Theme customization
+1277|Beyond the three themes, open "Theme customization" to fine-tune the UI: eight color categories, a custom UI font and custom CSS, all applied instantly. "Restore defaults" clears every customization (with confirmation).
+1278|Setting
+1279|Default
+1280|Notes
+1281|<b>Brand / info / warning / error / success colors</b>
+1282|Default palette
+1283|The main colors for buttons, selected states, notices and latency; leave blank for defaults.
+1284|<b>Secondary color</b>
+1285|Default palette
+1286|Color for secondary emphasis and hover backgrounds; leave blank for the default.
+1287|<b>Primary / secondary text color</b>
+1288|Default palette
+1289|Text colors for body and headings, and for captions and de-emphasized info; leave blank for defaults.
+1290|<b>UI font</b>
+1291|Default font stack
+1292|Custom UI font family in CSS font-family syntax; blank uses the default stack.
+1293|<b>Custom CSS</b>
+1294|Empty
+1295|An extra global stylesheet for fine-tuning details; clear it to recover from mistakes.
+1296|System
+1297|Two groups, "Proxy and startup" (system proxy, startup) and "Tray and watchdog" (tray and floating window, background watchdog), with global shortcuts at the end.
+1298|System proxy
+1299|Setting
+1300|Default
+1301|Notes
+1302|<b>System proxy</b>
+1303|Off
+1304|Writes Windows Internet settings so programs that honor the system proxy use it automatically. Requires the core to be running.
+1305|<b>Proxy bypass list</b>
+1306|Empty
+1307|Semicolon / comma-separated wildcard entries (e.g. <code>*.local;192.168.*</code>) whose addresses bypass the proxy; blank keeps the system's existing config. Shown only when the system proxy is on.
+1308|<b>Terminal proxy command</b>
+1309|Pick PowerShell / Cmd / Bash, click "Copy command" and run it in a terminal so CLI tools (git / npm / curl, etc.) use the proxy temporarily.
+1310|Startup
+1311|Setting
+1312|Default
+1313|Notes
+1314|<b>Launch at startup</b>
+1315|Off
+1316|Runs Unbound link automatically after boot.
+1317|<b>Silent start</b>
+1318|Off
+1319|On auto-start, skip the main window and go straight to the tray.
+1320|<b>Start page</b>
+1321|Dashboard
+1322|The page shown after launch: Dashboard / Proxies / Connections / Traffic / Logs / Unlock Test / Settings.
+1323|<b>Startup script</b>
+1324|Not selected
+1325|A script run automatically at app launch: exe / bat / cmd / ps1; skipped and logged if missing.
+1326|Tray and floating window
+1327|Setting
+1328|Default
+1329|Notes
+1330|<b>Tray click action</b>
+1331|Show main window
+1332|What a left-click on the tray icon does (right-click always opens the quick panel): show main window / toggle system proxy / toggle TUN mode.
+1333|<b>Tray icons (three states)</b>
+1334|Built-in icons
+1335|The tray icon changes with status: normal / system proxy on / TUN on. Each state can use your own PNG icon instead of the built-in one; clear it anytime to restore the default.
+1336|<b>Minimize to tray on close</b>
+1337|On
+1338|The close button hides the window instead of quitting; the app keeps running in the background.
+1339|<b>Traffic floating window</b>
+1340|Off
+1341|Shows a draggable live-speed window on the desktop.
+1342|<b>Floating window mouse pass-through</b>
+1343|Off
+1344|When on, the floating window doesn't intercept the mouse; clicks pass through to windows below.
+1345|Background watchdog
+1346|Setting
+1347|Default
+1348|Notes
+1349|<b>System notifications</b>
+1350|On
+1351|Shows system notifications for events like core crashes and subscription auto-updates.
+1352|<b>Core watchdog</b>
+1353|On
+1354|Restarts the core automatically after unexpected exits. Debounced — repeated crashes in a short time won't restart forever.
+1355|<b>Check for updates on launch</b>
+1356|On
+1357|Checks for new client versions after launch and sends a notification when one is found.
+1358|<b>Clear connections on node switch</b>
+1359|On
+1360|Closes old connections after switching nodes so the new node takes over existing sessions immediately.
+1361|<b>System proxy guard</b>
+1362|On
+1363|Automatically restores system proxy settings if another program tampers with them, logging the event.
+1364|Global shortcuts
+1365|Click a shortcut to record a new combination; "Restore defaults" is provided. Shortcuts register at the system level — if another app already uses one, binding fails; just pick another.
+1366|Action
+1367|Default shortcut
+1368|Toggle system proxy
+1369|Toggle TUN mode
+1370|Show main window
+1371|Toggle traffic floating window
+1372|Cycle proxy mode (Rule → Global → Direct)
+1373|Update all subscriptions
+1374|Unbound; record your own
+1375|Restart core
+1376|Unbound; record your own
+1377|Network
+1378|Three groups: "Core and control" (ports and mode, kernel behavior, web dashboard), "Connection method" (TUN mode, DNS), and "Automation" (speed test and health, network environment).
+1379|Ports and mode
+1380|Setting
+1381|Default
+1382|Notes
+1383|<b>Mixed proxy port</b>
+1384|The HTTP / SOCKS mixed listening port; the core restarts automatically after a change.
+1385|<b>External Controller port</b>
+1386|The control API port; the core restarts automatically after a change.
+1387|<b>Mode</b>
+1388|Rule
+1389|Rule / Global / Direct. "Rule" routes traffic by rules; "Global" sends all traffic through one exit; "Direct" bypasses the proxy entirely.
+1390|<b>Log level</b>
+1391|Info
+1392|Debug / Info / Warning / Error / Silent; controls how detailed the core's log output is.
+1393|Kernel behavior
+1394|Setting
+1395|Default
+1396|Notes
+1397|<b>Auto-start core</b>
+1398|On
+1399|Starts the core automatically when the app launches.
+1400|<b>Allow LAN connections</b>
+1401|Off
+1402|When on, other devices on the same LAN can use the proxy via <code>local-IP:mixed-port</code>; the address is shown in the UI.
+1403|<b>Share to phone</b>
+1404|Appears on the same row once Allow LAN is on. Clicking it shows a QR code (with the local proxy address); when the phone and PC are on the same LAN, set the phone's Wi-Fi "Manual proxy" to that address as prompted.
+1405|Off
+1406|Lets the core use IPv6 for outbound traffic; keep it off when your network doesn't support IPv6 for better compatibility.
+1407|<b>Unified latency</b>
+1408|On
+1409|Multiple nodes on the same host report one consistent latency value, making test results more stable and intuitive.
+1410|Web dashboard
+1411|A built-in MetaCubeXD dashboard, downloaded automatically on first open (about 2.5MB). The local address is <code>http://127.0.0.1:9090/ui/</code>; click "Open dashboard" to enter.
+1412|With "Allow LAN connections" on, a LAN dashboard address such as <code>http://192.168.x.x:9090/ui/</code> also appears here, ready to copy to other devices on the same network with one click.
+1413|The <b>control secret</b> protects the External Controller: randomly generated on first run and regenerable with one click; after a change the core restarts automatically, and dashboards or third-party clients using the old secret must switch to the new one.
+1414|TUN mode
+1415|A privilege badge sits next to the title: green "Elevated" with admin rights, otherwise orange "Not elevated", along with a "Restart as administrator" button.
+1416|Setting
+1417|Default
+1418|Notes
+1419|<b>Enable TUN</b>
+1420|Off
+1421|Takes over all traffic through a virtual adapter, covering programs that ignore the system proxy (some games, command-line tools). Requires admin rights.
+1422|<b>TUN stack</b>
+1423|Options are Mixed / Gvisor / System. Use Mixed when unsure.
+1424|Setting
+1425|Default
+1426|Notes
+1427|<b>Custom DNS</b>
+1428|Off
+1429|When on, overrides the DNS config from your subscription.
+1430|<b>DNS server list</b>
+1431|One address per line.
+1432|<b>fake-ip acceleration</b>
+1433|On
+1434|Recommended with TUN mode; when off, redir-host mode is used.
+1435|<b>Fallback DNS</b>
+1436|Empty
+1437|Servers to fall back on when the main DNS is unreliable, in the same format as the main DNS; left blank, nothing is sent.
+1438|<b>Static Hosts</b>
+1439|Empty
+1440|One "domain IP" mapping per line; supports <code>#</code> comments and is delivered to the core with the config.
+1441|DNS-related changes reload the core.
+1442|Speed test and health
+1443|Setting
+1444|Default
+1445|Notes
+1446|<b>Scheduled latency test</b>
+1447|Off
+1448|Automatically tests the current group at the set interval to keep latency data fresh.
+1449|<b>Test interval</b>
+1450|<code>5</code> minutes
+1451|Interval for automatic latency tests, from 1 to 1440 minutes.
+1452|<b>Node health monitoring</b>
+1453|On
+1454|Keeps a rolling latency history per node and draws trends on the Proxies page; sends a system notification when the current node keeps failing tests.
+1455|<b>Automatic failover</b>
+1456|Off
+1457|When the current node fails <code>2</code> latency tests in a row, it switches automatically to the fallback node; relies on Node health monitoring above. Applies only to "manual select" proxy groups — auto-test groups recover on their own inside the core.
+1458|<b>Fallback node</b>
+1459|Auto-select
+1460|Preferred target for failover; the dropdown lists the nodes in the main proxy group. When left empty, the available node with the lowest latency in the group is chosen automatically. Shown once Automatic failover is enabled.
+1461|Network environment
+1462|Switches the system proxy and mode automatically according to the connected Wi-Fi name — handy for "on at home, off at the office". The app checks the Wi-Fi name every 10 seconds; when it changes, the first enabled rule that matches is applied from top to bottom. Actions identical to the current state are skipped, so manual adjustments are not overridden. This feature does not change the TUN state.
+1463|Setting
+1464|Default
+1465|Notes
+1466|<b>Network environment automation</b>
+1467|Off
+1468|Master switch; when on, the matching rule below is applied whenever the Wi-Fi name changes.
+1469|<b>Current Wi-Fi</b>
+1470|Shows the name of the connected network ("Not connected to Wi-Fi" when there is none); the button to the right refreshes it manually.
+1471|<b>Rule list</b>
+1472|Empty
+1473|One rule per row: the switch on the left enables it, followed by the Wi-Fi name, the system-proxy action and the mode action. Names support <code>*</code> (any characters) and <code>?</code> (a single character) wildcards, case-insensitive, e.g. <code>Home-*</code>. An action set to "No change" keeps the current state; other choices (system proxy: On / Off; mode: Rule / Global / Direct) are applied on a match.
+1474|<b>Add rule</b>
+1475|The button at the top right adds a rule that is enabled by default with all actions set to "No change"; fill in the name and actions to take effect.
+1476|Tools
+1477|Four utilities around rules and connections: lifting the loopback restriction for Store apps, updating the rules database, setting up port-forwarding tunnels, and tidying the node list with keyword filters and replacement rules.
+1478|UWP app tool
+1479|Apps installed from the Microsoft Store can't reach the local proxy address (<code>127.0.0.1</code>) by default, which shows up as no network inside the app. Click "Manage apps" to open the list and flip the switch for the apps you need — on lifts the loopback restriction, off restores it. Changing loopback exemptions requires admin rights; if it fails, relaunch the app as administrator and retry.
+1480|GeoData databases
+1481|GEOIP / GEOSITE routing depends on four database files (<code>geoip.dat</code>, <code>geosite.dat</code>, <code>geoip.metadb</code>, <code>GeoLite2-ASN.mmdb</code>); the core loads them from the data directory at startup, and missing or outdated files break the corresponding rules. This section shows each file's size and update time; click "Update databases" to fetch them from the official release page in one go — on direct-connection failure an accelerated mirror is tried automatically, and if that still fails the download goes through the local proxy. Updating all files at once is a large download, so give it a moment.
+1482|Traffic tunnels
+1483|Forwards a local port to a remote target: the core listens on the given local port and relays through a chosen exit (proxy group or node) to the target host — handy for mapping remote intranet services (databases, remote desktop) to your machine. Each tunnel picks a protocol (TCP / UDP / mixed), a local listen address and port, and a target address and port; with the exit left blank, traffic routes by rules. Tunnels are runtime config; the core restarts automatically after any change.
+1484|Node Cleanup
+1485|Applies a unified cleanup to the node list when the runtime config is generated — handy when a subscription brings too many noisy nodes. The three parts combine freely: <b>Filter keywords</b> removes any node whose name hits a keyword (case-insensitive); <b>Rename rules</b> replace text in node names in order (case-sensitive; an empty replacement deletes that piece of text); <b>Common prefix / suffix</b> adds a uniform prefix and suffix to every node name after all replacements.
+1486|The cleanup also rewrites node references in proxy groups, rules and tunnels, so renamed nodes never break their references. Click "Preview" to see the result before deciding whether to enable it: how many nodes in total, how many filtered, how many renamed — preview works even while the switch is off.
+1487|Maintenance
+1488|Two groups: "Updates and tests" (subscription, core update, node latency test) and "Data and logs" (config snapshots, backup and restore, app logs).
+1489|Subscription
+1490|<b>Auto-update interval</b>, in hours, <b>0 means off</b>, off by default. Once enabled, every subscription in the list updates on schedule in the background; when done, the config reloads automatically and a system notification is sent.
+1491|<b>Auto-optimize after update</b>, off by default. Once enabled, every time subscriptions finish updating and the config reloads, the client automatically tests the main proxy group and sets the lowest-latency available node as the current node (applies only to "manual select" proxy groups — auto-test groups make their own pick inside the core); the result is sent as a system notification.
+1492|<b>Profile usage alerts</b> is on by default and relies on the traffic and expiry info provided by the subscription source. There are three tiers: <b>Usage alert threshold</b> (alert when used traffic reaches this percentage, default <code>80</code>%, adjustable from 1 to 100), <b>Expiration alert</b> (alert when remaining days are at or below this value, default <code>3</code> days, <code>0</code> turns this tier off) and the "expired" alert. Each tier fires only once; after a renewal or plan reset it arms again and alerts again when the condition is met.
+1493|Core update
+1494|Shows the current core version; click "Check for updates" to see if a new one exists. When there is, update with one click — the client downloads from GitHub Releases and replaces the core.
+1495|Node latency test
+1496|Setting
+1497|Default
+1498|Notes
+1499|<b>Test URL</b>
+1500|A lightweight 204 URL is recommended.
+1501|<b>Test timeout</b>
+1502|<code>5000</code> ms
+1503|A node that doesn't respond within this time counts as timed out.
+1504|Config snapshots
+1505|Before each runtime config is generated, the previous <code>config.yaml</code> is archived automatically (the latest 10 are kept). Click View snapshots to see the list; if the core won't start or the config misbehaves, roll back to the last working version in one click. Restoring writes back and hot-reloads the core immediately, archiving the current file first.
+1506|Snapshots are an emergency fallback: after restoring, the config is regenerated from your current settings the next time you change something or restart the core.
+1507|Backup and restore
+1508|Action
+1509|Notes
+1510|<b>Export backup</b>
+1511|Exports settings, subscriptions, Merge config and the core version into a single JSON file.
+1512|<b>Import backup</b>
+1513|Restores all data from a backup file, overwriting current settings and subscriptions. A confirmation "Import backup?" appears first.
+1514|<b>Export diagnostics</b>
+1515|Packs app and core versions, current settings, runtime config and recent logs into a ZIP file, with sensitive fields such as secrets masked automatically — handy to attach to a bug report.
+1516|App logs
+1517|The client's own logs are written to <code>logs\app.log</code> in the data directory and rotate by size into archives (<code>app.1.log</code>, <code>app.2.log</code>…); click "Open log folder" to view them. They record the app's own actions (core start/stop, system proxy changes, config and updates), complementing the core's real-time logs on the Logs page — ideal for after-the-fact troubleshooting.
+1518|Setting
+1519|Default
+1520|Notes
+1521|<b>Log level</b>
+1522|Warning
+1523|Error / Warning / Info / Debug; controls how detailed the log files are, effective immediately.
+1524|<b>Max file size</b>
+1525|Range: 16 KB - 10 MB; files rotate automatically at the limit.
+1526|<b>File count</b>
+1527|Range: 2 - 50; the total number of log files kept, with the oldest deleted beyond that.
+1528|<b>Retention days</b>
+1529|Range: 1 - 365; archives older than this are cleaned up automatically.
+1530|About
+1531|The app logo and name sit at the top, with app version, core version and data directory listed below. The data directory is <code>%APPDATA%\com.unboundlink.desktop</code>, copyable with one click — back it up before migrating machines or reinstalling; click "Open folder" to view it in Explorer.
+1532|There is an Exit app button — confirming 'Exit Unbound link?' truly ends the program. Check for updates lets you download the installer in the app and complete the upgrade automatically (it installs silently and restarts with the new version); you can cancel and download manually at any time. Help & support opens the website and the online guide. The Developer tools entry opens a built-in debugging panel — not needed for daily use. The bottom of the page reminds you that all settings are saved instantly.
+1533|Summary
+1534|The three most-used spots: System → the system proxy card; Network → Mode under "Ports and mode"; Maintenance → Data and logs → Export backup. All of them save instantly with no extra confirmation.
+1535|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+1536|Unbound link
+1537|Open navigation
+1538|Unbound link Settings: a walkthrough of the six tabs — Appearance, System, Network, Tools, Maintenance and About — covering theme customization, ports, mode, TUN, DNS, shortcuts, app logs and backup defaults.
+1539|Traffic — Unbound link User Guide
+1540|Unbound link
+1541|Features
+1542|User Guide
+1543|Download
+1544|Changelog
+1545|FAQ
+1546|Download for Windows
+1547|User Guide
+1548|Traffic
+1549|The Traffic page records this machine's daily up and down traffic through the core, so you can review usage trends over time.
+1550|What this page solves
+1551|It answers "how much traffic did I use these days". All data comes from the local core — no server collects it; what you see is this computer's actual usage.
+1552|Choosing a time range
+1553|The top of the page switches between four time ranges:
+1554|<b>Last 7 days</b> — usage over the past week.
+1555|<b>Last 30 days</b> — usage over the past month.
+1556|<b>Last 90 days</b> — usage over the past three months.
+1557|<b>All</b> — every record in history.
+1558|After switching, the chart and table below update in sync. Shorter ranges show clearer trends; longer ranges are better for overall scale. "Last 7 days" is enough for daily checks — reach for "Last 30 days" or "Last 90 days" to see long-term usage. Switching only affects the display; no historical data is deleted.
+1559|What to look at and how
+1560|The page presents data two ways at once — a trend chart and a detail table: the chart shows the curve's ups and downs so you can spot high-traffic days at a glance; the table gives each day's exact numbers. The table has four columns:
+1561|Column
+1562|Meaning
+1563|<b>Date</b>
+1564|The day this row covers.
+1565|<b>Download</b>
+1566|Total traffic received that day.
+1567|<b>Upload</b>
+1568|Total traffic sent that day.
+1569|<b>Total</b>
+1570|Combined up and down traffic for the day.
+1571|If the current range has no records yet, the page shows "No records in this range". Widen the range, or come back after using the app for a while.
+1572|Traffic by app
+1573|At the bottom of the page there is an <b>App traffic</b> panel that groups traffic by originating process, showing which app used the most bandwidth over the period. The table has five columns — app, download, upload, total and last active — sorted by total, highest first.
+1574|Data is sampled from connection records every 15 seconds while the core runs; only connections with an identifiable process are counted. The list may be empty right after start-up and fills in shortly. Totals persist across restarts. To start over, click Reset at the panel's top-right to clear all per-app totals; daily records are not affected.
+1575|Traffic by node
+1576|Below the <b>App traffic</b> panel there is a <b>Node traffic</b> panel that groups traffic by the exit node each connection finally leaves through, with direct traffic listed separately as a <b>DIRECT</b> row — handy for comparing how much went through the proxy and how much went direct. The table has five columns — node, download, upload, total and last active — sorted by total, highest first.
+1577|Data is likewise sampled every 15 seconds while the core runs and accumulated; totals persist across restarts. To start over, click Reset at the panel's top-right to clear all per-node totals; daily records and App traffic are not affected.
+1578|Where the data is stored
+1579|Data is recorded continuously while the client runs and stored in the data directory: daily records in <code>traffic_history.json</code>, per-app traffic in <code>app_traffic.json</code> and per-node traffic in <code>node_traffic.json</code>. Therefore <b>history is kept after a restart</b> and is not lost when you exit. All these files are maintained automatically by the client — no manual editing needed.
+1580|Only traffic through the core is counted
+1581|Only traffic that goes through the core is counted. Direct connections that bypass the core aren't included, so the totals may be lower than the adapter's actual usage.
+1582|About clearing records
+1583|Daily records have no dedicated clear button — you can overwrite them indirectly by importing a backup under Settings → Maintenance → Backup & restore. Per-app and per-node totals can be cleared with Reset at each panel's top-right.
+1584|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+1585|Unbound link
+1586|Open navigation
+1587|Unbound link Traffic guide: daily up and down traffic through the core, plus cumulative usage by app and by node.
+1588|Troubleshooting — Unbound link User Guide
+1589|Unbound link
+1590|Features
+1591|User Guide
+1592|Download
+1593|Changelog
+1594|FAQ
+1595|Download for Windows
+1596|User Guide
+1597|Troubleshooting
+1598|Common problems below follow Symptom → Cause → Fix, each with concrete steps — just work through them in order.
+1599|Pages won't load / no network
+1600|<b>Symptom</b>: the browser can't open any page.
+1601|<b>Cause</b>: leftover system proxy settings, a bad DNS cache or an unhealthy network stack.
+1602|<b>Fix</b>: open Diagnostics and check the first few results; then run "One-click rescue" in the network rescue kit (reset system proxy + flush DNS cache, no admin rights needed). If that still doesn't help, follow the on-screen prompt to reset the network stack — that requires admin rights and takes effect after a reboot.
+1603|The proxy isn't taking effect
+1604|<b>Symptom</b>: the internet works, but traffic doesn't go through the proxy.
+1605|<b>Cause</b>: the mode was switched to Global or Direct; the system proxy is off; the core isn't running.
+1606|<b>Fix</b>: open Settings → Network and check the mode is "Rule" (choosing "Global" or "Direct" changes behavior); open Settings → System → System proxy and check it's on; then confirm the core is running via the core status on the Dashboard or in Diagnostics.
+1607|Some apps bypass the proxy
+1608|<b>Symptom</b>: the browser works, but some programs don't use the proxy — and apps from the Microsoft Store can't open pages at all.
+1609|<b>Cause</b>: this is the inherent limitation of system proxies — some programs don't read the setting; Store apps are also subject to the Windows loopback restriction, which blocks access to the local address (<code>127.0.0.1</code>) by default.
+1610|<b>Fix</b>: for Store apps, open Settings → Tools → UWP app tool and flip the switch to lift the loopback restriction (needs admin rights); for other programs switch to TUN mode (see Settings → Network → TUN mode), or bind the process to a chosen line with App Routing.
+1611|All nodes time out
+1612|<b>Symptom</b>: every node tests as timed out.
+1613|<b>Cause</b>: the nodes are temporarily unavailable, or the subscription has expired or is stale.
+1614|<b>Fix</b>: first click "Test all" on the Proxies page; check whether the subscription has expired and click the "Traffic" button on its card under Profiles to refresh the info; then check the "direct exit / proxy exit" and "current node" conclusions in Diagnostics; you can also click "Update" for the subscription on the Profiles page. To clear useless timed-out nodes, turn on the "Hide timed-out" switch at the top of the Proxies page.
+1615|Port already in use
+1616|<b>Symptom</b>: the core can't listen; a port conflict is reported.
+1617|<b>Cause</b>: the default port is taken by another program.
+1618|<b>Fix</b>: the "port listening" check in Diagnostics shows which port is taken; change the mixed proxy port or the control port under Settings → Network → Ports and mode — the core restarts automatically after changes.
+1619|Subscription update fails
+1620|<b>Symptom</b>: clicking "Update" changes nothing.
+1621|<b>Cause</b>: the subscription URL is unreachable, or the current network is down.
+1622|<b>Fix</b>: confirm the subscription URL is reachable; check the error lines under Logs; if the network is down, use Diagnostics to locate the problem first.
+1623|TUN won't enable / "Not elevated" warning
+1624|<b>Symptom</b>: turning on "Enable TUN" has no effect, and the privilege badge shows an orange "Not elevated".
+1625|<b>Cause</b>: the current process lacks admin rights, or the install directory is in use.
+1626|<b>Fix</b>: go to Settings → Network → TUN mode and click "Restart as administrator", confirm the UAC prompt and retry; also make sure the install directory isn't in use.
+1627|Settings changed but nothing happened
+1628|<b>Symptom</b>: changing a setting doesn't change the behavior.
+1629|<b>Cause</b>: core-related changes need a reload or restart of the core; or config generation failed.
+1630|<b>Fix</b>: core-related changes (ports, TUN, DNS) reload or restart the core automatically; if nothing changes, check Logs for config errors and, if needed, check the Merge override or extension script under Profiles — a syntax error makes config generation fail.
+1631|Data and backup
+1632|<b>Symptom</b>: you need to migrate to a new machine or reinstall Windows.
+1633|<b>Cause</b>: the data directory lives under the user folder on the system drive and is lost on reinstall.
+1634|<b>Fix</b>: the data directory is <code>%APPDATA%\com.unboundlink.desktop</code>. Before migrating or reinstalling, open Settings → Maintenance → Backup and restore → Export backup, then restore it in the new environment with "Import backup". When you need help troubleshooting, click "Export diagnostics" first and attach the ZIP to your report.
+1635|The core won't start
+1636|<b>Symptom</b>: the core status never shows Running.
+1637|<b>Cause</b>: the install directory is incomplete — the core sidecar is missing or damaged.
+1638|<b>Fix</b>: make sure the install directory is complete (the core ships as a sidecar program with the installer); check Logs for errors; go to Settings → Maintenance → Core update and click "Check for updates" to re-fetch the core.
+1639|Troubleshooting checklist
+1640|Check the core status on the Dashboard.
+1641|Check Logs for errors.
+1642|Run Diagnostics and check the first 4 items.
+1643|Use the network rescue kit.
+1644|Check the mode and the system proxy.
+1645|Check whether the subscription needs updating.
+1646|Check for port conflicts.
+1647|If the problem is hard to pin down, click Settings → Maintenance → Backup and restore → Export diagnostics and attach the ZIP to your report.
+1648|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+1649|Unbound link
+1650|Open navigation
+1651|Unbound link Troubleshooting: symptoms, causes and fixes for no network, the proxy not taking effect, timed-out nodes, port conflicts, TUN failures and more.
+1652|Unlock Test — Unbound link User Guide
+1653|Unbound link
+1654|Features
+1655|User Guide
+1656|Download
+1657|Changelog
+1658|FAQ
+1659|Download for Windows
+1660|User Guide
+1661|Unlock Test
+1662|Unlock Test visits 18 popular services through the current exit and reports Unlocked / Partial / Blocked / Failed for each, so you can tell whether this route can stream and use AI tools.
+1663|What this page solves
+1664|"I switched to a new node — can I still watch Netflix?" "ChatGPT suddenly won't sign in?" Questions like these do not need a website-by-website check. This page tests all 18 services in one pass and reports the results without delay. Requests leave through the local mixed port — the same proxy path your daily traffic takes — so what you see is the real result of the <b>current exit node</b>; switch to another route and the outcome can be completely different.
+1665|How to use it
+1666|<b>Pick the exit</b>: the "Exit node" row at the top has two dropdowns — pick a group, then a node; you can switch right here, and each node shows its latency;
+1667|<b>Start a test</b>: click "Test all" at the top right to check all 18 in parallel, or click the refresh icon on a single card to test just that service;
+1668|<b>Read the results</b>: the subtitle summarizes "Unlocked N · Partial N · Tested N/18" in real time, and each card shows a status badge and a short note.
+1669|What the states mean
+1670|Status
+1671|Meaning
+1672|<b>Not tested</b>
+1673|Not tested yet. Click the refresh icon on the card to run a single check.
+1674|<b>Unlocked</b>
+1675|The service is fully available through the current exit.
+1676|<b>Partial</b>
+1677|Reachable, but with limited content — the classic case is Netflix showing only its own productions.
+1678|<b>Blocked</b>
+1679|Clearly unavailable; the detail line shows the HTTP status code or the region notice.
+1680|<b>Failed</b>
+1681|The request itself did not complete (timeout, proxy unreachable, etc.) — <b>this does not mean the service is unavailable</b>. Check the core and node status first, then test again.
+1682|How the checks work
+1683|Every check sends requests through the local mixed port with a browser User-Agent and a 12-second timeout. Each service is judged differently:
+1684|<b>Netflix</b>: two titles are cross-checked — an original series first, and only if it returns 200, a non-original title. Both reachable means Unlocked; only the original means Partial; otherwise Blocked.
+1685|<b>Disney+ / Prime Video / Spotify / TikTok</b>: the home page loads and shows no "not available in your region" notice — Unlocked.
+1686|<b>Hulu / HBO Max</b>: a redirect to a region notice page, or restricted-content text on the page, means Blocked.
+1687|<b>ChatGPT Web</b>: a 403 response means the region is unsupported; <b>ChatGPT iOS</b> probes a long-stable mobile status endpoint instead.
+1688|<b>Bilibili</b>: an in-site API reports how Bilibili sees the exit region — mainland China gets the full catalogue, while Hong Kong, Macao, Taiwan and overseas regions are partially restricted.
+1689|<b>Claude / Copilot / Gemini / X / iQIYI / Tencent Video / NetEase Cloud Music</b>: home page reachability; region limits show up as a 403 or a redirect to a notice page.
+1690|Supported services
+1691|18 services in total, covering overseas streaming, AI services and China-side platforms:
+1692|Service
+1693|Category
+1694|What is checked
+1695|Streaming
+1696|Original + non-original title cross-check; detects "own productions only".
+1697|Streaming
+1698|Home page reachability and region notice.
+1699|Streaming
+1700|Region availability of the Premium subscription page.
+1701|Streaming
+1702|Home page reachability.
+1703|Streaming
+1704|Home page reachability.
+1705|Streaming
+1706|Home page reachability.
+1707|Streaming
+1708|US only; detects region redirects.
+1709|Streaming
+1710|Detects the region guidance page.
+1711|AI services
+1712|Web app reachability (403 detection included).
+1713|AI services
+1714|Mobile status endpoint, a long-stable check target.
+1715|AI services
+1716|Home page reachability; a 403 means the region is unsupported.
+1717|AI services
+1718|Redirects to a Google help page when the region is unsupported.
+1719|AI services
+1720|Home page reachability; a 403 means the region is unsupported.
+1721|Social
+1722|Home page reachability.
+1723|China-side platforms
+1724|In-site API region check (mainland / HK-Macao-Taiwan / overseas).
+1725|China-side platforms
+1726|Home page reachability.
+1727|China-side platforms
+1728|Home page reachability.
+1729|China-side platforms
+1730|Home page reachability.
+1731|In one sentence
+1732|Unlock Test does not ask "does this service exist" but "what happens right now when I reach it through this route". Results reflect the exit as of the moment they were measured — retest after switching nodes.
+1733|<a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a>
+1734|Unbound link
+1735|Open navigation
+1736|Unbound link Unlock Test guide: unlock checks for 18 streaming and AI services, how to read the four results, and how the checks work.
+169|Press <code>Ctrl+K</code> to bring it up on any page: jump to pages and settings categories, run actions like starting / stopping the core or switching modes, update and toggle subscriptions, check for updates and restore backups, use network rescue, and search and switch nodes — all filterable by keyword and fully keyboard-driven.
+573|Press <code>Ctrl+K</code> (or click the search button in the sidebar) to bring up the command palette on any page; type keywords to filter the entries, or leave it empty to list every available action by group:
+574|Group
+578|<b>Settings</b>
+579|Jump straight to any of the six settings tabs: Appearance / System / Network / Tools / Maintenance / About.
+581|Start / stop / restart the core, toggle the system proxy, TUN mode, LAN connections and the floating window, switch light/dark themes and rule / global / direct modes, quit the app, and more.
+583|Update all subscriptions; update, enable or disable a specific subscription; open the provider's website in one click when one is set.
+585|Check for core updates (upgrade in one click when one is found), check for app updates, update the GeoData database, export and import backups, back up to the cloud or restore from it (shown once WebDAV is configured), and reset rule-hit, app or node traffic statistics.
+586|<b>Network rescue</b>
+587|One-click rescue, flush the DNS cache, reset the system proxy and DNS servers, restore the hosts file, reset the network stack; risky actions ask for confirmation first.
+589|Open the web dashboard, the data directory and the log directory, export diagnostics, and open the official site or the User Guide.
+591|Search existing nodes — results show recent latency, press Enter to switch (appears only after you type a keyword, keeping the list short for large subscriptions).
+592|Keyboard: <code>↑</code> <code>↓</code> to select, <code>Enter</code> to run, <code>Esc</code> to close. Everyday moves like switching nodes or modes, checking for updates or restoring backups no longer need the mouse.

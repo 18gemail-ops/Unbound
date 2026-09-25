@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>安装与首次运行 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）安装与首次运行：系统要求、安装步骤、首次运行的五步配置、让流量走代理的三种方式与数据目录备份。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>安装与首次运行</h1>
+    <p class="page-lead">从下载安装包到确认节点连通，这一页给出完整顺序。按下面的「首次运行的五步」做完，客户端就处于可用状态。</p>
+
+    <h2 id="系统要求">系统要求</h2>
+    <table>
+      <thead>
+        <tr><th>项目</th><th>要求</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>操作系统</b></td><td>Windows 10 / 11 64 位。</td></tr>
+        <tr><td><b>权限</b></td><td>使用 TUN 模式需要管理员权限；开启系统代理同样需要管理员权限。日常只使用系统代理时可先以普通权限运行，遇到权限不足再以管理员身份启动。</td></tr>
+        <tr><td><b>内核</b></td><td>无需自行安装 mihomo 内核。安装包已内含 mihomo 内核与 wintun TUN 驱动，客户端负责启动与守护。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="安装">安装</h2>
+    <p>打开<a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">下载页</a>，在 Releases 页面下载 Windows 安装包（NSIS 格式），双击运行并按提示完成安装。当前版本为 0.1.1。</p>
+    <p>首次运行时，如果数据目录不存在，客户端会依次尝试从历史目录名迁移旧配置，让从老版本升级过来的用户直接沿用原有的订阅与设置。</p>
+    <div class="cal note">
+      <div>
+        <b>安装到默认目录即可</b>
+        <p>保持安装程序给出的默认目录，不要修改到其它位置。</p>
+      </div>
+    </div>
+
+    <h2 id="首次启动引导">首次启动引导</h2>
+        <p>全新安装首次打开客户端时，会自动弹出一个四步引导，陪你完成最初的设置：</p>
+        <ol>
+          <li><b>欢迎</b>——一句话了解客户端：订阅管理、规则分流、流量观测全部在本地完成，无需注册账号。</li>
+          <li><b>导入订阅</b>——直接在引导里粘贴订阅链接完成导入；也可以跳过，稍后在「订阅管理」中添加。</li>
+          <li><b>快速设置</b>——三个推荐开关：开机自动启动、系统通知、内核看门狗，可随时在「设置」中更改。</li>
+          <li><b>开始使用</b>——列出几个小技巧：Ctrl+K 打开命令面板、关闭窗口自动最小化到托盘、遇到网络问题用「网络体检」一键诊断。</li>
+        </ol>
+        <p>每一步都可以点「上一步」回看；点「跳过」或走到最后完成引导后，它不会再自动弹出。从旧版本升级的用户不受影响，不会被动弹出。</p>
+    
+    <h2 id="首次运行的五步">首次运行的五步</h2>
+    <ol>
+      <li>进入「订阅管理」，点右上角「添加订阅」，粘贴 http/https 订阅链接（名称可留空，客户端会自动识别），点「确定」。</li>
+      <li>打开新增订阅卡片上的启用开关（首个订阅会自动启用）。卡片上出现蓝色「使用中」标签，说明已启用；可以同时启用多个订阅。</li>
+      <li>打开「设置 → 网络」，确认「自动启动内核」已开启（默认开启）。开启后内核会在需要时自动启动，无需手动操作。</li>
+      <li>打开「设置 → 常规 → 系统集成」，打开「系统代理」。</li>
+      <li>回到「仪表盘」，确认内核状态为运行中，并且当前节点显示延迟数值。</li>
+    </ol>
+
+    <h2 id="让流量走代理的三种方式">让流量走代理的三种方式</h2>
+    <p>客户端不强制接管所有流量，你可以按需要选择覆盖范围：</p>
+    <table>
+      <thead>
+        <tr><th>方式</th><th>适用场景</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>系统代理</b></td><td>最省事，覆盖浏览器等大多数桌面程序。</td><td>修改 Windows 的 Internet 设置，需要内核正在运行。</td></tr>
+        <tr><td><b>TUN 模式</b></td><td>全流量接管，覆盖不认系统代理的程序（部分游戏、命令行工具）。</td><td>需要管理员权限。</td></tr>
+        <tr><td><b>应用分流</b></td><td>只让指定应用走代理，其余应用保持直连。</td><td>在「应用分流」页按应用添加规则即可。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="数据目录与备份">数据目录与备份</h2>
+    <p>全部运行期数据都存放在 <code>%APPDATA%\com.unboundlink.desktop</code>，主要内容如下：</p>
+    <table>
+      <thead>
+        <tr><th>文件 / 目录</th><th>内容</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>settings.json</code></td><td>全部设置。</td></tr>
+        <tr><td><code>profiles.json</code></td><td>订阅索引。</td></tr>
+        <tr><td><code>profiles\{id}.yaml</code></td><td>各订阅的原文。</td></tr>
+        <tr><td><code>merge.yaml</code></td><td>Merge 覆写。</td></tr>
+        <tr><td><code>script.js</code></td><td>扩展脚本。</td></tr>
+        <tr><td><code>config.yaml</code></td><td>生成的运行时配置，即内核真正读取的文件。</td></tr>
+        <tr><td><code>ui\</code></td><td>内置 Web 面板静态文件。</td></tr>
+        <tr><td><code>rule_stats.json</code> / <code>traffic_history.json</code></td><td>规则命中统计与流量历史。</td></tr>
+        <tr><td><code>core_version.txt</code></td><td>内核版本记录。</td></tr>
+      </tbody>
+    </table>
+    <p>需要整机迁移或重装前，打开「设置 → 维护 → 备份与恢复」，可以导出和导入 JSON 备份。备份内容包含设置、订阅、Merge 配置与内核版本。</p>
+
+    <div class="cal ok">
+      <div>
+        <b>补充两点</b>
+        <p>程序支持单实例，重复启动会回到已有窗口。主窗口、悬浮窗、托盘面板在关闭时都是隐藏而不是退出；需要真正退出时，用「设置 → 关于 → 退出应用」。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

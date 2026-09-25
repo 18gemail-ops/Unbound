@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>无界互联 Unbound link — Windows 桌面代理客户端</title>
+<meta name="description" content="无界互联（Unbound link）是一款基于 mihomo 内核的 Windows 桌面代理客户端，支持订阅管理、分流规则、应用级进程绑定、链式代理与网络急救，界面清爽、开箱即用。">
+<meta name="keywords" content="无界互联,Unbound link,mihomo,Windows 代理客户端,Clash,订阅管理,应用分流">
+<meta property="og:title" content="无界互联 Unbound link — Windows 桌面代理客户端">
+<meta property="og:description" content="订阅管理、分流规则、应用级进程绑定、链式代理与网络急救，一个窗口全部搞定。">
+<meta property="og:type" content="website">
+<link rel="icon" href="./favicon.ico">
+<link rel="apple-touch-icon" href="./assets/img/app-icon.png">
+<link rel="stylesheet" href="./assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./index.html">
+      <img src="./assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="./features.html">功能</a>
+      <a href="./docs/index.html">使用手册</a>
+      <a href="./download.html">下载</a>
+      <a href="./changelog.html">更新日志</a>
+      <a href="./faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="./download.html">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
+        下载 Windows 版
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 12h7l-1 8 9-12h-7z"/></svg>
+        基于 mihomo 内核 · 完全本地运行
+      </span>
+      <h1>窗口有边，<em>连接无界</em></h1>
+      <p class="sub">订阅自动更新、分流规则、按进程绑定线路、链式代理、断网急救——都收进这一个窗口里，全程本地运行。不写配置文件也能用，想手写时也不拦你。</p>
+      <div class="hero-actions">
+        <a class="btn btn-dark btn-lg" href="./download.html">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
+          下载 Windows 版
+        </a>
+        <a class="btn btn-ghost btn-lg" href="./docs/index.html">阅读使用手册</a>
+      </div>
+      <div class="hero-note">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Windows 10 / 11 · 64 位
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          内核随包分发，装完即用
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          数据全部留在本机
+        </span>
+      </div>
+      <div class="hero-stats">
+        <div><b>13</b><span>种界面语言</span></div>
+        <div><b>18</b><span>项解锁测试</span></div>
+        <div><b>3</b><span>层配置体系</span></div>
+        <div><b>0</b><span>数据外传</span></div>
+      </div>
+    </div>
+
+    <!-- 界面示意：纯 CSS + SVG 绘制，非截图；外层 .mock-wrap 提供光晕与浮动徽章的定位基准 -->
+    <div class="mock-wrap reveal">
+      <div class="mock" role="img" aria-label="无界互联主界面示意">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="t">无界互联</span></div>
+      <div class="mock-body">
+        <div class="mock-side">
+          <div class="mi on"><b></b>仪表盘</div>
+          <div class="mi"><b></b>订阅管理</div>
+          <div class="mi"><b></b>代理节点</div>
+          <div class="mi"><b></b>应用分流</div>
+          <div class="mi"><b></b>规则列表</div>
+          <div class="mi"><b></b>实时连接</div>
+          <div class="mi"><b></b>流量统计</div>
+          <div class="mi"><b></b>运行日志</div>
+          <div class="mi"><b></b>网络体检</div>
+          <div class="mi"><b></b>解锁测试</div>
+          <div class="mi"><b></b>设置</div>
+        </div>
+        <div class="mock-main">
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="k">下载</div>
+              <div class="v down">12.4 MB/s</div>
+            </div>
+            <div class="mock-card">
+              <div class="k">上传</div>
+              <div class="v up">1.8 MB/s</div>
+            </div>
+            <div class="mock-card">
+              <div class="k">活跃连接</div>
+              <div class="v">148</div>
+            </div>
+          </div>
+          <div class="mock-chart">
+            <div class="h"><span>实时流量</span><span style="color:var(--ink-3)">近 60 秒</span></div>
+            <svg viewBox="0 0 420 74" width="100%" height="74" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#007aff" stop-opacity=".26"/>
+                  <stop offset="100%" stop-color="#007aff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 58 C30 50 44 26 70 30 C96 34 108 54 134 50 C160 46 172 20 198 24 C224 28 236 48 262 44 C288 40 300 16 326 22 C352 28 366 46 392 40 L420 36 L420 74 L0 74 Z" fill="url(#g1)"/>
+              <path d="M0 58 C30 50 44 26 70 30 C96 34 108 54 134 50 C160 46 172 20 198 24 C224 28 236 48 262 44 C288 40 300 16 326 22 C352 28 366 46 392 40 L420 36" fill="none" stroke="#007aff" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M0 66 C34 62 52 56 82 58 C112 60 130 66 160 62 C190 58 208 52 238 54 C268 56 286 62 316 58 C346 54 366 50 420 52" fill="none" stroke="#ff9500" stroke-width="2" stroke-linecap="round" stroke-dasharray="0"/>
+            </svg>
+          </div>
+          <div class="mock-rule">
+            <div class="r"><span class="dot"></span><span class="n">openai.com</span><span class="g">AI 专线</span></div>
+            <div class="r"><span class="dot"></span><span class="n">github.com</span><span class="g">自动选择</span></div>
+            <div class="r"><span class="dot"></span><span class="n">baidu.com</span><span class="g">DIRECT</span></div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="mock-pill p1"><span class="dot ok"></span>内核运行中</div>
+      <div class="mock-pill p2"><span class="dot blue"></span>节点延迟 42 ms</div>
+    </div>
+  </div>
+</section>
+
+<!-- 核心能力 -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal center">
+      <span class="eyebrow">核心能力</span>
+      <h2>日常用得上的功能，都做成了看得懂的样子</h2>
+      <p class="lead">不求功能堆砌，只求每一步都有明确的入口、清晰的状态和一句能看懂的说明。</p>
+    </div>
+    <div class="cards c3">
+      <div class="card reveal">
+        <span class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+        </span>
+        <h3>订阅管理与自动更新</h3>
+        <p>一条链接导入订阅，卡片上直接看到用量与到期时间；可设定每 1～24 小时自动拉取更新，更新完成自动重载配置并发系统通知。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic g">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+        </span>
+        <h3>按进程绑定线路</h3>
+        <p>让浏览器走一条线、游戏走另一条线。按进程名或完整路径绑定，选两条以上线路自动组成聚合组，可选轮询分散或会话保持。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic a">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.8-1.7"/></svg>
+        </span>
+        <h3>链式代理</h3>
+        <p>给受限节点指定一个前置代理，让流量先经中转再出去。界面上点节点卡片上的链式按钮即可设置，延迟就是两段之和。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic p">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.84Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+        </span>
+        <h3>Merge 覆写 + 扩展脚本</h3>
+        <p>不想动订阅原文时，用 Merge 片段深度覆盖任意配置项；需要批量改写时用内置 QuickJS 扩展脚本，改节点名、加规则都在弹窗里完成。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic t">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-7 3.5 14 3-7h5"/></svg>
+        </span>
+        <h3>桌面悬浮窗</h3>
+        <p>实时网速、当前节点延迟、活跃连接数悬在桌面上。3 档尺寸、3 种版式、7 套配色，可以鼠标穿透，也可以随手拖动。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic k">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.4 8-9V5.6L12 2.6 4 5.6V13c0 5.6 8 9 8 9z"/><path d="M9.5 12.4l1.8 1.8 3.4-3.6"/></svg>
+        </span>
+        <h3>断网急救箱</h3>
+        <p>代理异常退出导致浏览器打不开页面时，先在网络体检里定位问题，再一键重置系统代理、刷新 DNS 缓存，修完自动复检。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 订阅 / 配置 -->
+<section class="section soft">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">配置这件事</span>
+      <h2>订阅、覆写、脚本，三层各管各的</h2>
+      <p class="lead">订阅保持原始状态随订阅源更新，你的个性化改动放在独立文件里，互不覆盖——换订阅、换机场都不用重新配一遍。</p>
+      <ul class="ticks">
+        <li><b>订阅管理</b>：支持 http/https 订阅链接，可拖动排序、重命名、生成二维码分享给手机、查看实时用量。</li>
+        <li><b>Merge 覆写</b>：写几行片段即可覆盖订阅里的字段（端口、模式等应用级设置除外），生成运行时配置时递归深度合并。</li>
+        <li><b>扩展脚本</b>：内置 QuickJS 引擎，一个 <code>main(config)</code> 函数就能批量改写节点名、增删规则。</li>
+        <li><b>运行时配置</b>：端口、密钥、模式等应用级字段由客户端注入，不会被订阅覆盖；配置变更自动热重载，无需手动重启内核。</li>
+      </ul>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/profiles.html">看订阅管理怎么用 →</a></p>
+    </div>
+    <div class="split-media reveal">
+      <div class="figure">
+        <svg viewBox="0 0 520 340" width="100%" aria-label="配置生成流程示意">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 10 5 0 10z" fill="#b6bbc3"/>
+            </marker>
+          </defs>
+          <rect x="30" y="26" width="200" height="52" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="48" y="50" font-size="13.5" font-weight="700" fill="#101114">订阅配置</text>
+          <text x="48" y="68" font-size="11.5" fill="#8b919b">保持原始，随订阅源更新</text>
+
+          <rect x="30" y="106" width="200" height="52" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="48" y="130" font-size="13.5" font-weight="700" fill="#101114">Merge 覆写片段</text>
+          <text x="48" y="148" font-size="11.5" fill="#8b919b">你的个性化字段覆盖</text>
+
+          <rect x="30" y="186" width="200" height="52" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="48" y="210" font-size="13.5" font-weight="700" fill="#101114">扩展脚本</text>
+          <text x="48" y="228" font-size="11.5" fill="#8b919b">QuickJS 批量改写</text>
+
+          <rect x="30" y="266" width="200" height="52" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="48" y="290" font-size="13.5" font-weight="700" fill="#101114">应用级设置</text>
+          <text x="48" y="308" font-size="11.5" fill="#8b919b">端口 / 密钥 / 模式 / 绑定</text>
+
+          <path d="M230 52h28a10 10 0 0 1 10 10v220a10 10 0 0 1 -10 10h-28" stroke="#b6bbc3" stroke-width="1.6" fill="none"/>
+          <path d="M230 132h38M230 212h38" stroke="#b6bbc3" stroke-width="1.6" fill="none"/>
+          <path d="M268 146h34" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+
+          <rect x="302" y="110" width="186" height="72" rx="14" fill="#101114"/>
+          <text x="322" y="140" font-size="14" font-weight="700" fill="#fff">运行时 config.yaml</text>
+          <text x="322" y="162" font-size="11.5" fill="rgba(255,255,255,.62)">原子写入，先 .tmp 再改名</text>
+
+          <path d="M395 182v34" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+          <rect x="302" y="222" width="186" height="86" rx="14" fill="#fff" stroke="#007aff" stroke-width="1.6"/>
+          <text x="322" y="250" font-size="13.5" font-weight="700" fill="#0060df">mihomo 内核</text>
+          <text x="322" y="270" font-size="11.5" fill="#4b5058">sidecar 进程 · 后台守护</text>
+          <text x="322" y="290" font-size="11.5" fill="#4b5058">热重载，不中断连接</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 应用分流 -->
+<section class="section">
+  <div class="wrap split rev">
+    <div class="split-media reveal">
+      <div class="figure plain">
+        <svg viewBox="0 0 520 300" width="100%" aria-label="应用分流示意">
+          <defs>
+            <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#007aff"/></marker>
+            <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#ff9500"/></marker>
+            <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#b6bbc3"/></marker>
+          </defs>
+
+          <rect x="24" y="28" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="44" y="55" font-size="13.5" font-weight="700" fill="#101114">chrome.exe</text>
+          <rect x="24" y="84" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="44" y="111" font-size="13.5" font-weight="700" fill="#101114">game.exe</text>
+          <rect x="24" y="140" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="44" y="167" font-size="13.5" font-weight="700" fill="#101114">其他应用</text>
+          <rect x="24" y="196" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="44" y="223" font-size="13.5" font-weight="700" fill="#101114">mihomo 内核</text>
+
+          <rect x="264" y="28" width="160" height="44" rx="12" fill="#e8f2ff" stroke="#cfe3ff"/>
+          <text x="284" y="55" font-size="13" font-weight="700" fill="#0060df">AI 专线</text>
+          <rect x="264" y="84" width="160" height="44" rx="12" fill="#fff4e5" stroke="#ffe2b8"/>
+          <text x="284" y="111" font-size="13" font-weight="700" fill="#8a5300">游戏低延迟</text>
+          <rect x="264" y="168" width="160" height="44" rx="12" fill="#eef0f3" stroke="#dfe3e8"/>
+          <text x="284" y="195" font-size="13" font-weight="700" fill="#4b5058">自动选择</text>
+
+          <path d="M184 50h80" stroke="#007aff" stroke-width="1.8" fill="none" marker-end="url(#ap)"/>
+          <path d="M184 106h80" stroke="#ff9500" stroke-width="1.8" fill="none" marker-end="url(#ao)"/>
+          <path d="M184 162h44M184 218h44M228 162v56" stroke="#b6bbc3" stroke-width="1.6" fill="none"/>
+          <circle cx="228" cy="190" r="2.4" fill="#b6bbc3"/>
+          <path d="M228 190h36" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ag)"/>
+
+          <path d="M24 262h472" stroke="rgba(16,17,20,.08)" stroke-width="1"/>
+          <circle cx="38" cy="278" r="11" fill="#101114"/>
+          <g stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32.8 275.4h8.6M39.6 273.2l2.4 2.2-2.4 2.2"/>
+            <path d="M43.2 280.6h-8.6M36.4 278.4l-2.4 2.2 2.4 2.2"/>
+          </g>
+          <text x="58" y="282" font-size="11.5" font-weight="700" fill="#8b919b">一个应用绑定两条以上线路时，自动合并为聚合组（轮询分散 / 会话保持）</text>
+        </svg>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">应用分流</span>
+      <h2>让不同的应用，各走各的线路</h2>
+      <p class="lead">不必为了一个游戏把全局都切走。按进程名或完整路径绑定线路，其余流量继续交给规则处理。</p>
+      <ul class="ticks">
+        <li><b>选得省事</b>：可以直接从「正在联网的进程」里挑，带应用图标，不用记 exe 名字。</li>
+        <li><b>绑得灵活</b>：一条线路就直连该组；两条以上自动生成聚合组，多种线路一起服务同一个应用。</li>
+        <li><b>聚合有策略</b>：轮询分散让多连接铺开到各线路，会话保持让同一会话固定走一条线。</li>
+        <li><b>看得见效果</b>：绑定列表实时显示该应用当前的上下行速率，是否生效一眼可知。</li>
+      </ul>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/apps.html">看应用分流怎么配 →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 体检与急救 -->
+<section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal center">
+      <span class="eyebrow">出问题的时候</span>
+      <h2>先告诉你是哪里不对，再帮你修好</h2>
+      <p class="lead">网络体检会依次检查 11 项：内核状态、端口监听、系统代理、DNS 解析、DNS 接管、直连出口、代理出口、WebRTC 泄漏、当前节点、GitHub 直连与配置加载。每项都会给出结论和下一步建议。</p>
+    </div>
+    <div class="cards c2">
+      <div class="card reveal">
+        <span class="ic a">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 8V7a2 2 0 0 1 4 0v1"/><rect x="3.5" y="8" width="17" height="12" rx="3"/><path d="M12 11.5v5M9.5 14h5"/></svg>
+        </span>
+        <h3>一键急救</h3>
+        <p>重置系统代理 + 刷新 DNS 缓存，两项都不需要管理员权限，点完立即生效——足以解决「代理退出后浏览器打不开网页」这类最常见故障。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic k">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </span>
+        <h3>按项精修</h3>
+        <p>系统代理残留、DNS 服务器被改成 0.0.0.0、hosts 文件异常、网络协议栈损坏，每一项都有对应的修复按钮；需要管理员权限的操作会明确标注并走 UAC 提权。</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:34px">
+      <a class="btn btn-dark" href="./docs/diagnose.html">查看网络体检说明</a>
+    </div>
+  </div>
+</section>
+
+<!-- 官网 CTA -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>下载后 3 分钟就能用上</h2>
+        <p>安装包已内含 mihomo 内核与 TUN 驱动，导入订阅即可开始。</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-dark btn-lg" href="./download.html">前往下载</a>
+        <a class="btn btn-ghost btn-lg" href="./docs/install.html">安装教程</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="./assets/img/logo.png" alt="无界互联">
+          <span>无界互联</span>
+        </div>
+        <p>Windows 桌面代理客户端。基于 mihomo 内核，订阅、分流、观测与急救都放在一个窗口里。</p>
+      </div>
+      <div>
+        <h4>产品</h4>
+        <ul>
+          <li><a href="./features.html">功能总览</a></li>
+          <li><a href="./download.html">下载安装</a></li>
+          <li><a href="./changelog.html">更新日志</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>文档</h4>
+        <ul>
+          <li><a href="./docs/index.html">使用手册</a></li>
+          <li><a href="./docs/install.html">安装与首次运行</a></li>
+          <li><a href="./docs/troubleshooting.html">故障排查</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>支持</h4>
+        <ul>
+          <li><a href="./faq.html">常见问题</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">版本发布页</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span>本软件仅提供网络代理的本地管理能力，请遵守当地法律法规与相关服务条款。</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./assets/site.js"></script>
+</body>
+</html>

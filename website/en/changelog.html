@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Changelog — Unbound link</title>
+<meta name="description" content="Unbound link changelog: version changes, new features and fixes.">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./index.html">
+      <img src="../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="./features.html">Features</a>
+      <a href="./docs/index.html">User Guide</a>
+      <a href="./download.html">Download</a>
+      <a href="./changelog.html">Changelog</a>
+      <a href="./faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="./download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head reveal center" style="margin-bottom:0">
+      <span class="eyebrow">Changelog</span>
+      <h2>What changed in each release</h2>
+      <p class="lead">Only user-visible changes are recorded: what's new, what's improved, what's fixed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width:840px">
+    <div class="log">
+      <div class="log-item reveal now">
+        <h3>v0.1.1 <span class="badge">Latest release</span></h3>
+        <div class="date">Latest version</div>
+        <p style="color:var(--ink-2)">Compared with the first public release, this version expands the UI to 13 languages, adds Unlock Test and cloud backup, first-run onboarding, config snapshots and subscription version history, node health monitoring and the world map, and upgrades chained proxies, routing rules, the tray panel and Settings. Below is the full feature list for the current version.</p>
+        <h4 style="font-size:15px;margin:16px 0 8px">Proxy and routing</h4>
+        <ul>
+          <li>Profiles: http/https subscription import, drag to reorder, edit subscription info, QR-code sharing, usage refresh, automatic archiving before updates with rollback to any version (with node and rule count change badges), and hourly auto-update.</li>
+          <li>Profile usage alerts: sends a system notification when used traffic reaches the threshold (default 80%), remaining days run low (default 3 days left) or the subscription has expired, each tier firing once; after renewal or a plan reset the alerts reset and can fire again.</li>
+          <li>Provider website: auto-detected when a subscription is downloaded and opened in your browser with one click from the card; if it isn't detected, enter it manually in the Edit dialog — manual entries are never overwritten. The dot beside the globe icon shows website reachability (green = reachable, red = unreachable); click it to re-check.</li>
+          <li>Multiple subscriptions at once: enable several subscriptions together — the first enabled one provides base settings (port / DNS / mode), while others merge in their nodes, proxy groups and rules; the effective order follows the list from top to bottom.</li>
+          <li>Local config import: pick a local YAML file as a subscription in the list, tagged "Local" and excluded from remote updates.</li>
+          <li>Manual Nodes: import single nodes from node links (ss / vmess / vless / trojan / hysteria2 / tuic / socks5 / http); they merge into a proxy group of the same name when the config is generated.</li>
+          <li>Proxies: browse by group and subscription source, single-node latency test, download speed test, test all, sort by latency or name, region filter and favorites-only; one click hides timed-out nodes, card columns support 1–4 or auto-fit; switch between list and map views at any time, where the map aggregates nodes into region dots, sized by count and colored by latency — click a dot to drill into that region.</li>
+          <li>Auto latency testing: automatically tests node groups at a set interval (1–1440 minutes) to keep latency data fresh.</li>
+          <li>Node health monitoring: keeps a rolling latency history per node and draws a latency trend line on node cards (red dots mark failed tests); sends a system notification when the node in use keeps failing tests.</li>
+          <li>Automatic failover: switches to the fallback node automatically when the current node keeps failing latency tests — pick a fixed target, or leave it empty to auto-select the lowest-latency available node in the group; sends a notification suggesting a manual switch when no usable node is found.</li>
+          <li>Auto-optimize after update: after subscriptions finish updating and the config reloads, the main proxy group is tested automatically and the lowest-latency node becomes the current node — no more picking a node by hand after every update.</li>
+          <li>App Routing: bind lines by process name or full path, pick from running processes; multiple lines aggregate automatically with round-robin or session-persistent policies.</li>
+          <li>Chained proxy: a visual chain editor with drag-to-reorder hops, cross-group node picking and proxy groups as the chain's first hop; saved chains reload for editing, and node cards carry a chain badge with "Entry / Relay / Exit" role tags.</li>
+          <li>Traffic tunnel: forward a local port to a remote target (TCP / UDP / mixed), with a proxy group, node or rule-based routing as the exit.</li>
+          <li>Quick rules: right-click on the Connections page to create direct or line-specific rules for a domain in one click.</li>
+        </ul>
+        <h4 style="font-size:15px;margin:16px 0 8px">Configuration capabilities</h4>
+        <ul>
+          <li>Merge override: YAML snippets are deeply merged recursively with the subscription config.</li>
+          <li>Extension script: built-in QuickJS engine — use <code>main(config)</code> to edit the config in bulk.</li>
+          <li>Node Cleanup: filter nodes by keyword and batch-rename them by rules (with common prefixes/suffixes), rewriting references in proxy groups and rules to match — preview the changes before enabling.</li>
+          <li>Runtime config auto-generated with atomic writes; config changes hot-reload.</li>
+          <li>Config snapshots: the previous runtime config is archived automatically before each generation (the latest 10 are kept); roll back to the last working version in one click when the core won't start or the config misbehaves.</li>
+          <li>One-click core check and update (from the official releases page).</li>
+          <li>One-click GeoData database updates (geoip.dat / geosite.dat / geoip.metadb / GeoLite2-ASN.mmdb); direct downloads fall back to mirrors or the local proxy.</li>
+          <li>Export and import backups of settings, subscriptions, Merge config and core version.</li>
+          <li>Cloud Backup (WebDAV): back up settings, subscriptions, Merge overrides and extension scripts to your own cloud drive (compatible with Jianguo Cloud, Nextcloud, Synology and more); with connection test, status comparison and one-click upload or restore. The password is encrypted by the system and stored only on this machine.</li>
+          <li>The Settings page is reorganized into three tiers — tab, group, card — making options quicker to find.</li>
+        </ul>
+        <h4 style="font-size:15px;margin:16px 0 8px">Monitoring and operation</h4>
+        <ul>
+          <li>Dashboard: core status, version, memory, uptime, total up/down traffic, active connections and a live traffic chart, with direct proxy group node switching.</li>
+          <li>The sidebar footer shows live core and app memory usage, and the sidebar can be collapsed with one click.</li>
+          <li>Connections: detail and aggregated views; right-click to copy the domain, destination address or process path.</li>
+          <li>Traffic stats: daily records with 7/30/90-day and all-time ranges, plus per-app upload / download totals so you can see who uses the most bandwidth at a glance; traffic is also grouped by exit node (direct traffic listed separately as DIRECT) so you can see how much each line used.</li>
+          <li>Logs: core and app logs on one screen, filtered by level.</li>
+          <li>Rules: four tabs — Rules, Custom rules, Rule sets and Hit statistics; the Custom rules tab is a visual editor where you add, edit and reorder rules and inject them at the very top of the runtime config on save; hit stats are sampled every 15 seconds and persisted. A built-in route simulator replays locally which rule a domain, IP or app would match (including group exit resolution) — useful even when the core is not running.</li>
+          <li>Global command palette (Ctrl+K): one entry point to search pages, actions and nodes — jump, run and switch without leaving the keyboard.</li>
+          <li>Desktop traffic floating window: 3 sizes, 3 layouts, 7 color themes, mouse pass-through and remembered position.</li>
+          <li>The tray icon changes color with status and right-click opens a quick panel (actions reordered by usage frequency, each with an icon); clicking the "node" or "group" row pops up a standalone node picker (groups on the left, nodes with latency on the right) — click to switch.</li>
+          <li>Global context menu: replaces the WebView's built-in browser menu; input fields and selected text offer Cut, Copy and Paste, while other areas no longer pop up irrelevant menus — Shift + right-click keeps the native menu.</li>
+        </ul>
+        <h4 style="font-size:15px;margin:16px 0 8px">System integration and troubleshooting</h4>
+        <ul>
+          <li>One-click system proxy; TUN mode supports Mixed / Gvisor / System stacks with admin-rights guidance.</li>
+          <li>Custom DNS (with fallback DNS and static Hosts) and fake-ip acceleration; allow LAN connections and see a dashboard address for other devices — the Share to phone button pops a QR code; set the phone's Wi-Fi manual proxy as prompted.</li>
+          <li>Network environment automation: switches the system proxy and mode automatically by the current Wi-Fi name — handy for "on at home, off at the office"; names support wildcards, and the first enabled rule from the top is applied.</li>
+          <li>Built-in MetaCubeXD web dashboard, downloaded and hosted automatically on first open.</li>
+          <li>Seven global shortcuts, five bound by default (including <code>Ctrl+Shift+M</code> to cycle the proxy mode); "Update all subscriptions" and "Restart core" can be recorded; launch at startup; single-instance; close-to-tray by default.</li>
+          <li>First-run onboarding: on a fresh install, the first launch opens a four-step guide that walks you through importing a subscription and recommended settings.</li>
+          <li>Core watchdog: auto-restart on unexpected exit, with debounce protection.</li>
+          <li>System proxy guard: restores proxy settings automatically if another program rewrites them; optionally clears old connections after switching nodes.</li>
+          <li>App logs persisted to <code>logs\app.log</code>, rotated by size and cleaned up by age, with adjustable level and retention policies.</li>
+          <li>In-app one-click upgrade: the client checks for new versions on start-up, and you can also check manually on the About page; a new version can be downloaded and installed silently inside the app (it restarts with the new version automatically). You can set a start-up script to run alongside the core, and regenerate the core control secret with one click.</li>
+          <li>UWP App Tool: lifts the loopback restriction for Store apps with one click so they can reach the local proxy.</li>
+          <li>Customizable tray icons for all three states (normal / system proxy / TUN); traffic chart rendering pauses when unfocused to save power; new secondary color and text color theme options.</li>
+          <li>Export diagnostics: versions, settings, runtime config and recent logs packed into a ZIP (sensitive fields redacted) for easy issue reporting.</li>
+          <li>11 network checks and the network rescue kit (one-click rescue, system proxy reset, DNS cache flush, DNS server reset, hosts restore, network stack reset).</li>
+          <li>Unlock Test: one-click check of the current node's unlock and region status for 18 services — Netflix, Disney+, YouTube Premium, Prime Video, Spotify, TikTok, Hulu, HBO Max, ChatGPT, Claude, Gemini, Copilot, X (Twitter) and more overseas, plus Bilibili, iQIYI, Tencent Video and NetEase Cloud Music at home.</li>
+          <li>Light / dark / follow-system themes with customizable brand, secondary, text and semantic colors, UI font and custom CSS.</li>
+        </ul>
+        <h4 style="font-size:15px;margin:16px 0 8px">Interface and language</h4>
+        <ul>
+          <li>The UI supports 13 languages: English, Русский, 中文, فارسی, Tatar, Bahasa Indonesia, العربية, 한국어, Türkçe, Deutsch, Español, 日本語 and 繁體中文 — switching takes effect immediately.</li>
+          <li>Arabic and Persian automatically switch to a right-to-left layout; Russian, Arabic and others follow local grammar for plurals and counters, and numbers and dates are formatted per the chosen language.</li>
+          <li>About page: a new software introduction, brand information and links to the official site.</li>
+        </ul>
+      </div>
+      <div class="log-item reveal">
+        <h3>v0.1.0 <span class="badge">First public release</span></h3>
+        <div class="date">September 24, 2026</div>
+        <p style="color:var(--ink-2)">The first usable release — getting the essentials running first.</p>
+        <ul>
+          <li>Quick rules via right-click: create a direct or line-specific rule for a domain on the Connections page in one click.</li>
+          <li>App auto-update: checks for a new client version at startup and, when there is one, notifies you with a one-click link to the download.</li>
+          <li>Network rescue: one-click reset of the system proxy and a DNS cache flush from the network rescue kit.</li>
+          <li>Desktop traffic floating window: live speed, latency and connection count floating on your desktop.</li>
+          <li>App Routing: bind apps to chosen lines by process.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cal note" style="margin-top:36px">
+      <div>
+        <b>About updates to this page</b>
+        <p>New releases will be appended to the top of this page. To get new versions as soon as they're out, watch the official releases page, or check for core updates in the client under Settings → Maintenance → Core update.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn-dark" href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">View all releases</a>
+      <a class="btn btn-ghost" href="./download.html">Download the latest</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="../assets/img/logo.png" alt="Unbound link">
+          <span>Unbound link</span>
+        </div>
+        <p>Windows desktop proxy client. Built on the mihomo core, with subscriptions, routing, monitoring and rescue all in one window.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="./features.html">Features overview</a></li>
+          <li><a href="./download.html">Download and install</a></li>
+          <li><a href="./changelog.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Docs</h4>
+        <ul>
+          <li><a href="./docs/index.html">User Guide</a></li>
+          <li><a href="./docs/install.html">Install and first run</a></li>
+          <li><a href="./docs/troubleshooting.html">Troubleshooting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="./faq.html">FAQ</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">Releases</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span>This software only provides local management for network proxying. Please comply with your local laws, regulations and the relevant terms of service.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Cloudflare Pages 重定向配置
+# Pages 默认已支持 /download → /download.html 这类无扩展名访问，此处只补充别名与规范路径
+
+# 使用手册的常见入口别名
+/handbook          /docs/index.html   301
+/help              /docs/index.html   301
+/manual            /docs/index.html   301
+
+# 手册目录规范到带斜杠形式（中英两棵树同构）
+/docs              /docs/             301
+/en/docs           /en/docs/          301
+
+# 常见误输地址
+/index             /                    301
+/home              /                    301

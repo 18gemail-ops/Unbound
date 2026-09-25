@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>设置 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）设置：外观、系统、网络、工具、维护、关于六个页签逐项说明，含主题定制、端口、运行模式、TUN、DNS、快捷键、应用日志与备份的默认值。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>设置</h1>
+    <p class="page-lead">端口、运行模式、TUN、DNS、快捷键、应用日志与备份都集中在这里，分为「外观 / 系统 / 网络 / 工具 / 维护 / 关于」六个页签；每个页签内又按功能分组，组标题下是若干张设置卡片。这一页逐项说明每个开关的作用与默认值。</p>
+
+    <div class="cal note">
+      <div>
+        <b>所有设置修改即时保存</b>
+        <p>每个开关和输入框改动后立刻保存，界面底部同样显示「所有设置修改即时保存」，没有确定 / 应用按钮。涉及内核的改动（端口、TUN、DNS）会自动重载或重启内核。</p>
+      </div>
+    </div>
+
+    <h2 id="外观">外观</h2>
+    <p>外观页只有「外观与主题」一个分组：外观卡片管理主题、语言与界面行为，主题定制卡片管理颜色、字体与自定义 CSS。</p>
+
+    <h3 id="外观-2">外观</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>可选值</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>主题</b></td><td>深色 / 浅色 / 跟随系统</td><td>切换后界面实时变化，无需重启。</td></tr>
+        <tr><td><b>语言</b></td><td>简体中文</td><td>界面语言，内置 13 种语言并支持跟随系统，切换后即时生效。</td></tr>
+        <tr><td><b>失焦暂停渲染</b></td><td>开启</td><td>窗口失去焦点时暂停流量图表刷新，降低 CPU 与内存占用；流量记录不受影响，回到窗口即恢复。</td></tr>
+        <tr><td><b>代理页列数</b></td><td>自动</td><td>代理页节点卡片的每行列数，可选 1 - 4 列；「自动」按窗口宽度自适应。</td></tr>
+        <tr><td><b>隐藏测速超时节点</b></td><td>关闭</td><td>开启后测速超时的节点不在代理页显示，与代理页顶部的「隐藏超时」开关为同一设置。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="主题定制">主题定制</h3>
+    <p>除三档主题外，还可以打开「主题定制」微调界面：支持调整八类颜色、自定义界面字体并注入自定义 CSS，全部即时生效；点「恢复默认」会清除全部自定义项（二次确认）。</p>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>品牌色 / 信息色 / 警告色 / 错误色 / 成功色</b></td><td>默认色板</td><td>按钮、选中态、提示与延迟颜色使用的主色，留空即用默认值。</td></tr>
+        <tr><td><b>次要色</b></td><td>默认色板</td><td>次级强调与悬停底色使用的颜色，留空即用默认值。</td></tr>
+        <tr><td><b>文本主要颜色 / 文本次要颜色</b></td><td>默认色板</td><td>正文与标题、说明文字与弱化信息分别使用的文字颜色，留空即用默认值。</td></tr>
+        <tr><td><b>界面字体</b></td><td>默认字体栈</td><td>自定义界面字体族，按 CSS font-family 语法填写；留空使用默认字体栈。</td></tr>
+        <tr><td><b>自定义 CSS</b></td><td>空</td><td>附加的全局样式表，可微调界面细节；出错时清空即可恢复。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="系统">系统</h2>
+    <p>分为「代理与启动」（系统代理、启动）和「托盘与守护」（托盘与悬浮窗、后台守护）两个分组，页末为全局快捷键。</p>
+
+    <h3 id="系统代理">系统代理</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>系统代理</b></td><td>关闭</td><td>写入 Windows 的 Internet 设置，让支持系统代理的程序自动走代理。需要内核正在运行。</td></tr>
+        <tr><td><b>绕过代理列表</b></td><td>空</td><td>分号 / 逗号分隔的通配条目（如 <code>*.local;192.168.*</code>），命中的地址不走代理；留空沿用系统原有配置。仅系统代理开启时显示。</td></tr>
+        <tr><td><b>终端代理命令</b></td><td>—</td><td>选择 PowerShell / Cmd / Bash 后点「复制命令」，粘贴到终端执行，可让命令行工具（git / npm / curl 等）临时走代理。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="启动">启动</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>开机自启</b></td><td>关闭</td><td>开机后自动运行无界互联。</td></tr>
+        <tr><td><b>静默启动</b></td><td>关闭</td><td>开机自启时不显示主界面，直接进入托盘。</td></tr>
+        <tr><td><b>启动页面</b></td><td>仪表盘</td><td>应用启动后默认停留的页面，可选仪表盘 / 代理 / 连接 / 统计 / 日志 / 解锁测试 / 设置。</td></tr>
+        <tr><td><b>启动脚本</b></td><td>未选择</td><td>应用启动时自动执行的脚本，支持 exe / bat / cmd / ps1；文件不存在时跳过并记录日志。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="托盘与悬浮窗">托盘与悬浮窗</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>托盘点击事件</b></td><td>显示主窗口</td><td>左键单击托盘图标的动作（右键固定弹出快捷面板），可选显示主窗口 / 切换系统代理 / 切换 TUN 模式。</td></tr>
+        <tr><td><b>托盘图标（三态）</b></td><td>内置图标</td><td>托盘图标随运行状态切换：常规 / 系统代理开启 / TUN 开启。每一态都可以各选一张 PNG 图片替换内置图标，选错或不需要时可随时清除，恢复内置图标。</td></tr>
+        <tr><td><b>关闭时最小化到托盘</b></td><td>开启</td><td>点击关闭按钮时隐藏窗口而不是退出，程序仍在后台运行。</td></tr>
+        <tr><td><b>流量悬浮窗</b></td><td>关闭</td><td>在桌面上显示可拖动的实时网速悬浮窗。</td></tr>
+        <tr><td><b>悬浮窗鼠标穿透</b></td><td>关闭</td><td>开启后悬浮窗不拦截鼠标操作，点击会穿透到下层窗口。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="后台守护">后台守护</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>系统通知</b></td><td>开启</td><td>内核崩溃、订阅自动更新等事件弹出系统通知。</td></tr>
+        <tr><td><b>内核看门狗</b></td><td>开启</td><td>内核异常退出时自动拉起。带防抖动限制，短时间内反复崩溃不会无限重启。</td></tr>
+        <tr><td><b>启动时检查更新</b></td><td>开启</td><td>应用启动后自动检查客户端新版本，发现新版本时发送系统通知。</td></tr>
+        <tr><td><b>切换节点自动清理连接</b></td><td>开启</td><td>切换节点后关闭旧连接，让新节点立即接管已有会话。</td></tr>
+        <tr><td><b>系统代理守卫</b></td><td>开启</td><td>检测到系统代理被其他程序篡改时自动恢复，并写入应用日志。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="全局快捷键">全局快捷键</h3>
+    <p>点击快捷键即可录制新的组合，界面提供「恢复默认」。快捷键由系统级注册，被其他软件占用时会绑定失败，换一个组合即可。</p>
+    <table>
+      <thead>
+        <tr><th>动作</th><th>默认快捷键</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>切换系统代理</td><td><code>Ctrl+Shift+P</code></td></tr>
+        <tr><td>切换 TUN 模式</td><td><code>Ctrl+Shift+T</code></td></tr>
+        <tr><td>显示主窗口</td><td><code>Ctrl+Shift+U</code></td></tr>
+        <tr><td>开关流量悬浮窗</td><td><code>Ctrl+Shift+O</code></td></tr>
+        <tr><td>切换代理模式（规则 → 全局 → 直连）</td><td><code>Ctrl+Shift+M</code></td></tr>
+        <tr><td>更新全部订阅</td><td>未绑定，可自行录制</td></tr>
+        <tr><td>重启内核</td><td>未绑定，可自行录制</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="网络">网络</h2>
+    <p>分为「内核与控制」（端口与模式、内核行为、Web 控制面板）、「连接方式」（TUN 模式、DNS）和「自动化」（测速与健康、网络环境）三个分组。</p>
+
+    <h3 id="端口与模式">端口与模式</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>混合代理端口</b></td><td><code>7890</code></td><td>HTTP / SOCKS 混合监听端口。修改后内核自动重启。</td></tr>
+        <tr><td><b>External Controller 端口</b></td><td><code>9090</code></td><td>控制接口端口。修改后内核自动重启。</td></tr>
+        <tr><td><b>运行模式</b></td><td>规则</td><td>规则 / 全局 / 直连。「规则」按规则分流；「全局」所有流量走同一个出口；「直连」全部不走代理。</td></tr>
+        <tr><td><b>日志级别</b></td><td>信息</td><td>调试 / 信息 / 警告 / 错误 / 静默，影响内核日志输出的详细程度。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="内核行为">内核行为</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>自动启动内核</b></td><td>开启</td><td>应用启动时自动拉起内核。</td></tr>
+        <tr><td><b>允许局域网连接</b></td><td>关闭</td><td>开启后同一局域网内的其他设备可通过 <code>本机IP:混合端口</code> 使用代理，界面会显示该地址。</td></tr>
+        <tr><td><b>分享到手机</b></td><td>—</td><td>开启「允许局域网连接」后，同一行会出现这个按钮；点击弹出二维码（内容为本机代理地址），手机与电脑在同一局域网时，按提示在手机 Wi-Fi 设置中将「手动代理」配置为该地址即可。</td></tr>
+        <tr><td><b>IPv6</b></td><td>关闭</td><td>允许内核使用 IPv6 出站；网络环境不支持时保持关闭可提升兼容性。</td></tr>
+        <tr><td><b>统一延迟</b></td><td>开启</td><td>同一主机的多节点延迟取一致值，测速结果更稳定直观。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="Web-控制面板">Web 控制面板</h3>
+    <p>内置 MetaCubeXD 面板，首次打开时自动下载（约 2.5MB）。本机地址为 <code>http://127.0.0.1:9090/ui/</code>，点「打开控制面板」即可进入。</p>
+    <p>开启「允许局域网连接」后，这里还会显示局域网面板地址，形如 <code>http://192.168.x.x:9090/ui/</code>，可一键复制给同一网络下的其他设备。</p>
+    <p><b>控制密钥</b>用于保护 External Controller：首次运行随机生成，可一键「重新生成」；更换后内核自动重启，使用旧密钥的面板与第三方客户端需改为新密钥。</p>
+
+    <h3 id="TUN-模式">TUN 模式</h3>
+    <p>标题旁有权限标签：已获得管理员权限显示绿色「已提权」，否则显示橙色「未提权」，并提供「以管理员身份重启」按钮。</p>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>启用 TUN</b></td><td>关闭</td><td>通过虚拟网卡接管全部流量，能覆盖不认系统代理的程序（部分游戏、命令行工具）。需要管理员权限。</td></tr>
+        <tr><td><b>TUN 堆栈</b></td><td>Mixed</td><td>可选 Mixed / Gvisor / System。不确定时用 Mixed。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="DNS">DNS</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>自定义 DNS</b></td><td>关闭</td><td>开启后覆盖订阅里的 DNS 配置。</td></tr>
+        <tr><td><b>DNS 服务器列表</b></td><td><code>223.5.5.5</code>、<code>119.29.29.29</code></td><td>每行一个地址。</td></tr>
+        <tr><td><b>fake-ip 加速</b></td><td>开启</td><td>TUN 模式推荐开启；关闭时使用 redir-host 模式。</td></tr>
+        <tr><td><b>备用 DNS</b></td><td>空</td><td>主 DNS 解析不可靠时回落使用的服务器，格式与主 DNS 一致；留空不下发。</td></tr>
+        <tr><td><b>静态 Hosts</b></td><td>空</td><td>每行一条「域名 IP」映射，支持 <code>#</code> 注释，随配置下发到内核。</td></tr>
+      </tbody>
+    </table>
+    <p>DNS 相关的修改都会重载内核。</p>
+
+    <h3 id="测速与健康">测速与健康</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>定时延迟检测</b></td><td>关闭</td><td>按间隔自动对当前分组测速，保持延迟数据新鲜。</td></tr>
+        <tr><td><b>检测间隔</b></td><td><code>5</code> 分钟</td><td>自动测速的时间间隔，范围 1 - 1440 分钟。</td></tr>
+        <tr><td><b>节点健康监控</b></td><td>开启</td><td>滚动记录各节点延迟历史并在代理页展示趋势；当前节点连续测速失败时发送系统通知。</td></tr>
+        <tr><td><b>掉线自动切换</b></td><td>关闭</td><td>当前节点连续 <code>2</code> 次测速失败时，自动切换到备用节点；依赖上方「节点健康监控」。只对「手动选择」型策略组生效，自动测速型分组由内核自行恢复。</td></tr>
+        <tr><td><b>备用节点</b></td><td>自动选择</td><td>掉线切换的优先目标，下拉列出主策略组内的节点；留空时自动选择组内延迟最低的可用节点。开启「掉线自动切换」后显示。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="网络环境">网络环境</h3>
+    <p>按当前连接的 Wi-Fi 名称自动切换系统代理与运行模式，适合「到家自动开、到公司自动停」的场景。应用每 10 秒检测一次 Wi-Fi 名称，变化时自上而下匹配第一条启用的规则并应用；动作与当前状态相同时会自动跳过，不会覆盖手动调整。本功能不修改 TUN 状态。</p>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>网络环境自动化</b></td><td>关闭</td><td>总开关；开启后 Wi-Fi 名称变化时自动应用下方匹配规则。</td></tr>
+        <tr><td><b>当前 Wi-Fi</b></td><td>—</td><td>显示当前连接的网络名称（未连接 Wi-Fi 时显示「未连接 Wi-Fi」），右侧按钮可手动刷新。</td></tr>
+        <tr><td><b>规则列表</b></td><td>空</td><td>每行一条：左侧开关控制该行是否启用，依次为 Wi-Fi 名称、系统代理动作与运行模式动作。名称支持 <code>*</code>（任意字符）与 <code>?</code>（单个字符）通配、不区分大小写，如 <code>Home-*</code>；动作为「不改变」时保持现状，其余选项（系统代理：开启 / 关闭；运行模式：规则 / 全局 / 直连）在匹配时应用。</td></tr>
+        <tr><td><b>添加规则</b></td><td>—</td><td>右上角按钮；新增一条默认启用、动作均为「不改变」的规则，补齐名称与动作后生效。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="工具">工具</h2>
+    <p>围绕规则与连接优化的四个实用工具：解除商店应用回环限制、更新规则数据库、配置端口转发隧道、用关键词与替换规则整理节点。</p>
+
+    <h3 id="UWP-应用工具">UWP 应用工具</h3>
+    <p>从 Microsoft Store 安装的应用默认无法访问本机代理地址（<code>127.0.0.1</code>），表现为应用内网络不通。点「管理应用」打开列表，为需要的应用打开开关即可解除回环限制，关闭则恢复限制。修改回环豁免需要管理员权限，操作失败时以管理员身份重启应用后重试即可。</p>
+
+    <h3 id="GeoData-数据库">GeoData 数据库</h3>
+    <p>规则里的 GEOIP / GEOSITE 分流依赖四个数据库文件（<code>geoip.dat</code>、<code>geosite.dat</code>、<code>geoip.metadb</code>、<code>GeoLite2-ASN.mmdb</code>），内核启动时从数据目录直接加载，缺失或过期会导致对应规则失效。这里会显示每个文件的大小与更新时间，点「更新数据库」即可从官方发布页一键更新；直连失败时会自动尝试加速镜像，仍不可用时经本机代理下载。全部文件更新一次下载量较大，耐心等待即可。</p>
+
+    <h3 id="流量隧道">流量隧道</h3>
+    <p>把本机端口转发到远端目标地址：内核在本地监听指定端口，命中后经指定出口（代理组或节点）转发到目标主机，适合把远端内网服务（如数据库、远程桌面）映射到本机使用。每条隧道可选择协议（TCP / UDP / 混合）、本地监听地址与端口、目标地址与端口；出口留空时按规则分流。隧道属于运行时配置，增删修改后内核会自动重启。</p>
+
+    <h3 id="节点整理">节点整理</h3>
+    <p>生成运行时配置时对节点列表做一次统一整理，适合订阅里节点又多又杂的情况，三部分可以组合使用：<b>过滤关键词</b>命中任一关键词的节点被移除（不区分大小写）；<b>重命名规则</b>按顺序替换节点名中的文本（区分大小写，替换为留空即删除该段文本）；<b>统一前缀 / 后缀</b>在全部替换完成后为所有节点名加上前后缀。</p>
+    <p>整理会连同代理组、规则与隧道等处的节点引用一并改写，不会出现改名后引用失效的问题。点「预览效果」可以先看整理结果再决定是否启用：显示共多少个节点、过滤多少个、改名多少个；开关未启用时也能预览。</p>
+
+    <h2 id="维护">维护</h2>
+    <p>分为「更新与测速」（订阅、内核更新、节点测速）和「数据与日志」（配置快照、备份与恢复、应用日志）两个分组。</p>
+
+    <h3 id="订阅">订阅</h3>
+    <p><b>自动更新间隔</b>，单位小时，<b>0 表示关闭</b>，默认关闭。开启后后台会定时更新列表中的全部订阅，更新完成后自动重载配置并发送系统通知。</p>
+    <p><b>更新后自动选优</b>默认关闭。开启后，每次订阅更新并重载配置完成时，客户端会自动对主策略组测速，并把延迟最低的可用节点设为当前节点（只对「手动选择」型策略组生效，自动测速型分组由内核自行择优）；切换结果会发送系统通知。</p>
+    <p><b>订阅用量提醒</b>默认开启，依赖订阅源提供的流量与到期信息，共三档：<b>用量提醒阈值</b>（已用流量达到该百分比时提醒，默认 <code>80</code>%，可设 1 - 100）、<b>到期提醒</b>（剩余天数不超过该值时提醒，默认 <code>3</code> 天，<code>0</code> 表示关闭此档）与「已过期」提醒。每档只提醒一次；续费或套餐重置后自动恢复，条件再次满足时会重新提醒。</p>
+
+    <h3 id="内核更新">内核更新</h3>
+    <p>这里显示当前内核版本，点「检查更新」查询是否有新版本。发现新版本时可一键更新，客户端会从 GitHub Releases 下载并替换内核。</p>
+
+    <h3 id="节点测速">节点测速</h3>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>测速地址</b></td><td><code>http://www.gstatic.com/generate_204</code></td><td>建议使用 204 轻量地址。</td></tr>
+        <tr><td><b>测速超时</b></td><td><code>5000</code> 毫秒</td><td>超过该时间未响应即判定为超时。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="配置快照">配置快照</h3>
+    <p>每次生成运行配置前，<code>config.yaml</code> 的旧内容会自动留档（保留最近 10 份），点「查看快照」可以看到留档列表。内核起不来或配置异常时，可在这里一键回滚到上一个可用版本；恢复会立即写回并热重载内核，覆盖前当前的配置也会先自动留档。</p>
+    <p>快照属于应急回退手段：恢复之后，下次修改设置或重启内核时仍会按当前设置重新生成配置。</p>
+
+    <h3 id="备份与恢复">备份与恢复</h3>
+    <table>
+      <thead>
+        <tr><th>操作</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>导出备份</b></td><td>把设置、订阅、Merge 配置与内核版本导出为一个 JSON 文件。</td></tr>
+        <tr><td><b>导入备份</b></td><td>从备份文件恢复全部数据，会覆盖当前设置与订阅。导入前会二次确认「导入备份？」。</td></tr>
+        <tr><td><b>导出诊断信息</b></td><td>把应用与内核版本、当前设置、运行配置与最近的日志打包为一个 ZIP 文件，密钥等敏感字段会自动打码，适合随问题反馈一起提交。</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="应用日志">应用日志</h3>
+    <p>客户端自身的运行日志会写入数据目录的 <code>logs\app.log</code>，并按大小自动轮转归档（<code>app.1.log</code>、<code>app.2.log</code>…），点「打开日志目录」可直接查看。它记录的是应用自己的动作（内核启停、系统代理变更、配置与更新等），与「运行日志」页的内核实时日志互补，适合事后排查问题。</p>
+    <table>
+      <thead>
+        <tr><th>设置项</th><th>默认</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>日志等级</b></td><td>警告</td><td>错误 / 警告 / 信息 / 调试，控制写入日志文件的详细程度，修改即时生效。</td></tr>
+        <tr><td><b>单文件上限</b></td><td><code>128</code> KB</td><td>范围 16 KB - 10 MB，达到上限后自动轮转。</td></tr>
+        <tr><td><b>文件数量</b></td><td><code>8</code></td><td>范围 2 - 50，保留的日志文件总数，超出后删除最旧的。</td></tr>
+        <tr><td><b>保留天数</b></td><td><code>7</code></td><td>范围 1 - 365，自动清理超过该天数的归档日志。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="关于">关于</h2>
+    <p>顶部展示应用 logo 与应用名，下方列出应用版本、内核版本与数据目录。数据目录为 <code>%APPDATA%\com.unboundlink.desktop</code>，可一键复制，迁移电脑或重装前建议先备份；点「打开目录」可直接在资源管理器里查看。</p>
+    <p>页面提供「退出应用」按钮，点击后会二次确认「退出无界互联？」，这里是真正结束程序的入口。另有检查更新：发现新版本时可直接在应用内下载安装包并自动完成升级（静默安装后以新版本重新启动），也可随时取消改为手动下载；「帮助与支持」可一键打开软件官网与在线使用手册。底部还有「开发者工具」入口，打开内置调试面板用于排查界面问题，日常使用无需关心。页面底部同样提示「所有设置修改即时保存」。</p>
+
+    <div class="cal ok">
+      <div>
+        <b>小结</b>
+        <p>日常最常用的三处是：系统 → 系统代理卡片；网络 → 端口与模式里的运行模式；维护 → 数据与日志 → 导出备份。以上改动都即时保存，无需额外确认。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

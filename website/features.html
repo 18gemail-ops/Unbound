@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>功能总览 — 无界互联 Unbound link</title>
+<meta name="description" content="无界互联功能总览：订阅管理、分流规则、应用级进程绑定、链式代理、实时连接观测、流量统计、桌面悬浮窗、系统托盘、TUN 模式、网络体检与断网急救箱。">
+<link rel="icon" href="./favicon.ico">
+<link rel="stylesheet" href="./assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./index.html">
+      <img src="./assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="./features.html">功能</a>
+      <a href="./docs/index.html">使用手册</a>
+      <a href="./download.html">下载</a>
+      <a href="./changelog.html">更新日志</a>
+      <a href="./faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="./download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<section class="section tint">
+  <div class="wrap">
+    <div class="sec-head reveal center" style="margin-bottom:0">
+      <span class="eyebrow">功能总览</span>
+      <h2>十一个页面，覆盖从部署到排障的全过程</h2>
+      <p class="lead">左侧菜单按使用场景分成三组：先在「代理与分流」配好线路，再到「观测与数据」看清运行状态，「稳定与排障」处理突发问题。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 代理与分流 -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>一、代理与分流</h2>
+      <p class="lead">把「流量走哪条线」这件事拆成三层：订阅决定有哪些线路，规则决定默认怎么走，应用分流决定例外怎么走。</p>
+    </div>
+    <div class="cards c2">
+      <div class="card reveal">
+        <span class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+        </span>
+        <h3>订阅管理</h3>
+        <p>支持 http/https 订阅链接导入；卡片可拖动排序、重命名、生成二维码分享给手机、一键刷新用量信息；可同时启用多个订阅，也能从节点链接导入单个节点，支持按小时间隔自动更新，更新后自动重载配置并发送系统通知，还可设置更新后自动测速并切换到最快节点；流量达到阈值、临近到期或已过期时各提醒一次；更新前自动留档旧版本，随时可回滚。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic g">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="19" height="7.5" rx="2"/><rect x="2.5" y="13.5" width="19" height="7.5" rx="2"/><path d="M6.5 6.75h.01"/><path d="M6.5 17.25h.01"/></svg>
+        </span>
+        <h3>代理节点</h3>
+        <p>左右分栏：左边按分组与订阅来源浏览，右边节点卡片网格。支持单节点测延迟、下载测速（测完自动恢复原节点）、全部测速、按延迟/名称排序、按地区筛选、只看收藏；顶部可一键「隐藏超时」节点，卡片列数支持 1 - 4 列或自适应；开启「节点健康监控」后，卡片上还会多一条延迟趋势折线（红点表示测速失败），开启「掉线自动切换」后连续测速失败的当前节点还会被自动切走；列表与地图双视图随时切换，地图把节点按地区聚合成光点，大小看数量、颜色看延迟，点一下即按地区下钻筛选。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic a">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+        </span>
+        <h3>应用分流</h3>
+        <p>按进程名或完整路径把应用绑定到指定线路，可直接从正在联网的进程里挑选。选两条以上线路自动聚合，可选轮询分散或会话保持；列表里能看到该应用当前的实时速率。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic p">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.8-1.7"/></svg>
+        </span>
+        <h3>链式代理</h3>
+        <p>为某个节点指定前置代理，流量先经中转再出去，适合受限节点。节点卡片上有链式标记，悬停即显示经由哪一个前置。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic g">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10"/><path d="m17 4 4 4-4 4"/><path d="M17 16H7"/><path d="m7 20-4-4 4-4"/></svg>
+        </span>
+        <h3>流量隧道</h3>
+        <p>把本机端口转发到远端目标：内核在本地监听指定端口，经指定出口（代理组、节点或按规则分流）转发到目标主机，适合把远端内网服务映射到本机使用。支持 TCP / UDP / 混合协议。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic t">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12H3"/><path d="M16 6H3"/><path d="M16 18H3"/><path d="M18 9v6"/><path d="M21 12h-6"/></svg>
+        </span>
+        <h3>快捷规则</h3>
+        <p>在实时连接页右键任意连接，选「此域名直连」或「此域名走指定线路」，立刻生成一条插在最前面的域名规则，当场生效，不用改文件也不用重启。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic k">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="7" rx="1"/><rect x="12" y="7" width="3" height="11" rx="1"/><rect x="17" y="13" width="3" height="5" rx="1"/></svg>
+        </span>
+        <h3>规则与命中统计</h3>
+        <p>规则列表、自定义规则、规则集、命中统计四个页签，可在规则页直接增删改并排序自定义规则，保存后注入运行配置最前。命中统计每 15 秒采样一次，累计落盘，重启软件也不清零——用来判断某条规则到底有没有在工作。</p>
+      </div>
+    </div>
+
+    <div style="margin-top:34px">
+      <h3 style="font-size:18px;margin-bottom:14px">三种让流量走代理的方式，怎么选</h3>
+      <table style="width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14.5px">
+        <thead>
+          <tr style="background:var(--bg-soft)">
+            <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">方式</th>
+            <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">覆盖范围</th>
+            <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">权限</th>
+            <th style="text-align:left;padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--line)">适合场景</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>系统代理</b></td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">支持系统代理的程序（浏览器、多数桌面软件）</td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">不需要</td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">日常使用，最省事</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b>TUN 模式</b></td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">全部流量，含不认系统代理的程序</td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">需要管理员</td>
+            <td style="padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink-2)">游戏、命令行工具、全局接管</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 16px"><b>应用分流</b></td>
+            <td style="padding:11px 16px;color:var(--ink-2)">仅被绑定的进程</td>
+            <td style="padding:11px 16px;color:var(--ink-2)">不需要</td>
+            <td style="padding:11px 16px;color:var(--ink-2)">只想让个别应用走指定线路</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 观测 -->
+<section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>二、观测与数据</h2>
+      <p class="lead">代理的痛点往往是「不知道现在发生了什么」。所以每个状态都有对应的地方可看。</p>
+    </div>
+    <div class="cards c3">
+      <div class="card reveal">
+        <h3>仪表盘</h3>
+        <p>内核状态、版本、内存占用与运行时长，累计上下行与活跃连接数，实时流量曲线；并可直接在仪表盘切换各代理组的当前节点。</p>
+      </div>
+      <div class="card reveal">
+        <h3>实时连接</h3>
+        <p>明细视图按连接逐行展示主机、进程、目标地址、命中规则、链路与实时速率；聚合视图按域名汇总连接数。右键即可为域名创建快捷规则或复制域名、目标地址、进程路径。</p>
+      </div>
+      <div class="card reveal">
+        <h3>流量统计</h3>
+        <p>按日记录上下行用量，可切换近 7 天 / 近 30 天 / 近 90 天 / 全部，配趋势图与日期明细表；另有「按节点流量」面板，把流量汇总到出口节点名下（直连流量记为 DIRECT），每条线路各用了多少一目了然，可一键重置统计。数据持续落盘，重启不清零。</p>
+      </div>
+      <div class="card reveal">
+        <h3>运行日志</h3>
+        <p>内核日志与应用层日志同屏呈现，应用层日志带 <code>[无界互联]</code> 前缀以便区分；可按调试 / 信息 / 警告 / 错误筛选，日志同时写入 <code>logs\app.log</code>，自动轮转与过期清理。</p>
+      </div>
+      <div class="card reveal">
+        <h3>桌面悬浮窗</h3>
+        <p>实时网速、当前节点延迟、活跃连接数、今日流量与代理状态悬在桌面。3 档尺寸、3 种版式、7 套配色，可调不透明度，可鼠标穿透，位置自动记住。</p>
+      </div>
+      <div class="card reveal">
+        <h3>系统托盘</h3>
+        <p>托盘图标随代理状态三态切换（常规 / 系统代理 / TUN），三态均可替换为自己的 PNG 图标；右键弹出快捷面板，不用打开主窗口就能切系统代理、切 TUN、看速度、开主界面；点击面板中的「节点」或「分组」行，旁边会弹出独立的节点选择浮层，按分组浏览、点选即切换。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 系统集成 -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>三、系统集成</h2>
+      <p class="lead">该接管系统的部分接管系统，该留在本机的部分留在本机。</p>
+    </div>
+    <div class="cards c3">
+      <div class="card reveal">
+        <h3>系统代理与 TUN</h3>
+        <p>一键写入或还原 Windows Internet 设置；开启「网络环境」后，还能按当前 Wi-Fi 名称自动切换系统代理与运行模式（如到家自动开、到公司自动停）。TUN 通过虚拟网卡在网络层接管全部流量，堆栈可选 Mixed / Gvisor / System，需要管理员权限时会引导 UAC 提权重启。商店应用受系统回环限制无法访问本机代理时，可在「UWP 应用工具」里一键解除。</p>
+      </div>
+      <div class="card reveal">
+        <h3>DNS 与局域网</h3>
+        <p>可自定义 DNS 服务器（含备用 DNS 与静态 Hosts）覆盖订阅配置，可选择 fake-ip 加速；开启「允许局域网连接」后，同网段的手机、平板等设备可直接使用本机代理，同一行的「分享到手机」按钮会弹出二维码，按提示在手机 Wi-Fi 里填好手动代理即可。</p>
+      </div>
+      <div class="card reveal">
+        <h3>内置 Web 控制面板</h3>
+        <p>内置 MetaCubeXD 面板，首次打开自动下载托管，地址 <code>http://127.0.0.1:9090/ui/</code>；开启局域网后还会显示可供其他设备访问的面板地址。</p>
+      </div>
+      <div class="card reveal">
+        <h3>全局快捷键</h3>
+        <p>默认 <code>Ctrl+Shift+P</code> 切换系统代理、<code>Ctrl+Shift+T</code> 切换 TUN、<code>Ctrl+Shift+U</code> 显示主窗口、<code>Ctrl+Shift+O</code> 开关悬浮窗、<code>Ctrl+Shift+M</code> 切换代理模式，另有「更新全部订阅」「重启内核」可自行录制，全部可自定义或恢复默认。</p>
+      </div>
+      <div class="card reveal">
+        <h3>全局命令面板</h3>
+        <p>按 <code>Ctrl+K</code> 在任意页面呼出：跳转页面与设置分类、执行启停内核 / 切换模式等动作、更新与启停订阅、检查更新与备份恢复、断网急救、搜索并切换节点，全部支持关键词过滤，键盘即可完成。</p>
+      </div>
+      <div class="card reveal">
+        <h3>开机自启与单实例</h3>
+        <p>可设置开机自动运行；程序保证单实例运行，重复启动时唤出已有窗口，不会出现两个内核抢端口。关闭主窗口默认最小化到托盘而不是退出。全新安装首次启动会弹出四步引导，带你完成订阅导入与推荐设置。</p>
+      </div>
+      <div class="card reveal">
+        <h3>主题与外观</h3>
+        <p>深色 / 浅色 / 跟随系统三档，实时切换；品牌色、次要色、文本色、语义色、界面字体与自定义 CSS 均可调。界面为扁平化设计，主按钮为黑色，语义色克制使用——蓝表示进行中，绿表示正常，琥珀表示待处理，红表示异常。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 配置 -->
+<section class="section soft">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">配置能力</span>
+      <h2>既照顾不想碰配置的人，也照顾想精细控制的人</h2>
+      <p class="lead">订阅保持原始、你的改动单独存一份，两者在生成运行时配置时才合并——这意味着订阅源更新不会冲掉你的个人设置。</p>
+      <ul class="ticks">
+        <li><b>Merge 覆写</b>：写几行 YAML 片段即可覆盖订阅里的字段（端口、模式等应用级设置由客户端接管），递归深度合并。</li>
+        <li><b>扩展脚本</b>：内置 QuickJS，一个 <code>main(config)</code> 函数批量改写节点名、增删规则。</li>
+        <li><b>节点整理</b>：按关键词过滤节点、按规则批量重命名（含统一前后缀），并同步改写代理组与规则里的引用，支持先预览再启用。</li>
+        <li><b>应用级设置注入</b>：端口、控制密钥、模式等字段由客户端负责写入，不会被订阅内容覆盖。</li>
+        <li><b>配置热重载</b>：切换节点、改端口、改 DNS 后自动应用，不中断已有连接。</li>
+        <li><b>原子写入</b>：运行时配置先写临时文件再改名，避免内核读到半截文件。</li>
+        <li><b>配置快照</b>：每次生成运行配置前自动留档旧版本（保留最近 10 份），内核起不来时可一键回滚到上一可用版本，属应急回退手段。</li>
+      </ul>
+    </div>
+    <div class="split-media">
+      <div class="cards" style="grid-template-columns:1fr">
+        <div class="card reveal">
+          <h3>备份与恢复</h3>
+          <p>把设置、订阅、Merge 配置与内核版本导出为一个 JSON 文件；换电脑或重装后在「设置 → 维护」一键导入，覆盖当前数据。另有「导出诊断信息」，把版本、设置、配置与最近日志打包为 ZIP（敏感字段打码），反馈问题更方便。</p>
+        </div>
+        <div class="card reveal">
+          <h3>内核一键更新</h3>
+          <p>「设置 → 维护 → 内核更新」可检查并获取新版本内核，下载完成后自动替换，无需手动处理文件。</p>
+        </div>
+        <div class="card reveal">
+          <h3>内核看门狗</h3>
+          <p>内核异常退出时自动拉起，并带有防抖动限制：短时间内反复崩溃不会陷入无限重启，而是如实记录在运行日志里。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 排障 -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>四、稳定与排障</h2>
+      <p class="lead">代理软件出问题时最难受的是不知道问题在哪。这里把「诊断」和「修复」拆成了两步。</p>
+    </div>
+    <div class="cards c3">
+      <div class="card reveal">
+        <span class="ic a">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        </span>
+        <h3>11 项网络体检</h3>
+        <p>内核状态、端口监听、系统代理、DNS 解析、DNS 接管、直连出口、代理出口、WebRTC 泄漏、当前节点、GitHub 直连、配置加载。每项给出结论，异常项附带建议。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic k">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.4 8-9V5.6L12 2.6 4 5.6V13c0 5.6 8 9 8 9z"/><path d="M9.5 12.4l1.8 1.8 3.4-3.6"/></svg>
+        </span>
+        <h3>断网急救箱</h3>
+        <p>针对系统代理残留、DNS 解析失败、DNS 服务器被改写、hosts 文件异常、网络协议栈损坏五类问题，逐项检测并给出对应修复按钮，修完自动复检。</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic g">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 7.7-1.5"/><path d="M12 14.8v2.4"/></svg>
+        </span>
+        <h3>解锁测试</h3>
+        <p>经当前出口检测 18 项服务的可用性，覆盖 Netflix、Disney+ 等流媒体，ChatGPT、Claude 等 AI 服务与 B 站等国内平台，给出「解锁 / 部分解锁 / 未解锁 / 失败」四态结论与说明；页面内可直接切换出口节点挑线路，换线即刻复测。</p>
+      </div>
+    </div>
+    <div class="cal note" style="margin-top:26px;max-width:820px">
+      <div>
+        <b>关于权限的说明</b>
+        <p>「一键急救」里的重置系统代理与刷新 DNS 缓存都不需要管理员权限，随时可用；只有重置 DNS 服务器、恢复 hosts 文件、重置网络协议栈会通过 UAC 提权执行，并在界面上明确标注。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>准备好试一下了吗</h2>
+        <p>下载安装包，导入订阅，三分钟就能跑起来。</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-dark btn-lg" href="./download.html">前往下载</a>
+        <a class="btn btn-ghost btn-lg" href="./docs/index.html">阅读使用手册</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="./assets/img/logo.png" alt="无界互联">
+          <span>无界互联</span>
+        </div>
+        <p>Windows 桌面代理客户端。基于 mihomo 内核，订阅、分流、观测与急救都放在一个窗口里。</p>
+      </div>
+      <div>
+        <h4>产品</h4>
+        <ul>
+          <li><a href="./features.html">功能总览</a></li>
+          <li><a href="./download.html">下载安装</a></li>
+          <li><a href="./changelog.html">更新日志</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>文档</h4>
+        <ul>
+          <li><a href="./docs/index.html">使用手册</a></li>
+          <li><a href="./docs/install.html">安装与首次运行</a></li>
+          <li><a href="./docs/troubleshooting.html">故障排查</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>支持</h4>
+        <ul>
+          <li><a href="./faq.html">常见问题</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">版本发布页</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span>本软件仅提供网络代理的本地管理能力，请遵守当地法律法规与相关服务条款。</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./assets/site.js"></script>
+</body>
+</html>

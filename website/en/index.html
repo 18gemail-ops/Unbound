@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Unbound link — Windows Desktop Proxy Client</title>
+<meta name="description" content="Unbound link is a Windows desktop proxy client based on the mihomo core, with subscription management, routing rules, per-app process binding, chained proxies and network rescue — a clean interface that works out of the box.">
+<meta name="keywords" content="Unbound link,mihomo,Windows proxy client,Clash,subscription management,app routing">
+<meta property="og:title" content="Unbound link — Windows Desktop Proxy Client">
+<meta property="og:description" content="Subscription management, routing rules, per-app process binding, chained proxies and network rescue — all in one window.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../favicon.ico">
+<link rel="apple-touch-icon" href="../assets/img/app-icon.png">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="./index.html">
+      <img src="../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="./features.html">Features</a>
+      <a href="./docs/index.html">User Guide</a>
+      <a href="./download.html">Download</a>
+      <a href="./changelog.html">Changelog</a>
+      <a href="./faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="./download.html">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
+        Download for Windows
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 12h7l-1 8 9-12h-7z"/></svg>
+        Built on the mihomo core · fully local
+      </span>
+      <h1>A window has edges. <br><em>A connection doesn't.</em></h1>
+      <p class="sub">Auto-updating subscriptions, routing rules, per-process routing, chained proxies, network rescue — all inside this one window, fully local. Works without writing config files, and never stands in the way if you prefer to.</p>
+      <div class="hero-actions">
+        <a class="btn btn-dark btn-lg" href="./download.html">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 20h16"/></svg>
+          Download for Windows
+        </a>
+        <a class="btn btn-ghost btn-lg" href="./docs/index.html">Read the User Guide</a>
+      </div>
+      <div class="hero-note">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Windows 10 / 11 · 64-bit
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Core bundled — works out of the box
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          All data stays on this machine
+        </span>
+      </div>
+      <div class="hero-stats">
+        <div><b>13</b><span>UI languages</span></div>
+        <div><b>18</b><span>Unlock tests</span></div>
+        <div><b>3</b><span>Config layers</span></div>
+        <div><b>0</b><span>Data sent out</span></div>
+      </div>
+    </div>
+
+    <!-- UI mockup: pure CSS + SVG, not a screenshot; the outer .mock-wrap anchors the glow and floating badges -->
+    <div class="mock-wrap reveal">
+      <div class="mock" role="img" aria-label="Unbound link main interface">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="t">Unbound link</span></div>
+      <div class="mock-body">
+        <div class="mock-side">
+          <div class="mi on"><b></b>Dashboard</div>
+          <div class="mi"><b></b>Profiles</div>
+          <div class="mi"><b></b>Proxies</div>
+          <div class="mi"><b></b>App Routing</div>
+          <div class="mi"><b></b>Rules</div>
+          <div class="mi"><b></b>Connections</div>
+          <div class="mi"><b></b>Traffic</div>
+          <div class="mi"><b></b>Logs</div>
+          <div class="mi"><b></b>Diagnostics</div>
+          <div class="mi"><b></b>Unlock Test</div>
+          <div class="mi"><b></b>Settings</div>
+        </div>
+        <div class="mock-main">
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="k">Download</div>
+              <div class="v down">12.4 MB/s</div>
+            </div>
+            <div class="mock-card">
+              <div class="k">Upload</div>
+              <div class="v up">1.8 MB/s</div>
+            </div>
+            <div class="mock-card">
+              <div class="k">Active connections</div>
+              <div class="v">148</div>
+            </div>
+          </div>
+          <div class="mock-chart">
+            <div class="h"><span>Live traffic</span><span style="color:var(--ink-3)">Last 60 seconds</span></div>
+            <svg viewBox="0 0 420 74" width="100%" height="74" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#007aff" stop-opacity=".26"/>
+                  <stop offset="100%" stop-color="#007aff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 58 C30 50 44 26 70 30 C96 34 108 54 134 50 C160 46 172 20 198 24 C224 28 236 48 262 44 C288 40 300 16 326 22 C352 28 366 46 392 40 L420 36 L420 74 L0 74 Z" fill="url(#g1)"/>
+              <path d="M0 58 C30 50 44 26 70 30 C96 34 108 54 134 50 C160 46 172 20 198 24 C224 28 236 48 262 44 C288 40 300 16 326 22 C352 28 366 46 392 40 L420 36" fill="none" stroke="#007aff" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M0 66 C34 62 52 56 82 58 C112 60 130 66 160 62 C190 58 208 52 238 54 C268 56 286 62 316 58 C346 54 366 50 420 52" fill="none" stroke="#ff9500" stroke-width="2" stroke-linecap="round" stroke-dasharray="0"/>
+            </svg>
+          </div>
+          <div class="mock-rule">
+            <div class="r"><span class="dot"></span><span class="n">openai.com</span><span class="g">AI Line</span></div>
+            <div class="r"><span class="dot"></span><span class="n">github.com</span><span class="g">Auto Select</span></div>
+            <div class="r"><span class="dot"></span><span class="n">baidu.com</span><span class="g">DIRECT</span></div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="mock-pill p1"><span class="dot ok"></span>Core running</div>
+      <div class="mock-pill p2"><span class="dot blue"></span>Node latency 42 ms</div>
+    </div>
+  </div>
+</section>
+
+<!-- Core capabilities -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal center">
+      <span class="eyebrow">Core capabilities</span>
+      <h2>Everyday features, made easy to understand</h2>
+      <p class="lead">Not a pile of features — every step has a clear entry point, a clear status and a plain-language explanation.</p>
+    </div>
+    <div class="cards c3">
+      <div class="card reveal">
+        <span class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+        </span>
+        <h3>Subscription management and auto-update</h3>
+        <p>Import a subscription with a single link and see usage and expiry right on the card. Set auto-update every 1–24 hours; when an update finishes, the config reloads automatically and a system notification is sent.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic g">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+        </span>
+        <h3>Per-process routing</h3>
+        <p>Send your browser through one line and your games through another. Bind by process name or full path; picking two or more lines forms a load-balance group automatically, with round-robin or session-persistent policies.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic a">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.8-1.7"/></svg>
+        </span>
+        <h3>Chained proxy</h3>
+        <p>Assign a front proxy to a restricted node so traffic goes through the relay first. Set it with the chain button on the node card; latency is simply the sum of both hops.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic p">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.84Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+        </span>
+        <h3>Merge override + extension script</h3>
+        <p>When you don't want to touch the original subscription, deep-override any config field with a Merge snippet. For bulk edits, the built-in QuickJS engine runs one extension script — rename nodes, add rules, all from a dialog.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic t">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-7 3.5 14 3-7h5"/></svg>
+        </span>
+        <h3>Desktop floating window</h3>
+        <p>Live speed, current node latency and active connections stay on your desktop. 3 sizes, 3 layouts, 7 color themes — with mouse pass-through and drag anywhere.</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic k">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.4 8-9V5.6L12 2.6 4 5.6V13c0 5.6 8 9 8 9z"/><path d="M9.5 12.4l1.8 1.8 3.4-3.6"/></svg>
+        </span>
+        <h3>Network rescue kit</h3>
+        <p>When the proxy exits unexpectedly and your browser can't open pages, Diagnostics pinpoints the problem first, then one click resets the system proxy and flushes the DNS cache, with an automatic re-check.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Subscription / config -->
+<section class="section soft">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">About configuration</span>
+      <h2>Subscriptions, overrides, scripts — three layers, each minding its own business</h2>
+      <p class="lead">Subscriptions stay pristine and follow upstream updates while your personal changes live in separate files — no overwriting. Swap subscriptions or providers without reconfiguring everything.</p>
+      <ul class="ticks">
+        <li><b>Profiles</b>: http/https subscription links, drag to reorder, rename, generate a QR code to share with your phone, and view live usage.</li>
+        <li><b>Merge override</b>: a few lines override fields in the subscription (except app-level settings such as port and mode), deeply merged recursively when the runtime config is generated.</li>
+        <li><b>Extension script</b>: built-in QuickJS engine — one <code>main(config)</code> function batch-renames nodes and adds or removes rules.</li>
+        <li><b>Runtime config</b>: app-level fields such as port, secret and mode are injected by the client and never overridden by subscriptions; config changes hot-reload automatically — no manual core restart.</li>
+      </ul>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/profiles.html">How to use Profiles →</a></p>
+    </div>
+    <div class="split-media reveal">
+      <div class="figure">
+        <svg viewBox="0 0 520 340" width="100%" aria-label="Config generation flow">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 10 5 0 10z" fill="#b6bbc3"/>
+            </marker>
+          </defs>
+          <rect x="30" y="26" width="200" height="52" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="48" y="50" font-size="13.5" font-weight="700" fill="#101114">Subscription config</text>
+          <text x="48" y="68" font-size="11.5" fill="#8b919b">Kept as-is, updated with the source</text>
+
+          <rect x="30" y="106" width="200" height="52" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="48" y="130" font-size="13.5" font-weight="700" fill="#101114">Merge override snippet</text>
+          <text x="48" y="148" font-size="11.5" fill="#8b919b">Your custom field overrides</text>
+
+          <rect x="30" y="186" width="200" height="52" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="48" y="210" font-size="13.5" font-weight="700" fill="#101114">Extension script</text>
+          <text x="48" y="228" font-size="11.5" fill="#8b919b">QuickJS batch rewrites</text>
+
+          <rect x="30" y="266" width="200" height="52" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="48" y="290" font-size="13.5" font-weight="700" fill="#101114">App-level settings</text>
+          <text x="48" y="308" font-size="11.5" fill="#8b919b">Port / secret / mode / binding</text>
+
+          <path d="M230 52h28a10 10 0 0 1 10 10v220a10 10 0 0 1 -10 10h-28" stroke="#b6bbc3" stroke-width="1.6" fill="none"/>
+          <path d="M230 132h38M230 212h38" stroke="#b6bbc3" stroke-width="1.6" fill="none"/>
+          <path d="M268 146h34" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+
+          <rect x="302" y="110" width="186" height="72" rx="14" fill="#101114"/>
+          <text x="322" y="140" font-size="14" font-weight="700" fill="#fff">Runtime config.yaml</text>
+          <text x="322" y="162" font-size="11.5" fill="rgba(255,255,255,.62)">Atomic write — .tmp first, then rename</text>
+
+          <path d="M395 182v34" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+          <rect x="302" y="222" width="186" height="86" rx="14" fill="#fff" stroke="#007aff" stroke-width="1.6"/>
+          <text x="322" y="250" font-size="13.5" font-weight="700" fill="#0060df">mihomo core</text>
+          <text x="322" y="270" font-size="11.5" fill="#4b5058">sidecar process · background watchdog</text>
+          <text x="322" y="290" font-size="11.5" fill="#4b5058">Hot reload without dropping connections</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- App routing -->
+<section class="section">
+  <div class="wrap split rev">
+    <div class="split-media reveal">
+      <div class="figure plain">
+        <svg viewBox="0 0 520 300" width="100%" aria-label="App Routing illustration">
+          <defs>
+            <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#007aff"/></marker>
+            <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#ff9500"/></marker>
+            <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#b6bbc3"/></marker>
+          </defs>
+
+          <rect x="24" y="28" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="44" y="55" font-size="13.5" font-weight="700" fill="#101114">chrome.exe</text>
+          <rect x="24" y="84" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="44" y="111" font-size="13.5" font-weight="700" fill="#101114">game.exe</text>
+          <rect x="24" y="140" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="44" y="167" font-size="13.5" font-weight="700" fill="#101114">Other apps</text>
+          <rect x="24" y="196" width="160" height="44" rx="12" fill="#fff" stroke="rgba(16,17,20,.14)"/>
+          <text x="44" y="223" font-size="13.5" font-weight="700" fill="#101114">mihomo core</text>
+
+          <rect x="264" y="28" width="160" height="44" rx="12" fill="#e8f2ff" stroke="#cfe3ff"/>
+          <text x="284" y="55" font-size="13" font-weight="700" fill="#0060df">AI Line</text>
+          <rect x="264" y="84" width="160" height="44" rx="12" fill="#fff4e5" stroke="#ffe2b8"/>
+          <text x="284" y="111" font-size="13" font-weight="700" fill="#8a5300">Low-latency game</text>
+          <rect x="264" y="168" width="160" height="44" rx="12" fill="#eef0f3" stroke="#dfe3e8"/>
+          <text x="284" y="195" font-size="13" font-weight="700" fill="#4b5058">Auto Select</text>
+
+          <path d="M184 50h80" stroke="#007aff" stroke-width="1.8" fill="none" marker-end="url(#ap)"/>
+          <path d="M184 106h80" stroke="#ff9500" stroke-width="1.8" fill="none" marker-end="url(#ao)"/>
+          <path d="M184 162h44M184 218h44M228 162v56" stroke="#b6bbc3" stroke-width="1.6" fill="none"/>
+          <circle cx="228" cy="190" r="2.4" fill="#b6bbc3"/>
+          <path d="M228 190h36" stroke="#b6bbc3" stroke-width="1.6" fill="none" marker-end="url(#ag)"/>
+
+          <path d="M24 262h472" stroke="rgba(16,17,20,.08)" stroke-width="1"/>
+          <circle cx="38" cy="278" r="11" fill="#101114"/>
+          <g stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32.8 275.4h8.6M39.6 273.2l2.4 2.2-2.4 2.2"/>
+            <path d="M43.2 280.6h-8.6M36.4 278.4l-2.4 2.2 2.4 2.2"/>
+          </g>
+          <text x="58" y="282" font-size="11.5" font-weight="700" fill="#8b919b">With 2+ lines bound to one app, an aggregation group forms automatically (round-robin / session-persistent)</text>
+        </svg>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">App Routing</span>
+      <h2>Let every app take its own route</h2>
+      <p class="lead">No need to switch everything to global for one game. Bind lines by process name or full path; all other traffic keeps following the rules.</p>
+      <ul class="ticks">
+        <li><b>Easy to pick</b>: choose straight from processes currently using the network, with app icons — no need to remember exe names.</li>
+        <li><b>Flexible binding</b>: one line goes directly to that group; two or more lines form a load-balance group so multiple lines serve the same app together.</li>
+        <li><b>Load-balance policies</b>: round-robin spreads connections across lines; session-persistent keeps a session on one line.</li>
+        <li><b>Visible results</b>: the binding list shows the app's live up/down speed — one glance tells whether it's working.</li>
+      </ul>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="./docs/apps.html">How to set up App Routing →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Diagnostics and rescue -->
+<section class="section soft">
+  <div class="wrap">
+    <div class="sec-head reveal center">
+      <span class="eyebrow">When things go wrong</span>
+      <h2>First it tells you what's wrong, then it helps you fix it</h2>
+      <p class="lead">Diagnostics runs 11 checks in order: core status, port listening, system proxy, DNS resolution, DNS takeover, direct exit, proxy exit, WebRTC leaks, current node, direct GitHub access and config loading. Each check gives a conclusion and a suggested next step.</p>
+    </div>
+    <div class="cards c2">
+      <div class="card reveal">
+        <span class="ic a">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 8V7a2 2 0 0 1 4 0v1"/><rect x="3.5" y="8" width="17" height="12" rx="3"/><path d="M12 11.5v5M9.5 14h5"/></svg>
+        </span>
+        <h3>One-click rescue</h3>
+        <p>Reset the system proxy and flush the DNS cache — neither needs admin rights and both take effect instantly, enough to fix the most common failure: "browser can't open pages after the proxy exits".</p>
+      </div>
+      <div class="card reveal">
+        <span class="ic k">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </span>
+        <h3>Targeted repairs</h3>
+        <p>Leftover system proxy settings, DNS servers set to 0.0.0.0, abnormal hosts files, damaged network stacks — each has its own repair button; operations needing admin rights are clearly marked and go through UAC elevation.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:34px">
+      <a class="btn btn-dark" href="./docs/diagnose.html">Read the Diagnostics guide</a>
+    </div>
+  </div>
+</section>
+
+<!-- Site CTA -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>Up and running 3 minutes after download</h2>
+        <p>The installer already bundles the mihomo core and TUN driver — import your subscription and you're ready to go.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-dark btn-lg" href="./download.html">Download now</a>
+        <a class="btn btn-ghost btn-lg" href="./docs/install.html">Install guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="../assets/img/logo.png" alt="Unbound link">
+          <span>Unbound link</span>
+        </div>
+        <p>Windows desktop proxy client. Built on the mihomo core, with subscriptions, routing, monitoring and rescue all in one window.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="./features.html">Features overview</a></li>
+          <li><a href="./download.html">Download and install</a></li>
+          <li><a href="./changelog.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Docs</h4>
+        <ul>
+          <li><a href="./docs/index.html">User Guide</a></li>
+          <li><a href="./docs/install.html">Install and first run</a></li>
+          <li><a href="./docs/troubleshooting.html">Troubleshooting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="./faq.html">FAQ</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/releases" target="_blank" rel="noopener">Releases</a></li>
+          <li><a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span>This software only provides local management for network proxying. Please comply with your local laws, regulations and the relevant terms of service.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

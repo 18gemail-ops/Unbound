@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Profiles — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Profiles: add and update subscriptions, enable several at once, drag to reorder, roll back with version history, import node links, Merge overrides and extension scripts, auto-update and troubleshooting.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Profiles</h1>
+    <p class="page-lead">Manage your subscription sources here: add links, import local configs, enable one or more subscriptions, import single node links, update node lists, and fine-tune what you get from subscriptions with Merge and Script.</p>
+
+    <h2 id="page-overview">Page overview</h2>
+    <p>Below the title it shows "N subscriptions · M enabled" plus the auto-update status, e.g. "Auto-update every 12 hours" or "Auto-update off". Four buttons sit top-right: "Update all", "Refresh", "Import local config" and "Add subscription". Update all refreshes every subscription in turn; Refresh just re-reads local state; Import local config adds a local YAML file to the list as a subscription.</p>
+
+    <h2 id="adding-a-subscription">Adding a subscription</h2>
+    <p>Click "Add subscription" to open the dialog — just two fields:</p>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Subscription URL</b></td><td>Required; must be an http/https link. Submitting empty shows "Please enter a subscription URL".</td></tr>
+        <tr><td><b>Name</b></td><td>Optional; the client detects it automatically when left blank.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="what-each-card-can-do">What each card can do</h2>
+    <p>Each subscription is a card; press and hold to drag-reorder. Cards show the name, a blue "In use" badge on every enabled subscription (several can appear at once), the URL (truncated when long), a relative "Updated …" time, and subscription info (traffic usage, expiry, etc., when the provider supplies it). The right side holds the enable switch followed by the action buttons:</p>
+    <table>
+      <thead>
+        <tr><th>Button</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Enable switch</b></td><td>Flip it on to enable this subscription; several can be enabled at once — every enabled subscription carries the blue "In use" badge.</td></tr>
+        <tr><td><b>Update</b></td><td>Re-downloads this subscription's content.</td></tr>
+        <tr><td><b>Traffic</b></td><td>Refreshes subscription info to check usage and expiry.</td></tr>
+        <tr><td><b>QR code</b></td><td>Generates a QR code to import on your phone.</td></tr>
+        <tr><td><b>History</b></td><td>Lists the archived versions of this subscription so you can roll back to any of them (not available for local configs).</td></tr>
+        <tr><td><b>Website</b></td><td>Appears when the provider's website is detected; click to open it in your default browser. The dot beside the icon shows reachability (green = reachable, red = unreachable) — hover to see check details.</td></tr>
+        <tr><td><b>Edit</b></td><td>Edits the subscription name and the provider's website (if none was detected, fill it in here; leave empty to restore auto-detection).</td></tr>
+        <tr><td><b>Move up / down</b></td><td>Reorders the subscription in the list.</td></tr>
+        <tr><td><b>Delete</b></td><td>Red button; asks "Delete this subscription? This cannot be undone."</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="multiple-subscriptions-at-once">Multiple subscriptions at once</h2>
+    <p>Several subscriptions can be enabled at once: just flip the enable switch at the top-right of a card, and every enabled subscription carries the blue "In use" badge. The first enabled subscription supplies the base config — port, DNS, run mode — while the others merge their nodes, proxy groups and rules into the same runtime config; the effective order follows the list from top to bottom, so drag cards to reorder.</p>
+
+    <h2 id="version-history">Version history</h2>
+    <p>Before every remote update, the old content is archived automatically, keeping up to 5 versions. Click the clock icon on a subscription card to open the version history dialog, which shows each snapshot's time and node count; click Restore to roll back to that version.</p>
+    <p>If the subscription is enabled, rolling back hot-reloads the running config immediately; the current content is archived first, so you can always undo the rollback. Local configs don't take part in remote updates, so they have no version history. After an update the card shows change badges for node and rule counts (green for growth, red for shrink), and a warning pops up if the node count drops by more than half.</p>
+
+    <h2 id="importing-a-local-config">Importing a local config</h2>
+    <p>Click "Import local config" and pick a local YAML file; the client copies it into the data directory and adds it to the list as a subscription, tagged <b>"Local"</b> and labeled "local config file (excluded from remote updates)". Handy for configs you maintain yourself or got from elsewhere — no need to upload to a server first.</p>
+    <p>Local subscriptions take part in neither remote updates nor auto-update; "Update all" skips them. The file lives in the data directory — re-import it when moving to a new version. Success shows "Local config imported".</p>
+
+    <h2 id="manual-nodes">Manual Nodes</h2>
+    <p>The "Manual Nodes" card at the bottom of the page holds single nodes outside any subscription: click "Import links", paste the node links into the dialog (one per line), click "Parse" to preview, then "Import N" to finish. Common protocols are supported — ss / vmess / vless / trojan / hysteria2 / tuic / socks5 / http; failed lines are reported individually and duplicate names are skipped automatically.</p>
+    <p>Manual nodes live in the data directory and merge into a proxy group of the same name when the runtime config is generated (default group name: "Manual Nodes"). Remove imported nodes one by one on the card; changes save immediately and hot-reload the config.</p>
+
+    <h2 id="global-override-config-merge">Global override config (Merge)</h2>
+    <p>At the bottom sits the "Global override config" card with a <b>Merge</b> tag. Open it and write a YAML snippet — when the runtime config is generated it's <b>deeply merged recursively</b> with the subscription to override its fields (app-level settings such as port, control secret and mode are written by the client — writing them here has no effect; change them under Settings → Network). Saving shows "Merge config saved and applied".</p>
+
+    <h2 id="global-extension-script-script">Global extension script (Script)</h2>
+    <p>Next to it, the "Global extension script" card with a <b>Script</b> tag. Open it and write JavaScript implementing <code>function main(config){ … return config }</code>. The client runs it on the built-in <b>QuickJS</b> engine to batch-rename nodes, add or remove rules and more. Saving shows "Extension script saved and applied". A sample script using regex to strip ads from node names comes built in.</p>
+
+    <h2 id="auto-update">Auto-update</h2>
+    <p>The auto-update interval is set under Settings → Maintenance → Subscription, in hours, <b>0 means off</b> (off by default). Once enabled, every subscription in the list updates on schedule in the background; when done, the config reloads automatically and a system notification is sent.</p>
+    <p>Two subscription-linked switches live in the same place: "Auto-optimize after update" is off by default — once enabled, every time a subscription update finishes and the config reloads, it tests the main proxy group and switches the current node to the lowest-latency one; "Profile usage alerts" is on by default and sends a system notification when used traffic reaches the threshold, remaining days run low or the subscription has expired, each tier firing only once. Both rely on the traffic and expiry info provided by the subscription source.</p>
+
+    <div class="cal warn">
+      <div>
+        <b>If updates fail, check the network first</b>
+        <p>Failed updates usually mean a dead URL or a broken connection. Check the network in Diagnostics, then come back and retry "Update".</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

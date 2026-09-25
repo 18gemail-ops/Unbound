@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>解锁测试 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）解锁测试使用说明：18 项流媒体与 AI 服务的解锁检测、四种结果的解读与检测原理。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>解锁测试</h1>
+    <p class="page-lead">解锁测试会经当前出口依次访问 18 个常用服务，给出「解锁 / 部分解锁 / 未解锁 / 失败」的结论，用来判断这条线路能不能看流媒体、用 AI。</p>
+
+    <h2 id="这一页解决什么">这一页解决什么</h2>
+    <p>「换了新节点，Netflix 还能看吗？」「ChatGPT 突然登不上了？」——这类问题不需要挨个打开网站验证。本页一次性检测 18 项服务，尽快给出结论。检测经本地混合端口出网，与日常上网走同一条代理链路，所以测得的是<b>当前出口节点</b>的真实结果；换一条线路，结论可能完全不同。</p>
+
+    <h2 id="怎么用">怎么用</h2>
+    <ol>
+      <li><b>确认出口</b>：页头「出口节点」行有两个下拉框——先选分组、再选节点，可以在本页直接切换，节点名后带延迟；</li>
+      <li><b>开始测试</b>：点右上角「测试全部」并发检测 18 项；也可以只点某张卡片右上角的刷新图标，单独测一项；</li>
+      <li><b>读结果</b>：页头副标题实时汇总「解锁 N · 部分 N · 已测 N/18」，每张卡片显示状态徽章与一句说明。</li>
+    </ol>
+
+    <h2 id="结果状态怎么看">结果状态怎么看</h2>
+    <table>
+      <thead>
+        <tr><th>状态</th><th>含义</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>待检测</b></td><td>还没测过。点卡片右上角的刷新图标即可单独检测。</td></tr>
+        <tr><td><b>解锁</b></td><td>该服务在当前出口完全可用。</td></tr>
+        <tr><td><b>部分解锁</b></td><td>能访问，但内容有限。典型是 Netflix 的「仅自制剧可看」。</td></tr>
+        <tr><td><b>未解锁</b></td><td>明确不可用，详情里会给出 HTTP 状态码或地区提示。</td></tr>
+        <tr><td><b>失败</b></td><td>请求本身没有完成（超时、代理不通等），<b>不代表服务不可用</b>。先检查内核与节点状态，再重新检测。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="检测是怎么做的">检测是怎么做的</h2>
+    <p>每项检测都经本机混合端口发出请求，模拟浏览器 User-Agent，单次请求超时 12 秒。不同服务的判定方式不同：</p>
+    <ul>
+      <li><b>Netflix</b>：用两部剧交叉验证——先访问一部原创剧，返回 200 再测一部非原创剧。都可达为「解锁」，仅原创剧可达为「部分解锁」，否则未解锁。</li>
+      <li><b>Disney+ / Prime Video / Spotify / TikTok</b>：主页可达且页面没有「地区不可用」提示，即为解锁。</li>
+      <li><b>Hulu / HBO Max</b>：被重定向到区域提示页，或页面出现限制文案，判为未解锁。</li>
+      <li><b>ChatGPT Web</b>：返回 403 判为地区不支持；<b>ChatGPT iOS</b> 则探测长期稳定的移动端状态接口。</li>
+      <li><b>Bilibili</b>：通过站内接口读取出口在 B 站侧的地区判定——中国大陆为全量内容，港澳台与境外为部分受限。</li>
+      <li><b>Claude / Copilot / Gemini / X / 爱奇艺 / 腾讯视频 / 网易云音乐</b>：探测主页可达性，地区限制会体现为 403 或跳转到提示页。</li>
+    </ul>
+
+    <h2 id="支持的服务">支持的服务</h2>
+    <p>共 18 项，覆盖海外流媒体、AI 服务与国内平台：</p>
+    <table>
+      <thead>
+        <tr><th>服务</th><th>类别</th><th>检测点</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Netflix</b></td><td>流媒体</td><td>原创剧 + 非原创剧双验证，可识别「仅自制剧」。</td></tr>
+        <tr><td><b>Disney+</b></td><td>流媒体</td><td>主页可达性与地区限制提示。</td></tr>
+        <tr><td><b>YouTube Premium</b></td><td>流媒体</td><td>Premium 订阅页的地区可用性。</td></tr>
+        <tr><td><b>Prime Video</b></td><td>流媒体</td><td>主页可达性。</td></tr>
+        <tr><td><b>Spotify</b></td><td>流媒体</td><td>主页可达性。</td></tr>
+        <tr><td><b>TikTok</b></td><td>流媒体</td><td>主页可达性。</td></tr>
+        <tr><td><b>Hulu</b></td><td>流媒体</td><td>仅美国可用，可识别区域跳转。</td></tr>
+        <tr><td><b>HBO Max</b></td><td>流媒体</td><td>地区引导页识别。</td></tr>
+        <tr><td><b>ChatGPT Web</b></td><td>AI 服务</td><td>网页版可达性（含 403 判定）。</td></tr>
+        <tr><td><b>ChatGPT iOS</b></td><td>AI 服务</td><td>移动端状态接口，长期稳定的检测点。</td></tr>
+        <tr><td><b>Claude</b></td><td>AI 服务</td><td>主页可达性，403 判为地区不支持。</td></tr>
+        <tr><td><b>Gemini</b></td><td>AI 服务</td><td>地区不支持时会被重定向到 Google 帮助页。</td></tr>
+        <tr><td><b>Copilot</b></td><td>AI 服务</td><td>主页可达性，403 判为地区不支持。</td></tr>
+        <tr><td><b>X (Twitter)</b></td><td>社交</td><td>主页可达性。</td></tr>
+        <tr><td><b>Bilibili</b></td><td>国内平台</td><td>站内接口地区判定（大陆 / 港澳台 / 境外）。</td></tr>
+        <tr><td><b>iQIYI</b></td><td>国内平台</td><td>主页可达性。</td></tr>
+        <tr><td><b>Tencent Video</b></td><td>国内平台</td><td>主页可达性。</td></tr>
+        <tr><td><b>NetEase Cloud Music</b></td><td>国内平台</td><td>主页可达性。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="cal ok">
+      <div>
+        <b>一句话理解</b>
+        <p>解锁测试测的不是「这个服务存不存在」，而是「经当前这条线路访问它，此刻是什么结果」。结论代表探测时刻的出口情况，切换节点后请重新测试。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

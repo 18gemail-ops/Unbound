@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Guide Overview — Unbound link User Guide</title>
+<meta name="description" content="Unbound link User Guide overview: a five-minute getting-started path, interface tour and key terms.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>User Guide overview</h1>
+    <p class="page-lead">This guide walks through the client's 11 feature pages one by one: what each page does, how to fill in parameters, and how to recover if something breaks. First-time users should start with "Install and first run".</p>
+
+    <div class="cal ok">
+      <div>
+        <b>Five-minute path to get started</b>
+        <p>Install → import a subscription → flip its enable switch → turn on the system proxy → confirm on the Dashboard that the node is connected. Just five steps.</p>
+      </div>
+    </div>
+
+    <h2 id="a-few-terms-first">A few terms first</h2>
+    <p>Later chapters use these words constantly — take a minute to get familiar:</p>
+    <table>
+      <thead>
+        <tr><th>Term</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Core</b></td><td>The program doing the real work (mihomo). It's installed with the app; the client starts, supervises and stops it — you never install or configure it separately.</td></tr>
+        <tr><td><b>Subscription</b></td><td>An http/https link that opens to a YAML config containing nodes, policy groups and rules. The client downloads it as the raw material for generating the runtime config.</td></tr>
+        <tr><td><b>Node / proxy group</b></td><td>A node is a single line; a proxy group is a set of nodes that can auto-select by latency, switch manually or fail over.</td></tr>
+        <tr><td><b>Rule</b></td><td>The basis for deciding which line traffic takes. If nothing matches down to the last rule, the subscription's fallback policy applies (usually MATCH).</td></tr>
+        <tr><td><b>System proxy</b></td><td>Modifies Windows Internet settings so programs that honor the system proxy (browsers, most desktop software) use it automatically. Requires the core to be running.</td></tr>
+        <tr><td><b>TUN mode</b></td><td>Creates a virtual adapter to take over all traffic at the network layer, covering apps that ignore the system proxy (some games, command-line tools). Requires admin rights.</td></tr>
+        <tr><td><b>Runtime config</b></td><td>The <code>config.yaml</code> the client assembles from "subscription + your overrides + app-level settings" — the file the core actually reads. You never edit it directly.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="guide-contents">Guide contents</h2>
+    <h3 id="getting-started">Getting started</h3>
+    <ul>
+      <li><a href="./install.html">Install and first run</a> — system requirements, installation steps, the data directory, and what to configure the first time.</li>
+    </ul>
+    <h3 id="feature-guides-matching-the-left-menu">Feature guides (matching the left menu)</h3>
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a> — overview status; switch proxy groups and nodes.</li>
+      <li><a href="./profiles.html">Profiles</a> — add, update and reorder subscriptions, enable several at once, import node links; Merge overrides and extension scripts.</li>
+      <li><a href="./proxies.html">Proxies</a> — switch nodes, test latency, favorites, region filters, chained proxies, one-click hiding of timed-out nodes.</li>
+      <li><a href="./apps.html">App Routing</a> — route specific apps through specific lines.</li>
+      <li><a href="./rules.html">Rules</a> — view active rules, rule sets and hit statistics.</li>
+      <li><a href="./connections.html">Connections</a> — see what's online and create quick rules for domains.</li>
+      <li><a href="./stats.html">Traffic</a> — daily up/down usage.</li>
+      <li><a href="./logs.html">Logs</a> — logs for troubleshooting, filtered by level, persisted to files.</li>
+      <li><a href="./diagnose.html">Diagnostics</a> — 11 checks and the network rescue kit.</li>
+      <li><a href="./unlock.html">Unlock Test</a> — check 18 services to judge whether the current route can stream and use AI.</li>
+      <li><a href="./settings.html">Settings</a> — ports, mode, TUN, DNS, UWP tool, GeoData updates, traffic tunnel, node cleanup, shortcuts, theme customization, app logs, backup and diagnostics export.</li>
+    </ul>
+    <h3 id="advanced-and-help">Advanced and help</h3>
+    <ul>
+      <li><a href="./advanced.html">Advanced tips</a> — Merge syntax, extension script examples, quick rules, command palette, floating window and shortcuts.</li>
+      <li><a href="./troubleshooting.html">Troubleshooting</a> — symptoms, causes and fix order for common failures.</li>
+    </ul>
+
+    <h2 id="where-every-setting-lives">Where every setting lives</h2>
+    <p>Can't find a switch? Check this table first — almost every switch lives in one of Settings' six tabs:</p>
+    <table>
+      <thead>
+        <tr><th>Tab</th><th>What it covers</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Appearance</b></td><td>Theme, language, pause rendering when unfocused, Proxies page columns, hide timed-out nodes, theme customization (colors / fonts / custom CSS).</td></tr>
+        <tr><td><b>System</b></td><td>System proxy (with bypass list and terminal proxy commands), launch at startup, silent start, start page, startup script, tray click action, three-state tray icons, minimize to tray on close, traffic floating window, floating window mouse pass-through, system notifications, core watchdog, check for updates on launch, clear connections on node switch, system proxy guard, global shortcuts.</td></tr>
+        <tr><td><b>Network</b></td><td>Ports and mode (mixed proxy port, control port, mode, log level), kernel behavior (auto-start core, allow LAN, IPv6, unified delay), web dashboard (with control secret), TUN mode, custom DNS (with fallback DNS and static Hosts), speed test and health (scheduled latency tests, node health monitoring, auto-switch on failure), network environment (automatic system-proxy and mode switching by Wi-Fi name).</td></tr>
+        <tr><td><b>Tools</b></td><td>UWP App Tool, GeoData databases, traffic tunnel, node cleanup.</td></tr>
+        <tr><td><b>Maintenance</b></td><td>Subscription auto-update interval, core updates, node test URL and timeout, app logs, backup and restore (including export diagnostics).</td></tr>
+        <tr><td><b>About</b></td><td>App logo and name, app version, core version, data directory (openable in one click), help and support (website and online user guide), developer tools, quit the app.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="cal note">
+      <div>
+        <b>Settings apply instantly</b>
+        <p>Every setting saves immediately — no "OK / Apply" buttons. Core-related changes (ports, TUN, DNS) hot-reload or restart the core automatically, and switches in the UI reflect the actual state.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

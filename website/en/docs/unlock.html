@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Unlock Test — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Unlock Test guide: unlock checks for 18 streaming and AI services, how to read the four results, and how the checks work.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Unlock Test</h1>
+    <p class="page-lead">Unlock Test visits 18 popular services through the current exit and reports Unlocked / Partial / Blocked / Failed for each, so you can tell whether this route can stream and use AI tools.</p>
+
+    <h2 id="what-this-page-solves">What this page solves</h2>
+    <p>"I switched to a new node — can I still watch Netflix?" "ChatGPT suddenly won't sign in?" Questions like these do not need a website-by-website check. This page tests all 18 services in one pass and reports the results without delay. Requests leave through the local mixed port — the same proxy path your daily traffic takes — so what you see is the real result of the <b>current exit node</b>; switch to another route and the outcome can be completely different.</p>
+
+    <h2 id="how-to-use-it">How to use it</h2>
+    <ol>
+      <li><b>Pick the exit</b>: the "Exit node" row at the top has two dropdowns — pick a group, then a node; you can switch right here, and each node shows its latency;</li>
+      <li><b>Start a test</b>: click "Test all" at the top right to check all 18 in parallel, or click the refresh icon on a single card to test just that service;</li>
+      <li><b>Read the results</b>: the subtitle summarizes "Unlocked N · Partial N · Tested N/18" in real time, and each card shows a status badge and a short note.</li>
+    </ol>
+
+    <h2 id="what-the-states-mean">What the states mean</h2>
+    <table>
+      <thead>
+        <tr><th>Status</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Not tested</b></td><td>Not tested yet. Click the refresh icon on the card to run a single check.</td></tr>
+        <tr><td><b>Unlocked</b></td><td>The service is fully available through the current exit.</td></tr>
+        <tr><td><b>Partial</b></td><td>Reachable, but with limited content — the classic case is Netflix showing only its own productions.</td></tr>
+        <tr><td><b>Blocked</b></td><td>Clearly unavailable; the detail line shows the HTTP status code or the region notice.</td></tr>
+        <tr><td><b>Failed</b></td><td>The request itself did not complete (timeout, proxy unreachable, etc.) — <b>this does not mean the service is unavailable</b>. Check the core and node status first, then test again.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="how-the-checks-work">How the checks work</h2>
+    <p>Every check sends requests through the local mixed port with a browser User-Agent and a 12-second timeout. Each service is judged differently:</p>
+    <ul>
+      <li><b>Netflix</b>: two titles are cross-checked — an original series first, and only if it returns 200, a non-original title. Both reachable means Unlocked; only the original means Partial; otherwise Blocked.</li>
+      <li><b>Disney+ / Prime Video / Spotify / TikTok</b>: the home page loads and shows no "not available in your region" notice — Unlocked.</li>
+      <li><b>Hulu / HBO Max</b>: a redirect to a region notice page, or restricted-content text on the page, means Blocked.</li>
+      <li><b>ChatGPT Web</b>: a 403 response means the region is unsupported; <b>ChatGPT iOS</b> probes a long-stable mobile status endpoint instead.</li>
+      <li><b>Bilibili</b>: an in-site API reports how Bilibili sees the exit region — mainland China gets the full catalogue, while Hong Kong, Macao, Taiwan and overseas regions are partially restricted.</li>
+      <li><b>Claude / Copilot / Gemini / X / iQIYI / Tencent Video / NetEase Cloud Music</b>: home page reachability; region limits show up as a 403 or a redirect to a notice page.</li>
+    </ul>
+
+    <h2 id="supported-services">Supported services</h2>
+    <p>18 services in total, covering overseas streaming, AI services and China-side platforms:</p>
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Category</th><th>What is checked</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Netflix</b></td><td>Streaming</td><td>Original + non-original title cross-check; detects "own productions only".</td></tr>
+        <tr><td><b>Disney+</b></td><td>Streaming</td><td>Home page reachability and region notice.</td></tr>
+        <tr><td><b>YouTube Premium</b></td><td>Streaming</td><td>Region availability of the Premium subscription page.</td></tr>
+        <tr><td><b>Prime Video</b></td><td>Streaming</td><td>Home page reachability.</td></tr>
+        <tr><td><b>Spotify</b></td><td>Streaming</td><td>Home page reachability.</td></tr>
+        <tr><td><b>TikTok</b></td><td>Streaming</td><td>Home page reachability.</td></tr>
+        <tr><td><b>Hulu</b></td><td>Streaming</td><td>US only; detects region redirects.</td></tr>
+        <tr><td><b>HBO Max</b></td><td>Streaming</td><td>Detects the region guidance page.</td></tr>
+        <tr><td><b>ChatGPT Web</b></td><td>AI services</td><td>Web app reachability (403 detection included).</td></tr>
+        <tr><td><b>ChatGPT iOS</b></td><td>AI services</td><td>Mobile status endpoint, a long-stable check target.</td></tr>
+        <tr><td><b>Claude</b></td><td>AI services</td><td>Home page reachability; a 403 means the region is unsupported.</td></tr>
+        <tr><td><b>Gemini</b></td><td>AI services</td><td>Redirects to a Google help page when the region is unsupported.</td></tr>
+        <tr><td><b>Copilot</b></td><td>AI services</td><td>Home page reachability; a 403 means the region is unsupported.</td></tr>
+        <tr><td><b>X (Twitter)</b></td><td>Social</td><td>Home page reachability.</td></tr>
+        <tr><td><b>Bilibili</b></td><td>China-side platforms</td><td>In-site API region check (mainland / HK-Macao-Taiwan / overseas).</td></tr>
+        <tr><td><b>iQIYI</b></td><td>China-side platforms</td><td>Home page reachability.</td></tr>
+        <tr><td><b>Tencent Video</b></td><td>China-side platforms</td><td>Home page reachability.</td></tr>
+        <tr><td><b>NetEase Cloud Music</b></td><td>China-side platforms</td><td>Home page reachability.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="cal ok">
+      <div>
+        <b>In one sentence</b>
+        <p>Unlock Test does not ask "does this service exist" but "what happens right now when I reach it through this route". Results reflect the exit as of the moment they were measured — retest after switching nodes.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

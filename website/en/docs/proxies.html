@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Proxies — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Proxies: group browsing, search and region filters, map view, latency tests, favorites, latency trends, download speed tests and chained proxy configuration.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Proxies</h1>
+    <p class="page-lead">This page browses the nodes and groups your subscriptions bring, switches lines, tests latency, favorites nodes and configures chained proxies for restricted nodes.</p>
+
+    <h2 id="page-layout">Page layout</h2>
+    <p>A column on the left lists entries: groups, node sources (providers / subscriptions) and other groups. Click an entry to show its nodes on the right. Each entry has a <b>⟳</b> icon that "updates the node list from the source right now", re-fetching the nodes under that entry. Group entries carry notes like: other groups pick routes by their own policy, e.g. auto-selecting the lowest-latency node. Their routes come from the subscription — no need to specify them one by one.</p>
+
+    <h2 id="search-and-sorting">Search and sorting</h2>
+    <p>The toolbar at the top-right narrows the range and changes display order. The search box covers groups, nodes and providers, and accepts region abbreviations like <code>hk</code>. The sort dropdown offers default order, sort by latency and sort by name. The difference: search filters — only matches remain; sorting just reorders without removing anything.</p>
+    <table>
+      <thead>
+        <tr><th>Tools</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Search box</b></td><td>Searches groups, nodes and providers; accepts region abbreviations like <code>hk</code>.</td></tr>
+        <tr><td><b>Sort dropdown</b></td><td>Default order / by latency / by name.</td></tr>
+        <tr><td><b>Hide timed-out</b></td><td>Nodes that timed out in tests are hidden for a cleaner list; the switch remembers its state and is the same setting as "hide timed-out nodes" in Settings.</td></tr>
+        <tr><td><b>Refresh</b></td><td>Re-reads the nodes under the current entry.</td></tr>
+        <tr><td><b>Test all</b></td><td>Tests latency for every node under the current entry.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="filter-bar">Filter bar</h2>
+    <p>Below the toolbar sits the filter bar with region pills (including "All") and "Favorites only". Region pills show nodes from one region; Favorites only shows starred nodes. Drag the bar sideways to pan through it — no need to squeeze many regions onto one screen.</p>
+
+    <h2 id="map-view">Map view</h2>
+    <p>A "List / Map" toggle sits at the top-right of the node list. Switch to map view and a world map appears on the right, with nodes aggregated into dots by country and region: the region a dot lands in is where your nodes are, so the global spread reads at a glance.</p>
+    <p>Dot size reflects how many nodes a region has — bigger means more. Color reflects the best latency within the region: green is fast, orange is moderate, red is slow, and grey means no node there has been latency-tested yet. The region of the node currently in use is ringed with a highlight to locate the active line at a glance. Hover a dot to see the region name, node count and best latency.</p>
+    <p>Click any dot to filter nodes by that region: the view switches back to the list, the matching region pill in the filter bar becomes selected, and only that region's nodes remain on the right — "see the map, drill into the list" in one step. Click "All" in the filter bar to restore everything. The list and the map share the same nodes and filters, so switching back and forth loses nothing.</p>
+    <p>Map data is built into the app; rendering needs no network and no online map service.</p>
+
+    <h2 id="node-cards">Node cards</h2>
+    <p>Each node card shows the node name and latency (color-coded so speed reads at a glance). Clickable elements on the card:</p>
+    <table>
+      <thead>
+        <tr><th>Element</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Star</b></td><td>Favorites the node; favorites always float to the top.</td></tr>
+        <tr><td><b>Lightning button</b></td><td>Tests this node's latency.</td></tr>
+        <tr><td><b>Gauge button</b></td><td>Download speed test, about 10 seconds.</td></tr>
+        <tr><td><b>Chain badge</b></td><td>Nodes in a chain show role tags after their names: <b>Entry</b> (first hop) / <b>Relay</b> / <b>Exit</b> (final landing); hover to see the order.</td></tr>
+        <tr><td><b>Latency trend</b></td><td>With Node health monitoring on, each card carries a recent latency line (red dots mark failed tests), so you can tell at a glance whether a node is stable.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="the-two-kinds-of-speed-tests">The two kinds of speed tests</h2>
+    <p>The lightning button runs a latency test — the same figure shown on the card, good for quickly comparing who's closer. The gauge button runs a download speed test, taking about 10 seconds; during the test the exit switches to that node temporarily and restores the previous node afterwards, so there's nothing to switch back manually. To triage a large batch of nodes, "Test all" in the toolbar is easier.</p>
+
+    <h2 id="about-test-results">About test results</h2>
+    <p>Test results stay valid for about 10 minutes, then clear automatically so stale data doesn't mislead. A node with no latency number usually just has expired results — test again. To keep timed-out nodes out of the list, turn on "Hide timed-out" at the top of the page.</p>
+    <p>With Node health monitoring enabled (Settings → Network), every test result is recorded on a rolling basis and drawn as a latency trend line on the node card: the line reflects recent latency levels and red dots mark failed tests; if the node in use keeps failing tests, the app sends a system notification and, with Automatic failover on, also switches the line to the fallback node (or the lowest-latency available node in the group) and reports the result. Right after you enable monitoring there's little data, so the line fills in as you test more or as scheduled tests run.</p>
+
+    <h2 id="chained-proxy">Chained proxy</h2>
+    <p>Some nodes are restricted or unstable when reached directly; give them a front relay so traffic goes through the relay first and exits here — one such relationship is a "chain". Click "Chained proxy rules" in the toolbar to open the chain editor (a drawer on the right): saved chains on the left, a visual builder on the right, with a complete chain shown as "This device → Hop 1 → Hop 2 → Internet".</p>
+    <p>To build a chain: click "New chain" and click hops in the candidate list below to add them in order. The list supports search and region filters, pins favorites on top, shows each node's latest latency on the right (from the core's test records; untested nodes show none), and pools all direct nodes — no need to switch left-side groups when picking across them. Click a hop again to remove it; drag hop blocks to reorder; click the <b>+</b> between hops to set the insertion point, and the next hop you click goes there.</p>
+    <table>
+      <thead>
+        <tr><th>Element</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Proxy group</b></td><td>Can only be the chain's first hop (entry), e.g. "HK Auto → landing node"; regular nodes can go anywhere.</td></tr>
+        <tr><td><b>Drag</b></td><td>Press and drag a hop block to reposition it in the chain.</td></tr>
+        <tr><td><b>× button</b></td><td>Removes the hop; the <b>+</b> between hops sets where the next hop is inserted.</td></tr>
+        <tr><td><b>Invalid marker</b></td><td>Hops no longer present in the enabled subscriptions are flagged in red; "Remove invalid chains" cleans them up in one click, applied on save.</td></tr>
+      </tbody>
+    </table>
+    <p>Clicking "Save and apply" writes the whole chain and hot-reloads the runtime config at once — effective immediately. To use it, select the chain's last node and the full path is used; selecting a middle hop passes only through the hops before it. The first hop alone isn't a chain (it's a relay referenced by later hops). Chained latency is roughly the sum of all hops — usually slower, but potentially more stable.</p>
+    <p>To quickly give one node a front proxy, still click the chain button on its card and pick a front node or group in the dialog; such quick rules also appear in the chain editor as chains and remain editable.</p>
+
+    <div class="cal note">
+      <div>
+        <b>Switching nodes applies instantly</b>
+        <p>Switching nodes on the Dashboard or this page hot-reloads the config — no core restart, no stop-and-start needed.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

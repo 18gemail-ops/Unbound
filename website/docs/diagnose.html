@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>网络体检 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）网络体检使用说明：11 项自动体检与断网急救箱。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>网络体检</h1>
+    <p class="page-lead">网络体检会一次性检查内核、端口、系统代理、DNS、出口与泄漏等环节，逐项给出结论与建议，并配有断网急救箱。</p>
+
+    <h2 id="这一页解决什么">这一页解决什么</h2>
+    <p>当「网页打不开」「代理没效果」时，不必靠猜。进入本页会<b>自动开始检查</b>，完成后页头给出汇总，例如「11 项通过」「N 项提示」「N 项异常」，让你先看清问题的规模。右上角有「重新体检」按钮，检测过程中它会显示「检测中…」。体检只做检查，不会自动改动系统设置，要不要修复、修复哪一项，都由你决定。</p>
+
+    <h2 id="自动体检的-11-项">自动体检的 11 项</h2>
+    <p>体检共 11 项，每项都会给出结论，异常项还会显示「建议：…」，直接告诉你下一步怎么做。</p>
+    <table>
+      <thead>
+        <tr><th>检查项</th><th>看什么</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>内核状态</b></td><td>内核是否运行、版本，以及是否已提权。</td></tr>
+        <tr><td><b>端口监听</b></td><td>混合端口 / 控制端口是否被其他程序占用。</td></tr>
+        <tr><td><b>系统代理</b></td><td>是否已开启系统代理，并指向本机混合端口。</td></tr>
+        <tr><td><b>DNS 解析</b></td><td>解析耗时，以及使用的 DNS 地址。</td></tr>
+        <tr><td><b>DNS 接管</b></td><td>TUN 模式下是否接管系统 DNS 解析。</td></tr>
+        <tr><td><b>直连出口</b></td><td>探测直连时的出口 IP。</td></tr>
+        <tr><td><b>代理出口</b></td><td>探测走代理时的出口 IP；若与直连出口相同，会提示出口 IP 与直连相同。</td></tr>
+        <tr><td><b>WebRTC 泄漏</b></td><td>检查是否存在公网候选 IP，可能泄漏真实 IP 时给出告警。</td></tr>
+        <tr><td><b>当前节点</b></td><td>当前节点的延迟；不可达时建议「在代理节点页挑选一个可用节点」。</td></tr>
+        <tr><td><b>GitHub 直连</b></td><td>直连可达性与耗时、HTTP 状态码。</td></tr>
+        <tr><td><b>配置加载</b></td><td>分组数与节点数。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="断网急救箱">断网急救箱</h2>
+    <p>页面下方是「断网急救箱」区域，说明文字为「代理异常退出、DNS 错误、网页打不开时：先检测定位问题，再按提示修复」。区域内有「一键急救」与「开始检测 / 重新检测」两个按钮。</p>
+    <p><b>一键急救</b>等于一次性完成两件事：重置系统代理，加上刷新 DNS 缓存。这两项都<b>不需要管理员权限</b>，点击后立即生效，适合绝大多数临时断网场景。<b>开始检测 / 重新检测</b>则用于单独运行断网专项检测。建议先检测定位问题，再决定是否使用「一键急救」。</p>
+
+    <h2 id="断网专项检测">断网专项检测</h2>
+    <p>专项检测会检查 5 类问题，每类给出对应的修复按钮：</p>
+    <table>
+      <thead>
+        <tr><th>问题</th><th>表现</th><th>修复按钮</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>系统代理残留</b></td><td>代理仍指向 <code>127.0.0.1:7890</code>，但内核未运行。</td><td>重置系统代理</td></tr>
+        <tr><td><b>DNS 解析失败</b></td><td>域名无法解析。</td><td>刷新 DNS 缓存（<code>ipconfig /flushdns</code>，无需管理员）</td></tr>
+        <tr><td><b>DNS 服务器异常</b></td><td>网卡被设为 0.0.0.0 这类无效地址。</td><td>重置 DNS 服务器 / 重置为自动获取（需管理员）</td></tr>
+        <tr><td><b>hosts 文件异常</b></td><td>存在自定义条目，或文件缺失。</td><td>恢复 hosts 文件（先备份现有内容再重置为默认，需管理员）</td></tr>
+        <tr><td><b>直连网络不通</b></td><td>不走代理也上不了网。</td><td>重置网络协议栈（重置 winsock 与 TCP/IP，需管理员，重启电脑后生效）</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="权限与确认">权限与确认</h2>
+    <p>需要管理员权限的修复会弹出 UAC 提权确认，同意后才会执行。执行危险操作前，界面会二次确认，确认按钮为红色的「执行」，请看清提示再点。修复完成后，页面会自动重新检测，刷新结论。</p>
+
+    <div class="cal ok">
+      <div>
+        <b>排错顺序建议</b>
+        <p>先看体检的前 4 项——内核 / 端口 / 系统代理 / DNS 解析。这几项通过后，再看出口与泄漏项，能把范围一步步缩小。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

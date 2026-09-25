@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>故障排查 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）故障排查：断网、代理不生效、节点超时、端口占用、TUN 开启失败等常见问题的现象、原因与处理路径。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>故障排查</h1>
+    <p class="page-lead">下面按「现象 → 原因 → 处理」列出常见问题。每条都给出具体操作路径，按顺序做即可。</p>
+
+    <h2 id="网页打不开-断网">网页打不开 / 断网</h2>
+    <p><b>现象</b>：浏览器无法打开任何网页。</p>
+    <p><b>原因</b>：系统代理残留、DNS 缓存异常或网络协议栈状态不对。</p>
+    <p><b>处理</b>：先打开「网络体检」看前几项结果；再用「断网急救箱」的「一键急救」（重置系统代理 + 刷新 DNS 缓存，无需管理员权限）。如果仍不行，按界面提示运行「重置网络协议栈」，这一步需要管理员权限，重启后生效。</p>
+
+    <h2 id="代理没生效">代理没生效</h2>
+    <p><b>现象</b>：能上网，但流量没有走代理。</p>
+    <p><b>原因</b>：运行模式被改为全局或直连；系统代理未开启；内核未运行。</p>
+    <p><b>处理</b>：打开「设置 → 网络」，检查运行模式是否为「规则」（选「全局」或「直连」会改变行为）；打开「设置 → 系统 → 系统代理」，检查系统代理是否开启；再到「仪表盘」或「网络体检」的「内核状态」确认内核正在运行。</p>
+
+    <h2 id="部分软件不走代理">部分软件不走代理</h2>
+    <p><b>现象</b>：浏览器正常，但某些程序没有走代理，Microsoft Store 安装的应用甚至完全打不开页面。</p>
+    <p><b>原因</b>：这是系统代理的天然限制，部分程序不读取系统代理设置；商店应用还受 Windows 回环限制，默认不允许访问本机地址（<code>127.0.0.1</code>）。</p>
+    <p><b>处理</b>：商店应用到「设置 → 工具 → UWP 应用工具」为它打开开关解除回环限制（需要管理员权限）；其他程序改为 TUN 模式（见「设置 → 网络 → TUN 模式」），或用「应用分流」把该进程绑定到指定线路。</p>
+
+    <h2 id="节点全部超时">节点全部超时</h2>
+    <p><b>现象</b>：所有节点测速都超时。</p>
+    <p><b>原因</b>：节点暂时不可用，或订阅已过期、内容陈旧。</p>
+    <p><b>处理</b>：先在「代理节点」点「全部测速」；检查订阅是否过期，到「订阅管理」页点订阅的「流量」按钮刷新信息；再到「网络体检」看「直连出口 / 代理出口」与「当前节点」；也可以在「订阅管理」页对订阅点「更新」。确认无用的超时节点，可打开代理页顶部的「隐藏超时」开关让列表保持干净。</p>
+
+    <h2 id="端口被占用">端口被占用</h2>
+    <p><b>现象</b>：内核无法监听，提示端口冲突。</p>
+    <p><b>原因</b>：默认端口被其它程序占用。</p>
+    <p><b>处理</b>：「网络体检」的「端口监听」会提示是哪个端口被占用；到「设置 → 网络 → 端口与模式」改混合代理端口或控制端口，改完内核会自动重启。</p>
+
+    <h2 id="订阅更新失败">订阅更新失败</h2>
+    <p><b>现象</b>：点「更新」后订阅没有变化。</p>
+    <p><b>原因</b>：订阅链接不可访问，或当前网络不通。</p>
+    <p><b>处理</b>：确认订阅链接可访问；到「运行日志」查看错误行；网络不通时先用「网络体检」定位问题。</p>
+
+    <h2 id="TUN-开启失败-提示未提权">TUN 开启失败 / 提示未提权</h2>
+    <p><b>现象</b>：打开「启用 TUN」没有生效，权限标签显示橙色「未提权」。</p>
+    <p><b>原因</b>：当前进程没有管理员权限，或安装目录被占用。</p>
+    <p><b>处理</b>：到「设置 → 网络 → TUN 模式」点「以管理员身份重启」，通过 UAC 确认后重试；同时确认安装目录未被占用。</p>
+
+    <h2 id="设置改了没生效">设置改了没生效</h2>
+    <p><b>现象</b>：修改设置后行为没有变化。</p>
+    <p><b>原因</b>：涉及内核的改动需要重载或重启内核；或配置生成失败。</p>
+    <p><b>处理</b>：涉及内核的改动（端口、TUN、DNS）会自动重载或重启内核；若仍无变化，检查「运行日志」有无配置错误，必要时到「订阅管理」检查 Merge 覆写或扩展脚本是否写错——语法错误会导致配置生成失败。</p>
+
+    <h2 id="数据与备份">数据与备份</h2>
+    <p><b>现象</b>：需要迁移电脑或重装系统。</p>
+    <p><b>原因</b>：数据目录在系统盘的用户目录下，重装会丢失。</p>
+    <p><b>处理</b>：数据目录在 <code>%APPDATA%\com.unboundlink.desktop</code>。迁移或重装前打开「设置 → 维护 → 备份与恢复 → 导出备份」，在新环境用「导入备份」恢复即可。遇到需要协助排查的问题时，可先点「导出诊断信息」，把打包好的 ZIP 随问题一起提供。</p>
+
+    <h2 id="内核起不来">内核起不来</h2>
+    <p><b>现象</b>：内核状态一直不是运行中。</p>
+    <p><b>原因</b>：程序安装目录不完整，内核 sidecar 缺失或损坏。</p>
+    <p><b>处理</b>：确认程序安装目录完整（内核是随安装包分发的 sidecar 程序）；用「运行日志」看错误；可到「设置 → 维护 → 内核更新」点「检查更新」重新获取内核。</p>
+
+    <div class="cal note">
+      <div>
+        <b>排查顺序清单</b>
+        <ol>
+          <li>看「仪表盘」的内核状态。</li>
+          <li>看「运行日志」有无错误。</li>
+          <li>跑「网络体检」，先看前 4 项。</li>
+          <li>用「断网急救箱」。</li>
+          <li>检查运行模式与系统代理。</li>
+          <li>检查订阅是否需要更新。</li>
+          <li>检查端口占用。</li>
+          <li>问题难以定位时，点「设置 → 维护 → 备份与恢复 → 导出诊断信息」，把 ZIP 附到问题反馈里。</li>
+        </ol>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

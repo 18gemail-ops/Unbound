@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Troubleshooting — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Troubleshooting: symptoms, causes and fixes for no network, the proxy not taking effect, timed-out nodes, port conflicts, TUN failures and more.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Troubleshooting</h1>
+    <p class="page-lead">Common problems below follow Symptom → Cause → Fix, each with concrete steps — just work through them in order.</p>
+
+    <h2 id="pages-wont-load-no-network">Pages won't load / no network</h2>
+    <p><b>Symptom</b>: the browser can't open any page.</p>
+    <p><b>Cause</b>: leftover system proxy settings, a bad DNS cache or an unhealthy network stack.</p>
+    <p><b>Fix</b>: open Diagnostics and check the first few results; then run "One-click rescue" in the network rescue kit (reset system proxy + flush DNS cache, no admin rights needed). If that still doesn't help, follow the on-screen prompt to reset the network stack — that requires admin rights and takes effect after a reboot.</p>
+
+    <h2 id="the-proxy-isnt-taking-effect">The proxy isn't taking effect</h2>
+    <p><b>Symptom</b>: the internet works, but traffic doesn't go through the proxy.</p>
+    <p><b>Cause</b>: the mode was switched to Global or Direct; the system proxy is off; the core isn't running.</p>
+    <p><b>Fix</b>: open Settings → Network and check the mode is "Rule" (choosing "Global" or "Direct" changes behavior); open Settings → System → System proxy and check it's on; then confirm the core is running via the core status on the Dashboard or in Diagnostics.</p>
+
+    <h2 id="some-apps-bypass-the-proxy">Some apps bypass the proxy</h2>
+    <p><b>Symptom</b>: the browser works, but some programs don't use the proxy — and apps from the Microsoft Store can't open pages at all.</p>
+    <p><b>Cause</b>: this is the inherent limitation of system proxies — some programs don't read the setting; Store apps are also subject to the Windows loopback restriction, which blocks access to the local address (<code>127.0.0.1</code>) by default.</p>
+    <p><b>Fix</b>: for Store apps, open Settings → Tools → UWP app tool and flip the switch to lift the loopback restriction (needs admin rights); for other programs switch to TUN mode (see Settings → Network → TUN mode), or bind the process to a chosen line with App Routing.</p>
+
+    <h2 id="all-nodes-time-out">All nodes time out</h2>
+    <p><b>Symptom</b>: every node tests as timed out.</p>
+    <p><b>Cause</b>: the nodes are temporarily unavailable, or the subscription has expired or is stale.</p>
+    <p><b>Fix</b>: first click "Test all" on the Proxies page; check whether the subscription has expired and click the "Traffic" button on its card under Profiles to refresh the info; then check the "direct exit / proxy exit" and "current node" conclusions in Diagnostics; you can also click "Update" for the subscription on the Profiles page. To clear useless timed-out nodes, turn on the "Hide timed-out" switch at the top of the Proxies page.</p>
+
+    <h2 id="port-already-in-use">Port already in use</h2>
+    <p><b>Symptom</b>: the core can't listen; a port conflict is reported.</p>
+    <p><b>Cause</b>: the default port is taken by another program.</p>
+    <p><b>Fix</b>: the "port listening" check in Diagnostics shows which port is taken; change the mixed proxy port or the control port under Settings → Network → Ports and mode — the core restarts automatically after changes.</p>
+
+    <h2 id="subscription-update-fails">Subscription update fails</h2>
+    <p><b>Symptom</b>: clicking "Update" changes nothing.</p>
+    <p><b>Cause</b>: the subscription URL is unreachable, or the current network is down.</p>
+    <p><b>Fix</b>: confirm the subscription URL is reachable; check the error lines under Logs; if the network is down, use Diagnostics to locate the problem first.</p>
+
+    <h2 id="tun-wont-enable-not-elevated-warning">TUN won't enable / "Not elevated" warning</h2>
+    <p><b>Symptom</b>: turning on "Enable TUN" has no effect, and the privilege badge shows an orange "Not elevated".</p>
+    <p><b>Cause</b>: the current process lacks admin rights, or the install directory is in use.</p>
+    <p><b>Fix</b>: go to Settings → Network → TUN mode and click "Restart as administrator", confirm the UAC prompt and retry; also make sure the install directory isn't in use.</p>
+
+    <h2 id="settings-changed-but-nothing-happened">Settings changed but nothing happened</h2>
+    <p><b>Symptom</b>: changing a setting doesn't change the behavior.</p>
+    <p><b>Cause</b>: core-related changes need a reload or restart of the core; or config generation failed.</p>
+    <p><b>Fix</b>: core-related changes (ports, TUN, DNS) reload or restart the core automatically; if nothing changes, check Logs for config errors and, if needed, check the Merge override or extension script under Profiles — a syntax error makes config generation fail.</p>
+
+    <h2 id="data-and-backup">Data and backup</h2>
+    <p><b>Symptom</b>: you need to migrate to a new machine or reinstall Windows.</p>
+    <p><b>Cause</b>: the data directory lives under the user folder on the system drive and is lost on reinstall.</p>
+    <p><b>Fix</b>: the data directory is <code>%APPDATA%\com.unboundlink.desktop</code>. Before migrating or reinstalling, open Settings → Maintenance → Backup and restore → Export backup, then restore it in the new environment with "Import backup". When you need help troubleshooting, click "Export diagnostics" first and attach the ZIP to your report.</p>
+
+    <h2 id="the-core-wont-start">The core won't start</h2>
+    <p><b>Symptom</b>: the core status never shows Running.</p>
+    <p><b>Cause</b>: the install directory is incomplete — the core sidecar is missing or damaged.</p>
+    <p><b>Fix</b>: make sure the install directory is complete (the core ships as a sidecar program with the installer); check Logs for errors; go to Settings → Maintenance → Core update and click "Check for updates" to re-fetch the core.</p>
+
+    <div class="cal note">
+      <div>
+        <b>Troubleshooting checklist</b>
+        <ol>
+          <li>Check the core status on the Dashboard.</li>
+          <li>Check Logs for errors.</li>
+          <li>Run Diagnostics and check the first 4 items.</li>
+          <li>Use the network rescue kit.</li>
+          <li>Check the mode and the system proxy.</li>
+          <li>Check whether the subscription needs updating.</li>
+          <li>Check for port conflicts.</li>
+          <li>If the problem is hard to pin down, click Settings → Maintenance → Backup and restore → Export diagnostics and attach the ZIP to your report.</li>
+        </ol>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

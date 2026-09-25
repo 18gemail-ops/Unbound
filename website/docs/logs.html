@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>运行日志 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）运行日志使用说明：两类日志来源、按级别筛选、日志级别设置与排错顺序。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>运行日志</h1>
+    <p class="page-lead">运行日志记录客户端与内核在运行过程中的全部输出，是排查异常时最直接的依据。</p>
+
+    <h2 id="这一页解决什么">这一页解决什么</h2>
+    <p>无论是订阅更新失败、配置重载报错，还是内核启动不成功，最终都会在这里留下记录。遇到问题时不要急着改设置，先来这一页看清楚「谁报了错、错在哪一步」。</p>
+
+    <h2 id="日志的两个来源">日志的两个来源</h2>
+    <p>同一个视图里其实混着两类日志，它们都由内核与客户端实时推送，按时间先后排列：</p>
+    <table>
+      <thead>
+        <tr><th>来源</th><th>内容</th><th>识别方式</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>内核日志</b></td><td>mihomo 内核自身的输出，例如连接、DNS、规则匹配等信息。</td><td>来自内核的 WebSocket 推送。</td></tr>
+        <tr><td><b>应用层日志</b></td><td>客户端自身的动作，例如订阅更新、配置重载、内核启停。</td><td>行首带 <code>[无界互联]</code> 前缀。</td></tr>
+      </tbody>
+    </table>
+    <div class="cal note">
+      <div>
+        <b>看前缀就能分辨是谁说的话</b>
+        <p>带 <code>[无界互联]</code> 前缀的是客户端自己打印的；不带前缀的来自内核。</p>
+      </div>
+    </div>
+
+    <h2 id="按级别筛选">按级别筛选</h2>
+    <p>视图顶部提供级别筛选：调试 / 信息 / 警告 / 错误，分别对应内核日志级别 debug / info / warning / error。需要聚焦某类信息时，只勾选关心的级别，其余内容会被过滤掉，视图更清爽。</p>
+    <table>
+      <thead>
+        <tr><th>级别</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>调试</b></td><td>最详细的输出，排查问题时用。</td></tr>
+        <tr><td><b>信息</b></td><td>常规运行记录。</td></tr>
+        <tr><td><b>警告</b></td><td>不影响运行但值得留意的提示。</td></tr>
+        <tr><td><b>错误</b></td><td>真正出错的行，优先处理。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="调整日志级别">调整日志级别</h2>
+    <p>筛选只改变「显示哪些」，并不会改变「记录哪些」。要拿到更详细的日志，需要到「设置 → 网络 → 日志级别」调整，可选项为 调试 / 信息 / 警告 / 错误 / 静默。</p>
+    <div class="cal ok">
+      <div>
+        <b>排查问题的正确姿势</b>
+        <p>先把日志级别调到「调试」，再复现问题，这样能把出错前后的完整过程都记录下来；问题定位后记得调回「信息」，避免日志过于冗长。</p>
+      </div>
+    </div>
+
+    <h2 id="排错顺序建议">排错顺序建议</h2>
+    <p>日志量大时，按下面的顺序看效率最高：</p>
+    <ol>
+      <li>先找带 <code>[无界互联]</code> 前缀的错误行——它直接指出客户端哪一步失败了。</li>
+      <li>再看内核的 error 行——了解地址、规则或连接层面的具体报错。</li>
+      <li>最后看 warning 行——确认是否存在被忽略的隐患。</li>
+    </ol>
+    <p>需要针对具体故障现象对照处理时，可参考<a href="./troubleshooting.html">故障排查</a>；若怀疑是网络层问题，可结合<a href="./diagnose.html">网络体检</a>一起判断。</p>
+
+    <h2 id="日志落盘到文件">日志落盘到文件</h2>
+    <p>日志除了在界面里查看，还会实时写入数据目录下的 <code>logs\app.log</code>，方便留存完整记录。文件按大小自动轮转：写满后归档为 <code>app.1.log</code>、<code>app.2.log</code> 等，超出保留天数的归档会被自动清理。</p>
+    <p>记录哪些等级、单个文件多大、保留多少份、保留多少天，都在「设置 → 维护 → 应用日志」里设置，点「打开日志目录」可直接打开日志所在文件夹。注意它与「设置 → 网络 → 日志级别」（控制内核日志）是两项独立设置。</p>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Dashboard — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Dashboard guide: core status, live traffic and proxy group / node switching.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Dashboard</h1>
+    <p class="page-lead">The Dashboard is the first screen you see after opening the client — check the overall status at a glance and switch proxy groups and nodes right there.</p>
+
+    <h2 id="what-this-page-solves">What this page solves</h2>
+    <p>Its role is the overview: is the core running, is traffic flowing normally, which node is active. The two most common everyday actions — check that you're connected and temporarily switch lines — both happen here, without visiting the Proxies page.</p>
+
+    <h2 id="core-status">Core status</h2>
+    <p>The core status card at the top shows whether the core is running, plus its version, memory usage and uptime — read by the client from the core so you can judge the background process's health. The sidebar footer also shows live "Core memory" and "App memory" usage, visible from anywhere.</p>
+    <ul>
+      <li><b>Running</b>: the core is working; proxying is available.</li>
+      <li><b>Not running</b>: the core is down; the system proxy and nodes can't work.</li>
+    </ul>
+
+    <h2 id="traffic-section">Traffic section</h2>
+    <p>The traffic section gives three summary figures and a live traffic chart:</p>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Total download</b></td><td>Total traffic received since the core started this time.</td></tr>
+        <tr><td><b>Total upload</b></td><td>Total traffic sent since the core started this time.</td></tr>
+        <tr><td><b>Active connections</b></td><td>The number of connections in progress; jump to Connections for details.</td></tr>
+        <tr><td><b>Live traffic chart</b></td><td>Instant up/down speed trends, pushed from the core over WebSocket.</td></tr>
+      </tbody>
+    </table>
+    <div class="cal note">
+      <div>
+        <b>Moving curves mean data is flowing</b>
+        <p>Open a webpage or video and the curve should ripple while total download grows.</p>
+      </div>
+    </div>
+
+    <h2 id="switching-proxy-groups-and-nodes">Switching proxy groups and nodes</h2>
+    <p>The lower part of the Dashboard holds the proxy group / node switch rows. Each proxy group gets a row where you can pick its current node right here:</p>
+    <ul>
+      <li>Open a group's dropdown, pick a node, and the change takes effect immediately.</li>
+      <li>For speed tests, favorites or finer filters, head to the Proxies page.</li>
+    </ul>
+    <p>A subscription usually has several proxy groups, like "Select" or "Auto Select". What you switch here is the group's current node; if the group uses an automatic policy it picks for itself, and a manual choice overrides the automatic result.</p>
+
+    <h2 id="common-uses">Common uses</h2>
+    <table>
+      <thead>
+        <tr><th>Task</th><th>How to read / do it here</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Check that you're connected</td><td>See whether total download / upload has values that grow while you browse, and confirm the current node shows a latency number.</td></tr>
+        <tr><td>Temporarily switch lines</td><td>Pick another node in the group's dropdown — no need to leave the page.</td></tr>
+        <tr><td>Confirm the core is healthy</td><td>Check the status card says Running and that uptime accumulates normally.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="cal warn">
+      <div>
+        <b>When the core shows as not running</b>
+        <p>First check Settings to confirm "auto-start core" is on; if it is but the core still isn't running, head to Diagnostics to find the problem.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

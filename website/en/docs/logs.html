@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Logs — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Logs guide: the two log sources, level filtering, log level settings and troubleshooting order.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Logs</h1>
+    <p class="page-lead">Logs record all output from the client and the core — the most direct evidence when troubleshooting.</p>
+
+    <h2 id="what-this-page-solves">What this page solves</h2>
+    <p>Failed subscription updates, config reload errors, a core that won't start — they all leave records here. When trouble hits, don't rush to change settings; come here first to see who reported the error and at which step.</p>
+
+    <h2 id="two-log-sources">Two log sources</h2>
+    <p>The view mixes two kinds of logs, both pushed in real time by the core and the client, arranged in time order:</p>
+    <table>
+      <thead>
+        <tr><th>Source</th><th>Contents</th><th>Identified by</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Core logs</b></td><td>Output from the mihomo core itself — connections, DNS, rule matching and so on.</td><td>Pushed from the core over WebSocket.</td></tr>
+        <tr><td><b>App logs</b></td><td>The client's own actions — subscription updates, config reloads, core start/stop.</td><td>Lines start with a <code>[Unbound link]</code> prefix.</td></tr>
+      </tbody>
+    </table>
+    <div class="cal note">
+      <div>
+        <b>The prefix tells you who's speaking</b>
+        <p>Lines with a <code>[Unbound link]</code> prefix are printed by the client; those without come from the core.</p>
+      </div>
+    </div>
+
+    <h2 id="filter-by-level">Filter by level</h2>
+    <p>Level filters sit at the top: Debug / Info / Warning / Error, matching the core log levels debug / info / warning / error. To focus, tick only the levels you care about — everything else is filtered out.</p>
+    <table>
+      <thead>
+        <tr><th>Level</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Debug</b></td><td>The most detailed output; use it when troubleshooting.</td></tr>
+        <tr><td><b>Info</b></td><td>Routine operation records.</td></tr>
+        <tr><td><b>Warning</b></td><td>Notices that don't break anything but deserve attention.</td></tr>
+        <tr><td><b>Error</b></td><td>Lines that truly failed — handle these first.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="adjusting-the-log-level">Adjusting the log level</h2>
+    <p>Filtering only changes what's shown, not what's recorded. For more detailed logs, adjust Settings → Network → Log level; options are Debug / Info / Warning / Error / Silent.</p>
+    <div class="cal ok">
+      <div>
+        <b>The right way to troubleshoot</b>
+        <p>Switch the level to Debug first, then reproduce the problem, so the full sequence around the failure gets recorded; once found, set it back to Info to keep logs from bloating.</p>
+      </div>
+    </div>
+
+    <h2 id="suggested-troubleshooting-order">Suggested troubleshooting order</h2>
+    <p>With lots of logs, reading in this order is most efficient:</p>
+    <ol>
+      <li>First find error lines with the <code>[Unbound link]</code> prefix — they point straight at the client step that failed.</li>
+      <li>Then the core's error lines — the concrete failures at the address, rule or connection level.</li>
+      <li>Finally warning lines — to check for overlooked risks.</li>
+    </ol>
+    <p>For symptom-by-symptom fixes see <a href="./troubleshooting.html">Troubleshooting</a>; if you suspect a network-layer problem, use <a href="./diagnose.html">Diagnostics</a> alongside it.</p>
+
+    <h2 id="logs-persisted-to-files">Logs persisted to files</h2>
+    <p>Besides the on-screen view, logs are written in real time to <code>logs\app.log</code> in the data directory for complete records. Files rotate by size: when full, they're archived as <code>app.1.log</code>, <code>app.2.log</code> and so on; archives older than the retention window are cleaned up automatically.</p>
+    <p>Which levels are recorded, file size, file count and retention days are all set under Settings → Maintenance → App logs; "Open log folder" takes you straight there. Note this is separate from Settings → Network → Log level (which controls core logs).</p>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>

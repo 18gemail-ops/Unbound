@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>订阅管理 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）订阅管理：添加与更新订阅、多订阅同时启用、拖动排序、历史版本回滚、节点链接导入、Merge 覆写与扩展脚本、自动更新与排错。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>订阅管理</h1>
+    <p class="page-lead">这里管理你的订阅来源：添加订阅链接、导入本地配置、启用一个或多个订阅、导入单个节点链接、更新节点列表，并用 Merge 与 Script 微调从订阅拿到手的配置。</p>
+
+    <h2 id="页面概览">页面概览</h2>
+    <p>标题下方显示「N 个订阅 · 已启用 M 个订阅」，并提示当前自动更新状态，例如「每 12 小时自动更新」或「自动更新已关闭」。右上角有四个按钮：「全部更新」「刷新」「导入本地配置」「添加订阅」。「全部更新」会依次更新所有订阅，「刷新」只重新读取本地状态，「导入本地配置」可把本地 YAML 文件作为订阅加入列表。</p>
+
+    <h2 id="添加订阅">添加订阅</h2>
+    <p>点「添加订阅」打开弹窗，里面只有两个输入项：</p>
+    <table>
+      <thead>
+        <tr><th>字段</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>订阅链接</b></td><td>必填，必须是 http/https 链接。留空提交会提示「请输入订阅链接」。</td></tr>
+        <tr><td><b>名称</b></td><td>可选。留空时客户端会自动识别。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="每张卡片能做什么">每张卡片能做什么</h2>
+    <p>每个订阅是一张卡片，按住卡片即可拖动排序。卡片上显示名称、已启用订阅的蓝色「使用中」标签（可同时出现多个）、订阅链接（超长会省略）、「更新于 …」的相对时间，以及订阅信息（流量用量、到期时间等，取决于订阅源是否提供）。卡片右侧依次是启用开关与操作按钮：</p>
+    <table>
+      <thead>
+        <tr><th>按钮</th><th>作用</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>启用开关</b></td><td>打开即启用该订阅，可同时启用多个；所有已启用的订阅都带蓝色「使用中」标签。</td></tr>
+        <tr><td><b>更新</b></td><td>重新下载该订阅内容。</td></tr>
+        <tr><td><b>流量</b></td><td>刷新订阅信息，核对流量用量与到期时间。</td></tr>
+        <tr><td><b>二维码</b></td><td>生成二维码，用手机扫码导入。</td></tr>
+        <tr><td><b>历史版本</b></td><td>列出该订阅的历史留档，可回退到任意旧版本（本地订阅没有此项）。</td></tr>
+        <tr><td><b>官网</b></td><td>识别到机场官网地址时出现，点击用默认浏览器打开；图标旁的圆点显示连通性（绿=可达、红=不可达），悬停查看检测详情。</td></tr>
+        <tr><td><b>编辑</b></td><td>修改订阅名称与机场官网地址（识别不到官网时可在这里手动填写，留空则恢复自动识别）。</td></tr>
+        <tr><td><b>上移 / 下移</b></td><td>调整订阅在列表中的顺序。</td></tr>
+        <tr><td><b>删除</b></td><td>红色按钮，会二次确认「删除该订阅？删除后不可恢复」。</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="多订阅同时启用">多订阅同时启用</h2>
+    <p>订阅可以同时启用多个：打开卡片右上角的启用开关即可，所有已启用的订阅都带蓝色「使用中」标签。其中第一个启用的订阅提供端口、DNS、运行模式等基础配置，其余订阅的节点、策略组与规则并入同一份运行时配置；生效顺序按列表从上到下，拖动卡片排序即可调整优先级。</p>
+
+    <h2 id="历史版本">历史版本</h2>
+    <p>每次远程更新订阅前，旧内容会自动留档，最多保留 5 份。点订阅卡片上的时钟图标打开历史版本弹窗，可以看到每份留档的时间和包含的节点数量，点「恢复」即可回退到该版本。</p>
+    <p>恢复时如果订阅正在启用，运行配置会立即热重载；覆盖当前内容前也会先自动留档，所以恢复错了还能再回到恢复前的状态。本地订阅不参与远程更新，因此没有历史版本入口。更新后卡片上会显示节点与规则的数量变化徽标（绿增红减），节点数骤减过半时还会弹出警示。</p>
+
+    <h2 id="导入本地配置">导入本地配置</h2>
+    <p>点「导入本地配置」，选择一个本地 YAML 配置文件，客户端会把它复制进数据目录并作为一个订阅加入列表，卡片上带<b>「本地」</b>标签，标注为「本地配置文件（不参与远程更新）」。适合把手工整理或从别处拿到的配置直接拿来用，无需先上传到服务器。</p>
+    <p>本地订阅不参与远程更新与自动更新，「全部更新」会跳过它；配置文件保存在数据目录里，换用新版本时重新导入即可。导入成功提示「本地配置已导入」。</p>
+
+    <h2 id="手动节点">手动节点</h2>
+    <p>页面底部的「手动节点」卡片用来收纳订阅之外的单个节点：点右上角「导入节点链接」，把节点链接粘贴进弹窗（每行一条），点「解析」预览结果，确认无误后点「导入 N 条」完成。支持 ss / vmess / vless / trojan / hysteria2 / tuic / socks5 / http 等常见协议；解析失败的条目会单独提示，重名节点会自动跳过。</p>
+    <p>手动节点保存在数据目录里，生成运行时配置时并入同名代理组（默认组名「手动节点」）；卡片上可以逐条删除已导入的节点，改动立即保存并热重载配置。</p>
+
+    <h2 id="全局扩展覆写配置Merge">全局扩展覆写配置（Merge）</h2>
+    <p>页面底部有「全局扩展覆写配置」扩展卡片，带 <b>Merge</b> 标签。点开后在弹窗里写 YAML 片段，生成运行时配置时会与订阅配置<b>递归深度合并</b>，用来覆盖订阅里的字段（端口、控制密钥、运行模式等应用级设置由客户端统一写入，写在这里不会生效，请到「设置 → 网络」修改）。保存后提示「Merge 配置已保存并应用」。</p>
+
+    <h2 id="全局扩展脚本Script">全局扩展脚本（Script）</h2>
+    <p>相邻的「全局扩展脚本」扩展卡片带 <b>Script</b> 标签。点开后在弹窗里写 JavaScript，需要实现 <code>function main(config){ … return config }</code>。客户端用内置的 <b>QuickJS</b> 引擎执行，可以批量改写节点名、增删规则等。保存后提示「扩展脚本已保存并应用」。弹窗里自带一段示例脚本，用正则去掉节点名中的广告词。</p>
+
+    <h2 id="自动更新">自动更新</h2>
+    <p>自动更新的间隔在「设置 → 维护 → 订阅」里设置，单位小时，<b>0 表示关闭</b>（默认关闭）。开启后后台会定时更新列表中的全部订阅；更新完成后自动重载配置并发送系统通知。</p>
+    <p>同处还有两个与订阅联动的开关：「更新后自动选优」默认关闭，开启后每次订阅更新并重载配置完成时，会自动对主策略组测速并把当前节点切到延迟最低的一个；「订阅用量提醒」默认开启，已用流量达到阈值、剩余天数不足或订阅已过期时发送系统通知，每一档只提醒一次。两者都依赖订阅源提供的流量与到期信息。</p>
+
+    <div class="cal warn">
+      <div>
+        <b>更新失败先查网络</b>
+        <p>更新失败通常是订阅链接失效或网络不通。可以先在「网络体检」确认网络状态，再回到本页重试「更新」。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

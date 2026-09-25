@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>流量统计 — 无界互联 使用手册</title>
+<meta name="description" content="无界互联（Unbound link）流量统计使用说明：按天查看经过内核的上下行流量，并按应用与节点查看累计用量。">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo.png" alt="无界互联">
+      <span>无界互联</span>
+    </a>
+    <button class="nav-toggle" aria-label="打开导航" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">功能</a>
+      <a href="./index.html">使用手册</a>
+      <a href="../download.html">下载</a>
+      <a href="../changelog.html">更新日志</a>
+      <a href="../faq.html">常见问题</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">下载 Windows 版</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">使用手册</div>
+    <h1>流量统计</h1>
+    <p class="page-lead">流量统计页按天记录本机经过内核的上下行流量，用来回顾一段时间内的用量趋势。</p>
+
+    <h2 id="这一页解决什么">这一页解决什么</h2>
+    <p>它回答「这些天用了多少流量」。所有数据都来自本机内核，不由任何服务器收集，你看到的就是这台电脑的实际用量。</p>
+
+    <h2 id="选择时间范围">选择时间范围</h2>
+    <p>页面顶部可以在四个时间范围之间切换：</p>
+    <ul>
+      <li><b>近 7 天</b>——看最近一周的用量。</li>
+      <li><b>近 30 天</b>——看最近一个月的用量。</li>
+      <li><b>近 90 天</b>——看最近三个月的用量。</li>
+      <li><b>全部</b>——展示已记录的全部历史。</li>
+    </ul>
+    <p>切换范围后，下方的图表与表格会同步更新。范围越短，趋势越清晰；范围越长，越适合看总体规模。日常自查用「近 7 天」就够了，想了解长期用量再用「近 30 天」或「近 90 天」。范围切换只影响展示，不会删除任何历史数据。</p>
+
+    <h2 id="看什么怎么看">看什么、怎么看</h2>
+    <p>页面用<b>趋势图</b>加<b>明细表格</b>两种方式同时呈现：趋势图看曲线的起伏，一眼分辨哪几天流量偏高；明细表格给出每一天的准确数值。表格共四列：</p>
+    <table>
+      <thead>
+        <tr><th>列</th><th>含义</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>日期</b></td><td>该行数据对应的那一天。</td></tr>
+        <tr><td><b>下载</b></td><td>当天接收的总流量。</td></tr>
+        <tr><td><b>上传</b></td><td>当天发送的总流量。</td></tr>
+        <tr><td><b>总量</b></td><td>当天上下行合计。</td></tr>
+      </tbody>
+    </table>
+    <p>如果当前范围内还没有任何记录，页面会显示「当前范围内暂无记录」。此时把时间范围放宽，或使用软件一段时间后再回来查看即可。</p>
+
+    <h2 id="按应用看流量">按应用看流量</h2>
+    <p>页面底部还有一块<b>应用流量</b>面板：它把流量按发起进程归集，让你看出这段时间里哪个应用最占带宽。表格共五列：应用、下载、上传、总量与最近活动时间，默认按总量从高到低排序。</p>
+    <p>数据由客户端在内核运行后每 15 秒采样一次连接记录并累计，只统计能识别出发起进程的连接；刚启动软件时列表可能为空，稍候即可。累计值持久保存，重启软件不会清零。想重新开始统计时，点面板右上角的「重置」即可清零所有应用的累计流量，重置不影响「按天记录」的数据。</p>
+
+    <h2 id="按节点流量">按节点流量</h2>
+    <p>「应用流量」面板下方还有一块<b>按节点流量</b>面板：它把流量按连接最终走出的「出口节点」归集，直连流量记为 <b>DIRECT</b> 单独一行，方便对比「走代理」与「不走代理」各用了多少。表格共五列：节点、下载、上传、总量与最近活动时间，默认按总量从高到低排序。</p>
+    <p>数据同样由客户端在内核运行后每 15 秒采样一次并累计，重启软件不会丢失；点面板右上角的「重置统计」可清零全部节点统计，不影响「按天记录」与「应用流量」的数据。</p>
+
+    <h2 id="数据存在哪里">数据存在哪里</h2>
+    <p>数据由客户端在运行期间持续记录，并落盘到数据目录：按天记录写入 <code>traffic_history.json</code>，应用流量写入 <code>app_traffic.json</code>，节点流量写入 <code>node_traffic.json</code>。因此<b>重启软件后历史仍然保留</b>，不会因为退出而丢失。这些文件都由客户端自动维护，你不需要手动编辑。</p>
+
+    <div class="cal note">
+      <div>
+        <b>统计的是「经过内核的流量」</b>
+        <p>只有走内核的流量才会被计入。直连且未经过内核的流量不计入，所以统计值可能小于网卡实际用量。</p>
+      </div>
+    </div>
+
+    <div class="cal warn">
+      <div>
+        <b>关于清空记录</b>
+        <p>按天记录没有独立的清空按钮，可用「设置 → 维护 → 备份与恢复」的导入备份功能间接覆盖；应用流量与节点流量的累计值可分别在对应面板右上角重置。</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> 无界互联 Unbound link</span>
+      <span><a href="../index.html">返回官网</a> · <a href="../faq.html">常见问题</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">问题反馈</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script src="../assets/docs-search-index.js"></script>
+<script src="../assets/docs.js"></script>
+</body>
+</html>

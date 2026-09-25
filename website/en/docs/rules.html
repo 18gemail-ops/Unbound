@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("unboundlink-site-theme")==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}document.documentElement.className+=" js";})();</script>
+<title>Rules — Unbound link User Guide</title>
+<meta name="description" content="Unbound link Rules guide: view active rules, the custom rule editor, subscription rule sets and hit statistics.">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="../index.html">
+      <img src="../../assets/img/logo.png" alt="Unbound link">
+      <span>Unbound link</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#101114" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="topnav">
+      <a href="../features.html">Features</a>
+      <a href="./index.html">User Guide</a>
+      <a href="../download.html">Download</a>
+      <a href="../changelog.html">Changelog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-dark btn-sm" href="../download.html">Download for Windows</a>
+    </div>
+  </div>
+</header>
+
+<div class="docs-shell">
+  <aside class="docs-side" id="docsSide"></aside>
+
+  <main class="docs-main">
+    <div class="crumb">User Guide</div>
+    <h1>Rules</h1>
+    <p class="page-lead">The Rules page answers "which line does which traffic take": it lists the rules in effect, the rule sets your subscription references, and how often each rule is actually hit.</p>
+
+    <h2 id="four-tabs">Four tabs</h2>
+    <p>Four tabs at the top: <b>Rules</b>, <b>Custom rules</b>, <b>Rule sets</b> and <b>Hit statistics</b> — different facets of the same rule set: "what rules exist", "which extra rules I want", "where they come from" and "how well they're used". Switch tabs to view each without leaving the page.</p>
+
+    <h2 id="rules">Rules</h2>
+    <p>The default first tab lists every rule in the current runtime config. Data comes from the exact config the core reads — your subscription and overrides combined. Four columns:</p>
+    <table>
+      <thead>
+        <tr><th>Column</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Type</b></td><td>The match type, e.g. DOMAIN-SUFFIX, GEOIP and so on.</td></tr>
+        <tr><td><b>Match</b></td><td>The domain, IP range or region this rule matches.</td></tr>
+        <tr><td><b>Policy (exit)</b></td><td>Where matched traffic exits — usually a proxy group, a node name, or a built-in policy like DIRECT or REJECT.</td></tr>
+        <tr><td><b>Hits</b></td><td>How many times this rule has been hit in total.</td></tr>
+      </tbody>
+    </table>
+    <p>Rule counts are often large, so filtering and search sit above: filter by type or search the match content by keyword. Long results paginate automatically to help you find a specific rule.</p>
+
+    <h2 id="custom-rules">Custom rules</h2>
+    <p>The Custom rules tab is a visual editor: add, edit and reorder your own routing rules without hand-writing config files. On Save & apply they are injected at the <b>very top</b> of the runtime rules in list order, outranking quick rules and subscription rules.</p>
+    <p>Editing is draft-style: changes stay on the page, a Discard changes button and an unsaved-changes note appear, and nothing is written until you click Save & apply, which hot-reloads the core; Discard changes restores the saved state. The table shows all rules in the draft with six columns: <b>#</b>, <b>Type</b>, <b>Match</b>, <b>Policy</b>, <b>Extra</b> and <b>Actions</b>. Each row has four buttons: <b>Move up</b>, <b>Move down</b>, <b>Edit</b> and <b>Delete</b>; higher rows have higher priority, and Move up on the first row and Move down on the last are disabled.</p>
+    <p>Click Add rule or a row's Edit button to open a form with four fields:</p>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Rule type</b></td><td>e.g. DOMAIN-SUFFIX, GEOSITE, IP-CIDR; type freely or pick from the common suggestions — values are upper-cased automatically.</td></tr>
+        <tr><td><b>Match</b></td><td>The domain, IP range or region to match. Not needed for the MATCH type.</td></tr>
+        <tr><td><b>Target</b></td><td>The exit on a hit: DIRECT, REJECT, or a proxy group / node name from the running core (pick from the suggestions).</td></tr>
+        <tr><td><b>no-resolve</b></td><td>Shown only for IP-type rules (IP-CIDR, GEOIP and the like); when on, these rules skip DNS resolution to avoid needless lookups.</td></tr>
+      </tbody>
+    </table>
+    <p>Rule types are limited to upper-case letters, digits and hyphens, and Match / Target must not contain commas or line breaks; if any rule fails validation the whole save is rejected with the offending row number. Up to 200 custom rules.</p>
+    <div class="cal warn">
+      <div>
+        <b>A MATCH rule truncates everything after it</b>
+        <p>Custom rules go to the very top of the rule list, and matching runs top to bottom — the first hit wins. Put a MATCH rule first and nothing below it will ever match.</p>
+      </div>
+    </div>
+
+    <h2 id="rule-sets">Rule sets</h2>
+    <p>The Rule sets tab lists the rule sets your subscription references — <code>rule-provider</code> entries. Rule sets bundle large batches of rules into external files to keep the main config lean; once referenced, their rules match alongside the rest. Five columns:</p>
+    <table>
+      <thead>
+        <tr><th>Column</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Name</b></td><td>The rule set's identifying name.</td></tr>
+        <tr><td><b>Type</b></td><td>The rule set's type.</td></tr>
+        <tr><td><b>Behavior</b></td><td>The rule set's match behavior.</td></tr>
+        <tr><td><b>Rules</b></td><td>How many rules the set contains.</td></tr>
+        <tr><td><b>Updated</b></td><td>When the rule set was last updated.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="hit-statistics">Hit statistics</h2>
+    <p>The Hit statistics tab presents rules by actual usage in four columns: <b>Type</b>, <b>Match</b>, <b>Exit</b> and <b>Hits</b>, so you can see which rules really pull their weight.</p>
+    <p>The client samples connection records <b>every 15 seconds</b> while the core runs and accumulates them to disk, so right after launch it may show "No statistics yet (sampled every 15 seconds while the core runs)" — data trickles in shortly after. Statistics are persisted and survive restarts.</p>
+
+    <h2 id="route-simulator">Route simulator</h2>
+    <p>The toolbar on the Rules page has a Route simulator button: type a domain, IP or process name and it replays locally which rule would match and what its policy is. No running core is required — very handy for working out why a site went the way it did.</p>
+    <p>Two input modes are supported: <b>Domain / IP</b> matches domain- and IP-based rules; <b>App process</b> matches process rules (e.g. chrome.exe). Results show the matched rule number, its text and policy; if the policy is a proxy group, the group's current exit node is resolved too.</p>
+    <p>A few rules cannot be decided locally (those relying on GeoSite / GeoIP data, regex, or pending domain resolution); the simulator lists them as skipped instead of giving a wrong answer, and malformed input gets its own hint. Every decision is based on the current runtime config — the same rules the core actually uses.</p>
+
+    <h2 id="rule-priority">Rule priority</h2>
+    <p>Rules match top to bottom; the first hit wins. In the runtime config the order is: <b>custom rules</b> (arranged in the Rules page editor) → <b>quick rules</b> (right-click on the <a href="./connections.html">Connections</a> page) → subscription rules. Both in-app sources sit above subscription rules, with custom rules highest. <a href="./apps.html">App routing</a> bindings match by process and also apply at config generation time.</p>
+
+    <div class="cal warn">
+      <div>
+        <b>Changed rules but nothing changed?</b>
+        <p>First check the mode is "Rule": Settings → Network → Mode. In Global mode all traffic takes one exit and rules have no effect.</p>
+      </div>
+    </div>
+
+    <nav class="docs-pager" id="docsPager"></nav>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-bot" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© <span data-year>2026</span> Unbound link</span>
+      <span><a href="../index.html">Back to website</a> · <a href="../faq.html">FAQ</a> · <a href="https://github.com/18gemail-ops/Unboundlink/issues" target="_blank" rel="noopener">Report an issue</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/docs-search-index.en.js"></script>
+<script src="../../assets/docs.js"></script>
+</body>
+</html>
