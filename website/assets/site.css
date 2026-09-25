@@ -576,10 +576,26 @@ code {
   50% { transform: translateY(-7px); }
 }
 
-/* 界面一览画廊 */
-.shots-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+/* 界面一览画廊：两列大卡，每张卡模拟一扇应用窗口——
+   顶部极简窗口栏 + 截图主体 + 底部渐隐收尾（截图原生 1150×1050，裁到上部主体） */
+.shots-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .shots-grid .shot { --ar: 1150 / 560; }
+/* 极简窗口栏：三个圆点 + 底边分隔，让裁切截图读起来是「一扇窗口的预览」 */
+.shot-card::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0; left: 0; right: 0;
+  height: 26px;
+  background-color: var(--bg-subtle);
+  background-image:
+    radial-gradient(circle 3px at 17px 13px, var(--ink-3) 97%, rgba(0, 0, 0, 0)),
+    radial-gradient(circle 3px at 31px 13px, var(--ink-3) 97%, rgba(0, 0, 0, 0)),
+    radial-gradient(circle 3px at 45px 13px, var(--ink-3) 97%, rgba(0, 0, 0, 0));
+  border-bottom: 1px solid var(--line);
+}
 .shot-card {
+  position: relative;
   margin: 0;
   background: var(--bg-elevated);
   border: 1px solid var(--line);
@@ -589,7 +605,20 @@ code {
   transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.25s var(--ease);
 }
 .shot-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-2); transform: translateY(-3px); }
-.shot-card .shot { border-bottom: 1px solid var(--line); }
+.shot-card .shot { margin-top: 26px; border-bottom: 1px solid var(--line); }
+/* 截图底部渐隐：内容在卡片背景色里柔和收尾，避免裁切边突兀；
+   双主题分别设定渐变起点色相，防止过渡带发灰 */
+.shot-card .shot::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 88px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, var(--bg-elevated) 74%);
+  pointer-events: none;
+}
+[data-theme="dark"] .shot-card .shot::after {
+  background: linear-gradient(to bottom, rgba(23, 27, 34, 0) 0%, var(--bg-elevated) 74%);
+}
 .shot-card figcaption { padding: 15px 20px 17px; }
 .shot-card figcaption b { display: block; font-size: 15px; }
 .shot-card figcaption span { font-size: 13.5px; color: var(--ink-3); }
@@ -636,11 +665,11 @@ code {
   .hero-stage { margin-top: 42px; }
   .hero-float { right: -14px; bottom: -18px; width: 188px; }
   .hero-badge { left: -10px; top: -14px; }
-  .shots-grid { grid-template-columns: 1fr; }
-  .shots-grid .shot { --ar: 1150 / 620; }
+  .shots-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
   .hero-float, .hero-badge { display: none; }
+  .shots-grid { grid-template-columns: 1fr; }
   .hero-shot { --ar: 1150 / 700; }
   .hero-stats { gap: 20px 32px; }
   .hero-stats b { font-size: 28px; }
