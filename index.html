@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>无界工作室 · 官网建设与软件开发</title>
+<meta name="description" content="无界工作室专注官网建设与软件开发。从品牌官网、产品站到桌面客户端与后端服务，全栈自研，交付即用。旗下产品：无界指纹浏览器、无界互联。" />
+<meta name="keywords" content="无界工作室,官网建设,软件开发,无界指纹浏览器,无界互联,防关联浏览器,代理客户端" />
+<meta name="theme-color" content="#09090b" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="无界工作室 · 官网建设与软件开发" />
+<meta property="og:description" content="从品牌官网到桌面客户端，全栈自研，交付即用。" />
+
+<link rel="icon" href="assets/img/favicon.png" type="image/png" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<noscript>
+  <style>
+    [data-reveal], [data-stagger] > * { opacity: 1 !important; transform: none !important; }
+    .line .ch, .code-block .cl, .faq-a > div { opacity: 1 !important; transform: none !important; }
+    .step::before { transform: scaleX(1) !important; }
+    .scroll-progress, .scroll-hint { display: none !important; }
+  </style>
+</noscript>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"><i></i></div>
+
+<!-- ===================== 顶部导航 ===================== -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="无界工作室首页">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="assets/img/logo.png" alt="" width="42" height="26" />
+      </span>
+      <span class="brand-text">
+        <strong>无界工作室</strong>
+        <em>UNBOUND STUDIO</em>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#services" class="nav-link"><em>SERVICES</em><span>服务</span></a>
+      <a href="#products" class="nav-link"><em>PRODUCTS</em><span>产品</span></a>
+      <a href="#stack" class="nav-link"><em>STACK</em><span>技术</span></a>
+      <a href="#process" class="nav-link"><em>PROCESS</em><span>流程</span></a>
+      <a href="#faq" class="nav-link"><em>FAQ</em><span>问答</span></a>
+      <a href="#contact" class="nav-cta">联系我们</a>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===================== 首屏（深） ===================== -->
+  <section class="hero theme-dark" id="hero">
+    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <canvas class="hero-globe" id="globeCanvas" aria-hidden="true"></canvas>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <aside class="hero-rail" aria-hidden="true">
+      <span class="hero-rail-no">00</span>
+      <span class="hero-rail-axis"></span>
+      <span class="hero-rail-label">UNBOUND STUDIO</span>
+      <span class="hero-rail-axis"></span>
+    </aside>
+
+    <div class="container hero-inner">
+      <div class="hero-main">
+        <p class="mono-line" data-reveal>
+          <span class="caret" aria-hidden="true"></span>官网建设 / 软件开发 / 自研产品
+        </p>
+
+        <h1 class="hero-title">
+          <span class="line-mask"><span class="line" data-split>把复杂的工程</span></span>
+          <span class="line-mask"><span class="line" data-split>做成一流的产品</span></span>
+        </h1>
+
+        <div class="hero-tags" data-reveal data-delay="120">
+          <span>FULL-STACK</span>
+          <span>SELF-BUILT</span>
+          <span>SHIP-READY</span>
+          <span>SELF-HOSTED</span>
+        </div>
+
+        <p class="hero-sub" data-reveal data-delay="180">
+          全栈自研的技术团队。从品牌官网、产品站点，到桌面客户端与后端服务——
+          我们把复杂留在背后，只交付清晰、稳定、经得起长期使用的产品。
+        </p>
+
+        <div class="hero-actions" data-reveal data-delay="240">
+          <a href="#contact" class="btn btn-primary">
+            咨询合作
+            <svg viewBox="0 0 20 20" class="ic"><path d="M4 10h11M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </a>
+          <a href="#products" class="btn btn-ghost">查看自研产品</a>
+        </div>
+
+        <div class="readout" data-reveal data-delay="320">
+          <div class="readout-cell">
+            <span class="k">自研产品</span>
+            <span class="v"><b data-count="2">0</b></span>
+            <span class="s">指纹浏览器 · 互联</span>
+          </div>
+          <div class="readout-cell">
+            <span class="k">功能模块</span>
+            <span class="v"><b data-count="21">0</b></span>
+            <span class="s">浏览器端实测</span>
+          </div>
+          <div class="readout-cell">
+            <span class="k">界面语言</span>
+            <span class="v"><b data-count="13">0</b></span>
+            <span class="s">i18n 全量覆盖</span>
+          </div>
+          <div class="readout-cell">
+            <span class="k">数据本地存储</span>
+            <span class="v"><b data-count="100">0</b><i>%</i></span>
+            <span class="s">SQLite 本地落盘</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="scroll-hint" href="#services" aria-label="向下滚动">
+      <span class="scroll-hint-track"><i></i></span>
+      <em>SCROLL</em>
+    </a>
+  </section>
+
+  <!-- ===================== 服务（浅） ===================== -->
+  <section class="section theme-light" id="services">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <p class="sec-meta"><span class="sec-no">01</span> / SERVICES</p>
+        <h2 class="sec-title"><span class="line-mask"><span class="line" data-split>两条主线，一件事：把东西做扎实</span></span></h2>
+        <p class="sec-desc">官网是品牌的门面，软件是产品的心脏。这两件事我们都自己上手做，不外包、不转手。</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel" data-reveal>
+          <div class="panel-head">
+            <span class="panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="2.5" y="4" width="19" height="15" rx="2" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M2.5 8.5h19" stroke="currentColor" stroke-width="1.7"/>
+                <circle cx="5.6" cy="6.3" r=".9" fill="currentColor"/>
+                <circle cx="8.3" cy="6.3" r=".9" fill="currentColor"/>
+              </svg>
+            </span>
+            <h3>官网建设</h3>
+          </div>
+          <p class="panel-desc">从一页落地页到完整的多页品牌站，按你的业务逻辑来设计，而不是套模板。上线快、打开快、在手机上一样好看。</p>
+          <ul class="list" data-stagger>
+            <li>品牌官网 / 产品官网 / 落地页</li>
+            <li>响应式设计，手机 / 平板 / 桌面自适应</li>
+            <li>SEO 基础优化与站点地图</li>
+            <li>部署上线（Cloudflare Pages / 自有服务器）</li>
+            <li>后台内容管理可选接入</li>
+          </ul>
+        </article>
+
+        <article class="panel" data-reveal data-delay="110">
+          <div class="panel-head">
+            <span class="panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8.5 7.5 4 12l4.5 4.5M15.5 7.5 20 12l-4.5 4.5M13.5 5l-3 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <h3>软件开发</h3>
+          </div>
+          <p class="panel-desc">不只做界面，也做能跑起来的那一层。桌面客户端、Web 应用、后端服务与自动化工具，都按产品标准交付。</p>
+          <ul class="list" data-stagger>
+            <li>桌面客户端（Windows 本地应用）</li>
+            <li>Web 应用与前端界面开发</li>
+            <li>后端服务 / API / 数据处理</li>
+            <li>自动化脚本与效率工具</li>
+            <li>本地优先架构，隐私数据不外传</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 产品（深） ===================== -->
+  <section class="section theme-dark" id="products">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <p class="sec-meta"><span class="sec-no">02</span> / PRODUCTS</p>
+        <h2 class="sec-title"><span class="line-mask"><span class="line" data-split>我们自己的产品，就是最好的作品集</span></span></h2>
+        <p class="sec-desc">下面两款软件都是无界工作室从零开发的完整产品，长期维护、持续迭代。</p>
+      </div>
+
+      <div class="grid-2">
+
+        <article class="panel" data-reveal>
+          <div class="panel-head">
+            <span class="panel-logo" aria-hidden="true">
+              <img src="assets/img/product-browser.png" alt="" width="42" height="42" />
+            </span>
+            <div class="panel-title">
+              <h3>无界指纹浏览器</h3>
+              <em>UNBOUND BROWSER</em>
+            </div>
+            <span class="badge">Windows</span>
+          </div>
+
+          <p class="panel-desc">面向跨境电商、社媒矩阵与广告投放的专业防关联浏览器。每个环境拥有独立的指纹与数据，一切都在你自己的电脑上完成。</p>
+          <p class="panel-scene">让每一个账号，都像在用一台自己的机器。</p>
+
+          <dl class="spec">
+            <div><dt>功能模块</dt><dd><b data-count="21">0</b></dd></div>
+            <div><dt>数据本地存储</dt><dd><b data-count="100">0</b>%</dd></div>
+            <div><dt>隔离环境</dt><dd class="lit">无限</dd></div>
+          </dl>
+
+          <ul class="tags" data-stagger>
+            <li>环境完全隔离</li>
+            <li>种子驱动指纹</li>
+            <li>代理统一管控</li>
+            <li>批量高效运维</li>
+            <li>HTTP API / MCP / Playwright</li>
+            <li>团队协作模式</li>
+          </ul>
+
+          <a class="link-arrow" href="https://unboundbrowser.pages.dev/" target="_blank" rel="noopener">
+            访问产品官网
+            <svg viewBox="0 0 20 20" class="ic"><path d="M6 14 14 6M8 6h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </a>
+        </article>
+
+        <article class="panel" data-reveal data-delay="110">
+          <div class="panel-head">
+            <span class="panel-logo" aria-hidden="true">
+              <img src="assets/img/product-link.png" alt="" width="42" height="42" />
+            </span>
+            <div class="panel-title">
+              <h3>无界互联</h3>
+              <em>UNBOUND LINK</em>
+            </div>
+            <span class="badge">Windows</span>
+          </div>
+
+          <p class="panel-desc">基于 mihomo 内核、完全本地运行的桌面代理客户端。订阅自动更新、分流规则、按进程绑定线路、链式代理、断网急救——都收进这一个窗口里。</p>
+          <p class="panel-scene">把网络的选择权，重新交回你手里。</p>
+
+          <dl class="spec">
+            <div><dt>界面语言</dt><dd><b data-count="13">0</b></dd></div>
+            <div><dt>解锁测试</dt><dd><b data-count="18">0</b></dd></div>
+            <div><dt>数据外传</dt><dd class="lit">0</dd></div>
+          </dl>
+
+          <ul class="tags" data-stagger>
+            <li>订阅管理与自动更新</li>
+            <li>按进程绑定线路</li>
+            <li>链式代理</li>
+            <li>Merge 覆写</li>
+            <li>QuickJS 扩展脚本</li>
+            <li>断网急救箱</li>
+          </ul>
+
+          <a class="link-arrow" href="https://unboundlink.pages.dev/" target="_blank" rel="noopener">
+            访问产品官网
+            <svg viewBox="0 0 20 20" class="ic"><path d="M6 14 14 6M8 6h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 技术（浅） ===================== -->
+  <section class="section theme-light" id="stack">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <p class="sec-meta"><span class="sec-no">03</span> / STACK</p>
+        <h2 class="sec-title"><span class="line-mask"><span class="line" data-split>会用，是因为真的做过</span></span></h2>
+        <p class="sec-desc">下面这些不是简历上的名词，而是两款自研产品里真实跑着的东西。</p>
+      </div>
+
+      <div class="stack-layout">
+        <div class="code-wrap" data-reveal>
+          <div class="code-cap">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="code-file">unbound-link / scripts / rename.js</span>
+          </div>
+          <pre class="code-block"><code><span class="cl" style="--i:0"><span class="c">// 无界互联 · 扩展脚本（内置 QuickJS 引擎）</span>
+</span><span class="cl" style="--i:1"><span class="k">function</span> <span class="f">main</span>(config) {
+</span><span class="cl" style="--i:2">  config.proxies = config.proxies.<span class="f">map</span>(p =&gt; ({
+</span><span class="cl" style="--i:3">    ...p,
+</span><span class="cl" style="--i:4">    name: <span class="s">`[无界] ${p.name}`</span>
+</span><span class="cl" style="--i:5">  }));
+</span><span class="cl" style="--i:6">  <span class="k">return</span> config;
+</span><span class="cl" style="--i:7">}</span></code></pre>
+          <p class="code-note">一个 <code>main(config)</code> 函数就能批量改写节点名、增删规则，改完自动热重载，不需重启内核。</p>
+        </div>
+
+        <ul class="stack-list">
+          <li data-reveal><b>内核与网络</b><span>mihomo 内核 · HTTP / SOCKS5 · 分流规则 · 泄漏检测</span></li>
+          <li data-reveal data-delay="70"><b>桌面客户端</b><span>Windows 本地应用 · 后台常驻 · 自动更新 · QuickJS</span></li>
+          <li data-reveal data-delay="140"><b>服务与接口</b><span>本地 HTTP API · MCP 协议 · WebRTC 检测 · 调试端口</span></li>
+          <li data-reveal data-delay="210"><b>Web 与部署</b><span>TypeScript · Node.js · 响应式官网 · Cloudflare Pages</span></li>
+          <li data-reveal data-delay="280"><b>数据与工程</b><span>SQLite · Python · Playwright · 多语言 i18n</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 流程（深） ===================== -->
+  <section class="section theme-dark" id="process">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <p class="sec-meta"><span class="sec-no">04</span> / PROCESS</p>
+        <h2 class="sec-title"><span class="line-mask"><span class="line" data-split>四步，从想法到上线</span></span></h2>
+        <p class="sec-desc">每一步都有明确的产出，你会一直知道项目走到哪了。</p>
+      </div>
+
+      <ol class="steps">
+        <li class="step" data-reveal>
+          <span class="step-no">01</span>
+          <h3>沟通需求</h3>
+          <p>先说清楚要做什么、给谁用、什么时候要。评估可行性与工作量，给出口径明确的建议。</p>
+        </li>
+        <li class="step" data-reveal data-delay="90">
+          <span class="step-no">02</span>
+          <h3>方案与报价</h3>
+          <p>给出方案说明、功能清单、时间节点与固定报价。确认后再开工，不做中途加价的糊涂账。</p>
+        </li>
+        <li class="step" data-reveal data-delay="180">
+          <span class="step-no">03</span>
+          <h3>设计开发</h3>
+          <p>分阶段交付里程碑，随做随看。每个阶段都能看到真实进度，随时可以提意见调整。</p>
+        </li>
+        <li class="step" data-reveal data-delay="270">
+          <span class="step-no">04</span>
+          <h3>上线与维护</h3>
+          <p>部署上线、交付源码与说明文档，并提供后续的维护与迭代支持。</p>
+        </li>
+      </ol>
+
+      <div class="promise" data-reveal>
+        <div class="promise-cell"><b>全栈自研，不转包</b><span>设计、前端、后端、桌面端都在团队内部完成，沟通链路短，问题不踢皮球。</span></div>
+        <div class="promise-cell"><b>本地优先，数据可控</b><span>默认把数据留在用户自己的机器上，该上云的场景才上云。</span></div>
+        <div class="promise-cell"><b>交付即用，不是 Demo</b><span>交付能装上、能打开、能用的成品，附使用说明。</span></div>
+        <div class="promise-cell"><b>长期维护，持续迭代</b><span>提供后续维护支持，我们自己的产品也在长期养。</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ（浅） ===================== -->
+  <section class="section theme-light" id="faq">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <p class="sec-meta"><span class="sec-no">05</span> / FAQ</p>
+        <h2 class="sec-title"><span class="line-mask"><span class="line" data-split>你可能想问的</span></span></h2>
+        <p class="sec-desc">先把这些说清楚，省得来回问。</p>
+      </div>
+
+      <div class="faq-list" data-reveal>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-no">01</span>
+            <span class="faq-text">一个官网大概多久能做好？</span>
+            <i class="faq-icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a"><div><p>视内容量与复杂度而定。需求聊清楚后，时间节点会给得很明确。</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-no">02</span>
+            <span class="faq-text">怎么报价？会不会中途加价？</span>
+            <i class="faq-icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a"><div><p>按功能清单给固定报价，确认后开工。中途有变更，先说清楚影响，你点头我们才动。</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-no">03</span>
+            <span class="faq-text">我不会写文案、也没有设计稿怎么办？</span>
+            <i class="faq-icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a"><div><p>文案和设计交给我们。你只要说清业务和目标，剩下的不用操心。</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-no">04</span>
+            <span class="faq-text">交付什么？源码给我吗？</span>
+            <i class="faq-icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a"><div><p>成品、源码、说明文档都给，部署一并完成。想自己接手也没妨碍。</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-no">05</span>
+            <span class="faq-text">上线之后出问题怎么办？能长期维护吗？</span>
+            <i class="faq-icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a"><div><p>后续维护与迭代都做。我们自己的产品也在长期养——上线之后的功夫才最见真章。</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-no">06</span>
+            <span class="faq-text">我的数据安全吗？会不会被上传？</span>
+            <i class="faq-icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a"><div><p>本地优先是默认架构，该上云的场景才上云。我们自己两款产品都是「数据不出机」。</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-no">07</span>
+            <span class="faq-text">上线之后的维护怎么收费？</span>
+            <i class="faq-icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a"><div><p>按实际需求评估，不做捆绑套餐。具体怎么算，聊的时候一次说清。</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            <span class="faq-no">08</span>
+            <span class="faq-text">不在同一个城市，能合作吗？</span>
+            <i class="faq-icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq-a"><div><p>可以。全程线上沟通，进度随时可查，不在一个城市不妨碍交付。</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 联系（深） ===================== -->
+  <section class="section theme-dark contact-section" id="contact">
+    <div class="container">
+      <div class="contact-box" data-reveal>
+        <div class="contact-copy">
+          <p class="sec-meta"><span class="sec-no">06</span> / CONTACT</p>
+          <h2><span class="line-mask"><span class="line" data-split>有官网或软件的需求？聊聊看</span></span></h2>
+          <p class="contact-lead">无论是想做一个品牌官网、产品站点，还是想开发一款自己的软件产品，都可以先加个联系方式聊聊。需求说不清楚也没关系，我们帮你捋。</p>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:hello@unbound.studio">
+              <svg viewBox="0 0 20 20" class="ic"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="m3.5 6 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+              hello@unbound.studio
+            </a>
+            <button class="copy-btn" type="button" id="copyMail" data-copy="hello@unbound.studio" aria-label="复制邮箱地址">复制</button>
+            <a class="btn btn-ghost" href="https://unboundbrowser.pages.dev/" target="_blank" rel="noopener">看看我们做的产品</a>
+          </div>
+
+          <p class="contact-note">邮箱为占位地址，发布前请替换为你自己的联系方式（微信 / QQ / 邮箱均可）。</p>
+        </div>
+
+        <div class="contact-card">
+          <p class="contact-card-title">现在就能看的东西</p>
+          <ul class="contact-links">
+            <li>
+              <span>无界指纹浏览器</span>
+              <a href="https://unboundbrowser.pages.dev/" target="_blank" rel="noopener">unboundbrowser.pages.dev →</a>
+            </li>
+            <li>
+              <span>无界互联</span>
+              <a href="https://unboundlink.pages.dev/" target="_blank" rel="noopener">unboundlink.pages.dev →</a>
+            </li>
+          </ul>
+          <ul class="tags tags-tight">
+            <li>官网建设</li><li>桌面应用</li><li>Web 开发</li><li>后端服务</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== 页脚（深） ===================== -->
+<footer class="site-footer theme-dark">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-lead">
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="assets/img/logo.png" alt="" width="42" height="26" />
+          </span>
+          <div>
+            <strong>无界工作室</strong>
+            <p>UNBOUND STUDIO</p>
+          </div>
+        </div>
+        <p class="footer-claim">把想法，做成能用的东西。</p>
+      </div>
+
+      <ul class="footer-prods">
+        <li>
+          <a href="https://unboundbrowser.pages.dev/" target="_blank" rel="noopener">
+            <img src="assets/img/product-browser.png" alt="" width="28" height="28" />
+            <b>无界指纹浏览器</b>
+            <svg class="ic" viewBox="0 0 20 20"><path d="M6 14 14 6M8 6h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://unboundlink.pages.dev/" target="_blank" rel="noopener">
+            <img src="assets/img/product-link.png" alt="" width="28" height="28" />
+            <b>无界互联</b>
+            <svg class="ic" viewBox="0 0 20 20"><path d="M6 14 14 6M8 6h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-bar">
+      <nav class="footer-nav">
+        <a href="#services">服务</a>
+        <a href="#products">产品</a>
+        <a href="#stack">技术</a>
+        <a href="#process">流程</a>
+        <a href="#faq">问答</a>
+        <a href="#contact">联系</a>
+      </nav>
+      <p class="footer-copy">© <span id="year">2026</span> 无界工作室 · 官网建设 / 软件开发</p>
+    </div>
+  </div>
+</footer>
+
+<a class="to-top" id="toTop" href="#top" aria-label="回到顶部">
+  <svg viewBox="0 0 20 20"><path d="M10 15V5M5 10l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+</a>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
