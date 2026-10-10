@@ -904,7 +904,69 @@ html.on-light .brand-text em { color: var(--h-mark); }
 .panel:hover { translate: 0 -3px; }
 
 /* ---------------------------------------------------------
-   15. 响应式
+   15. 案例区块（#products 内 · 占位结构）
+   --------------------------------------------------------- */
+.case-block { margin-top: 54px; padding-top: 26px; border-top: 1px solid var(--line); }
+.case-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.case-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .2em; color: var(--mute); }
+.case-note { font-size: 13px; color: var(--mute); }
+.case-item {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.case-no { flex: none; padding-top: 3px; font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--accent); }
+.case-body { flex: 1 1 220px; min-width: 0; }
+.case-body h3 { font-size: 18px; }
+.case-body p { margin-top: 6px; font-size: 14.5px; color: var(--dim); line-height: 1.75; }
+.case-tag {
+  flex: none; padding: 4px 11px;
+  border: 1px solid var(--line-2); border-radius: 999px;
+  font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--mute);
+}
+
+/* ---------------------------------------------------------
+   16. 法务页（隐私政策 / 服务条款）
+   --------------------------------------------------------- */
+.legal-bar {
+  /* 复刻顶栏的主题变量，供 .brand 复用 */
+  --h-text: #fafafa; --h-dim: #8b8b95; --h-mark: #5c5c66;
+  --h-hover: rgba(255, 255, 255, .06); --h-edge: rgba(255, 255, 255, .16);
+  --h-accent: #818cf8; --h-accent-line: rgba(129, 140, 248, .30);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.legal-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 70px; }
+.legal-back { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--dim); transition: color .2s var(--ease); }
+.legal-back:hover { color: var(--accent); }
+
+.legal-main { padding: 84px 0 110px; }
+.legal-wrap { max-width: 760px; }
+.legal-meta { margin-bottom: 14px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .2em; color: var(--accent); }
+.legal-wrap h1 { font-size: clamp(28px, 3.6vw, 40px); }
+.legal-updated { margin-top: 14px; font-family: var(--mono); font-size: 12px; color: var(--mute); }
+
+.legal-prose { margin-top: 40px; }
+.legal-prose h2 { margin-top: 38px; font-size: 19px; }
+.legal-prose h2:first-child { margin-top: 0; }
+.legal-prose p { margin-top: 12px; font-size: 15.5px; line-height: 1.9; color: var(--dim); }
+.legal-prose li { position: relative; padding-left: 18px; margin-top: 8px; font-size: 15.5px; line-height: 1.9; color: var(--dim); }
+.legal-prose li::before { content: ""; position: absolute; left: 2px; top: 13px; width: 5px; height: 1px; background: var(--accent); }
+.legal-prose a { color: var(--accent); border-bottom: 1px solid var(--accent-line); }
+.legal-prose strong { color: var(--text); }
+
+.legal-foot { padding: 30px 0; border-top: 1px solid var(--line); }
+.legal-foot-inner {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+  font-size: 13px; color: var(--mute);
+}
+.legal-foot-inner nav { display: flex; gap: 18px; }
+.legal-foot-inner a { color: var(--dim); transition: color .2s var(--ease); }
+.legal-foot-inner a:hover { color: var(--accent); }
+
+/* ---------------------------------------------------------
+   17. 响应式
    --------------------------------------------------------- */
 @media (max-width: 1060px) {
   .stack-layout { grid-template-columns: 1fr; }
@@ -984,6 +1046,8 @@ html.on-light .brand-text em { color: var(--h-mark); }
   .faq-q { font-size: 15.5px; }
   .faq-a > div { padding-right: 24px; }
   .brand-text em { display: none; }
+  .case-body h3 { font-size: 16.5px; }
+  .legal-main { padding: 56px 0 76px; }
   .to-top { right: 16px; bottom: 16px; }
 }
 
